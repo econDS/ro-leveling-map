@@ -1,0 +1,1413 @@
+{
+  "sourceUrl": "https://github.com/rathena/rathena/blob/master/db/re/mob_db.yml",
+  "monsters": {
+    "moc_fild01:Yellow Plant": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild01:Peco Peco Egg": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild01:Muka": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild01:Muka Ringleader": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild01:PecoPeco": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild10:Blue Plant": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild10:Green Plant": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild10:Orc Baby": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild10:Orc Warrior": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild10:Furious Orc Warrior": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild10:Orc Lady": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:White Plant": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Black Mushroom": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Familiar": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Drainliar": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Steel Chonchon": {
+      "race": "Insect",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Orc Zombie": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Elusive Orc Zombie": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun01:Orc Skeleton": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild17:Blue Plant": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild17:Yellow Plant": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild17:Frilldora": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild17:Sandman": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild17:Hode": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "moc_fild17:Furious Hode": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mjolnir_03:Mantis": {
+      "race": "Insect",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mjolnir_03:Driller": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mjolnir_03:Side Winder": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mjolnir_03:Side Winder Ringleader": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:White Plant": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Black Mushroom": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Drainliar": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Steel Chonchon": {
+      "race": "Insect",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Orc Skeleton": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Swift Orc Skeleton": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Zenorc": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "orcsdun02:Orc Archer": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "dew_dun01:Comodo": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "dew_dun01:Elusive Comodo": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild06:Shining Plant": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild06:Mantis": {
+      "race": "Insect",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild06:Side Winder": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild06:Petite": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "gef_fild06:Solid Petite": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild07:White Plant": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild07:Stapo": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild07:Stapo Ringleader": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild07:Drosera": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild07:Muscipular": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ra_fild01:Baby Desert Wolf": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ra_fild01:Baby Desert Wolf Ringleader": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml #2855 (Baby Desert Wolf Ringlea)"
+    },
+    "ra_fild01:Anopheles": {
+      "race": "Insect",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ra_fild01:Roween": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ra_fild01:Desert Wolf": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mag_dun02:Gig": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mag_dun02:Blazer": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mag_dun02:Diabolic": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mag_dun02:Deleter": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mag_dun02:Nightmare Terror": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "mag_dun02:Furious Nightmare Terror": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild03:Red Plant": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild03:Yellow Plant": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild03:Drosera": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild03:Muscipular": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild03:Magmaring": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ve_fild03:Swift Magmaring": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "juperos_01:Venatu": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "juperos_01:Furious Venatu": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "juperos_01:Dimik": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "jupe_core:Venatu": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "jupe_core:Dimik": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "jupe_core:Swift Dimik": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "jupe_core:Archdam": {
+      "race": "Angel",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abbey02:Flame Skull": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abbey02:Ragged Zombie": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abbey02:Zombie Slaughter": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abbey02:Swift Zombie Slaughter": {
+      "race": "Undead",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abyss_03:Mimic": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abyss_03:Ancient Mimic": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abyss_03:Dragon Egg": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abyss_03:Ferus": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abyss_03:Acidus": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "abyss_03:Solid Acidus": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lasa_dun02:Combat Basilisk": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lasa_dun02:Jungle Madragora": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Randel": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Flamel": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Celia": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Chen": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Gertie": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Celia Ringleader": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Alphoccio": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lhz_dun04:Trentini": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lasa_dun03:Combat Basilisk": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "lasa_dun03:Fruit Pom Spider": {
+      "race": "Insect",
+      "source": "reference/maps/lasa_dun03.md"
+    },
+    "iz_d04_i:Abysmal Sropho": {
+      "race": "Fish",
+      "source": "rAthena db/re/mob_db.yml #20801 (Deep Sea Sropho)"
+    },
+    "iz_d04_i:Abysmal Merman": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml #20805 (Deep Sea Merman)"
+    },
+    "iz_d04_i:Abysmal Obeaune": {
+      "race": "Fish",
+      "source": "rAthena db/re/mob_db.yml #20802 (Deep Sea Obeaune)"
+    },
+    "iz_d04_i:Abysmal Marse": {
+      "race": "Fish",
+      "source": "rAthena db/re/mob_db.yml #20804 (Deep Sea Marse)"
+    },
+    "iz_d04_i:Abysmal Deviace": {
+      "race": "Fish",
+      "source": "rAthena db/re/mob_db.yml #20803 (Deep Sea Deviace)"
+    },
+    "tur_d04_i:Ominous Permeter": {
+      "race": "Brute",
+      "source": "reference/maps/tur_d04_i.md"
+    },
+    "tur_d04_i:Ominous Solider": {
+      "race": "Brute",
+      "source": "reference/maps/tur_d04_i.md"
+    },
+    "tur_d04_i:Ominous Freezer": {
+      "race": "Brute",
+      "source": "reference/maps/tur_d04_i.md"
+    },
+    "tur_d04_i:Ominous Heater": {
+      "race": "Brute",
+      "source": "reference/maps/tur_d04_i.md"
+    },
+    "tur_d04_i:Ominous Assaulter": {
+      "race": "Demon",
+      "source": "reference/maps/tur_d04_i.md"
+    },
+    "ant_d02_i:Diligent Andre Larva": {
+      "race": "Insect",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Mushy Ant Egg": {
+      "race": "Formless",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Intrepid Familiar": {
+      "race": "Brute",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Diligent Andre": {
+      "race": "Insect",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Diligent Deniro": {
+      "race": "Insect",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Diligent Piere": {
+      "race": "Insect",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Intrepid Giearth": {
+      "race": "Demon",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Diligent Soldier Andre": {
+      "race": "Insect",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "ant_d02_i:Diligent Vitata": {
+      "race": "Insect",
+      "source": "reference/maps/ant_d02_i.md"
+    },
+    "prt_mz03_i:Chaotic Stem Worm": {
+      "race": "Plant",
+      "source": "https://www.divine-pride.net/database/monster/20532"
+    },
+    "prt_mz03_i:Chaotic Ghostring": {
+      "race": "Demon",
+      "source": "https://www.divine-pride.net/database/monster/20529"
+    },
+    "prt_mz03_i:Chaotic Poporing": {
+      "race": "Plant",
+      "source": "https://www.divine-pride.net/database/monster/20531"
+    },
+    "prt_mz03_i:Chaotic Mantis": {
+      "race": "Insect",
+      "source": "https://www.divine-pride.net/database/monster/20528"
+    },
+    "prt_mz03_i:Chaotic Hunter Fly": {
+      "race": "Formless",
+      "source": "https://www.divine-pride.net/database/monster/20527"
+    },
+    "prt_mz03_i:Chaotic Side Winder": {
+      "race": "Brute",
+      "source": "https://www.divine-pride.net/database/monster/20526"
+    },
+    "prt_mz03_i:Chaotic Baphomet Jr.": {
+      "race": "Formless",
+      "source": "https://www.divine-pride.net/database/monster/20525"
+    },
+    "prt_mz03_i:Chaotic Killer Mantis": {
+      "race": "Insect",
+      "source": "https://www.divine-pride.net/database/monster/20530"
+    },
+    "oz_dun01:Rakehand": {
+      "race": "Plant",
+      "source": "reference/maps/oz_dun01.md"
+    },
+    "oz_dun01:Ash Toad": {
+      "race": "Brute",
+      "source": "reference/maps/oz_dun01.md"
+    },
+    "oz_dun01:Spark": {
+      "race": "Formless",
+      "source": "reference/maps/oz_dun02.md"
+    },
+    "oz_dun02:Spark": {
+      "race": "Formless",
+      "source": "reference/maps/oz_dun02.md"
+    },
+    "oz_dun02:Volcaring": {
+      "race": "Formless",
+      "source": "reference/maps/oz_dun02.md"
+    },
+    "oz_dun02:Lava Toad": {
+      "race": "Brute",
+      "source": "reference/maps/oz_dun02.md"
+    },
+    "oz_dun02:Hot Molar": {
+      "race": "Brute",
+      "source": "reference/maps/oz_dun02.md"
+    },
+    "mag_dun03:Rigid Explosion": {
+      "race": "Brute",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "mag_dun03:Rigid Earth Deleter": {
+      "race": "Dragon",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "mag_dun03:Rigid Kaho": {
+      "race": "Formless",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "mag_dun03:Rigid Sky Deleter": {
+      "race": "Dragon",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "mag_dun03:Rigid Lava Golem": {
+      "race": "Formless",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "mag_dun03:Rigid Blazer": {
+      "race": "Demon",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "mag_dun03:Rigid Nightmare Terror": {
+      "race": "Demon",
+      "source": "reference/maps/mag_dun03.md"
+    },
+    "gl_cas01_:Contaminated Sting": {
+      "race": "Formless",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Contaminated Raydric Archer": {
+      "race": "Demi-Human",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Contaminated Raydric": {
+      "race": "Demi-Human",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Frozen Gargoyle": {
+      "race": "Demon",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Prison Breaker": {
+      "race": "Demi-Human",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Corrupted Wanderer": {
+      "race": "Demon",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Ice Ghost": {
+      "race": "Demon",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "gl_cas01_:Flame Ghost": {
+      "race": "Demon",
+      "source": "reference/maps/gl_cas01_.md"
+    },
+    "sp_rudus3:Mutant Dolor": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus3:Twin Caput": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus3:Venenum": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus3:Plaga": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "ein_d02_i:Blue Teddybear": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:Piece of Spirit": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:Pitman Labor Type": {
+      "race": "Demon",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:Red Teddybear": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:Yellow Teddybear": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:White Teddybear": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:Spirit Dwelling Obsidia": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "ein_d02_i:Green Teddybear": {
+      "race": "Formless",
+      "source": "reference/maps/ein_d02_i.md"
+    },
+    "tha_t10:Empathizer": {
+      "race": "Angel",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t10:Happiness Giver": {
+      "race": "Angel",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t10:Void Mimic": {
+      "race": "Formless",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t10:Book of Death": {
+      "race": "Formless",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t10:Eldest": {
+      "race": "Demi-Human",
+      "source": "https://www.divine-pride.net/database/monster/20781"
+    },
+    "tha_t11:Empathizer": {
+      "race": "Angel",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t11:Horror of Thanatos": {
+      "race": "Demon",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t11:Smile Giver": {
+      "race": "Angel",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t11:Happiness Giver": {
+      "race": "Angel",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t11:Void Mimic": {
+      "race": "Formless",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t11:Pray Giver": {
+      "race": "Angel",
+      "source": "reference/maps/tha_t11.md"
+    },
+    "tha_t11:Book of Death": {
+      "race": "Formless",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t11:Resentment of Thanatos": {
+      "race": "Undead",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t12:Horror of Thanatos": {
+      "race": "Demon",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t12:Regret of Thanatos": {
+      "race": "Undead",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t12:Anger of Thanatos": {
+      "race": "Demon",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t12:Book of Death": {
+      "race": "Formless",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "tha_t12:Resentment of Thanatos": {
+      "race": "Undead",
+      "source": "reference/maps/tha_t12.md"
+    },
+    "ba_pw03:Spell Addicted Plaga": {
+      "race": "Demon",
+      "source": "reference/maps/ba_pw03.md"
+    },
+    "ba_pw03:Strong Plasma / Powerful Spell": {
+      "race": "Formless",
+      "source": "reference/maps/ba_pw03.md"
+    },
+    "ba_pw03:Sharp Spell": {
+      "race": "Formless",
+      "source": "reference/maps/ba_pw03.md"
+    },
+    "ba_pw03:Mana Addicted Sanare / Spell Addicted Sanare": {
+      "race": "Demi-Human",
+      "source": "reference/maps/ba_pw03.md"
+    },
+    "abyss_04:Purple Ferus": {
+      "race": "Dragon",
+      "source": "https://www.divine-pride.net/database/monster/20612"
+    },
+    "abyss_04:Treasure Mimic": {
+      "race": "Formless",
+      "source": "https://www.divine-pride.net/database/monster/20613"
+    },
+    "abyss_04:Black Acidus": {
+      "race": "Dragon",
+      "source": "https://www.divine-pride.net/database/monster/20614"
+    },
+    "abyss_04:Silver Acidus": {
+      "race": "Dragon",
+      "source": "https://www.divine-pride.net/database/monster/20615"
+    },
+    "abyss_04:Bone Ferus": {
+      "race": "Undead",
+      "source": "https://www.divine-pride.net/database/monster/20616"
+    },
+    "abyss_04:Bone Acidus": {
+      "race": "Undead",
+      "source": "https://www.divine-pride.net/database/monster/20617"
+    },
+    "jor_dun01:Primitive Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_dun01.md"
+    },
+    "jor_dun01:Heart Hunter AT": {
+      "race": "Demi-Human",
+      "source": "reference/maps/jor_dun01.md"
+    },
+    "jor_dun01:Lowest Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_dun01.md"
+    },
+    "jor_dun01:Junior Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_dun01.md"
+    },
+    "jor_back1:Ice Gangu": {
+      "race": "Insect",
+      "source": "reference/maps/jor_back3.md"
+    },
+    "jor_back1:Shining Seaweed": {
+      "race": "Plant",
+      "source": "https://www.divine-pride.net/database/monster/21524"
+    },
+    "jor_back1:Ice Straw": {
+      "race": "Fish",
+      "source": "https://www.divine-pride.net/database/monster/21523"
+    },
+    "jor_back2:Ice Gangu": {
+      "race": "Insect",
+      "source": "reference/maps/jor_back3.md"
+    },
+    "jor_back2:Ice Straw": {
+      "race": "Fish",
+      "source": "https://www.divine-pride.net/database/monster/21523"
+    },
+    "jor_back2:Unfrost Flower": {
+      "race": "Fish",
+      "source": "https://www.divine-pride.net/database/monster/21521"
+    },
+    "jor_back2:Limacina": {
+      "race": "Fish",
+      "source": "reference/maps/jor_back3.md"
+    },
+    "jor_back3:Ice Gangu": {
+      "race": "Insect",
+      "source": "reference/maps/jor_back3.md"
+    },
+    "jor_back3:Calmaring": {
+      "race": "Plant",
+      "source": "reference/maps/jor_back3.md"
+    },
+    "jor_back3:Primitive Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_dun01.md"
+    },
+    "jor_back3:Lowest Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_dun01.md"
+    },
+    "jor_back3:Limacina": {
+      "race": "Fish",
+      "source": "reference/maps/jor_back3.md"
+    },
+    "nif_dun01:Ghost Cube": {
+      "race": "Undead",
+      "source": "reference/maps/nif_dun01.md"
+    },
+    "nif_dun01:Lude Gal": {
+      "race": "Undead",
+      "source": "reference/maps/nif_dun01.md"
+    },
+    "nif_dun01:Brutal Murderer": {
+      "race": "Demi-Human",
+      "source": "reference/maps/nif_dun01.md"
+    },
+    "nif_dun01:Gan Ceann": {
+      "race": "Formless",
+      "source": "reference/maps/nif_dun01.md"
+    },
+    "sp_rudus4:Giant Caput": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus4:Venedi": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus4:Dolorian": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus4:Deadre": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "sp_rudus4:Plagarion": {
+      "race": "Dragon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia1:Amitera": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia1:Litus": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia1:Fillia": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia1:Vanilaqus": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "jor_ab01:Cave Calmaring": {
+      "race": "Plant",
+      "source": "reference/maps/jor_ab01.md"
+    },
+    "jor_ab01:Cave Flower": {
+      "race": "Fish",
+      "source": "reference/maps/jor_ab01.md"
+    },
+    "jor_ab01:Discarded Primitive Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_ab01.md"
+    },
+    "jor_ab01:Hallucigenia Baby": {
+      "race": "Insect",
+      "source": "reference/maps/jor_ab01.md"
+    },
+    "jor_ab01:Renovated Superior Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_ab01.md"
+    },
+    "amicitia2:Lavaeter": {
+      "race": "Formless",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia2:Fulgor": {
+      "race": "Brute",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia2:Napeo": {
+      "race": "Plant",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "amicitia2:Galensis": {
+      "race": "Demi-Human",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "jor_ab02:One Eye Dollocaris": {
+      "race": "Fish",
+      "source": "reference/maps/jor_ab02.md"
+    },
+    "jor_ab02:Hallucigenia": {
+      "race": "Insect",
+      "source": "reference/maps/jor_ab02.md"
+    },
+    "jor_ab02:Entangled Intermediate Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_ab02.md"
+    },
+    "jor_ab02:Discarded Intermediate Rgan": {
+      "race": "Formless",
+      "source": "reference/maps/jor_ab02.md"
+    },
+    "jor_ab02:Two Eyes Dollocaris": {
+      "race": "Fish",
+      "source": "reference/maps/jor_ab02.md"
+    },
+    "nif_dun02:Grote": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "nif_dun02:Disguiser": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "nif_dun02:Blue Moon Loli Ruri": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "nif_dun02:Pierrotzoist": {
+      "race": "Demon",
+      "source": "rAthena db/re/mob_db.yml (name)"
+    },
+    "clock_01:Sieglouse": {
+      "race": "Insect",
+      "source": "https://www.divine-pride.net/database/monster/20179"
+    },
+    "clock_01:Erzsebet": {
+      "race": "Demon",
+      "source": "https://www.divine-pride.net/database/monster/20176"
+    },
+    "clock_01:Extra Joker": {
+      "race": "Demon",
+      "source": "https://www.divine-pride.net/database/monster/20175"
+    },
+    "clock_01:Jennifer": {
+      "race": "Fish",
+      "source": "https://www.divine-pride.net/database/monster/20177"
+    },
+    "clock_01:General Orc": {
+      "race": "Demi-Human",
+      "source": "https://www.divine-pride.net/database/monster/20178"
+    },
+    "bl_lava:Explosion of Fire": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_lava:Deleter of Fire(Sky)": {
+      "race": "Dragon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_lava:Jakk of Fire": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_lava:Majoruros of Fire": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_lava:Lava Golem of Fire": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_lava:Acidus of Fire": {
+      "race": "Dragon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_lava:Hydrolancer of Fire": {
+      "race": "Dragon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Ice Titan of Iceberg": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Siroma of Iceberg": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Centipede of Iceberg": {
+      "race": "Insect",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Aqua Elemental of Iceberg": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Snowier of Iceberg": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Angelgolt of Iceberg": {
+      "race": "Angel",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_ice:Rhyncho of Prairie": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Lude of Death": {
+      "race": "Undead",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Ragged Zombie of Death": {
+      "race": "Undead",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Flame Skull of Fire": {
+      "race": "Demon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Ancient Mummy of Death": {
+      "race": "Undead",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Wraith of Death": {
+      "race": "Undead",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Banshee of Death": {
+      "race": "Demon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_death:Knight of Abyss in Death": {
+      "race": "Demi-Human",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Pinguicula of Prairie": {
+      "race": "Plant",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Savage of Prairie": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Hill Wind of Prairie": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Rocker of Prairie": {
+      "race": "Insect",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Cornus of Prairie": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Flora of Prairie": {
+      "race": "Plant",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_grass:Hunter Fly of Prairie": {
+      "race": "Insect",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple Rudo": {
+      "race": "Angel",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple Arc Angeling": {
+      "race": "Angel",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple False Angel": {
+      "race": "Angel",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple Plasma": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple Solace": {
+      "race": "Angel",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple Anopheles": {
+      "race": "Insect",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_temple:Temple Gryphon": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul Nightmare": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul Whisper": {
+      "race": "Demon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul Marionette": {
+      "race": "Demon",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul Noxious": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul The Paper": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul Gajomart": {
+      "race": "Formless",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_soul:Soul Odium of Thanatos": {
+      "race": "Undead",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Comodo": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Poison Toad": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Side Winder": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Cramp": {
+      "race": "Brute",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Kukre": {
+      "race": "Fish",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Nephentes": {
+      "race": "Plant",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "bl_venom:Venom Angra Mantis": {
+      "race": "Insect",
+      "source": "reference/maps/varmund_biosphere.md"
+    },
+    "mjo_wst01:Punch Bug": {
+      "race": "Insect",
+      "source": "https://www.divine-pride.net/database/monster/21951"
+    },
+    "mjo_wst01:Dispol": {
+      "race": "Brute",
+      "source": "https://www.divine-pride.net/database/monster/21953"
+    },
+    "mjo_wst01:Aferde": {
+      "race": "Insect",
+      "source": "https://www.divine-pride.net/database/monster/21952"
+    },
+    "mjo_wst01:Timbers": {
+      "race": "Plant",
+      "source": "https://www.divine-pride.net/database/monster/21954"
+    },
+    "ra_pol01:Deadsera": {
+      "race": "Plant",
+      "source": "https://www.divine-pride.net/database/monster/21947"
+    },
+    "ra_pol01:Hardrock Titan": {
+      "race": "Formless",
+      "source": "https://www.divine-pride.net/database/monster/21948"
+    },
+    "ra_pol01:Deadween": {
+      "race": "Brute",
+      "source": "https://www.divine-pride.net/database/monster/21949"
+    },
+    "ra_pol01:Burning Night": {
+      "race": "Demon",
+      "source": "https://www.divine-pride.net/database/monster/21946"
+    },
+    "daily_mon_fire:240 Bio Duneyrr": {
+      "race": "Brute",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_mon_fire:240 Bio Salamander": {
+      "race": "Brute",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_mon_fire:240 Bio Flame Ghost": {
+      "race": "Formless",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_tue_water:240 Bio Empathizer": {
+      "race": "Angel",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_tue_water:240 Bio Pray Giver": {
+      "race": "Angel",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_tue_water:240 Bio Holy Skogul": {
+      "race": "Angel",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_wed_death:240 Bio Incarnation of Morroc": {
+      "race": "Angel",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_wed_death:240 Bio Skeleton Archer": {
+      "race": "Undead",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_wed_death:240 Bio Skeleton Soldier": {
+      "race": "Undead",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_thu_forest:240 Bio Naga": {
+      "race": "Brute",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_thu_forest:240 Bio Ancient Tree": {
+      "race": "Plant",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_thu_forest:240 Bio Dollocaris": {
+      "race": "Fish",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_fri_poison:240 Bio Moskillo": {
+      "race": "Insect",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_fri_poison:240 Bio Dark Pinguicula": {
+      "race": "Plant",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_fri_poison:240 Bio Pom Spider": {
+      "race": "Insect",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_sat_ice:240 Bio Ice Gargoyle": {
+      "race": "Demon",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_sat_ice:240 Bio Kapha": {
+      "race": "Fish",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "daily_sat_ice:240 Bio Anolian": {
+      "race": "Fish",
+      "source": "reference/maps/anniversary_daily_dungeon.md"
+    },
+    "jor_back4:Calmaring": {
+      "race": "Plant",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back4:Ice Straw": {
+      "race": "Fish",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back4:Snow Rabbit Slug": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back4:Angel Iceslug": {
+      "race": "Angel",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back4:Susp. Awin Pvt. 1st Class": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back4:Susp. Awin Corporal": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back4:Susp. Awin Sp. Private": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back5:Shining Seaweed": {
+      "race": "Plant",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back5:Icewind Egg": {
+      "race": "Brute",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back5:Copo": {
+      "race": "Brute",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back5:Grey Icewind": {
+      "race": "Brute",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back5:Suspicious Awin Trainee": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back5:Suspicious Awin Private": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back6:Shining Seaweed": {
+      "race": "Plant",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back6:Susp. Awin Sp. Private": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back6:Bear Bug": {
+      "race": "Insect",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back6:Armored Copo": {
+      "race": "Brute",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_back6:Icewind": {
+      "race": "Brute",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root1:Jormungandr Guardian-P": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root1:Jormungandr Guardian-Y": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root1:Superior Rgan Warlock": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root1:Superior Rgan Healer": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root1:Jormungandr Sanctuary Guardian": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root2:Jormungandr Guardian-P": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root2:Jormungandr Guardian-Y": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root2:Jormungandr Sanctuary Guardian": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root2:Jormungandr Church Warlock": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root2:Jormungandr Church Bishop": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root3:Bear Bug": {
+      "race": "Insect",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root3:Melibe Slug": {
+      "race": "Fish",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_root3:Jormungandr Sanctuary Cleaner": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_maze:Jormungandr Guardian-P": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_maze:Jormungandr Guardian-Y": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_maze:Jormungandr Sanctuary Guardian": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twice:Snow Rabbit Slug": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twice:Jormungandr Guardian-P": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twice:Jormungandr Guardian-Y": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twice:Angel Iceslug": {
+      "race": "Angel",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twice:Jormungandr Church Warlock": {
+      "race": "Formless",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twig:Jormungandr Guardian-P": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    },
+    "jor_twig:Jormungandr Guardian-Y": {
+      "race": "Demon",
+      "source": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/"
+    }
+  }
+}

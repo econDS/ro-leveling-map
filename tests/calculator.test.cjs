@@ -1,0 +1,269 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const root = path.resolve(__dirname,'..');
+const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
+const context = vm.createContext({});
+for (const file of ['assets/data/ep20.js','assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/data/monster-races.js','assets/settings.js','assets/data/map-geometry.js','assets/calculator.js']) {
+  vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'), context);
+}
+const inline = html.match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/)[1];
+vm.runInContext(inline + '\nthis.api={MAPS,EP20_MAPS,SPOTLIGHT_EVENTS,row,levelYield,spotlightRule,monsterEventExp,monsterRace,monsterFactor,RACES,DEFAULT_SETTINGS,cleanSettings,activeSpotlight,sortedEvents};',context);
+const {MAPS,EP20_MAPS,SPOTLIGHT_EVENTS,row,levelYield,spotlightRule,monsterEventExp,monsterRace,monsterFactor,RACES,DEFAULT_SETTINGS,cleanSettings,activeSpotlight,sortedEvents}=context.api;
+const map = code=>MAPS.find(m=>m.code===code);
+const event = index=>SPOTLIGHT_EVENTS[index];
+const config = (e=null,level=240)=>({event:e,level,lock:false,partyShare:1/3,external:7.72});
+const approx=(a,b)=>assert.ok(Math.abs(a-b)<=Math.max(1,Math.abs(b))*1e-10,`${a} != ${b}`);
+const includesArchivedMap=vm.runInContext('includesArchivedMap',context);
+
+test('Archived Daily Dungeon is opt-in, preserves the old edition and stays separate from Spotlight',()=>{
+  const before=JSON.stringify(MAPS);
+  const archived=MAPS.filter(m=>m.archivedEvent);
+  assert.equal(archived.length,6);
+  assert.equal(DEFAULT_SETTINGS.dailyDungeonMode,'hide');
+  assert.equal(cleanSettings({playerLevel:240},SPOTLIGHT_EVENTS).dailyDungeonMode,'hide');
+  assert.equal(cleanSettings({dailyDungeonMode:'invalid'},SPOTLIGHT_EVENTS).dailyDungeonMode,'hide');
+  for(const mode of ['hide','compare','only']){
+    const saved=cleanSettings(JSON.parse(JSON.stringify({...DEFAULT_SETTINGS,dailyDungeonMode:mode})),SPOTLIGHT_EVENTS);
+    assert.equal(saved.dailyDungeonMode,mode);
+    for(const e of [null,...SPOTLIGHT_EVENTS]){
+      const visible=MAPS.filter(m=>includesArchivedMap(m,saved.dailyDungeonMode)).map(m=>row(m,config(e)));
+      assert.equal(visible.length,mode==='hide'?64:mode==='compare'?70:6);
+      assert.equal(visible.filter(m=>m.archivedEvent).length,mode==='hide'?0:6);
+      if(mode==='hide')assert.ok(!visible.sort((a,b)=>b.finalPerKill-a.finalPerKill)[0].archivedEvent);
+    }
+  }
+  // A future edition is not hidden just because its code contains "daily".
+  assert.equal(includesArchivedMap({code:'daily_future'}),true);
+  for(const m of archived){
+    assert.ok(m.sourceUrl.includes('6th-anniversary'));
+    assert.equal(m.monsters.length,3);
+    assert.equal(m.amount,300);
+    assert.ok(fs.existsSync(path.join(root,'assets/maps',m.mapImage+'.png')));
+  }
+  assert.equal(JSON.stringify(MAPS),before);
+});
+
+test('No event preserves the original per-monster calculation at multiple levels',()=>{
+  for(const m of MAPS)for(const level of [1,100,200,260]){
+    const c=config(null,level), total=m.monsters.reduce((s,x)=>s+x.amount,0);
+    const expected=m.monsters.reduce((s,x)=>s+x.amount/total*x.baseExp*levelYield(level,x.level),0);
+    const result=row(m,c);
+    approx(result.finalPerKill,expected*c.partyShare*c.external);
+    assert.equal(result.shownAmount,m.amount);
+    assert.equal(result.affectedMonsters,0);
+  }
+});
+test('Mixed map boosts only listed normal Orcs; plants, Orc Baby and Furious Orc stay unchanged in June',()=>{
+  const m=map('gef_fild10'), e=event(5);
+  assert.equal(monsterEventExp(m,m.monsters.find(x=>x.name==='Orc Warrior'),e),1444);
+  for(const name of ['Blue Plant','Orc Baby','Furious Orc Warrior']){
+    const mob=m.monsters.find(x=>x.name===name);
+    assert.equal(monsterEventExp(m,mob,e),mob.baseExp);
+  }
+  const c=config(e,44),total=m.monsters.reduce((s,x)=>s+x.amount,0);
+  const expected=m.monsters.reduce((s,x)=>s+x.amount/total*(x.name==='Orc Warrior'?1444:x.name==='Orc Lady'?1476:x.baseExp)*levelYield(44,x.level),0);
+  approx(row(m,c).baseAfterPenalty,expected);
+});
+test('Event snapshots use exact published EXP and switching back does not mutate normal data',()=>{
+  const m=map('ant_d02_i'),andre=m.monsters.find(x=>x.name==='Diligent Andre');
+  const original=andre.baseExp;
+  assert.equal(monsterEventExp(m,andre,event(5)),384564);
+  assert.equal(monsterEventExp(m,andre,null),original);
+  const cave=map('mjo_wst01'),punch=cave.monsters.find(x=>x.name==='Punch Bug');
+  assert.equal(monsterEventExp(cave,punch,event(6)),1998460);
+  assert.equal(monsterEventExp(cave,punch,event(7)),3996920);
+  assert.equal(punch.baseExp,999230);
+});
+test('Spotlight aliases resolve Varmundt, Chaos and Charge Basilisk without boosting unrelated variants',()=>{
+  for(const [code,index] of [['bl_lava',1],['bl_grass',3],['bl_temple',2],['bl_soul',2],['bl_venom',2]]){
+    assert.ok(map(code).monsters.every(m=>spotlightRule(map(code),m,event(index))),code);
+  }
+  assert.equal(row(map('prt_mz03_i'),config(event(3))).affectedMonsters,3);
+  assert.equal(row(map('lasa_dun03'),config(event(7))).affectedMonsters,2);
+  assert.equal(row(map('lasa_dun02'),config(event(7))).affectedMonsters,0);
+  const dragons=map('abyss_03');
+  assert.equal(row(dragons,config(event(3))).affectedMonsters,2);
+  assert.equal(spotlightRule(dragons,dragons.monsters.find(m=>m.name==='Solid Acidus'),event(3)),null);
+});
+test('June doubles Varmundt density and area score, not EXP per kill',()=>{
+  for(const code of event(5).amountMaps){
+    const normal=row(map(code),config()),june=row(map(code),config(event(5)));
+    approx(june.finalPerKill,normal.finalPerKill);
+    approx(june.monsterDensity,normal.monsterDensity*2);
+    approx(june.finalAreaScore,normal.finalAreaScore*2);
+    assert.equal(june.shownAmount,normal.shownAmount*2);
+  }
+});
+test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
+  assert.equal(EP20_MAPS.length,9);
+  assert.equal(MAPS.length,70);
+  assert.equal(new Set(MAPS.map(m=>m.code)).size,MAPS.length);
+  for(const m of EP20_MAPS){
+    assert.equal(m.amount,m.monsters.reduce((s,x)=>s+x.amount,0));
+    approx(m.baseExp,m.monsters.reduce((s,x)=>s+x.baseExp*x.amount,0)/m.amount);
+    approx(m.hp,m.monsters.reduce((s,x)=>s+x.hp*x.amount,0)/m.amount);
+    assert.ok(m.monsters.every(x=>!['Snowstorm Angel','Sanctuary Cleaning Chief'].includes(x.name)));
+    if(m.code==='jor_twig'){
+      assert.equal(m.walkablePx,null);
+      assert.ok(m.densityNote);
+    }else assert.ok(m.walkablePx>0 && m.walkablePct>0 && m.walkablePct<1);
+    assert.equal(m.min,200);
+    for(const image of [`assets/maps/${m.code}.png`,...m.monsters.map(x=>x.image)])assert.ok(fs.existsSync(path.join(root,image)),image);
+  }
+  assert.equal(map('jor_back6').amount,260);
+  assert.equal(map('jor_root3').amount,270);
+  assert.equal(map('jor_back5').monsters.find(m=>m.name==='Icewind Egg'&&m.level===215).baseExp,0);
+});
+test('August applies EP20 rules by map, leaving identical monsters in other maps at normal EXP',()=>{
+  assert.equal(row(map('jor_back6'),config(event(7))).affectedMonsters,4);
+  assert.equal(row(map('jor_root3'),config(event(7))).affectedMonsters,2);
+  const root3=map('jor_root3'),bear=root3.monsters.find(m=>m.name==='Bear Bug');
+  assert.equal(monsterEventExp(root3,bear,event(7)),586912);
+  assert.equal(row(map('jor_back4'),config(event(7))).affectedMonsters,0);
+});
+test('Unknown walkable area remains unavailable instead of creating a misleading density',()=>{
+  const result=row({...map('daily_mon_fire'),walkablePx:99999},config());
+  assert.equal(result.hasWalk,false);
+  assert.equal(result.walkableCells,null);
+  assert.equal(result.finalAreaScore,0);
+  assert.ok(result.finalPerKill>0);
+});
+test('All event/level combinations produce finite values and retain source data',()=>{
+  const before=JSON.stringify(MAPS);
+  for(const e of [null,...SPOTLIGHT_EVENTS])for(const level of [100,200,260])for(const m of MAPS){
+    const result=row(m,config(e,level));
+    for(const key of ['eventBaseExp','baseAfterPenalty','finalPerKill','yieldPct','finalAreaScore'])assert.ok(Number.isFinite(result[key]),`${e?.name}/${m.code}/${key}`);
+  }
+  assert.equal(JSON.stringify(MAPS),before);
+  assert.equal(SPOTLIGHT_EVENTS.length,10);
+  for(const e of SPOTLIGHT_EVENTS)assert.ok(fs.existsSync(path.join(root,e.image)));
+});
+test('Public entry point contains no encryption or login form and all scripts exist',()=>{
+  assert.ok(!/PBKDF2|AES-GCM|id="password"|id="gate"|const payload=/.test(html));
+  assert.ok(html.includes('<option value="auto" selected>'));
+  for(const [,src] of html.matchAll(/<script src="([^"]+)"/g))assert.ok(fs.existsSync(path.join(root,src)),src);
+});
+test('Every map monster has a supported race, including EP20 and daily variants',()=>{
+  for(const m of MAPS)for(const mob of m.monsters)assert.ok(RACES.includes(monsterRace(m,mob)),`${m.code}/${mob.name}: ${monsterRace(m,mob)}`);
+  assert.equal(monsterRace(map('moc_fild01'),map('moc_fild01').monsters.find(m=>m.name==='Muka')),'Plant');
+});
+test('Race EXP weights each monster after its own Spotlight and level penalty',()=>{
+  const m={code:'test',min:1,hp:100,baseExp:100,amount:4,monsters:[
+    {name:'plant',race:'Plant',level:100,baseExp:100,amount:1},
+    {name:'fish',race:'Fish',level:110,baseExp:200,amount:3}]};
+  const e={rules:[{map:'test',name:'plant',normalExp:100,eventExp:300}],amountMaps:[]};
+  const c={...config(e,100),h:2,external:5,partyShare:.5,raceBonuses:{Plant:20,Fish:50,Demon:1000}};
+  approx(row(m,c).finalPerKill,.25*300*.5*5.4+.75*200*1.4*.5*6);
+  approx(monsterFactor(m,m.monsters[0],c),5.4);
+  approx(row(m,{...c,raceBonuses:{}}).finalPerKill,row(m,{...c,raceBonuses:undefined}).finalPerKill);
+});
+test('Auto uses Thai schedule boundaries, newest active event and gaps',()=>{
+  const events=[{id:'old',start:'2026-01-01',end:'2026-01-15'},{id:'new',start:'2026-01-15',end:'2026-01-20'}];
+  assert.equal(activeSpotlight(events,new Date('2025-12-31T16:59:59Z')),null);
+  assert.equal(activeSpotlight(events,new Date('2025-12-31T17:00:00Z')).id,'old');
+  assert.equal(activeSpotlight(events,new Date('2026-01-14T17:00:00Z')).id,'new');
+  assert.equal(activeSpotlight(events,new Date('2026-01-19T22:59:59Z')).id,'new');
+  assert.equal(activeSpotlight(events,new Date('2026-01-19T23:00:00Z')),null);
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-12T00:00:00Z')).id,'2026-08-26_spotlight');
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-06-01T00:00:00Z')),null);
+  assert.equal(sortedEvents(events)[0].id,'new');assert.equal(events[0].id,'old');
+});
+test('Defaults have no buffs, settings survive JSON and malformed values are rejected',()=>{
+  for(const [key,value] of Object.entries(DEFAULT_SETTINGS))if(key.endsWith('Bonus')||key.startsWith('race'))assert.equal(value,0,key);
+  assert.equal(DEFAULT_SETTINGS.spotlightEvent,'auto');
+  assert.equal(DEFAULT_SETTINGS.partySize,1);
+  assert.equal(cleanSettings(null,SPOTLIGHT_EVENTS).partySize,1);
+  assert.equal(cleanSettings({partySize:6},SPOTLIGHT_EVENTS).partySize,6);
+  const saved={...DEFAULT_SETTINGS,gearBonus:164,racePlant:9,spotlightEvent:'none',enforceLevelLock:false};
+  assert.deepEqual({...cleanSettings(JSON.parse(JSON.stringify(saved)),SPOTLIGHT_EVENTS)},saved);
+  const clean=cleanSettings({playerLevel:999,partySize:-1,manualBonus:123,gearBonus:Infinity,racePlant:-4,spotlightEvent:'missing',enforceLevelLock:'false'},SPOTLIGHT_EVENTS);
+  assert.equal(clean.playerLevel,260);assert.equal(clean.partySize,1);assert.equal(clean.manualBonus,0);assert.equal(clean.racePlant,0);assert.equal(clean.spotlightEvent,'auto');assert.equal(clean.enforceLevelLock,true);
+  assert.deepEqual(cleanSettings(null,SPOTLIGHT_EVENTS),DEFAULT_SETTINGS);
+});
+
+test('Complete 2025 editions are registered once, sorted by start date, and retain all EXP columns',()=>{
+  const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-2025.json'),'utf8'));
+  assert.deepEqual(data.events.map(e=>e.rules.length),[36,53,44]);
+  assert.equal(new Set(SPOTLIGHT_EVENTS.map(e=>e.id)).size,10);
+  assert.equal(SPOTLIGHT_EVENTS.filter(e=>e.id==='2025-12-03_unicorn').length,1);
+  assert.equal(sortedEvents(SPOTLIGHT_EVENTS)[0].id,'2026-08-26_spotlight');
+  assert.equal(sortedEvents(SPOTLIGHT_EVENTS).at(-1).id,'2025-08-27_return');
+  for(const e of data.events){
+    assert.ok(fs.existsSync(path.join(root,e.image)));
+    assert.equal(cleanSettings({spotlightEvent:e.id},SPOTLIGHT_EVENTS).spotlightEvent,e.id);
+    for(const r of e.rules){
+      const factor=r.eventExp/r.normalExp;
+      assert.ok([3,4,5,6].includes(factor));
+      assert.equal(r.eventJobExp,r.normalJobExp*factor);
+      assert.ok(r.level>0 && r.sourceMap && r.sourceName);
+    }
+  }
+  const unicorn=data.events[2],registered=SPOTLIGHT_EVENTS.find(e=>e.id===unicorn.id);
+  for(const r of unicorn.rules){
+    const previous=registered.rules.find(p=>p.name===r.name);
+    assert.ok(previous,r.name);
+    assert.equal(previous.normalExp,r.normalExp);assert.equal(previous.eventExp,r.eventExp);
+  }
+});
+test('Return and Halloween apply exact historic EXP only to listed monsters and maps',()=>{
+  const ret=SPOTLIGHT_EVENTS.find(e=>e.id==='2025-08-27_return');
+  const halloween=SPOTLIGHT_EVENTS.find(e=>e.id==='2025-10-15_halloween');
+  const oz=map('oz_dun01');
+  const rake=oz.monsters.find(m=>m.name==='Rakehand');
+  assert.equal(monsterEventExp(oz,rake,ret),649122);
+  const amicitia=map('amicitia1'),amitera=amicitia.monsters.find(m=>m.name==='Amitera');
+  assert.notEqual(amitera.baseExp,297411);
+  assert.equal(monsterEventExp(amicitia,amitera,ret),1487055);
+  assert.equal(monsterEventExp(amicitia,amicitia.monsters.find(m=>m.name==='Litus'),ret),465590);
+  assert.equal(monsterEventExp(amicitia,amicitia.monsters.find(m=>m.name==='Litus'),halloween),1470840);
+  const ant=map('ant_d02_i');
+  assert.equal(monsterEventExp(ant,ant.monsters.find(m=>m.name==='Diligent Andre'),halloween),482856);
+  const thana=map('tha_t12');
+  assert.equal(row(thana,config(halloween)).affectedMonsters,4);
+  const book=thana.monsters.find(m=>m.name==='Book of Death');
+  assert.equal(monsterEventExp(thana,book,halloween),book.baseExp);
+  const orc=map('orcsdun01'),skeleton=orc.monsters.find(m=>m.name==='Orc Skeleton');
+  assert.equal(monsterEventExp(orc,skeleton,halloween),skeleton.baseExp);
+  assert.equal(row(map('bl_death'),config(halloween)).affectedMonsters,6);
+  assert.equal(ret.end,'2025-10-15');
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2025-10-10T12:00:00Z')).id,ret.id);
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2025-11-20T12:00:00Z')),null);
+});
+
+
+test('GAT geometry replaces brightness for all normal maps including EP20',()=>{
+  for(const m of MAPS.filter(m=>!m.archivedEvent)){
+    const r=row(m,config());
+    assert.equal(r.hasWalk,true,m.code);
+    approx(r.monsterDensity,m.amount/r.walkableCells*10000);
+    approx(r.walkablePct,r.walkableCells/r.geometry.totalCells*100);
+    for(const key of ['maskImage','rawImage','overlayImage'])assert.ok(fs.existsSync(path.join(root,r.geometry[key])));
+    const stale=row({...m,walkablePx:1,walkablePct:1},config());
+    approx(stale.finalAreaScore,r.finalAreaScore);
+  }
+  assert.equal(row(map('jor_twig'),config()).walkableCells,10320);
+  assert.equal(row(map('bl_death'),config()).walkableCells,34688);
+  assert.equal(row(map('oz_dun01'),config()).walkableCells,14184);
+  assert.equal(row(map('moc_fild01'),config()).walkableCells,103675);
+  assert.equal(row({...map('oz_dun01'),code:'missing-gat'},config()).hasWalk,false);
+});
+
+
+test('Planning efficiency uses final EXP including party, level and race bonuses',()=>{
+  const m=map('oz_dun01'),c={...config(null,160),h:2,external:3,raceBonuses:{Fish:25}};
+  const normal=row(m,c);
+  approx(normal.expPerMillionHp,normal.finalPerKill/m.hp*1e6);
+  approx(row({...m,hp:m.hp*2},c).expPerMillionHp,normal.expPerMillionHp/2);
+  approx(row(m,{...c,partyShare:c.partyShare/2}).expPerMillionHp,normal.expPerMillionHp/2);
+  assert.equal(row({...m,hp:0},c).expPerMillionHp,0);
+  for(const source of MAPS){
+    const r=row(source,c);
+    if(!r.hasWalk)continue;
+    const contributions=source.monsters.reduce((sum,mob)=>sum+
+      monsterEventExp(source,mob,c.event)*levelYield(c.level,mob.level)*c.partyShare*monsterFactor(source,mob,c)*mob.amount*r.amountFactor/r.walkableCells*10000,0);
+    approx(contributions,r.finalAreaScore);
+  }
+});
