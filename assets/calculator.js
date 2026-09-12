@@ -89,9 +89,10 @@ function row(map, c) {
     && geometry.walkableCells > 0 && geometry.walkableCells <= geometry.totalCells;
   const walkableCells = hasWalk ? geometry.walkableCells : null;
   const monsterDensity = hasWalk ? shownAmount / walkableCells * 10000 : 0;
-  return {...map, locked:c.lock && c.level < map.min, eventBaseExp, affectedMonsters, amountFactor,
+  const entryMin=typeof minimumEntryLevel==='function'?minimumEntryLevel(map):map.min;
+  return {...map, min:entryMin, locked:c.lock && c.level < entryMin, eventBaseExp, affectedMonsters, amountFactor,
     yieldPct:eventBaseExp ? baseAfterPenalty / eventBaseExp * 100 : 0,
-    baseAfterPenalty, baseAfterParty, finalPerKill, expHp:map.hp ? eventBaseExp / map.hp : 0,
+    baseAfterPenalty, baseAfterParty, finalPerKill,
     shownAmount, hasWalk, geometry, walkableCells, monsterDensity,
     expPerMillionHp:map.hp>0 ? finalPerKill/map.hp*1e6 : 0,
     baseAreaScore:baseAfterPenalty * monsterDensity, finalAreaScore:finalPerKill * monsterDensity,

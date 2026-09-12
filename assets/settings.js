@@ -12,6 +12,18 @@ function activeSpotlight(events, now=new Date()) {
   return sortedEvents(events).find(e=>time>=Date.parse(e.start+'T00:00:00+07:00') &&
     time<Date.parse(e.end+'T06:00:00+07:00'))||null;
 }
+function spotlightCoverage(events, now=new Date()) {
+  const lastEnd=events.reduce((last,event)=>event.end>last?event.end:last,'');
+  return {lastEnd,expired:!lastEnd || now.getTime()>=Date.parse(lastEnd+'T06:00:00+07:00')};
+}
+function sharedSettings(hash, events) {
+  const value=new URLSearchParams(hash.replace(/^#/, '')).get('settings');
+  if(!value)return null;
+  if(value.length>12000)throw new Error('Shared settings too long');
+  const data=JSON.parse(value);
+  if(data.version!==1 || !data.settings || typeof data.settings!=='object' || Array.isArray(data.settings))throw new Error('Invalid shared settings');
+  return cleanSettings(data.settings,events);
+}
 function cleanSettings(raw, events) {
   const clean={...DEFAULT_SETTINGS};
   if(!raw || typeof raw!=='object' || Array.isArray(raw))return clean;

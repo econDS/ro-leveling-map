@@ -5,8 +5,8 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname,'..');
 const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
-const context = vm.createContext({});
-for (const file of ['assets/data/ep20.js','assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/data/monster-races.js','assets/settings.js','assets/data/map-geometry.js','assets/calculator.js']) {
+const context = vm.createContext({URLSearchParams});
+for (const file of ['assets/data/ep20.js','assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/data/monster-races.js','assets/settings.js','assets/data/map-geometry.js','assets/data/planning-context.js','assets/calculator.js']) {
   vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'), context);
 }
 const inline = html.match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/)[1];
@@ -17,6 +17,38 @@ const event = index=>SPOTLIGHT_EVENTS[index];
 const config = (e=null,level=240)=>({event:e,level,lock:false,partyShare:1/3,external:7.72});
 const approx=(a,b)=>assert.ok(Math.abs(a-b)<=Math.max(1,Math.abs(b))*1e-10,`${a} != ${b}`);
 const includesArchivedMap=vm.runInContext('includesArchivedMap',context);
+const {matchesMapSearch,spotlightCoverage,sharedSettings}=vm.runInContext('({matchesMapSearch,spotlightCoverage,sharedSettings})',context);
+
+test('Confirmed outdoor warp access changes filtering without changing EXP or other dungeons',()=>{
+  const before=JSON.stringify(MAPS);
+  const c={...config(null,100),lock:true};
+  for(const code of ['jor_back1','jor_back2','jor_back3']){
+    const result=row(map(code),c);
+    assert.equal(result.min,1);assert.equal(result.locked,false);
+    approx(result.finalPerKill,row(map(code),{...c,lock:false}).finalPerKill);
+  }
+  for(const code of ['jor_ab01','jor_ab02','ant_d02_i'])assert.equal(row(map(code),c).locked,true);
+  assert.equal(JSON.stringify(MAPS),before);
+});
+test('Search finds English names and aliases while preserving Thai names and map codes',()=>{
+  for(const [code,query] of [['mag_dun02','magma'],['mag_dun03','MAGMA'],['oz_dun01','Oz Labyrinth'],['ba_pw03','Magic Power Plant 2'],['jor_back2','Frozen Scale'],['oz_dun01','oz_dun01']])assert.equal(matchesMapSearch(map(code),query),true);
+  assert.equal(matchesMapSearch(map('jor_back2'),'magma'),false);
+});
+test('Catalog expiry follows the Thai maintenance boundary without treating an earlier gap as expired',()=>{
+  const events=[{start:'2026-08-26',end:'2026-09-23'}];
+  assert.equal(spotlightCoverage(events,new Date('2026-09-22T22:59:59Z')).expired,false);
+  assert.equal(spotlightCoverage(events,new Date('2026-09-22T23:00:00Z')).expired,true);
+  assert.equal(spotlightCoverage(events,new Date('2026-06-01T00:00:00Z')).expired,false);
+});
+test('Shared links validate version, clamp values and preserve event/archive/race choices',()=>{
+  const hash=settings=>'#'+new URLSearchParams({settings:JSON.stringify({version:1,settings})});
+  const saved=sharedSettings(hash({...DEFAULT_SETTINGS,partySize:4,gearBonus:164,racePlant:9,spotlightEvent:'none',dailyDungeonMode:'compare'}),SPOTLIGHT_EVENTS);
+  assert.equal(saved.partySize,4);assert.equal(saved.racePlant,9);assert.equal(saved.spotlightEvent,'none');assert.equal(saved.dailyDungeonMode,'compare');
+  assert.equal(sharedSettings(hash({partySize:999,playerLevel:-1}),SPOTLIGHT_EVENTS).partySize,12);
+  assert.equal(sharedSettings(hash({playerLevel:-1}),SPOTLIGHT_EVENTS).playerLevel,1);
+  assert.equal(sharedSettings('#map=oz_dun01',SPOTLIGHT_EVENTS),null);
+  for(const value of ['{bad',JSON.stringify({version:2,settings:{}}),JSON.stringify({version:1,settings:[]}), 'x'.repeat(12001)])assert.throws(()=>sharedSettings('#'+new URLSearchParams({settings:value}),SPOTLIGHT_EVENTS));
+});
 
 test('Archived Daily Dungeon is opt-in, preserves the old edition and stays separate from Spotlight',()=>{
   const before=JSON.stringify(MAPS);

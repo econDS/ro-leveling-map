@@ -31,6 +31,7 @@
     .planning-table th{cursor:default}.sort-button{border:0;background:none;color:inherit;font:inherit;font-weight:800;cursor:pointer;padding:4px 0;width:100%;text-align:inherit}
     .planning-table th[aria-sort=descending],.planning-table th[aria-sort=ascending]{color:var(--accent);background:#dcefeb}
     .cell-note{display:block;margin-top:4px;font-size:11px;font-weight:400;color:var(--muted);line-height:1.5}.cell-note.yield-low{color:#995413}
+    .spotlight-tag{display:inline-flex!important;align-items:center;gap:3px;background:#087f73!important;color:#fff!important;border:1px solid #045b54;font-weight:900!important;box-shadow:0 1px 2px rgba(4,91,84,.24);letter-spacing:.1px;margin-left:3px}.spotlight-tag::first-letter{color:#ffe08a}
     .map-identity,.monster-identity{display:flex;align-items:flex-start;gap:8px}.map-identity>div,.monster-identity>div{min-width:0}.map-identity .rank{flex-shrink:0;width:20px;height:20px;font-size:11px;margin-top:1px}
     .planning-table .map-btn{line-height:1.5}.planning-table .tag{margin-top:4px;font-size:10px}.monster-identity .mob-img{flex-shrink:0;width:32px;height:36px}
     .planning-detail{grid-template-columns:240px minmax(0,1fr);margin-bottom:18px}.planning-detail .detail-meta{grid-template-columns:repeat(4,minmax(0,1fr))}.planning-detail .geometry-source{margin-bottom:0}
@@ -43,7 +44,7 @@
 <body>
   <header>
     <h1>General Map EXP Tool</h1>
-    <p>เครื่องมือกลางสำหรับเทียบ EXP ต่อแมพจากค่า Weighted Base EXP, Weighted Lv, party share และบัฟ EXP</p>
+    <p>เลือกแมพเก็บเลเวลจาก EXP ต่อมอน ความคุ้มต่อ HP และความหนาแน่น ปรับตามเลเวล ปาร์ตี้ และบัฟของคุณ</p>
   </header>
   <main>
     <div class="layout">
@@ -57,7 +58,10 @@
         <div class="grid one">
           <div><label for="searchBox">Search map/name/code</label><input id="searchBox" type="search" placeholder="เช่น magma, jor, แมพน้ำแข็ง"></div>
         </div>
-        <label class="check-row"><input id="enforceLevelLock" type="checkbox" checked> ซ่อนแมพที่ยังเข้าไม่ได้ตาม Min Lv</label>
+        <label class="check-row"><input id="enforceLevelLock" type="checkbox" checked> ซ่อนแมพที่เลเวลต่ำกว่าเกณฑ์วิธีเข้าที่บันทึก</label>
+        <button type="button" id="shareSettings" class="text-btn">คัดลอกลิงก์การตั้งค่า</button><span id="shareStatus" class="save-status" role="status"></span>
+        <input id="shareLink" type="text" readonly hidden aria-label="ลิงก์การตั้งค่าสำหรับคัดลอก">
+        <details id="advancedSettings" class="setting-group" open><summary>กิจกรรมและบัฟ <span id="advancedStatus" class="cell-note"></span></summary>
         <div class="spacer"></div>
         <h2 class="section-title">Event</h2>
         <label for="spotlightEvent">Spotlight Event</label>
@@ -110,9 +114,11 @@
         </div>
         </details><details class="setting-group" open><summary>EXP ตามเผ่า <span id="raceCount" class="tag">0 / 10</span></summary><p class="field-help">โบนัสเพิ่มเติมจาก Gear EXP เฉพาะเผ่านั้น เช่น Gear 164% + Plant 9% ให้แยกกรอกสองช่อง</p><div id="raceInputs" class="grid race-grid"></div></details><div class="hint">คำนวณ Spotlight และ level penalty รายมอนสเตอร์ก่อนถ่วงน้ำหนักตามจำนวนมอนในแมพ</div>
         <div class="hint">Density ใช้จำนวนช่องเดินจาก GAT · คลิกชื่อแมพเพื่อดูภาพพื้นที่ที่นับ<br>อ้างอิงแผนที่ Divine Pride; ยังไม่ยืนยันพื้นที่เกิดมอนหรือสิ่งกีดขวางในเซิร์ฟเวอร์ไทย แมพที่ไม่มี GAT จะขึ้น − และไม่เข้าอันดับ Best area</div>
+        </details>
       </aside>
       <section>
         <div class="summary" id="summary"></div>
+        <p id="eventCoverage" class="field-help" aria-live="polite"></p>
         <div class="table-caption"><strong>เปรียบเทียบแผนที่</strong><span>6 ค่าหลักสำหรับเลือกแมพ · คลิกชื่อเพื่อดูรายมอน →</span></div><div id="mapSortControls"></div><div class="panel table-wrap planning-wrap">
           <table id="mapTable" class="planning-table">
             <thead><tr></tr></thead>
@@ -154,6 +160,7 @@ Final area score = Final EXP / kill x Monster density</div>
   <script src="assets/data/monster-races.js"></script>
   <script src="assets/settings.js"></script>
   <script src="assets/data/map-geometry.js"></script>
+  <script src="assets/data/planning-context.js"></script>
   <script src="assets/calculator.js"></script>
   <script>
     const MAPS = [
