@@ -6,6 +6,11 @@ function currentEventState() {
 }
 function refreshEventState() { if(currentEventState()!==lastEventState)render(); }
 const fmt = (n,d=0) => Number.isFinite(n) ? n.toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d}) : '-';
+const selectedDecimals = () => {
+  const value=Number(document.getElementById('decimalPlaces')?.value);
+  return Number.isInteger(value)&&value>=0&&value<=2 ? value : 1;
+};
+const expFmt = n => fmt(n,selectedDecimals());
 const pct = (n,d=1) => Number.isFinite(n) ? `${fmt(n,d)}%` : '-';
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function get(id) { const el=document.getElementById(id); return el.type==='checkbox' ? el.checked : Number(el.value)||0; }
@@ -22,8 +27,8 @@ function config() {
 }
 let monsterSortKey='finalPerKill', monsterSortDir=-1;
 const compact = n => !Number.isFinite(n) ? '−' : Math.abs(n)>=1e9 ? fmt(n/1e9,2)+'B' : Math.abs(n)>=1e6 ? fmt(n/1e6,2)+'M' : Math.abs(n)>=1e4 ? fmt(n/1e3,1)+'K' : fmt(n,0);
-const fullExp = n => Number.isFinite(n) ? n.toLocaleString('en-US',{maximumFractionDigits:2}) : '−';
-const numberCell = n => `<span title="${fmt(n,2)}">${compact(n)}</span>`;
+const fullExp = n => Number.isFinite(n) ? n.toLocaleString('en-US',{maximumFractionDigits:selectedDecimals(),minimumFractionDigits:selectedDecimals()}) : '−';
+const numberCell = n => `<span title="${fmt(n,selectedDecimals())}">${compact(n)}</span>`;
 function planningSortControls(monster=false) {
   const id=monster?'monsterSort':'mapSort';
   const options=[['name','ชื่อ'],['finalPerKill','Final EXP / ตัว'],['hp','HP / ตัว'],['expPerMillionHp','EXP / 1M HP'],['shownAmount','จำนวนมอน'],['finalAreaScore','คะแนนพื้นที่']];
@@ -72,7 +77,7 @@ function monsterRows(map,c) {
     const alt=escapeHtml(m.name), race=monsterRace(map,m)||'ไม่ทราบ', sourceChanged=m.rule&&m.rule.normalExp!==m.baseExp;
     const image=m.image?`<img class="mob-img" src="${escapeHtml(m.image)}" alt="" loading="lazy">`:'';
     const identity=`<div class="monster-identity">${image}<div><button type="button" class="map-btn monster-detail-btn" data-monster-detail="${m.index}" aria-expanded="false" aria-controls="monster-calculation-${m.index}">${alt}</button><span class="cell-note">Lv ${m.level} · ${escapeHtml(race)} · EXP เผ่า +${pct(raceBonus(map,m,c),0)}</span>${m.rule?'<span class="tag spotlight-tag">★ Spotlight ×'+fmt(m.rule.eventExp/m.rule.normalExp)+'</span>':''}${sourceChanged?'<span class="tag warn">ฐานประกาศต่าง</span>':''}</div></div>`;
-    const details=calculationGrid([['Normal EXP',fmt(m.baseExp)],['Event EXP ที่ใช้',fmt(m.eventExp)],['ฐานในประกาศ',m.rule?fmt(m.rule.normalExp):'−'],['หลังปรับตาม Lv',fmt(m.afterPenalty,2)],['หลังแชร์ปาร์ตี้',fmt(m.afterParty,2)],['ตัวคูณบัฟรวมเผ่า',fmt(monsterFactor(map,m,c),4)+'×'],['Final EXP / ตัว',fmt(m.finalPerKill,2)],['HP / ตัว',fmt(m.hp)],['EXP / 1M HP',fmt(m.expPerMillionHp,2)],['จำนวนปกติ → ที่ใช้',fmt(m.amount)+' → '+fmt(m.shownAmount)],['มอน / 10k ช่อง',map.hasWalk?fmt(m.shownAmount/map.walkableCells*10000,2):'−'],['คะแนนพื้นที่ของชนิดนี้',map.hasWalk?fmt(m.finalAreaScore,2):'−']]);
+    const details=calculationGrid([['Normal EXP',fmt(m.baseExp)],['Event EXP ที่ใช้',fmt(m.eventExp)],['ฐานในประกาศ',m.rule?fmt(m.rule.normalExp):'−'],['หลังปรับตาม Lv',expFmt(m.afterPenalty)],['หลังแชร์ปาร์ตี้',expFmt(m.afterParty)],['ตัวคูณบัฟรวมเผ่า',fmt(monsterFactor(map,m,c),4)+'×'],['Final EXP / ตัว',expFmt(m.finalPerKill)],['HP / ตัว',fmt(m.hp)],['EXP / 1M HP',expFmt(m.expPerMillionHp)],['จำนวนปกติ → ที่ใช้',fmt(m.amount)+' → '+fmt(m.shownAmount)],['มอน / 10k ช่อง',map.hasWalk?fmt(m.shownAmount/map.walkableCells*10000,2):'−'],['คะแนนพื้นที่ของชนิดนี้',map.hasWalk?fmt(m.finalAreaScore,2):'−']]);
     return `<tr class="monster-planning-row">${planningCells(m,identity,true)}</tr><tr id="monster-calculation-${m.index}" class="calculation-row" hidden><td colspan="6"><strong>${alt} · รายละเอียดการคำนวณ</strong>${details}</td></tr>`;
   }).join('');
 }
@@ -129,7 +134,7 @@ function renderDetail(rows,c) {
   document.getElementById('mapModalTitle').innerHTML=`<h2>${escapeHtml(selected.name)}</h2><span class="tag">${selected.code}</span>${selected.group==='ep20'?'<span class="tag">EP20</span>':''}`;
   if(selected.archivedEvent)document.getElementById('mapModalTitle').insertAdjacentHTML('beforeend','<span class="tag warn">ย้อนหลัง 2026 · จบแล้ว</span>');
   const notes=[selected.archivedEvent?`${selected.archivedEvent} · กิจกรรมจบแล้ว ผลนี้จำลองด้วย EXP / HP / จำนวนมอนรอบเดิม และเลเวล / ปาร์ตี้ / บัฟที่ตั้งอยู่ เพื่อเปรียบเทียบหรือวางแผนซ้อมหากเปิดใหม่`:null,selected.accessNote,selected.excludedBosses?.length?`ค่าเฉลี่ยไม่รวมบอส: ${selected.excludedBosses.join(', ')}`:''].filter(Boolean);
-  const mapCalc=calculationGrid([['Min Lv เข้าแมพ',fmt(selected.min)],['Lv มอนเฉลี่ย',fmt(selected.level,1)],['Normal EXP เฉลี่ย',fmt(selected.baseExp,2)],['Event EXP เฉลี่ย',fmt(selected.eventBaseExp,2)],['หลังปรับตาม Lv',fmt(selected.baseAfterPenalty,2)],['หลังแชร์ปาร์ตี้',fmt(selected.baseAfterParty,2)],['Final EXP / ตัว',fmt(selected.finalPerKill,2)],['HP เฉลี่ย',fmt(selected.hp,2)],['EXP / 1M HP',fmt(selected.expPerMillionHp,2)],['จำนวนปกติ → ที่ใช้',fmt(selected.amount)+' → '+fmt(selected.shownAmount)],['มอน / 10k ช่อง',selected.hasWalk?fmt(selected.monsterDensity,2):'−'],['คะแนนพื้นที่',selected.hasWalk?fmt(selected.finalAreaScore,2):'−']]);
+  const mapCalc=calculationGrid([['Min Lv เข้าแมพ',fmt(selected.min)],['Lv มอนเฉลี่ย',fmt(selected.level,1)],['Normal EXP เฉลี่ย',expFmt(selected.baseExp)],['Event EXP เฉลี่ย',expFmt(selected.eventBaseExp)],['หลังปรับตาม Lv',expFmt(selected.baseAfterPenalty)],['หลังแชร์ปาร์ตี้',expFmt(selected.baseAfterParty)],['Final EXP / ตัว',expFmt(selected.finalPerKill)],['HP เฉลี่ย',fmt(selected.hp,2)],['EXP / 1M HP',expFmt(selected.expPerMillionHp)],['จำนวนปกติ → ที่ใช้',fmt(selected.amount)+' → '+fmt(selected.shownAmount)],['มอน / 10k ช่อง',selected.hasWalk?fmt(selected.monsterDensity,2):'−'],['คะแนนพื้นที่',selected.hasWalk?fmt(selected.finalAreaScore,2):'−']]);
   document.getElementById('mapModalBody').innerHTML=`<div class="detail planning-detail"><div>${image}</div><div><div class="detail-meta">${[['Final EXP เฉลี่ย / ตัว',fullExp(selected.finalPerKill)],['EXP / 1M HP',compact(selected.expPerMillionHp)],['จำนวนมอน',fmt(selected.shownAmount)],['คะแนนพื้นที่',selected.hasWalk?compact(selected.finalAreaScore):'−']].map(([k,v])=>`<div class="mini"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('')}</div><p class="hint">${c.event?`${escapeHtml(c.event.name)} · Spotlight ${selected.affectedMonsters}/${selected.monsters?.length||0} ชนิด`:'No event · ใช้ EXP ปกติ'}${selected.amountFactor===2?' · จำนวนมอน ×2':''}<br>Final EXP แสดงเต็ม รวมผลเลเวล ปาร์ตี้ และบัฟแล้ว · แมพเป็นค่าเฉลี่ย; เทียบในเกมจากมอนชนิดนั้นในตารางด้านล่าง (ทศนิยมเป็นค่าคำนวณก่อนการปัดเศษในเกม)</p>${notes.map(n=>`<p class="hint">${escapeHtml(n)}</p>`).join('')}${selected.sourceUrl?`<p class="hint"><a href="${escapeHtml(selected.sourceUrl)}" target="_blank" rel="noopener">ข้อมูลแผนที่และมอนสเตอร์ทางการ</a></p>`:''}<details class="map-calculation"><summary>ตัวเลขเต็มและขั้นตอนคำนวณของแมพ</summary>${mapCalc}</details></div></div><div class="table-caption"><strong>มอนสเตอร์ในแมพ</strong><span>เรียงได้ทุกคอลัมน์ · คลิกชื่อเพื่อดูวิธีคำนวณ</span></div>${planningSortControls(true)}<div class="table-wrap planning-wrap"><table class="monster-table planning-table"><thead><tr>${planningHeaders(true)}</tr></thead><tbody>${monsterRows(selected,c)}</tbody></table></div><p class="field-help">EXP / 1M HP = EXP ที่ได้ ÷ HP × 1,000,000 · ใช้เทียบ EXP ต่อเลือดที่ต้องตี ไม่ใช่ความเร็วฆ่าจริง<br>คะแนนพื้นที่รายมอนเป็นส่วนของมอนชนิดนั้นในแมพ รวมกันเป็นคะแนนพื้นที่ของแมพ</p>`;
   document.querySelectorAll('[data-monster-detail]').forEach(button=>button.addEventListener('click',()=>{
     const expanded=button.getAttribute('aria-expanded')==='true';
@@ -195,7 +200,7 @@ function render() {
   if(document.getElementById('mapModal').classList.contains('open')){if(rows.length)renderDetail(rows,c);else closeModal();}
 }
 function readInputs() {
-  return cleanSettings(Object.fromEntries(IDS.map(id=>{const el=document.getElementById(id);return [id,el.type==='checkbox'?el.checked:el.type==='number'||id.endsWith('Bonus')?Number(el.value):el.value];})),SPOTLIGHT_EVENTS);
+  return cleanSettings(Object.fromEntries(IDS.map(id=>{const el=document.getElementById(id);return [id,el.type==='checkbox'?el.checked:el.type==='number'||id==='decimalPlaces'||id.endsWith('Bonus')?Number(el.value):el.value];})),SPOTLIGHT_EVENTS);
 }
 function applySettings(settings) {
   const clean=cleanSettings(settings,SPOTLIGHT_EVENTS);

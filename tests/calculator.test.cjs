@@ -207,10 +207,13 @@ test('Defaults have no buffs, settings survive JSON and malformed values are rej
   for(const [key,value] of Object.entries(DEFAULT_SETTINGS))if(key.endsWith('Bonus')||key.startsWith('race'))assert.equal(value,0,key);
   assert.equal(DEFAULT_SETTINGS.spotlightEvent,'auto');
   assert.equal(DEFAULT_SETTINGS.partySize,1);
+  assert.equal(DEFAULT_SETTINGS.decimalPlaces,1);
   assert.equal(cleanSettings(null,SPOTLIGHT_EVENTS).partySize,1);
   assert.equal(cleanSettings({partySize:6},SPOTLIGHT_EVENTS).partySize,6);
   const saved={...DEFAULT_SETTINGS,gearBonus:164,racePlant:9,spotlightEvent:'none',enforceLevelLock:false};
   assert.deepEqual({...cleanSettings(JSON.parse(JSON.stringify(saved)),SPOTLIGHT_EVENTS)},saved);
+  assert.equal(cleanSettings({...DEFAULT_SETTINGS,decimalPlaces:0},SPOTLIGHT_EVENTS).decimalPlaces,0);
+  assert.equal(cleanSettings({...DEFAULT_SETTINGS,decimalPlaces:9},SPOTLIGHT_EVENTS).decimalPlaces,1);
   const clean=cleanSettings({playerLevel:999,partySize:-1,manualBonus:123,gearBonus:Infinity,racePlant:-4,spotlightEvent:'missing',enforceLevelLock:'false'},SPOTLIGHT_EVENTS);
   assert.equal(clean.playerLevel,260);assert.equal(clean.partySize,1);assert.equal(clean.manualBonus,0);assert.equal(clean.racePlant,0);assert.equal(clean.spotlightEvent,'auto');assert.equal(clean.enforceLevelLock,true);
   assert.deepEqual(cleanSettings(null,SPOTLIGHT_EVENTS),DEFAULT_SETTINGS);

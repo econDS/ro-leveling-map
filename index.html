@@ -53,6 +53,7 @@
         <div class="grid">
           <div><label for="playerLevel">Player Level</label><input id="playerLevel" type="number" min="1" max="260" value="100"></div>
           <div><label for="partySize">Party Size</label><input id="partySize" type="number" min="1" max="12" value="1"></div>
+          <div><label for="decimalPlaces">ทศนิยม Final EXP</label><select id="decimalPlaces"><option value="0">0 ตำแหน่ง</option><option value="1" selected>1 ตำแหน่ง</option><option value="2">2 ตำแหน่ง</option></select></div>
         </div>
         <div class="spacer"></div>
         <div class="grid one">
@@ -125,7 +126,7 @@
             <tbody></tbody>
           </table>
         </div>
-        <p class="field-help planning-help">Final EXP / ตัว แสดงตัวเลขเต็ม รวมเลเวล ปาร์ตี้ และบัฟแล้ว · EXP / 1M HP ใช้เทียบความคุ้มต่อเลือดที่ต้องตี<br>คะแนนพื้นที่รวม EXP กับความหนาแน่นมอน ไม่ใช่ EXP ต่อชั่วโมง · K = พัน, M = ล้าน, B = พันล้าน · Final EXP ไม่ย่อ K/M/B; ตารางแมพเป็นค่าเฉลี่ย ให้เทียบในเกมจากแถวของมอนชนิดนั้น</p>
+        <p class="field-help planning-help">Final EXP / ตัว แสดงตัวเลขเต็ม รวมเลเวล ปาร์ตี้ และบัฟแล้ว · เลือกจำนวนตำแหน่งทศนิยมได้จากการตั้งค่า<br>EXP / 1M HP ใช้เทียบความคุ้มต่อเลือดที่ต้องตี · คะแนนพื้นที่รวม EXP กับความหนาแน่นมอน ไม่ใช่ EXP ต่อชั่วโมง · K = พัน, M = ล้าน, B = พันล้าน · ตารางแมพเป็นค่าเฉลี่ย ให้เทียบในเกมจากแถวของมอนชนิดนั้น</p>
         <details>
           <summary>สูตร</summary>
           <div class="formula">Level yield = iRO level difference table; ถ้าแมพมี monster detail จะคำนวณรายมอนก่อนถ่วงน้ำหนัก, ถ้าไม่มีจะ fallback ไป Weighted Lv ของแมพ
