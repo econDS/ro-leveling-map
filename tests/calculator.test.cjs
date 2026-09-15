@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname,'..');
 const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
 const context = vm.createContext({URLSearchParams});
-for (const file of ['assets/data/ep20.js','assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/data/monster-races.js','assets/settings.js','assets/data/map-geometry.js','assets/data/planning-context.js','assets/calculator.js']) {
+for (const file of ['assets/data/ep20.js','assets/data/spotlight-maps.js','assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/data/monster-races.js','assets/settings.js','assets/data/map-geometry.js','assets/data/planning-context.js','assets/calculator.js']) {
   vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'), context);
 }
 const inline = html.match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/)[1];
@@ -33,6 +33,12 @@ test('Confirmed outdoor warp access changes filtering without changing EXP or ot
 test('Search finds English names and aliases while preserving Thai names and map codes',()=>{
   for(const [code,query] of [['mag_dun02','magma'],['mag_dun03','MAGMA'],['oz_dun01','Oz Labyrinth'],['ba_pw03','Magic Power Plant 2'],['jor_back2','Frozen Scale'],['oz_dun01','oz_dun01']])assert.equal(matchesMapSearch(map(code),query),true);
   assert.equal(matchesMapSearch(map('jor_back2'),'magma'),false);
+});
+test('Public map and monster names contain no Korean locale text',()=>{
+  const names=[];
+  for(const m of MAPS){names.push(m.name,...(m.monsters||[]).map(mon=>mon.name),...(m.excludedBosses||[]));}
+  for(const e of SPOTLIGHT_EVENTS)for(const r of e.rules)names.push(r.name);
+  assert.ok(names.every(name=>!/[\uAC00-\uD7AF]/.test(name)),names.find(name=>/[\uAC00-\uD7AF]/.test(name)));
 });
 test('Catalog expiry follows the Thai maintenance boundary without treating an earlier gap as expired',()=>{
   const events=[{start:'2026-08-26',end:'2026-09-23'}];
@@ -62,7 +68,7 @@ test('Archived Daily Dungeon is opt-in, preserves the old edition and stays sepa
     assert.equal(saved.dailyDungeonMode,mode);
     for(const e of [null,...SPOTLIGHT_EVENTS]){
       const visible=MAPS.filter(m=>includesArchivedMap(m,saved.dailyDungeonMode)).map(m=>row(m,config(e)));
-      assert.equal(visible.length,mode==='hide'?64:mode==='compare'?70:6);
+      assert.equal(visible.length,mode==='hide'?MAPS.length-6:mode==='compare'?MAPS.length:6);
       assert.equal(visible.filter(m=>m.archivedEvent).length,mode==='hide'?0:6);
       if(mode==='hide')assert.ok(!visible.sort((a,b)=>b.finalPerKill-a.finalPerKill)[0].archivedEvent);
     }
@@ -131,7 +137,7 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
 });
 test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
   assert.equal(EP20_MAPS.length,9);
-  assert.equal(MAPS.length,70);
+  assert.equal(MAPS.length,129);
   assert.equal(new Set(MAPS.map(m=>m.code)).size,MAPS.length);
   for(const m of EP20_MAPS){
     assert.equal(m.amount,m.monsters.reduce((s,x)=>s+x.amount,0));
@@ -273,7 +279,7 @@ test('GAT geometry replaces brightness for all normal maps including EP20',()=>{
   for(const m of MAPS.filter(m=>!m.archivedEvent)){
     const r=row(m,config());
     assert.equal(r.hasWalk,true,m.code);
-    approx(r.monsterDensity,m.amount/r.walkableCells*10000);
+    approx(r.monsterDensity,r.amount/r.walkableCells*10000);
     approx(r.walkablePct,r.walkableCells/r.geometry.totalCells*100);
     for(const key of ['maskImage','rawImage','overlayImage'])assert.ok(fs.existsSync(path.join(root,r.geometry[key])));
     const stale=row({...m,walkablePx:1,walkablePct:1},config());
@@ -297,8 +303,64 @@ test('Planning efficiency uses final EXP including party, level and race bonuses
   for(const source of MAPS){
     const r=row(source,c);
     if(!r.hasWalk)continue;
-    const contributions=source.monsters.reduce((sum,mob)=>sum+
+    const contributions=r.monsters.reduce((sum,mob)=>sum+
       monsterEventExp(source,mob,c.event)*levelYield(c.level,mob.level)*c.partyShare*monsterFactor(source,mob,c)*mob.amount*r.amountFactor/r.walkableCells*10000,0);
     approx(contributions,r.finalAreaScore);
   }
+});
+
+test('Every explicit Spotlight map exists; unmatched rows are limited to documented source conflicts',()=>{
+  const exceptions=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-coverage-exceptions.json'),'utf8'));
+  const unmatched=[];
+  for(const e of SPOTLIGHT_EVENTS)for(const r of e.rules){
+    assert.ok(r.map==='*'||MAPS.some(m=>m.code===r.map),e.id+' missing map '+r.map);
+    if(!MAPS.some(m=>(r.map==='*'||r.map===m.code)&&m.monsters.some(b=>spotlightRule(m,b,e)===r)))unmatched.push(e.id+':'+r.map+':'+r.name);
+  }
+  assert.deepEqual(unmatched.sort(),exceptions.map(r=>r.eventId+':'+r.map+':'+r.name).sort());
+});
+test('Imported maps preserve complete normal populations, provenance, races, assets and weighted stats',()=>{
+  const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-maps.json'),'utf8'));
+  assert.equal(data.maps.length,59);
+  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),359);
+  for(const m of data.maps){
+    assert.equal(MAPS.filter(x=>x.code===m.code).length,1);
+    assert.equal(m.amount,m.monsters.reduce((s,b)=>s+b.amount,0));
+    for(const k of ['level','hp','baseExp'])approx(m[k],m.monsters.reduce((s,b)=>s+b[k]*b.amount,0)/m.amount);
+    assert.ok(fs.existsSync(path.join(root,'assets/maps',m.code+'.png')));
+    assert.match(m.sourceSha256,/^[0-9a-f]{64}$/);
+    for(const b of m.monsters){
+      assert.ok(Number.isInteger(b.id)&&b.id>0);
+      assert.ok(Number.isInteger(b.baseExp)&&b.baseExp>=0);
+      assert.ok(Number.isInteger(b.jobExp)&&b.jobExp>=0);
+      assert.ok(b.hp>0&&b.level>0&&Number.isInteger(b.amount)&&b.amount>0);
+      assert.ok(RACES.includes(b.race));
+      assert.ok(fs.existsSync(path.join(root,b.image)));
+      assert.match(b.sourceSha256,/^[0-9a-f]{64}$/);
+      assert.ok(!m.excludedMonsterIds.includes(b.id));
+      assert.equal(monsterEventExp(m,b,null),b.baseExp);
+    }
+  }
+});
+test('Luanda shows every normal monster without a phase selector and applies Spotlight by name',()=>{
+  const m=map('com_d02_i'),before=JSON.stringify(m),aug=SPOTLIGHT_EVENTS.find(e=>e.id==='2026-08-26_spotlight');
+  const c={event:null,level:165,lock:false,partyShare:1,external:1,h:1};
+  assert.deepEqual(Array.from(m.monsters,x=>x.name),['Ancient Tri Joint','Ancient Wootan Shooter','Ancient Megalith','Ancient Stone Shooter','Ancient Stalactic Golem','Ancient Wootan Fighter']);
+  assert.deepEqual(Array.from(m.excludedBosses),['Ancient Tao Gunka','Ancient Wootan Defender']);
+  assert.deepEqual(Array.from(m.excludedMonsterIds),[20273,20277]);
+  assert.equal('spawnModes' in m,false);
+  const expected=[['Ancient Wootan Shooter',76669,306676],['Ancient Stone Shooter',75621,302484],['Ancient Wootan Fighter',79225,316900]];
+  for(const [name,normal,eventExp] of expected){const mob=m.monsters.find(x=>x.name===name);assert.equal(mob.baseExp,normal);assert.equal(monsterEventExp(m,mob,aug),eventExp);}
+  const normal=row(m,c),spot=row(m,{...c,event:aug});
+  assert.equal(normal.amount,300);assert.equal(normal.monsters.length,6);assert.equal(normal.affectedMonsters,0);
+  assert.equal(spot.amount,300);assert.equal(spot.monsters.length,6);assert.equal(spot.affectedMonsters,3);
+  assert.ok(spot.monsters.filter(b=>b.name.includes('Wootan')||b.name==='Ancient Stone Shooter').every(b=>spotlightRule(m,b,aug)));
+  assert.ok(spot.monsters.filter(b=>b.name==='Ancient Tri Joint'||b.name==='Ancient Megalith'||b.name==='Ancient Stalactic Golem').every(b=>!spotlightRule(m,b,aug)));
+  const bonus=row(m,{...c,event:aug,raceBonuses:{Plant:9}});
+  const stone=m.monsters.find(b=>b.name==='Ancient Stone Shooter');
+  approx(bonus.finalPerKill-spot.finalPerKill,302484*levelYield(c.level,stone.level)*0.09/6);
+  assert.equal(JSON.stringify(m),before);
+  assert.equal(row(m,{...c,level:159,lock:true}).locked,true);
+  assert.equal(row(m,{...c,level:160,lock:true}).locked,false);
+  assert.equal(Object.hasOwn(cleanSettings({luandaPhase:'megalith'},SPOTLIGHT_EVENTS),'luandaPhase'),false);
+  assert.equal(Object.hasOwn(sharedSettings('#'+new URLSearchParams({settings:JSON.stringify({version:1,settings:{luandaPhase:'megalith'}})}),SPOTLIGHT_EVENTS),'luandaPhase'),false);
 });

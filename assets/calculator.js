@@ -4,6 +4,9 @@ function includesArchivedMap(map, mode='hide') {
   return mode==='only' ? Boolean(map.archivedEvent) : !map.archivedEvent;
 }
 const SPOTLIGHT_ALIASES = {
+  ba_lost: {'Violet Pitaya':'Purple Pitaya'},
+  ba_pw03: {'Strong Plasma / Powerful Spell':'Powerful Spell','Mana Addicted Sanare / Spell Addicted Sanare':'Spell Addicted Sanare'},
+  bl_ice: {'Ice Titan of Iceberg':'Glacier Ice Titan','Siroma of Iceberg':'Glacier Siroma','Aqua Elemental of Iceberg':'Glacier Aqua Elemental','Snowier of Iceberg':'Glacier Snowier','Rhyncho of Prairie':'Glacier Rhyncho'},
   lasa_dun03: {"Combat Basilisk":"Charge Basilisk"},
   lhz_dun04: {Randel:"Randel Lawrence",Flamel:"Flamel Emure",Celia:"Celia Alde",Chen:"Chen Liu"},
   bl_lava: {
@@ -21,7 +24,7 @@ const SPOTLIGHT_ALIASES = {
 };
 function normalizeMonsterName(name) {
   return name.normalize('NFKC').toLowerCase().replace(/^chimera\s+/, '')
-    .replace(/^chaotic\s+/, 'chaos ').replace(/dollocaris/g,'dolocaris')
+    .replace(/^chaotic\s+/, 'chaos ').replace(/violet pitaya/g, 'purple pitaya').replace(/dollocaris/g,'dolocaris')
     .replace(/[^a-z0-9]/g, '');
 }
 function spotlightName(map, monster) {

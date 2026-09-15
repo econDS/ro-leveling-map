@@ -46,6 +46,7 @@ for table in soup.select('.entry-content table'):
             official[norm(cells[0][0])] = race(cells[3][cells[2].index('Race')])
 export = """const fs=require('fs'),vm=require('vm');const c=vm.createContext({});
 vm.runInContext(fs.readFileSync('assets/data/ep20.js','utf8'),c);
+    vm.runInContext(fs.readFileSync('assets/data/spotlight-maps.js','utf8'),c);
 const h=fs.readFileSync('index.html','utf8');
 vm.runInContext(h.match(/<script>\\s*(const MAPS =[\\s\\S]*?)<\\/script>/)[1]+';this.maps=MAPS',c);
 process.stdout.write(JSON.stringify(c.maps));"""
@@ -55,7 +56,9 @@ for m in maps:
     for mob in m['monsters']:
         name = norm(mob['name'])
         key = m['code'] + ':' + mob['name']
-        if m['group'] == 'ep20' and name in official:
+        if mob.get('race') in ['Formless','Undead','Brute','Plant','Insect','Fish','Demon','Demi-Human','Angel','Dragon']:
+            r, source = mob['race'], mob.get('sourceUrl', m.get('sourceUrl', 'map data'))
+        elif m['group'] == 'ep20' and name in official:
             r, source = official[name], 'https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/'
         elif name in refs:
             r, source = refs[name]

@@ -156,6 +156,8 @@ Final area score = Final EXP / kill x Monster density</div>
     </div>
   </main>
   <script src="assets/data/ep20.js"></script>
+  <script src="assets/data/spotlight-maps.js"></script>
+  <script src="assets/data/spotlight-coverage.js"></script>
   <script src="assets/data/spotlight-2026.js"></script>
   <script src="assets/data/spotlight-2025.js"></script>
   <script src="assets/data/monster-races.js"></script>
@@ -227,7 +229,7 @@ Final area score = Final EXP / kill x Monster density</div>
       {code:"daily_fri_poison",mapImage:"daily_fri_poison",walkablePx:16583,walkablePct:0.2879,name:"Daily Dungeon Fri",group:"instance",min:200,amount:300,level:240,hp:108833973,baseExp:2543793,source:"Main",monsters:[{name:"240 Bio Moskillo",level:240,amount:100,hp:155812230,baseExp:2498387,image:"assets/monsters/daily_bio_moskillo.gif"},{name:"240 Bio Dark Pinguicula",level:240,amount:100,hp:81679820,baseExp:2519017,image:"assets/monsters/daily_bio_dark_pinguicula.gif"},{name:"240 Bio Pom Spider",level:240,amount:100,hp:89009870,baseExp:2613974,image:"assets/monsters/daily_bio_pom_spider.gif"}]},
       {code:"daily_sat_ice",mapImage:"daily_sat_ice",walkablePx:16583,walkablePct:0.2879,name:"Daily Dungeon Sat",group:"instance",min:200,amount:300,level:240,hp:571357,baseExp:1896392,source:"Main",monsters:[{name:"240 Bio Ice Gargoyle",level:240,amount:100,hp:604690,baseExp:1896392,image:"assets/monsters/daily_bio_ice_gargoyle.gif"},{name:"240 Bio Kapha",level:240,amount:100,hp:504690,baseExp:1896392,image:"assets/monsters/daily_bio_kapha.gif"},{name:"240 Bio Anolian",level:240,amount:100,hp:604690,baseExp:1896392,image:"assets/monsters/daily_bio_anolian.gif"}]}
     ];
-    MAPS.push(...EP20_MAPS);
+    MAPS.push(...EP20_MAPS, ...SPOTLIGHT_MAPS);
     // Only this historical edition is archived. A future Daily Dungeon can
     // keep its own data and availability independently of the 2026 snapshot.
     for (const code of ['daily_mon_fire','daily_tue_water','daily_wed_death','daily_thu_forest','daily_fri_poison','daily_sat_ice']) {

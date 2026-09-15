@@ -1,0 +1,37 @@
+{
+  "com_d02_i": {
+    "name": "Illusion of Luanda",
+    "min": 160,
+    "entryRequirementVerified": true,
+    "accessNote": "Lv 160+ เข้าโทเท็มที่ beach_dun2 248/254; ตารางรวมมอนปกติทั้งแผนที่ ส่วน MVP แสดงไว้เป็นข้อมูลและไม่รวมคำนวณ EXP",
+    "accessSourceUrl": "https://ro.gnjoy.in.th/quest-illusion-of-luanda/",
+    "aliases": "Luanda ลูอันดา"
+  },
+  "ein_dun03": {
+    "name": "Einbech Mine 3F",
+    "min": 180,
+    "entryRequirementVerified": true,
+    "accessNote": "Lv 180+ ทางเข้า ein_dun02 16/250",
+    "accessSourceUrl": "https://ro.gnjoy.in.th/einbech-mine-dungeon-3f/"
+  },
+  "odin_past": {
+    "name": "Ancient Odin’s Temple",
+    "min": 180,
+    "entryRequirementVerified": true,
+    "accessNote": "Lv 180+ ทางเข้า odin_tem03 276/236",
+    "accessSourceUrl": "https://ro.gnjoy.in.th/ancient-odins-temple-4f/"
+  },
+  "ice_d03_i": {
+    "name": "Illusion of Frozen",
+    "min": 120,
+    "entryRequirementVerified": true,
+    "accessNote": "Lv 120+ ตามประกาศแก้เงื่อนไขเข้าดัน 23 พ.ค. 2024",
+    "accessSourceUrl": "https://ro.gnjoy.in.th/patch-update-23-may-2567/"
+  },
+  "lasa_dun01": {
+    "dataNote": "Return 2025 ระบุ Peco Peco ในแมพนี้ แต่ฐานมอนพบ Trance Spore และ Scout Basilisk; ยังไม่ใช้โบนัส Peco Peco กับมอนเหล่านี้"
+  },
+  "gef_dun02": {
+    "dataNote": "Halloween 2025 ระบุ Jakk แต่รายชื่อมอนจากฐานอ้างอิงแมพนี้ไม่พบ Jakk; คิด Spotlight เฉพาะมอนที่จับคู่ได้"
+  }
+}
