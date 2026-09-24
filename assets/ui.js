@@ -53,7 +53,12 @@ function bindPlanningSort(monster,refresh) {
   });
 }
 function planningHeaders(monster=false) {
-  return Object.entries(planningLabels(monster)).map(([key,label])=>`<th scope="col" data-${monster?'monster-sort':'sort'}="${key}" aria-sort="none"><button type="button" class="sort-button">${label}<span class="sort-arrow" aria-hidden="true"></span></button></th>`).join('');
+  const averageSuffix=' (เฉลี่ยต่อแผนที่)';
+  return Object.entries(planningLabels(monster)).map(([key,label])=>{
+    const average=!monster && label.endsWith(averageSuffix);
+    const title=average?label.slice(0,-averageSuffix.length):label;
+    return `<th scope="col" data-${monster?'monster-sort':'sort'}="${key}" aria-sort="none"><button type="button" class="sort-button"><span class="sort-heading-main">${title}<span class="sort-arrow" aria-hidden="true"></span></span>${average?'<small class="sort-heading-average">(เฉลี่ยต่อแผนที่)</small>':''}</button></th>`;
+  }).join('');
 }
 function planningCells(r,identity,monster=false) {
   const labels=planningLabels(monster);
