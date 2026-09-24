@@ -125,6 +125,10 @@ function monsterFactor(map, monster, c) {
   // Racial equipment EXP adds to all-race equipment EXP in the existing I bracket.
   return c.external + (c.h ?? 1) * raceBonus(map,monster,c)/100;
 }
+const HIT_WARNING_THRESHOLD = 5;
+function hitsToKill(hp, damage) {
+  return hp > 0 && damage > 0 ? Math.ceil(hp / damage) : 0;
+}
 function row(map, c) {
   const monsters = map.monsters || [];
   const amounts = monsters.map(m => monsterEventAmount(map, m, c.event));
@@ -141,6 +145,9 @@ function row(map, c) {
   const amountFactor = map.amount ? shownAmount / map.amount : 1;
   const level = total ? weighted(m => m.level) : map.level;
   const hp = total ? weighted(m => m.hp) : map.hp;
+  const hitsPerKill = total ? weighted(m => hitsToKill(m.hp, c.damage)) : hitsToKill(map.hp, c.damage);
+  const damageWarningCount = monsters.reduce((count, m, index) => count + (amounts[index] > 0 && hitsToKill(m.hp, c.damage) > HIT_WARNING_THRESHOLD ? 1 : 0), 0);
+  const damageWarning = damageWarningCount > 0 || (!total && hitsPerKill > HIT_WARNING_THRESHOLD);
   // Legacy walkablePx came from brightness and is deliberately not a fallback.
   const geometry = typeof MAP_GEOMETRY !== 'undefined' ? MAP_GEOMETRY[map.code] : null;
   const hasWalk = geometry?.status === 'verified-gat' && Number.isInteger(geometry.walkableCells)
@@ -148,7 +155,7 @@ function row(map, c) {
   const walkableCells = hasWalk ? geometry.walkableCells : null;
   const monsterDensity = hasWalk ? shownAmount / walkableCells * 10000 : 0;
   const entryMin = typeof minimumEntryLevel === 'function' ? minimumEntryLevel(map) : map.min;
-  return {...map, min:entryMin, level, hp, locked:c.lock && c.level < entryMin,
+  return {...map, min:entryMin, level, hp, hitsPerKill, damageWarningCount, damageWarning, locked:c.lock && c.level < entryMin,
     eventBaseExp, affectedMonsters, spawnChangedMonsters, amountFactor,
     yieldPct:eventBaseExp ? baseAfterPenalty / eventBaseExp * 100 : 0,
     baseAfterPenalty, baseAfterParty, finalPerKill,

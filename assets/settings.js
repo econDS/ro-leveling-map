@@ -1,6 +1,6 @@
 const RACES = ['Formless','Undead','Brute','Plant','Insect','Fish','Demon','Demi-Human','Angel','Dragon'];
 const SETTINGS_KEY = 'ro-general-map-exp-tool-settings-v1';
-const DEFAULT_SETTINGS = Object.freeze({playerLevel:100,partySize:1,searchBox:'',enforceLevelLock:true,
+const DEFAULT_SETTINGS = Object.freeze({playerLevel:100,partySize:1,playerDamage:1000000,searchBox:'',enforceLevelLock:true,
   spotlightEvent:'auto',dailyDungeonMode:'hide',serverBonus:0,manualBonus:0,kafraBonus:0,malangdoBonus:0,premiumBonus:0,
   staffBonus:0,gearBonus:0,richManBonus:0,customBonus:0,
   ...Object.fromEntries(RACES.map(r=>['race'+r,0]))});
@@ -39,7 +39,7 @@ function cleanSettings(raw, events) {
       if(typeof value==='boolean')clean[key]=value;
     }else if(typeof value==='number' && Number.isFinite(value)){
       if(choices[key]){if(choices[key].includes(value))clean[key]=value;}
-      else clean[key]=Math.min(key==='playerLevel'?260:key==='partySize'?12:10000,Math.max(key==='playerLevel'||key==='partySize'?1:0,Math.floor(value)));
+      else clean[key]=Math.min(key==='playerLevel'?260:key==='partySize'?12:key==='playerDamage'?1e12:10000,Math.max(key==='playerLevel'||key==='partySize'||key==='playerDamage'?1:0,Math.floor(value)));
     }
   }
   return clean;
