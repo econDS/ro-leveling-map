@@ -63,7 +63,7 @@ function planningHeaders(monster=false) {
 function planningCells(r,identity,monster=false) {
   const labels=planningLabels(monster);
   return `<td data-label="${labels.name}" class="identity-cell">${identity}</td>
-    <td data-label="${labels.finalPerKill}" class="final-col"><span title="${monster?'EXP ของมอนชนิดนี้':'EXP เฉลี่ยถ่วงตามจำนวนมอนในแมพ'} ก่อนปัดเศษ">${fullExp(r.finalPerKill)}</span><span class="cell-note ${r.yieldPct<100?'yield-low':''}">เลเวลให้ ${pct(r.yieldPct,1)}</span></td>
+    <td data-label="${labels.finalPerKill}" class="final-col"><span title="${monster?'EXP ของมอนชนิดนี้':'EXP เฉลี่ยถ่วงตามจำนวนมอนในแมพ'} ก่อนปัดเศษ">${fullExp(r.finalPerKill)}</span><span class="cell-note ${r.yieldPct<100?'yield-low':''}">ผลของความต่างเลเวลให้ ${pct(r.yieldPct,1)}</span></td>
     <td data-label="${labels.hp}">${numberCell(r.hp)}<span class="cell-note">${monster?'เลือดต่อตัว':'เฉลี่ยตามจำนวนมอน'}</span></td>
     <td data-label="${labels.expPerMillionHp}">${numberCell(r.expPerMillionHp)}<span class="cell-note">EXP ต่อเลือด 1 ล้าน</span></td>
     <td data-label="${labels.shownAmount}">${fmt(r.shownAmount)}<span class="cell-note">${monster?pct(r.sharePct)+' ของแมพ':r.hasWalk?fmt(r.monsterDensity,1)+' / 10k ช่อง':'ไม่มีข้อมูลพื้นที่'}</span></td>
