@@ -29,9 +29,14 @@
 .formula-equation-full{margin:16px 0 10px;border-color:#c8dfda;box-shadow:0 2px 7px rgba(24,35,49,.04)}
 .formula-equation-full .formula-result{font-size:18px;color:#0b615c}
 .formula-equation-full .formula-expression{font-size:16px;line-height:2}
-.formula-sigma{display:inline-flex;flex:0 0 auto;flex-direction:column;align-items:center;justify-content:center;line-height:1;color:#0b615c}
-.formula-sigma>span{font-family:"Cambria Math","Times New Roman",serif;font-size:38px;line-height:.9}
-.formula-sigma small{font-size:9px;line-height:1.2;white-space:nowrap;color:#506070}
 .formula-group{display:inline-flex;align-items:center;flex-wrap:wrap;gap:5px 8px;padding:2px 8px;background:#f1f7f6;border:1px solid #e0ece9;border-radius:5px}
 .formula-overview-note{margin:0;color:#506070;font-size:12px;line-height:1.8}
-@media(max-width:600px){.formula-overview{padding:14px}.formula-equation-full{padding:13px 10px}.formula-equation-full .formula-result{font-size:16px}.formula-equation-full .formula-expression{font-size:14px;gap:7px}.formula-equation-full .formula-rhs{gap:6px 7px}.formula-sigma>span{font-size:34px}.formula-sigma small{font-size:8px}.formula-group{gap:4px 6px;padding:2px 5px}}
+@media(max-width:600px){.formula-overview{padding:14px}.formula-equation-full{padding:13px 10px}.formula-equation-full .formula-result{font-size:16px}.formula-equation-full .formula-expression{font-size:14px;gap:7px}.formula-equation-full .formula-rhs{gap:6px 7px}formula-group{gap:4px 6px;padding:2px 5px}}
+.formula-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 18px;margin-top:14px;padding-top:12px;border-top:1px solid #e5eaf0}
+.formula-key>div{display:grid;grid-template-columns:46px minmax(0,1fr);align-items:baseline;gap:7px;font-size:12px;line-height:1.7}
+.formula-key .formula-link{font-weight:800;text-decoration-thickness:1.5px}
+.formula-overview-note{margin-top:10px}
+.formula-sigma-inline{display:inline-flex;vertical-align:middle;flex-direction:column;align-items:center;justify-content:center;line-height:.95;color:#0b615c}
+.formula-sigma-inline>span{font-family:"Cambria Math","Times New Roman",serif;font-size:27px;line-height:.9}
+.formula-sigma-inline small{font-size:8px;line-height:1.1;white-space:nowrap;color:#506070}
+@media(max-width:600px){.formula-equation-full .formula-rhs{gap:5px 7px}.formula-group{gap:3px 5px}.formula-key{grid-template-columns:1fr;gap:4px;padding-top:10px}.formula-key>div{grid-template-columns:46px minmax(0,1fr)}}
