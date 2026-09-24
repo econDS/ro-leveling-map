@@ -189,6 +189,8 @@ function renderDetail(rows,c) {
 function render() {
   lastEventState=currentEventState();
   const c=config();
+  const serverBonus=get('serverBonus');
+  document.getElementById('serverExpTotal').textContent=`EXP เซิร์ฟเวอร์ก่อนบัฟอื่นและกิจกรรม: พื้นฐาน 100% + โบนัส ${fmt(serverBonus)}% = ${fmt(100+serverBonus)}%`;
   const included=MAPS.filter(m=>includesArchivedMap(m,c.dailyDungeonMode));
   const rows=included.map(m=>row(m,c)).filter(r=>!r.locked&&matchesMapSearch(r,c.query)).sort((a,b)=>{
     if(sortKey==='finalAreaScore' && a.hasWalk!==b.hasWalk)return a.hasWalk?-1:1;
