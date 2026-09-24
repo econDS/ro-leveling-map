@@ -1,15 +1,14 @@
 const RACES = ['Formless','Undead','Brute','Plant','Insect','Fish','Demon','Demi-Human','Angel','Dragon'];
 const SETTINGS_KEY = 'ro-general-map-exp-tool-settings-v1';
-const DEFAULT_SETTINGS = Object.freeze({playerLevel:100,partySize:1,decimalPlaces:1,searchBox:'',enforceLevelLock:true,
+const DEFAULT_SETTINGS = Object.freeze({playerLevel:100,partySize:1,searchBox:'',enforceLevelLock:true,
   spotlightEvent:'auto',dailyDungeonMode:'hide',serverBonus:0,manualBonus:0,kafraBonus:0,malangdoBonus:0,premiumBonus:0,
   staffBonus:0,gearBonus:0,richManBonus:0,customBonus:0,
   ...Object.fromEntries(RACES.map(r=>['race'+r,0]))});
 function sortedEvents(events) { return [...events].sort((a,b)=>b.start.localeCompare(a.start)); }
 function activeSpotlight(events, now=new Date()) {
-  // Date-level schedule in Thailand. The final date is before maintenance;
-  // use 06:00 as the calculator cutoff, with a manual override in the UI.
+  // Apply from 12:00 Thailand time on the start date and stop at 06:00 on the final date.
   const time=now.getTime();
-  return sortedEvents(events).find(e=>time>=Date.parse(e.start+'T00:00:00+07:00') &&
+  return sortedEvents(events).find(e=>time>=Date.parse(e.start+'T12:00:00+07:00') &&
     time<Date.parse(e.end+'T06:00:00+07:00'))||null;
 }
 function spotlightCoverage(events, now=new Date()) {
@@ -38,8 +37,6 @@ function cleanSettings(raw, events) {
       if(typeof value==='string')clean[key]=value.slice(0,200);
     }else if(key==='enforceLevelLock'){
       if(typeof value==='boolean')clean[key]=value;
-    }else if(key==='decimalPlaces'){
-      if([0,1,2].includes(value))clean[key]=value;
     }else if(typeof value==='number' && Number.isFinite(value)){
       if(choices[key]){if(choices[key].includes(value))clean[key]=value;}
       else clean[key]=Math.min(key==='playerLevel'?260:key==='partySize'?12:10000,Math.max(key==='playerLevel'||key==='partySize'?1:0,Math.floor(value)));

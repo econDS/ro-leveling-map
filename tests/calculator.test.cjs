@@ -212,7 +212,10 @@ test('September 2026 event uses published EXP rows and exact per-monster spawn t
   approx(row(fire,config(e)).finalPerKill,row(fire,config(null)).finalPerKill);
   assert.equal(row(map('nif_dun02'),config(e)).shownAmount,map('nif_dun02').amount);
   assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-22T16:59:59Z')).id,'2026-08-26_spotlight');
-  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-22T17:00:00Z')).id,e.id);
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-22T17:00:00Z')).id,'2026-08-26_spotlight');
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-22T23:00:00Z')),null);
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-23T04:59:59Z')),null);
+  assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-23T05:00:00Z')).id,e.id);
   assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-10-20T22:59:59Z')).id,e.id);
   assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-10-20T23:00:00Z')),null);
 });
@@ -253,8 +256,13 @@ test('Race EXP weights each monster after its own Spotlight and level penalty',(
 test('Auto uses Thai schedule boundaries, newest active event and gaps',()=>{
   const events=[{id:'old',start:'2026-01-01',end:'2026-01-15'},{id:'new',start:'2026-01-15',end:'2026-01-20'}];
   assert.equal(activeSpotlight(events,new Date('2025-12-31T16:59:59Z')),null);
-  assert.equal(activeSpotlight(events,new Date('2025-12-31T17:00:00Z')).id,'old');
-  assert.equal(activeSpotlight(events,new Date('2026-01-14T17:00:00Z')).id,'new');
+  assert.equal(activeSpotlight(events,new Date('2025-12-31T17:00:00Z')),null);
+  assert.equal(activeSpotlight(events,new Date('2026-01-01T04:59:59Z')),null);
+  assert.equal(activeSpotlight(events,new Date('2026-01-01T05:00:00Z')).id,'old');
+  assert.equal(activeSpotlight(events,new Date('2026-01-14T17:00:00Z')).id,'old');
+  assert.equal(activeSpotlight(events,new Date('2026-01-14T23:00:00Z')),null);
+  assert.equal(activeSpotlight(events,new Date('2026-01-15T04:59:59Z')),null);
+  assert.equal(activeSpotlight(events,new Date('2026-01-15T05:00:00Z')).id,'new');
   assert.equal(activeSpotlight(events,new Date('2026-01-19T22:59:59Z')).id,'new');
   assert.equal(activeSpotlight(events,new Date('2026-01-19T23:00:00Z')),null);
   assert.equal(activeSpotlight(SPOTLIGHT_EVENTS,new Date('2026-09-12T00:00:00Z')).id,'2026-08-26_spotlight');
@@ -265,13 +273,10 @@ test('Defaults have no buffs, settings survive JSON and malformed values are rej
   for(const [key,value] of Object.entries(DEFAULT_SETTINGS))if(key.endsWith('Bonus')||key.startsWith('race'))assert.equal(value,0,key);
   assert.equal(DEFAULT_SETTINGS.spotlightEvent,'auto');
   assert.equal(DEFAULT_SETTINGS.partySize,1);
-  assert.equal(DEFAULT_SETTINGS.decimalPlaces,1);
   assert.equal(cleanSettings(null,SPOTLIGHT_EVENTS).partySize,1);
   assert.equal(cleanSettings({partySize:6},SPOTLIGHT_EVENTS).partySize,6);
   const saved={...DEFAULT_SETTINGS,gearBonus:164,racePlant:9,spotlightEvent:'none',enforceLevelLock:false};
   assert.deepEqual({...cleanSettings(JSON.parse(JSON.stringify(saved)),SPOTLIGHT_EVENTS)},saved);
-  assert.equal(cleanSettings({...DEFAULT_SETTINGS,decimalPlaces:0},SPOTLIGHT_EVENTS).decimalPlaces,0);
-  assert.equal(cleanSettings({...DEFAULT_SETTINGS,decimalPlaces:9},SPOTLIGHT_EVENTS).decimalPlaces,1);
   const clean=cleanSettings({playerLevel:999,partySize:-1,manualBonus:123,gearBonus:Infinity,racePlant:-4,spotlightEvent:'missing',enforceLevelLock:'false'},SPOTLIGHT_EVENTS);
   assert.equal(clean.playerLevel,260);assert.equal(clean.partySize,1);assert.equal(clean.manualBonus,0);assert.equal(clean.racePlant,0);assert.equal(clean.spotlightEvent,'auto');assert.equal(clean.enforceLevelLock,true);
   assert.deepEqual(cleanSettings(null,SPOTLIGHT_EVENTS),DEFAULT_SETTINGS);
