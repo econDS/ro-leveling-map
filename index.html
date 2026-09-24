@@ -59,7 +59,7 @@
           <div><label for="playerLevel">เลเวลปัจจุบัน</label><input id="playerLevel" type="number" min="1" max="260" value="100"></div>
           <div><label for="partySize">จำนวนคนในปาร์ตี้</label><input id="partySize" type="number" min="1" max="12" value="1"></div>
         </div>
-        <div class="grid one"><div><label for="playerDamage">ดาเมจของคุณต่อการโจมตี 1 ครั้ง</label><input id="playerDamage" type="number" min="1" max="1000000000000" step="1" value="1000000" aria-describedby="damageHelp"><p id="damageHelp" class="field-help">ค่าเริ่มต้น 1,000,000 · จำนวนครั้งที่ต้องตี = HP มอน ÷ ดาเมจ แล้วปัดขึ้น · ถ้าเกิน 5 ครั้งจะเตือนสีแดง</p></div></div>
+        <div class="grid one"><div><label for="playerDamage">ดาเมจของคุณต่อการโจมตี 1 ครั้ง</label><input id="playerDamage" type="text" inputmode="numeric" autocomplete="off" pattern="[0-9,]*" value="1,000,000" aria-describedby="damageHelp"><p id="damageHelp" class="field-help">ค่าเริ่มต้น 1,000,000 · จำนวนครั้งที่ต้องตี = HP มอน ÷ ดาเมจ แล้วปัดขึ้น · ถ้ามากกว่า 50% ของจำนวนมอนที่เกิดในแมพต้องตีเกิน 5 ครั้ง แมพจะแสดงสีแดง</p></div></div>
         <p class="hint exp-reminder"><strong>ก่อนเทียบแมพ:</strong> ใส่โบนัส Server EXP ที่เพิ่มจากพื้นฐาน 100%, EXP จากของสวมใส่ และบัฟ EXP ที่กดอยู่ให้ครบ ถ้าไม่ได้ใช้ให้คง 0%</p>
         <div class="spacer"></div>
         <div class="grid one">
@@ -128,7 +128,7 @@
       <section>
         <div class="summary" id="summary"></div>
         <p id="eventCoverage" class="field-help" aria-live="polite"></p>
-        <div class="table-caption"><strong>เปรียบเทียบแผนที่</strong><span>HP แสดงจำนวนครั้งที่ต้องตี · สีแดงเตือนเมื่อมอนต้องตีเกิน 5 ครั้ง · คลิกชื่อเพื่อดูรายมอน →</span></div><div id="mapSortControls"></div><div class="panel table-wrap planning-wrap">
+        <div class="table-caption"><strong>เปรียบเทียบแผนที่</strong><span>HP แสดงจำนวนครั้งที่ต้องตี · สีแดงเตือนมอนที่ต้องตีเกิน 5 ครั้ง และแมพเมื่อมอนที่เกิดเกิน 50% ต้องตีเกิน 5 ครั้ง · คลิกชื่อเพื่อดูรายมอน →</span></div><div id="mapSortControls"></div><div class="panel table-wrap planning-wrap">
           <table id="mapTable" class="planning-table">
             <thead><tr></tr></thead>
             <tbody></tbody>
@@ -194,10 +194,10 @@
   <script src="assets/data/spotlight-2026.js"></script>
   <script src="assets/data/spotlight-2025.js"></script>
   <script src="assets/data/monster-races.js"></script>
-  <script src="assets/settings.js?v=20260925-damage"></script>
+  <script src="assets/settings.js?v=20260925-damage-v2"></script>
   <script src="assets/data/map-geometry.js"></script>
   <script src="assets/data/planning-context.js"></script>
-  <script src="assets/calculator.js?v=20260925-damage"></script>
+  <script src="assets/calculator.js?v=20260925-damage-v2"></script>
   <script>
     const MAPS = [
       {code:"moc_fild01",walkablePx:120977,walkablePct:0.7561,name:"มูก้า",group:"early",min:1,amount:339,level:21.4,hp:319,baseExp:201,source:"DP แผนสำรอง",monsters:[{name:"Yellow Plant",level:1,amount:10,hp:6,baseExp:0,image:"assets/monsters/1081.png"},{name:"Peco Peco Egg",level:7,amount:31,hp:70,baseExp:152,image:"assets/monsters/1047.png"},{name:"Muka",level:23,amount:202,hp:337,baseExp:205,image:"assets/monsters/1055.png"},{name:"Muka Ringleader",level:23,amount:3,hp:1685,baseExp:1025,image:"assets/monsters/2741.png"},{name:"PecoPeco",level:25,amount:93,hp:354,baseExp:204,image:"assets/monsters/1019.png"}]},
@@ -274,6 +274,6 @@
     }
   </script>
   <script src="assets/formulas.js?v=20260925-named"></script>
-  <script src="assets/ui.js?v=20260925-damage"></script>
+  <script src="assets/ui.js?v=20260925-damage-v2"></script>
 </body>
 </html>

@@ -9,12 +9,17 @@ const fmt = (n,d=0) => Number.isFinite(n) ? n.toLocaleString('en-US',{maximumFra
 const expFmt = n => fmt(n,1);
 const pct = (n,d=1) => Number.isFinite(n) ? `${fmt(n,d)}%` : '-';
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function get(id) { const el=document.getElementById(id); return el.type==='checkbox' ? el.checked : Number(el.value)||0; }
+function numericValue(value) { return Number(String(value ?? '').replace(/,/g,'')) || 0; }
+function formatDamageInput(input) {
+  const digits=String(input.value ?? '').replace(/[^0-9]/g,'');
+  input.value=digits ? Number(digits).toLocaleString('en-US') : '';
+}
+function get(id) { const el=document.getElementById(id); return el.type==='checkbox' ? el.checked : numericValue(el.value); }
 function config() {
   const party = Math.max(1, Math.min(12, get('partySize')));
   const h = 1 + (get('serverBonus')+get('kafraBonus')+get('malangdoBonus')+get('premiumBonus')+get('staffBonus')+get('customBonus'))/100;
   const i = 1 + (get('gearBonus')+get('richManBonus'))/100;
-  return {level:Math.max(1,Math.min(260,get('playerLevel'))), party, damage:Math.max(1,Math.min(1e12,Number(document.getElementById('playerDamage').value || DEFAULT_SETTINGS.playerDamage))),
+  return {level:Math.max(1,Math.min(260,get('playerLevel'))), party, damage:Math.max(1,Math.min(1e12,get('playerDamage')||DEFAULT_SETTINGS.playerDamage)),
     query:document.getElementById('searchBox').value.trim().toLowerCase(),lock:get('enforceLevelLock'),
     dailyDungeonMode:document.getElementById('dailyDungeonMode').value,
     event:document.getElementById('spotlightEvent').value==='auto' ? activeSpotlight(SPOTLIGHT_EVENTS) : SPOTLIGHT_EVENTS.find(e=>e.id===document.getElementById('spotlightEvent').value)||null,
@@ -162,7 +167,7 @@ function renderDetail(rows,c) {
   document.getElementById('mapModalTitle').innerHTML=`<h2>${escapeHtml(selected.name)}</h2><span class="tag">${selected.code}</span>${selected.group==='ep20'?'<span class="tag">EP20</span>':''}`;
   if(selected.archivedEvent)document.getElementById('mapModalTitle').insertAdjacentHTML('beforeend','<span class="tag warn">ย้อนหลัง 2026 · จบแล้ว</span>');
   const notes=[selected.archivedEvent?`${selected.archivedEvent} · กิจกรรมจบแล้ว ผลนี้จำลองด้วย EXP / HP / จำนวนมอนรอบเดิม และเลเวล / ปาร์ตี้ / บัฟที่ตั้งอยู่ เพื่อเปรียบเทียบหรือวางแผนซ้อมหากเปิดใหม่`:null,selected.accessNote,selected.dataNote,selected.excludedBosses?.length?`ค่าเฉลี่ยไม่รวมบอส: ${selected.excludedBosses.join(', ')}`:''].filter(Boolean);
-  const mapCalc=calculationGrid([['เลเวลขั้นต่ำเข้าแมพ',selected.entryRequirementVerified===false?'ยังไม่ยืนยัน':fmt(selected.min)],['เลเวลมอน (เฉลี่ยต่อแผนที่)',fmt(selected.level,1)],['EXP ปกติ (เฉลี่ยต่อแผนที่)',expFmt(selected.baseExp)],['EXP กิจกรรม (เฉลี่ยต่อแผนที่)',expFmt(selected.eventBaseExp)],['หลังปรับตามเลเวล (เฉลี่ยต่อแผนที่)',expFmt(selected.baseAfterPenalty)],['หลังแบ่งปาร์ตี้ (เฉลี่ยต่อแผนที่)',expFmt(selected.baseAfterParty)],['EXP ที่ได้ / ตัว (เฉลี่ยต่อแผนที่)',expFmt(selected.finalPerKill)],['HP / ตัว (เฉลี่ยต่อแผนที่)',fmt(selected.hp,1)],['ดาเมจต่อครั้ง',fmt(c.damage)],['โจมตีเฉลี่ย / ตัว (ถ่วงตามจำนวนมอน)',fmt(selected.hitsPerKill,1)+' ครั้ง'],['มอนที่ต้องตีเกิน 5 ครั้ง',fmt(selected.damageWarningCount)+' ชนิด'],['EXP ต่อ HP 1 ล้าน (เฉลี่ยต่อแผนที่)',expFmt(selected.expPerMillionHp)],['จำนวนมอนปกติ → ช่วงกิจกรรม',fmt(selected.amount)+' → '+fmt(selected.shownAmount)],['มอน / 10,000 ช่อง',selected.hasWalk?fmt(selected.monsterDensity,1):'−'],['คะแนนพื้นที่',selected.hasWalk?fmt(selected.finalAreaScore,1):'−']]);
+  const mapCalc=calculationGrid([['เลเวลขั้นต่ำเข้าแมพ',selected.entryRequirementVerified===false?'ยังไม่ยืนยัน':fmt(selected.min)],['เลเวลมอน (เฉลี่ยต่อแผนที่)',fmt(selected.level,1)],['EXP ปกติ (เฉลี่ยต่อแผนที่)',expFmt(selected.baseExp)],['EXP กิจกรรม (เฉลี่ยต่อแผนที่)',expFmt(selected.eventBaseExp)],['หลังปรับตามเลเวล (เฉลี่ยต่อแผนที่)',expFmt(selected.baseAfterPenalty)],['หลังแบ่งปาร์ตี้ (เฉลี่ยต่อแผนที่)',expFmt(selected.baseAfterParty)],['EXP ที่ได้ / ตัว (เฉลี่ยต่อแผนที่)',expFmt(selected.finalPerKill)],['HP / ตัว (เฉลี่ยต่อแผนที่)',fmt(selected.hp,1)],['ดาเมจต่อครั้ง',fmt(c.damage)],['โจมตีเฉลี่ย / ตัว (ถ่วงตามจำนวนมอน)',fmt(selected.hitsPerKill,1)+' ครั้ง'],['มอนที่ต้องตีเกิน 5 ครั้ง',fmt(selected.damageWarningCount)+' ชนิด'],['สัดส่วนจำนวนมอนที่ต้องตีเกิน 5 ครั้ง',pct(selected.damageWarningRatio*100,1)],['EXP ต่อ HP 1 ล้าน (เฉลี่ยต่อแผนที่)',expFmt(selected.expPerMillionHp)],['จำนวนมอนปกติ → ช่วงกิจกรรม',fmt(selected.amount)+' → '+fmt(selected.shownAmount)],['มอน / 10,000 ช่อง',selected.hasWalk?fmt(selected.monsterDensity,1):'−'],['คะแนนพื้นที่',selected.hasWalk?fmt(selected.finalAreaScore,1):'−']]);
   document.getElementById('mapModalBody').innerHTML=`<div class="detail planning-detail"><div>${image}</div><div><div class="detail-meta">${[['EXP ที่ได้ / ตัว (เฉลี่ยต่อแผนที่)',fullExp(selected.finalPerKill)],['โจมตีเฉลี่ย / ตัว',fmt(selected.hitsPerKill,1)+' ครั้ง'],['จำนวนมอนทั้งแมพ',fmt(selected.shownAmount)],['คะแนนพื้นที่',selected.hasWalk?compact(selected.finalAreaScore):'−']].map(([k,v])=>`<div class="mini"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('')}</div><p class="hint">${c.event?`${escapeHtml(c.event.name)} · EXP เพิ่ม ${selected.affectedMonsters}/${selected.monsters?.length||0} ชนิด`:'ไม่มีกิจกรรม · ใช้ EXP ปกติ'}${selected.spawnChangedMonsters?' · จำนวนมอน '+fmt(selected.amount)+' → '+fmt(selected.shownAmount):''}<br>EXP ที่ได้แสดงทศนิยม 1 ตำแหน่ง รวมผลเลเวล ปาร์ตี้ และบัฟแล้ว · แมพเป็นค่าเฉลี่ย; เทียบในเกมจากมอนชนิดนั้นในตารางด้านล่าง (ปัดเศษเฉพาะการแสดงผล)</p>${notes.map(n=>`<p class="hint">${escapeHtml(n)}</p>`).join('')}${selected.sourceUrl?`<p class="hint"><a href="${escapeHtml(selected.sourceUrl)}" target="_blank" rel="noopener">${selected.source?.startsWith('GGT Spotlight')?'แหล่งข้อมูล EXP ปกติ (GGT)':'แหล่งข้อมูลแผนที่และมอนสเตอร์'}</a></p>`:''}<details class="map-calculation"><summary>รายละเอียดตัวเลขและขั้นตอนคำนวณของแมพ</summary>${mapCalc}</details></div></div><div class="table-caption"><strong>มอนสเตอร์ในแมพ</strong><span>เรียงได้ทุกคอลัมน์ · คลิกชื่อเพื่อดูวิธีคำนวณ</span></div>${planningSortControls(true)}<div class="table-wrap planning-wrap"><table class="monster-table planning-table"><thead><tr>${planningHeaders(true)}</tr></thead><tbody>${monsterRows(selected,c)}</tbody></table></div><p class="field-help">EXP ต่อ HP 1 ล้าน = EXP ที่ได้ ÷ HP × 1,000,000 · ใช้เทียบ EXP ต่อเลือดที่ต้องตี ไม่ใช่ความเร็วฆ่าจริง<br>คะแนนพื้นที่รายมอนเป็นส่วนของมอนชนิดนั้นในแมพ รวมกันเป็นคะแนนพื้นที่ของแมพ</p>`;
   document.querySelectorAll('[data-monster-detail]').forEach(button=>button.addEventListener('click',()=>{
     const expanded=button.getAttribute('aria-expanded')==='true';
@@ -225,7 +230,7 @@ function render() {
   document.getElementById('advancedStatus').textContent=(auto?'อัตโนมัติ · ':'')+(c.event?.name||'ไม่มีกิจกรรม')+' · '+(buffs?buffs+' บัฟ':'บัฟทั่วไป 0')+(racialCount?' · โบนัสเผ่า '+racialCount:'');
   document.querySelector('#mapTable tbody').innerHTML=rows.length ? rows.map((r,i)=>{
     const context=planningContext(r);
-    const identity=`<div class="map-identity"><span class="rank">${i+1}</span><div><button class="map-btn" type="button" data-code="${r.code}">${escapeHtml(r.name)}</button>${context.englishName?`<span class="cell-note">${escapeHtml(context.englishName)}</span>`:''}<span class="cell-note">${escapeHtml(r.code)} · ${r.entryRequirementVerified===false?'เลเวลเข้าแมพ: ยังไม่ยืนยัน':'เลเวลขั้นต่ำเข้าแมพ '+r.min+'+'} · เลเวลมอนเฉลี่ย ${fmt(r.level,1)}</span>${context.access?`<span class="tag" title="${escapeHtml(context.access.note)}">${escapeHtml(context.access.label)}</span>`:''}${r.archivedEvent?'<span class="tag warn">ย้อนหลัง 2026</span>':''}${r.affectedMonsters?'<span class="tag spotlight-tag">★ '+escapeHtml(c.event?.label||'Spotlight')+'</span>':''}${mapSpawnBadge(r,c.event)}${r.damageWarning?'<span class="tag bad">'+(r.damageWarningCount?fmt(r.damageWarningCount)+' ชนิดต้องตีเกิน 5 ครั้ง':'โจมตีเกิน 5 ครั้ง')+'</span>':''}</div></div>`;
+    const identity=`<div class="map-identity"><span class="rank">${i+1}</span><div><button class="map-btn" type="button" data-code="${r.code}">${escapeHtml(r.name)}</button>${context.englishName?`<span class="cell-note">${escapeHtml(context.englishName)}</span>`:''}<span class="cell-note">${escapeHtml(r.code)} · ${r.entryRequirementVerified===false?'เลเวลเข้าแมพ: ยังไม่ยืนยัน':'เลเวลขั้นต่ำเข้าแมพ '+r.min+'+'} · เลเวลมอนเฉลี่ย ${fmt(r.level,1)}</span>${context.access?`<span class="tag" title="${escapeHtml(context.access.note)}">${escapeHtml(context.access.label)}</span>`:''}${r.archivedEvent?'<span class="tag warn">ย้อนหลัง 2026</span>':''}${r.affectedMonsters?'<span class="tag spotlight-tag">★ '+escapeHtml(c.event?.label||'Spotlight')+'</span>':''}${mapSpawnBadge(r,c.event)}${r.damageWarning?'<span class="tag bad">'+fmt(r.damageWarningRatio*100,1)+'% ของมอนต้องตีเกิน 5 ครั้ง</span>':''}</div></div>`;
     return `<tr class="map-row${r.damageWarning?' damage-warning':''}" data-code="${r.code}">${planningCells(r,identity)}</tr>`;
   }).join('') : '<tr><td colspan="6">ไม่พบแมพที่ตรงกับคำค้นหรือตัวกรอง</td></tr>';
   updateSortLabels(document.getElementById('mapTable'),sortKey,sortDir,'data-sort');
@@ -233,11 +238,11 @@ function render() {
   if(document.getElementById('mapModal').classList.contains('open')){if(rows.length)renderDetail(rows,c);else closeModal();}
 }
 function readInputs() {
-  return cleanSettings(Object.fromEntries(IDS.map(id=>{const el=document.getElementById(id);return [id,el.type==='checkbox'?el.checked:id==='playerDamage' && el.value===''?DEFAULT_SETTINGS.playerDamage:el.type==='number'||id.endsWith('Bonus')?Number(el.value):el.value];})),SPOTLIGHT_EVENTS);
+  return cleanSettings(Object.fromEntries(IDS.map(id=>{const el=document.getElementById(id);return [id,el.type==='checkbox'?el.checked:id==='playerDamage'?(el.value===''?DEFAULT_SETTINGS.playerDamage:numericValue(el.value)):el.type==='number'||id.endsWith('Bonus')?numericValue(el.value):el.value];})),SPOTLIGHT_EVENTS);
 }
 function applySettings(settings) {
   const clean=cleanSettings(settings,SPOTLIGHT_EVENTS);
-  IDS.forEach(id=>{const el=document.getElementById(id);if(el.type==='checkbox')el.checked=clean[id];else el.value=clean[id];});
+  IDS.forEach(id=>{const el=document.getElementById(id);if(el.type==='checkbox')el.checked=clean[id];else {el.value=clean[id];if(id==='playerDamage')formatDamageInput(el);}});
 }
 function saveSettings() {
   try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(readInputs()));document.getElementById('storageStatus').textContent='บันทึกแล้ว · ในเบราว์เซอร์นี้';}
@@ -276,7 +281,7 @@ function init() {
   document.getElementById('shareSettings').addEventListener('click',copySettingsLink);
   // Collapse only on initial mobile load; do not overwrite the user's open/closed choice on render.
   if(matchMedia('(max-width:1100px)').matches)document.getElementById('advancedSettings').open=false;
-  IDS.forEach(id=>{const el=document.getElementById(id);el.addEventListener('input',()=>{saveSettings();render();});el.addEventListener('change',()=>{
+  IDS.forEach(id=>{const el=document.getElementById(id);el.addEventListener('input',()=>{if(id==='playerDamage')formatDamageInput(el);saveSettings();render();});el.addEventListener('change',()=>{
     // A redundant render on blur removes the map button during pointerdown,
     // swallowing the first click after typing a search. Render only if clamped.
     const before=IDS.map(key=>{const input=document.getElementById(key);return input.type==='checkbox'?input.checked:input.value;});

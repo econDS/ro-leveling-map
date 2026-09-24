@@ -147,7 +147,9 @@ function row(map, c) {
   const hp = total ? weighted(m => m.hp) : map.hp;
   const hitsPerKill = total ? weighted(m => hitsToKill(m.hp, c.damage)) : hitsToKill(map.hp, c.damage);
   const damageWarningCount = monsters.reduce((count, m, index) => count + (amounts[index] > 0 && hitsToKill(m.hp, c.damage) > HIT_WARNING_THRESHOLD ? 1 : 0), 0);
-  const damageWarning = damageWarningCount > 0 || (!total && hitsPerKill > HIT_WARNING_THRESHOLD);
+  const damageWarningAmount = monsters.reduce((sum, m, index) => sum + (hitsToKill(m.hp, c.damage) > HIT_WARNING_THRESHOLD ? amounts[index] : 0), 0);
+  const damageWarningRatio = total ? damageWarningAmount / total : (hitsPerKill > HIT_WARNING_THRESHOLD ? 1 : 0);
+  const damageWarning = damageWarningRatio > 0.5;
   // Legacy walkablePx came from brightness and is deliberately not a fallback.
   const geometry = typeof MAP_GEOMETRY !== 'undefined' ? MAP_GEOMETRY[map.code] : null;
   const hasWalk = geometry?.status === 'verified-gat' && Number.isInteger(geometry.walkableCells)
@@ -155,7 +157,7 @@ function row(map, c) {
   const walkableCells = hasWalk ? geometry.walkableCells : null;
   const monsterDensity = hasWalk ? shownAmount / walkableCells * 10000 : 0;
   const entryMin = typeof minimumEntryLevel === 'function' ? minimumEntryLevel(map) : map.min;
-  return {...map, min:entryMin, level, hp, hitsPerKill, damageWarningCount, damageWarning, locked:c.lock && c.level < entryMin,
+  return {...map, min:entryMin, level, hp, hitsPerKill, damageWarningCount, damageWarningAmount, damageWarningRatio, damageWarning, locked:c.lock && c.level < entryMin,
     eventBaseExp, affectedMonsters, spawnChangedMonsters, amountFactor,
     yieldPct:eventBaseExp ? baseAfterPenalty / eventBaseExp * 100 : 0,
     baseAfterPenalty, baseAfterParty, finalPerKill,
