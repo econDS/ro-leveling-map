@@ -3,7 +3,6 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
-const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const context = vm.createContext({});
 for (const file of [
   'assets/data/ep20.js',
@@ -14,9 +13,8 @@ for (const file of [
 ]) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, {filename:file});
 }
-const inline = html.match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/);
-if (!inline) throw new Error('MAPS inline script not found');
-vm.runInContext(inline[1] + '\nthis.auditApi={MAPS,SPOTLIGHT_EVENTS,spotlightRule,spotlightName,normalizeMonsterName};', context);
+const mapsSource = fs.readFileSync(path.join(root, 'assets/data/maps.js'), 'utf8');
+vm.runInContext(mapsSource + '\nthis.auditApi={MAPS,SPOTLIGHT_EVENTS,spotlightRule,spotlightName,normalizeMonsterName};', context);
 const api = context.auditApi;
 const byMonster = new Map();
 const ambiguous = [];

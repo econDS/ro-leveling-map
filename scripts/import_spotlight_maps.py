@@ -92,7 +92,8 @@ def main():
     CACHE = args.cache
     export = r"""const fs=require('fs'),vm=require('vm'),c=vm.createContext({});
     for(const f of ['ep20','spotlight-maps','spotlight-2026','spotlight-2025']){const p='assets/data/'+f+'.js';if(fs.existsSync(p))vm.runInContext(fs.readFileSync(p,'utf8'),c);}
-    vm.runInContext(fs.readFileSync('index.html','utf8').match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/)[1],c);
+    vm.runInContext(fs.readFileSync('assets/calculator.js','utf8'),c);
+    vm.runInContext(fs.readFileSync('assets/data/maps.js','utf8'),c);
     process.stdout.write(vm.runInContext('JSON.stringify({maps:MAPS.filter(m=>m.group!=="spotlight"),events:SPOTLIGHT_EVENTS})',c));"""
     catalog=json.loads(subprocess.run(['node','-e',export],cwd=SITE,capture_output=True,encoding='utf-8',check=True).stdout)
     existing={m['code'] for m in catalog['maps']}

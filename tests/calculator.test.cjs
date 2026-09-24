@@ -9,7 +9,7 @@ const context = vm.createContext({URLSearchParams});
 for (const file of ['assets/data/ep20.js','assets/data/spotlight-maps.js','assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/data/monster-races.js','assets/settings.js','assets/data/map-geometry.js','assets/data/planning-context.js','assets/calculator.js']) {
   vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'), context);
 }
-const inline = html.match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/)[1];
+const inline = fs.readFileSync(path.join(root,'assets/data/maps.js'),'utf8');
 vm.runInContext(inline + '\nthis.api={MAPS,EP20_MAPS,SPOTLIGHT_EVENTS,row,levelYield,spotlightRule,eventSpawnRule,monsterEventAmount,monsterEventExp,monsterRace,monsterFactor,RACES,DEFAULT_SETTINGS,cleanSettings,activeSpotlight,sortedEvents};',context);
 const {MAPS,EP20_MAPS,SPOTLIGHT_EVENTS,row,levelYield,spotlightRule,eventSpawnRule,monsterEventAmount,monsterEventExp,monsterRace,monsterFactor,RACES,DEFAULT_SETTINGS,cleanSettings,activeSpotlight,sortedEvents}=context.api;
 const map = code=>MAPS.find(m=>m.code===code);
@@ -137,7 +137,7 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
 });
 test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
   assert.equal(EP20_MAPS.length,9);
-  assert.equal(MAPS.length,135);
+  assert.equal(MAPS.length,136);
   assert.equal(new Set(MAPS.map(m=>m.code)).size,MAPS.length);
   for(const m of EP20_MAPS){
     assert.equal(m.amount,m.monsters.reduce((s,x)=>s+x.amount,0));
@@ -237,7 +237,9 @@ test('A changed spawn mix reweights map EXP, HP and monster share without mutati
 test('Public entry point contains no encryption or login form and all scripts exist',()=>{
   assert.ok(!/PBKDF2|AES-GCM|id="password"|id="gate"|const payload=/.test(html));
   assert.ok(html.includes('<option value="auto" selected>'));
-  for(const [,src] of html.matchAll(/<script src="([^"]+)"/g))assert.ok(fs.existsSync(path.join(root,src)),src);
+  // Cache-busting ?v= suffixes are not part of the file path.
+  for(const [,src] of html.matchAll(/<(?:script src|link rel="stylesheet" href)="(assets\/[^"?]+)/g))assert.ok(fs.existsSync(path.join(root,src)),src);
+  assert.ok(!/const MAPS =/.test(html),'map catalog lives in assets/data/maps.js');
 });
 test('Every map monster has a supported race, including EP20 and daily variants',()=>{
   for(const m of MAPS)for(const mob of m.monsters)assert.ok(RACES.includes(monsterRace(m,mob)),`${m.code}/${mob.name}: ${monsterRace(m,mob)}`);
@@ -396,8 +398,8 @@ test('Every explicit Spotlight map exists; unmatched rows are limited to documen
 });
 test('Imported maps preserve complete normal populations, provenance, races, assets and weighted stats',()=>{
   const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-maps.json'),'utf8'));
-  assert.equal(data.maps.length,65);
-  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),396);
+  assert.equal(data.maps.length,66);
+  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),405);
   for(const m of data.maps){
     assert.equal(MAPS.filter(x=>x.code===m.code).length,1);
     assert.equal(m.amount,m.monsters.reduce((s,b)=>s+b.amount,0));

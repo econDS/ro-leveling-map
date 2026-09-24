@@ -55,3 +55,22 @@
 .formula-level-table .level-even td{background:#f4faf8}
 .formula-level-source{margin:12px 0 0;color:#647082;font-size:12px;line-height:1.7}
 .formula-level-source a{color:var(--accent);text-underline-offset:3px}
+@media(prefers-color-scheme:dark){
+.formula-card,.formula-simple{background:#1a222c;border-color:#2c3744}
+.formula-heading h3{color:#dbe4ee}
+.formula-number{background:#16332f}
+.formula-equation,.formula-math-frame,.formula-level-table{background:#10161d;border-color:#2c3744;color:#cfe9e5}
+.formula-link:hover{color:#8fe3d9;background:#16332f}
+.formula-numerator{border-bottom-color:#7d9ea3}
+.formula-note,.formula-notation dd,.formula-notation p,.formula-sigma-inline small,.formula-level-source,.formula-math-hint{color:#9aa7b7}
+.formula-overview{background:linear-gradient(145deg,#132a27,#171e27 72%);border-color:#24514b;box-shadow:none}
+.formula-sigma-inline,.formula-notation summary,.formula-notation dt{color:#7fd6cc}
+.formula-math-frame math{color:#d6efeb}
+.formula-notation{background:#131b23;border-color:#24514b}
+.formula-level-intro{background:#15302b;color:#b9e3dc}
+.formula-level-table th,.formula-level-table td{border-bottom-color:#26313d}
+.formula-level-table thead th{background:#16332f;color:#bfe9e3}
+.formula-level-table .level-group th{background:#1d2631;color:#9aa7b7}
+.formula-level-table .level-best td{background:#13281d;color:#6fdc98}
+.formula-level-table .level-even td{background:#141d25}
+}

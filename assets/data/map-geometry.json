@@ -2377,6 +2377,36 @@
       "rawSha256": "3b8f34f95522a194b7a56be5ebeed3ac83e21b9d5e549a38f86849425c6bbdb0",
       "maskSha256": "60d2b52d52c7fd57be57eecaad0a8fcf8146a83043bc3e5e69346b937b685845"
     },
+    "gef_dun01": {
+      "status": "verified-gat",
+      "sourceUrl": "https://www.divine-pride.net/database/map/gef_dun01",
+      "gatUrl": "https://www.divine-pride.net/Tools/MapViewerAsset?mapname=gef_dun01&ext=gat",
+      "rawUrl": "https://www.divine-pride.net/img/map/raw/gef_dun01",
+      "checkedOn": "2026-09-25",
+      "method": "gat-cell-types",
+      "version": "1.2",
+      "width": 300,
+      "height": 300,
+      "totalCells": 90000,
+      "walkableCells": 28902,
+      "walkableRatio": 0.3211333333333333,
+      "cellTypes": {
+        "0": 29501,
+        "1": 60499
+      },
+      "excludedBoundaryCells": 599,
+      "components": 1,
+      "largestComponentCells": 28902,
+      "smallComponentCells": 0,
+      "borderWalkableCells": 0,
+      "maskImage": "assets/maps/geometry/gef_dun01-mask.png",
+      "rawImage": "assets/maps/geometry/gef_dun01-raw.png",
+      "overlayImage": "assets/maps/geometry/gef_dun01-overlay.png",
+      "sourceSha256": "56bd66fc5a033edbff2b45495111999895d29577a4f0bb5cefb4d2a650bb8cb3",
+      "gatSha256": "aea8de9c0740d8c59ccbd2ffcb8b038b4e0445089e279f493f376246acbc155f",
+      "rawSha256": "9e88a7481302dae356b3d502bcb31753a1e3679ff6431476ee16f00f675d2cf6",
+      "maskSha256": "41ee3dd5afdc356c8356e84cfcc1ee502d16e64d4fb9da8a160f8fc2449c62d1"
+    },
     "gef_dun02": {
       "status": "verified-gat",
       "sourceUrl": "https://www.divine-pride.net/database/map/gef_dun02",

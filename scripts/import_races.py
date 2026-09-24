@@ -47,8 +47,9 @@ for table in soup.select('.entry-content table'):
 export = """const fs=require('fs'),vm=require('vm');const c=vm.createContext({});
 vm.runInContext(fs.readFileSync('assets/data/ep20.js','utf8'),c);
     vm.runInContext(fs.readFileSync('assets/data/spotlight-maps.js','utf8'),c);
-const h=fs.readFileSync('index.html','utf8');
-vm.runInContext(h.match(/<script>\\s*(const MAPS =[\\s\\S]*?)<\\/script>/)[1]+';this.maps=MAPS',c);
+    // maps.js applies GGT base priority, which needs the events and calculator.
+    for(const f of ['assets/data/spotlight-2026.js','assets/data/spotlight-2025.js','assets/calculator.js'])vm.runInContext(fs.readFileSync(f,'utf8'),c);
+vm.runInContext(fs.readFileSync('assets/data/maps.js','utf8')+';this.maps=MAPS',c);
 process.stdout.write(JSON.stringify(c.maps));"""
 maps = json.loads(subprocess.run(['node','-e',export],cwd=ROOT,check=True,capture_output=True,encoding='utf-8').stdout)
 result, unresolved = {}, []

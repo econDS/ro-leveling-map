@@ -1,6 +1,6 @@
 const RACES = ['Formless','Undead','Brute','Plant','Insect','Fish','Demon','Demi-Human','Angel','Dragon'];
 const SETTINGS_KEY = 'ro-general-map-exp-tool-settings-v1';
-const DEFAULT_SETTINGS = Object.freeze({playerLevel:100,partySize:1,playerDamage:1000000,searchBox:'',enforceLevelLock:true,
+const DEFAULT_SETTINGS = Object.freeze({playerLevel:100,partySize:1,playerDamage:1000000,searchBox:'',enforceLevelLock:true,filterEvent:false,filterSpawn:false,filterEp20:false,filterHits:false,
   spotlightEvent:'auto',dailyDungeonMode:'hide',serverBonus:0,manualBonus:0,kafraBonus:0,malangdoBonus:0,premiumBonus:0,
   staffBonus:0,gearBonus:0,richManBonus:0,customBonus:0,
   ...Object.fromEntries(RACES.map(r=>['race'+r,0]))});
@@ -35,7 +35,7 @@ function cleanSettings(raw, events) {
       if(['hide','compare','only'].includes(value))clean[key]=value;
     }else if(key==='searchBox'){
       if(typeof value==='string')clean[key]=value.slice(0,200);
-    }else if(key==='enforceLevelLock'){
+    }else if(key==='enforceLevelLock'||key.startsWith('filter')){
       if(typeof value==='boolean')clean[key]=value;
     }else if(typeof value==='number' && Number.isFinite(value)){
       if(choices[key]){if(choices[key].includes(value))clean[key]=value;}

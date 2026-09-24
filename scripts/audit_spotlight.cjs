@@ -3,7 +3,7 @@ const root=path.resolve(__dirname,'..'),c=vm.createContext({});
 for(const f of ['ep20','spotlight-maps','spotlight-2026','spotlight-2025'])
   vm.runInContext(fs.readFileSync(path.join(root,'assets/data',f+'.js'),'utf8'),c);
 vm.runInContext(fs.readFileSync(path.join(root,'assets/calculator.js'),'utf8'),c);
-vm.runInContext(fs.readFileSync(path.join(root,'index.html'),'utf8').match(/<script>\s*(const MAPS =[\s\S]*?)<\/script>/)[1],c);
+vm.runInContext(fs.readFileSync(path.join(root,'assets/data/maps.js'),'utf8'),c);
 const report=vm.runInContext(`({
   mapCount:MAPS.length,
   addedMapCount:SPOTLIGHT_MAPS.length,
