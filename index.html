@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#182331">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="RO หาแมพ">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/ro-exp-192.png">
+  <link rel="apple-touch-icon" href="icons/ro-exp-180.png">
   <title>RO หาแมพเก็บเลเวล | คำนวณ EXP</title>
   <style>
     :root{--bg:#f5f6f8;--panel:#fff;--text:#1f252d;--muted:#647082;--line:#d8dee8;--head:#182331;--accent:#0b7a75;--good:#168044;--warn:#915b00;--bad:#ad3030;--soft:#eef5f4;font-family:"Segoe UI",Tahoma,sans-serif}
@@ -78,6 +84,8 @@
       .planning-table tbody>tr.damage-warning:not(.calculation-row) .tag.bad{background:#4a1d20;color:#ffc9c9}
       .spotlight-tag{background:#0b6d63!important;border-color:#0e8a7e}
     }
+    .offline-notice{display:inline-block;margin:12px 0 0;padding:7px 11px;border-radius:6px;background:#f4bf54;color:#182331;font-size:12px;font-weight:800}
+    .offline-notice[hidden]{display:none}
   </style>
   <link rel="stylesheet" href="assets/formulas.css?v=20260925-ux">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +106,7 @@
         <p>เทียบแมพเก็บเลเวลจาก EXP ต่อตัว, HP มอน และความหนาแน่น — รวมเลเวล ปาร์ตี้ บัฟ และกิจกรรมที่ใช้อยู่</p>
       </div>
     </div>
+    <p id="offlineNotice" class="offline-notice" role="status" hidden>ใช้ข้อมูลออฟไลน์ · ตรวจข้อมูลกิจกรรมล่าสุดเมื่อเชื่อมต่อเว็บได้อีกครั้ง</p>
   </header>
   <main>
     <div class="layout">
@@ -268,5 +277,30 @@
   <script src="assets/data/maps.js?v=20260925-ux8"></script>
   <script src="assets/formulas.js?v=20260925-named"></script>
   <script src="assets/ui.js?v=20260925-ux6"></script>
+  <script>
+    const offlineNotice = document.getElementById('offlineNotice');
+    let offlineCheckId = 0;
+    async function updateOfflineNotice() {
+      const checkId = ++offlineCheckId;
+      if (location.protocol === 'file:') { offlineNotice.hidden = true; return; }
+      if (!navigator.onLine) { offlineNotice.hidden = false; return; }
+      try {
+        // HEAD is not intercepted by this site's Service Worker, so it checks the site itself.
+        const response = await fetch('./manifest.webmanifest', {method: 'HEAD', cache: 'no-store'});
+        if (checkId === offlineCheckId) offlineNotice.hidden = response.ok;
+      } catch (_) {
+        if (checkId === offlineCheckId) offlineNotice.hidden = false;
+      }
+    }
+    window.addEventListener('online', updateOfflineNotice);
+    window.addEventListener('offline', updateOfflineNotice);
+    updateOfflineNotice();
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js', {updateViaCache: 'none'})
+          .catch(error => console.warn('PWA offline setup failed:', error));
+      });
+    }
+  </script>
 </body>
 </html>

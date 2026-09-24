@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "RO หาแมพเก็บเลเวล",
+  "short_name": "RO หาแมพ",
+  "description": "คำนวณ EXP และเปรียบเทียบแมพเก็บเลเวล Ragnarok Online",
+  "lang": "th",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#182331",
+  "theme_color": "#182331",
+  "icons": [
+    {"src": "icons/ro-exp-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icons/ro-exp-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
