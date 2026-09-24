@@ -77,7 +77,7 @@ def export_maps(site):
                                      encoding='utf-8', check=True).stdout)
 
 
-def build(cache, site, checked_on):
+def build(cache, site, checked_on, only=None):
     key_js = (cache / 'asset-crypto.js').read_text(encoding='utf-8')
     key = bytes(int(x, 16) for x in re.findall(r'0x([0-9a-fA-F]{2})', key_js.split(']);')[0]))
     if len(key) != 32:
@@ -85,8 +85,13 @@ def build(cache, site, checked_on):
     output = site / 'assets/maps/geometry'
     output.mkdir(parents=True, exist_ok=True)
     result = {}
+    previous = json.loads((site / 'assets/data/map-geometry.json').read_text(encoding='utf-8'))['maps'] if only else {}
     for map_data in export_maps(site):
         code = map_data['code']
+        if only is not None and code not in only:
+            if code not in previous: raise ValueError('Missing existing geometry: '+code)
+            result[code] = previous[code]
+            continue
         if map_data.get('archivedEvent'):
             result[code] = {'status': 'unavailable', 'reason': 'ไม่มี GAT ยืนยันสำหรับ Daily Dungeon รอบนี้; ภาพประกอบยืมจาก Biosphere'}
             continue
@@ -144,5 +149,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cache', type=Path, required=True)
     parser.add_argument('--checked-on', required=True)
+    parser.add_argument('--only', nargs='+', help='Build these maps and preserve existing geometry for other maps')
     args = parser.parse_args()
-    build(args.cache, Path(__file__).resolve().parents[1], args.checked_on)
+    build(args.cache, Path(__file__).resolve().parents[1], args.checked_on, set(args.only) if args.only else None)

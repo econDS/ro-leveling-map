@@ -73,6 +73,6 @@ class GeometryTests(unittest.TestCase):
                 self.assertEqual(before!=after,bool(counted),code)
             for field in ['sourceSha256','gatSha256','rawSha256']:
                 self.assertEqual(len(g[field]),64)
-        self.assertEqual(available,123)
+        self.assertEqual(available,129)
 
 if __name__=='__main__': unittest.main()

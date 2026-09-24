@@ -1,94 +1,123 @@
 {
-  "mapCount": 129,
-  "addedMapCount": 59,
+  "mapCount": 135,
+  "addedMapCount": 65,
   "events": [
     {
       "id": "2025-12-03_unicorn",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-year-of-unicorn-edition-3-dec-2025/",
       "ruleCount": 44,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-01-14_flame",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-flame-edition-14-jan-2025/",
       "ruleCount": 47,
+      "spawnCount": 0,
       "missingMaps": [],
       "unmatched": [
         {
           "map": "amicitia1",
           "name": "Lavaeter"
         }
-      ]
+      ],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-02-25_new_specimen",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-varmundts-biosphere-new-specimen/",
       "ruleCount": 21,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-03-25_summer",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-summer-edition-25-mar-2025/",
       "ruleCount": 48,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-04-29_rainy",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-rainy-season-29-apr-2025/",
       "ruleCount": 57,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-06-24_varmundx2",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-varmundx2-event/",
       "ruleCount": 47,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-07-15_spotlight",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-event-15-july-2026/",
       "ruleCount": 58,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2026-08-26_spotlight",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-event-26-august-2026/",
       "ruleCount": 43,
+      "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": []
+      "unmatched": [],
+      "unmatchedSpawns": []
+    },
+    {
+      "id": "2026-09-23_triple_exp_double_monster",
+      "sourceUrl": "https://ro.gnjoy.in.th/triple-exp-double-monster-event-23-sep-2026/",
+      "ruleCount": 83,
+      "spawnCount": 29,
+      "missingMaps": [],
+      "unmatched": [],
+      "unmatchedSpawns": []
     },
     {
       "id": "2025-08-27_return",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-return-2025/",
       "ruleCount": 36,
+      "spawnCount": 0,
       "missingMaps": [],
       "unmatched": [
         {
           "map": "lasa_dun01",
           "name": "Peco Peco"
         }
-      ]
+      ],
+      "unmatchedSpawns": []
     },
     {
       "id": "2025-10-15_halloween",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-halloween-edition-15-oct-2025/",
       "ruleCount": 53,
+      "spawnCount": 0,
       "missingMaps": [],
       "unmatched": [
         {
           "map": "gef_dun02",
           "name": "Jakk"
         }
-      ]
+      ],
+      "unmatchedSpawns": []
     }
   ],
-  "checkedOn": "2026-09-16",
+  "checkedOn": "2026-09-24",
   "exceptions": [
     {
       "eventId": "2026-01-14_flame",

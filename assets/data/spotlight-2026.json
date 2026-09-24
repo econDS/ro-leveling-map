@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-09-12",
+  "checkedOn": "2026-09-24",
   "events": [
     {
       "id": "2025-12-03_unicorn",
@@ -2294,6 +2294,665 @@
       ],
       "amountMaps": [],
       "notes": "mjo_wst01 ใช้ Event EXP ตามประกาศ August ซึ่งลงฐานสูงกว่า June/July"
+    },
+    {
+      "id": "2026-09-23_triple_exp_double_monster",
+      "name": "Triple EXP & Double Monster · Sep 2026",
+      "start": "2026-09-23",
+      "end": "2026-10-21",
+      "sourceUrl": "https://ro.gnjoy.in.th/triple-exp-double-monster-event-23-sep-2026/",
+      "sourceImageUrl": "https://img.gnjoy.in.th/2026/09/60b2bf6244-scaled.jpg",
+      "image": "assets/spotlight/2026-09-23_triple_exp.jpg",
+      "notes": "EXP ตามตารางภาพประกาศ: มอนที่ระบุได้ 3x หรือ 2x ตามแถว; จำนวนเกิดช่วงกิจกรรมใช้ค่ารายมอนใน 5 แมพจากตาราง HTML ไม่ใช่ x2 ทั้งแมพ",
+      "rules": [
+        {
+          "map": "prt_fild05",
+          "name": "Hornet",
+          "normalExp": 158,
+          "eventExp": 474
+        },
+        {
+          "map": "prt_sewb2",
+          "name": "Tarou",
+          "normalExp": 192,
+          "eventExp": 576
+        },
+        {
+          "map": "pay_dun01",
+          "name": "Soldier Skeleton",
+          "normalExp": 284,
+          "eventExp": 852
+        },
+        {
+          "map": "mjo_dun03",
+          "name": "Skeleton Worker",
+          "normalExp": 378,
+          "eventExp": 1134
+        },
+        {
+          "map": "cmd_fild01",
+          "name": "Grove",
+          "normalExp": 489,
+          "eventExp": 1467
+        },
+        {
+          "map": "mjolnir_04",
+          "name": "Driller",
+          "normalExp": 642,
+          "eventExp": 1926
+        },
+        {
+          "map": "mjolnir_05",
+          "name": "Argiope",
+          "normalExp": 794,
+          "eventExp": 2382
+        },
+        {
+          "map": "gl_prison",
+          "name": "Zombie Prisoner",
+          "normalExp": 1194,
+          "eventExp": 3582
+        },
+        {
+          "map": "gl_prison",
+          "name": "Skeleton Prisoner",
+          "normalExp": 1342,
+          "eventExp": 4026
+        },
+        {
+          "map": "ra_fild05",
+          "name": "Mace Kobold",
+          "normalExp": 1545,
+          "eventExp": 4635
+        },
+        {
+          "map": "ra_fild05",
+          "name": "Hammer Kobold",
+          "normalExp": 1565,
+          "eventExp": 4695
+        },
+        {
+          "map": "ra_fild05",
+          "name": "Axe Kobold",
+          "normalExp": 1845,
+          "eventExp": 5535
+        },
+        {
+          "map": "moc_prydn1",
+          "name": "Verit (Nightmare)",
+          "normalExp": 2470,
+          "eventExp": 7410
+        },
+        {
+          "map": "moc_prydn1",
+          "name": "Minorous (Nightmare)",
+          "normalExp": 3047,
+          "eventExp": 9141
+        },
+        {
+          "map": "abyss_02",
+          "name": "Red Ferus",
+          "normalExp": 3639,
+          "eventExp": 10917
+        },
+        {
+          "map": "abyss_02",
+          "name": "Blue Acidus",
+          "normalExp": 3739,
+          "eventExp": 11217
+        },
+        {
+          "map": "abyss_02",
+          "name": "Gold Acidus",
+          "normalExp": 3739,
+          "eventExp": 11217
+        },
+        {
+          "map": "lasa_dun02",
+          "name": "Charge Basilisk",
+          "normalExp": 10679,
+          "eventExp": 32037
+        },
+        {
+          "map": "lasa_dun02",
+          "name": "Jungle Mandragora",
+          "normalExp": 11100,
+          "eventExp": 33300
+        },
+        {
+          "map": "iz_d04_i",
+          "name": "Abyssmal Sropho",
+          "normalExp": 30314,
+          "eventExp": 90942
+        },
+        {
+          "map": "iz_d04_i",
+          "name": "Abyssmal Merman",
+          "normalExp": 30378,
+          "eventExp": 91134
+        },
+        {
+          "map": "iz_d04_i",
+          "name": "Abyssmal Marse",
+          "normalExp": 30163,
+          "eventExp": 90489
+        },
+        {
+          "map": "iz_d04_i",
+          "name": "Abyssmal Obeaune",
+          "normalExp": 30621,
+          "eventExp": 91863
+        },
+        {
+          "map": "iz_d04_i",
+          "name": "Abyssmal Deviace",
+          "normalExp": 31352,
+          "eventExp": 94056
+        },
+        {
+          "map": "tur_d04_i",
+          "name": "Ominous Permeter",
+          "normalExp": 50806,
+          "eventExp": 152418
+        },
+        {
+          "map": "tur_d04_i",
+          "name": "Ominous Freezer",
+          "normalExp": 54892,
+          "eventExp": 164676
+        },
+        {
+          "map": "tur_d04_i",
+          "name": "Ominous Assaulter",
+          "normalExp": 54213,
+          "eventExp": 162639
+        },
+        {
+          "map": "tur_d04_i",
+          "name": "Ominous Solider",
+          "normalExp": 59190,
+          "eventExp": 177570
+        },
+        {
+          "map": "tur_d04_i",
+          "name": "Ominous Heater",
+          "normalExp": 52699,
+          "eventExp": 158097
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Diligent Andre Larva",
+          "normalExp": 64798,
+          "eventExp": 194394
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Intrepid Familiar",
+          "normalExp": 79844,
+          "eventExp": 239532
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Diligent Andre",
+          "normalExp": 96141,
+          "eventExp": 288423
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Diligent Deniro",
+          "normalExp": 81114,
+          "eventExp": 243342
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Diligent Piere",
+          "normalExp": 82688,
+          "eventExp": 248064
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Intrepid Giearth",
+          "normalExp": 81566,
+          "eventExp": 244698
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Diligent Soldier Andre",
+          "normalExp": 83348,
+          "eventExp": 250044
+        },
+        {
+          "map": "ant_d02_i",
+          "name": "Diligent Vitata",
+          "normalExp": 83348,
+          "eventExp": 250044
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Explosion",
+          "normalExp": 106026,
+          "eventExp": 318078
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Earth Deleter",
+          "normalExp": 107518,
+          "eventExp": 322554
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Kaho",
+          "normalExp": 107162,
+          "eventExp": 321486
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Sky Deleter",
+          "normalExp": 108139,
+          "eventExp": 324417
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Lava Golem",
+          "normalExp": 111248,
+          "eventExp": 333744
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Blazer",
+          "normalExp": 110733,
+          "eventExp": 332199
+        },
+        {
+          "map": "mag_dun03",
+          "name": "Rigid Nightmare Terror",
+          "normalExp": 110791,
+          "eventExp": 332373
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Poisonous",
+          "normalExp": 171935,
+          "eventExp": 515805
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Toxious",
+          "normalExp": 171968,
+          "eventExp": 515904
+        },
+        {
+          "map": "ein_dun03",
+          "name": "White Porcellio",
+          "normalExp": 171935,
+          "eventExp": 515805
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Abyssman",
+          "normalExp": 173470,
+          "eventExp": 520410
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Green Mineral",
+          "normalExp": 173979,
+          "eventExp": 521937
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Purple Mineral",
+          "normalExp": 173967,
+          "eventExp": 521901
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Red Mineral",
+          "normalExp": 173979,
+          "eventExp": 521937
+        },
+        {
+          "map": "ein_dun03",
+          "name": "White Mineral",
+          "normalExp": 174013,
+          "eventExp": 522039
+        },
+        {
+          "map": "ein_dun03",
+          "name": "Jeweliant",
+          "normalExp": 174690,
+          "eventExp": 524070
+        },
+        {
+          "map": "odin_past",
+          "name": "Angelgolt",
+          "normalExp": 179251,
+          "eventExp": 537753
+        },
+        {
+          "map": "odin_past",
+          "name": "Angelgolt",
+          "normalExp": 179216,
+          "eventExp": 537648
+        },
+        {
+          "map": "odin_past",
+          "name": "Spectral Plasma",
+          "normalExp": 593192,
+          "eventExp": 1779576
+        },
+        {
+          "map": "odin_past",
+          "name": "Arch Plasma",
+          "normalExp": 596255,
+          "eventExp": 1788765
+        },
+        {
+          "map": "odin_past",
+          "name": "Holy Frus",
+          "normalExp": 183728,
+          "eventExp": 551184
+        },
+        {
+          "map": "odin_past",
+          "name": "Holy Skogul",
+          "normalExp": 184690,
+          "eventExp": 554070
+        },
+        {
+          "map": "tha_t12",
+          "name": "Horror of Thanatos",
+          "normalExp": 253825,
+          "eventExp": 761475
+        },
+        {
+          "map": "tha_t12",
+          "name": "Regret of Thanatos",
+          "normalExp": 255441,
+          "eventExp": 766323
+        },
+        {
+          "map": "tha_t12",
+          "name": "Anger of Thanatos",
+          "normalExp": 256360,
+          "eventExp": 769080
+        },
+        {
+          "map": "tha_t12",
+          "name": "Book of Death",
+          "normalExp": 257633,
+          "eventExp": 772899
+        },
+        {
+          "map": "tha_t12",
+          "name": "Resentment of Thanatos",
+          "normalExp": 258927,
+          "eventExp": 776781
+        },
+        {
+          "map": "jor_back1",
+          "name": "Ice Gangu",
+          "normalExp": 269913,
+          "eventExp": 809739
+        },
+        {
+          "map": "jor_back1",
+          "name": "Shining Seaweed",
+          "normalExp": 282625,
+          "eventExp": 847875
+        },
+        {
+          "map": "jor_back1",
+          "name": "Ice Straw",
+          "normalExp": 293285,
+          "eventExp": 879855
+        },
+        {
+          "map": "jor_back4",
+          "name": "Snow Rabbit Slug",
+          "normalExp": 380041,
+          "eventExp": 760082
+        },
+        {
+          "map": "jor_back4",
+          "name": "Angel Iceslug",
+          "normalExp": 401573,
+          "eventExp": 803146
+        },
+        {
+          "map": "jor_back4",
+          "name": "Susp. Awin Pvt. 1st Class",
+          "normalExp": 402725,
+          "eventExp": 805450
+        },
+        {
+          "map": "jor_back4",
+          "name": "Susp. Awin Corporal",
+          "normalExp": 410942,
+          "eventExp": 821884
+        },
+        {
+          "map": "jor_back4",
+          "name": "Susp. Awin Sp. Private",
+          "normalExp": 421114,
+          "eventExp": 842228
+        },
+        {
+          "map": "jor_back6",
+          "name": "Armored Copo",
+          "normalExp": 593294,
+          "eventExp": 1186588
+        },
+        {
+          "map": "jor_back6",
+          "name": "Bear Bug",
+          "normalExp": 586912,
+          "eventExp": 1173824
+        },
+        {
+          "map": "jor_back6",
+          "name": "Icewind",
+          "normalExp": 604691,
+          "eventExp": 1209382
+        },
+        {
+          "map": "ra_pol01",
+          "name": "Deadsera",
+          "normalExp": 1991786,
+          "eventExp": 3983572
+        },
+        {
+          "map": "ra_pol01",
+          "name": "Hardrock Titan",
+          "normalExp": 2047686,
+          "eventExp": 4095372
+        },
+        {
+          "map": "ra_pol01",
+          "name": "Deadween",
+          "normalExp": 2108388,
+          "eventExp": 4216776
+        },
+        {
+          "map": "ra_pol01",
+          "name": "Burning Night",
+          "normalExp": 2130856,
+          "eventExp": 4261712
+        },
+        {
+          "map": "mjo_wst01",
+          "name": "Punch Bug",
+          "normalExp": 1998460,
+          "eventExp": 3996920
+        },
+        {
+          "map": "mjo_wst01",
+          "name": "Dispol",
+          "normalExp": 2078566,
+          "eventExp": 4157132
+        },
+        {
+          "map": "mjo_wst01",
+          "name": "Aferde",
+          "normalExp": 2055414,
+          "eventExp": 4110828
+        },
+        {
+          "map": "mjo_wst01",
+          "name": "Timbers",
+          "normalExp": 2087988,
+          "eventExp": 4175976
+        }
+      ],
+      "amountMaps": [],
+      "spawnCounts": [
+        {
+          "map": "nif_dun01",
+          "name": "Gan Ceann",
+          "amount": 90
+        },
+        {
+          "map": "nif_dun01",
+          "name": "Brutal Murderer",
+          "amount": 90
+        },
+        {
+          "map": "nif_dun01",
+          "name": "Ghost Cube",
+          "amount": 90
+        },
+        {
+          "map": "nif_dun01",
+          "name": "Lude Gal",
+          "amount": 90
+        },
+        {
+          "map": "amicitia2",
+          "name": "Lavaeter",
+          "amount": 110
+        },
+        {
+          "map": "amicitia2",
+          "name": "Fulgor",
+          "amount": 110
+        },
+        {
+          "map": "amicitia2",
+          "name": "Napeo",
+          "amount": 110
+        },
+        {
+          "map": "amicitia2",
+          "name": "Galensis",
+          "amount": 110
+        },
+        {
+          "map": "bl_death",
+          "name": "Ancient Mummy of Death",
+          "amount": 60
+        },
+        {
+          "map": "bl_death",
+          "name": "Lude of Death",
+          "amount": 70
+        },
+        {
+          "map": "bl_death",
+          "name": "Ragged Zombie of Death",
+          "amount": 60
+        },
+        {
+          "map": "bl_death",
+          "name": "Wraith of Death",
+          "amount": 70
+        },
+        {
+          "map": "bl_death",
+          "name": "Flame Skull of Fire",
+          "amount": 70
+        },
+        {
+          "map": "bl_death",
+          "name": "Banshee of Death",
+          "amount": 90
+        },
+        {
+          "map": "bl_death",
+          "name": "Knight of Abyss in Death",
+          "amount": 30
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple Rudo",
+          "amount": 70
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple Arc Angeling",
+          "amount": 80
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple False Angel",
+          "amount": 80
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple Plasma",
+          "amount": 50
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple Solace",
+          "amount": 80
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple Anopheles",
+          "amount": 20
+        },
+        {
+          "map": "bl_temple",
+          "name": "Temple Gryphon",
+          "amount": 40
+        },
+        {
+          "map": "bl_lava",
+          "name": "Explosion of Fire",
+          "amount": 80
+        },
+        {
+          "map": "bl_lava",
+          "name": "Deleter of Fire(Sky)",
+          "amount": 80
+        },
+        {
+          "map": "bl_lava",
+          "name": "Jakk of Fire",
+          "amount": 60
+        },
+        {
+          "map": "bl_lava",
+          "name": "Lava Golem of Fire",
+          "amount": 70
+        },
+        {
+          "map": "bl_lava",
+          "name": "Majoruros of Fire",
+          "amount": 60
+        },
+        {
+          "map": "bl_lava",
+          "name": "Hydrolancer of Fire",
+          "amount": 30
+        },
+        {
+          "map": "bl_lava",
+          "name": "Acidus of Fire",
+          "amount": 70
+        }
+      ],
+      "label": "EXP Event"
     }
   ]
 }
