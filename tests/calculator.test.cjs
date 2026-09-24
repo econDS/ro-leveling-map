@@ -306,6 +306,25 @@ test('Complete 2025 editions are registered once, sorted by start date, and reta
     assert.equal(previous.normalExp,r.normalExp);assert.equal(previous.eventExp,r.eventExp);
   }
 });
+test('GGT Normal EXP takes priority when every official snapshot agrees',()=>{
+  let changed=0;
+  for(const source of MAPS){
+    for(const monster of source.monsters||[]){
+      if(monster.fallbackBaseExp!==undefined)changed++;
+      const normals=[...new Set(SPOTLIGHT_EVENTS.map(e=>spotlightRule(source,monster,e)?.normalExp).filter(Number.isFinite))];
+      if(normals.length===1)assert.equal(monster.baseExp,normals[0],source.code+'/'+monster.name);
+      if(normals.length>1)assert.ok(normals.includes(monster.baseExp),source.code+'/'+monster.name);
+    }
+    if(source.fallbackBaseExp!==undefined){
+      const total=source.monsters.reduce((sum,m)=>sum+m.amount,0);
+      const weighted=source.monsters.reduce((sum,m)=>sum+m.amount*m.baseExp,0)/total;
+      assert.ok(Math.abs(source.baseExp-weighted)<=0.5,source.code);
+    }
+  }
+  assert.equal(changed,20);
+  assert.equal(map('amicitia1').monsters.find(m=>m.name==='Amitera').baseExp,297411);
+  assert.equal(map('odin_tem02').monsters.find(m=>m.name==='Skogul').baseExp,3639);
+});
 test('Return and Halloween apply exact historic EXP only to listed monsters and maps',()=>{
   const ret=SPOTLIGHT_EVENTS.find(e=>e.id==='2025-08-27_return');
   const halloween=SPOTLIGHT_EVENTS.find(e=>e.id==='2025-10-15_halloween');
@@ -313,9 +332,9 @@ test('Return and Halloween apply exact historic EXP only to listed monsters and 
   const rake=oz.monsters.find(m=>m.name==='Rakehand');
   assert.equal(monsterEventExp(oz,rake,ret),649122);
   const amicitia=map('amicitia1'),amitera=amicitia.monsters.find(m=>m.name==='Amitera');
-  assert.notEqual(amitera.baseExp,297411);
+  assert.equal(amitera.baseExp,297411);
   assert.equal(monsterEventExp(amicitia,amitera,ret),1487055);
-  assert.equal(monsterEventExp(amicitia,amicitia.monsters.find(m=>m.name==='Litus'),ret),465590);
+  assert.equal(monsterEventExp(amicitia,amicitia.monsters.find(m=>m.name==='Litus'),ret),294168);
   assert.equal(monsterEventExp(amicitia,amicitia.monsters.find(m=>m.name==='Litus'),halloween),1470840);
   const ant=map('ant_d02_i');
   assert.equal(monsterEventExp(ant,ant.monsters.find(m=>m.name==='Diligent Andre'),halloween),482856);

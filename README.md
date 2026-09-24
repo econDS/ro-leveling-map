@@ -42,8 +42,10 @@ Daily Dungeon 6th Anniversary 2026 เก็บไว้เป็นข้อม
 
 ## แผนที่กิจกรรม
 
-เพิ่มแมพที่ระบุในกิจกรรมปี 2025–2026 ที่มีในคลัง รวม 65 แมพใหม่ พร้อมฐาน No event, มอนปกติทั้งแมพ, รูป และพื้นที่เดิน เช่น Illusion of Luanda, Einbech Mine 3F และ Ancient Odin’s Temple รวมเว็บมี 135 แมพ (Daily Dungeon ย้อนหลัง 6 แมพซ่อนเป็นค่าเริ่มต้น)
+เพิ่มแมพที่ระบุในกิจกรรมปี 2025–2026 ที่มีในคลัง รวม 66 แมพใหม่ พร้อมฐาน No event, มอนปกติทั้งแมพ และรูป เช่น Illusion of Luanda, Einbech Mine 3F, Ancient Odin’s Temple และ Geffen Dungeon Floor 2 รวมเว็บมี 136 แมพ (Daily Dungeon ย้อนหลัง 6 แมพซ่อนเป็นค่าเริ่มต้น)
 
 Illusion of Luanda แสดงมอนสเตอร์ปกติทั้งแผนที่ 6 ชนิดในตารางเดียวเพื่อเทียบข้อมูลได้ครบ; Spotlight ที่ประกาศจะเพิ่มเฉพาะมอนสเตอร์ที่อยู่ในรายการกิจกรรม และ MVP จะแสดงเป็นข้อมูลประกอบแต่ไม่รวมค่าเฉลี่ย EXP
 
-ข้อมูลประกาศที่ยังขัดกับฐานแมพมี 3 จุด: Lavaeter / amicitia1 (Flame), Peco Peco / lasa_dun01 (Return), Jakk / gef_dun02 (Halloween) จึงยังไม่ใช้โบนัสของแถวเหล่านี้กับมอนตัวอื่น
+ภาพประกาศ GGT ระบุ Peco Peco ที่ `lasa_dun01` และ Jakk ที่ `gef_dun02`; เว็บเก็บค่าแมพต้นฉบับไว้ใน `sourceMap` และจับคู่ EXP กิจกรรมกับจุดเกิดที่ตรวจแล้ว: Peco Peco ที่ `moc_fild01` / `moc_fild02`, Jakk ที่ `gef_dun01`
+
+ฐาน EXP ปกติให้ GGT ก่อน; กรณี Normal EXP ต่างรอบ 10 ตัวและกฎ Unicorn ของ Charge Basilisk ที่แยกตามแมพ บันทึกตัวเลข แหล่งอ้างอิง และเหตุผลการเลือกค่าไว้ใน [Spotlight Base EXP audit](docs/Spotlight_Base_Audit_2026-09-24.md)

@@ -1,6 +1,6 @@
 {
-  "mapCount": 135,
-  "addedMapCount": 65,
+  "mapCount": 136,
+  "addedMapCount": 66,
   "events": [
     {
       "id": "2025-12-03_unicorn",
@@ -17,12 +17,7 @@
       "ruleCount": 47,
       "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": [
-        {
-          "map": "amicitia1",
-          "name": "Lavaeter"
-        }
-      ],
+      "unmatched": [],
       "unmatchedSpawns": []
     },
     {
@@ -94,12 +89,7 @@
       "ruleCount": 36,
       "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": [
-        {
-          "map": "lasa_dun01",
-          "name": "Peco Peco"
-        }
-      ],
+      "unmatched": [],
       "unmatchedSpawns": []
     },
     {
@@ -108,34 +98,10 @@
       "ruleCount": 53,
       "spawnCount": 0,
       "missingMaps": [],
-      "unmatched": [
-        {
-          "map": "gef_dun02",
-          "name": "Jakk"
-        }
-      ],
+      "unmatched": [],
       "unmatchedSpawns": []
     }
   ],
   "checkedOn": "2026-09-24",
-  "exceptions": [
-    {
-      "eventId": "2026-01-14_flame",
-      "map": "amicitia1",
-      "name": "Lavaeter",
-      "reason": "ประกาศระบุ amicitia1 แต่ฐานมอนพบ Lavaeter ใน amicitia2; รอหลักฐานก่อนย้ายโบนัส"
-    },
-    {
-      "eventId": "2025-08-27_return",
-      "map": "lasa_dun01",
-      "name": "Peco Peco",
-      "reason": "ประกาศระบุ lasa_dun01 แต่ฐานแมพมี Trance Spore / Scout Basilisk และไม่พบ Peco Peco"
-    },
-    {
-      "eventId": "2025-10-15_halloween",
-      "map": "gef_dun02",
-      "name": "Jakk",
-      "reason": "ประกาศระบุ gef_dun02 แต่ฐานจำนวนมอนแมพนี้ไม่พบ Jakk"
-    }
-  ]
+  "exceptions": []
 }

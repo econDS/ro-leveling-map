@@ -22,13 +22,16 @@ const SPOTLIGHT_2025_EVENTS = [
       {
         "sourceMap": "lasa_dun01",
         "sourceName": "Peco Peco",
-        "map": "lasa_dun01",
+        "map": "moc_fild01",
         "name": "Peco Peco",
         "level": 25,
         "normalExp": 204,
         "normalJobExp": 156,
         "eventExp": 1224,
-        "eventJobExp": 936
+        "eventJobExp": 936,
+        "additionalMaps": [
+          "moc_fild02"
+        ]
       },
       {
         "sourceMap": "moc_fild03",
@@ -406,7 +409,7 @@ const SPOTLIGHT_2025_EVENTS = [
       }
     ],
     "amountMaps": [],
-    "notes": "Return ขยายถึง 15 ต.ค. 2025; EXP x5/x6 ตามมอนในประกาศ ใช้ฐานรอบเก่า ไม่คูณจากฐาน No event ปัจจุบัน"
+    "notes": "Return ขยายถึง 15 ต.ค. 2025; EXP x5/x6 ตามมอนในประกาศ ใช้ฐานรอบเก่า ไม่คูณจากฐาน No event ปัจจุบัน; Peco Peco ใช้ moc_fild01/02 โดยเก็บแมพในภาพไว้ที่ sourceMap"
   },
   {
     "id": "2025-10-15_halloween",
@@ -485,7 +488,7 @@ const SPOTLIGHT_2025_EVENTS = [
       {
         "sourceMap": "gef_dun02",
         "sourceName": "Jakk",
-        "map": "gef_dun02",
+        "map": "gef_dun01",
         "name": "Jakk",
         "level": 63,
         "normalExp": 588,
@@ -1001,7 +1004,7 @@ const SPOTLIGHT_2025_EVENTS = [
       }
     ],
     "amountMaps": [],
-    "notes": "Halloween 2025 · EXP x5/x6 เฉพาะมอนและแมพที่ระบุ ใช้ฐานรอบเก่าตามประกาศ"
+    "notes": "Halloween 2025 · EXP x5/x6 เฉพาะมอนที่ระบุ ใช้ฐานรอบเก่าตามประกาศ; Jakk ใช้ gef_dun01 โดยเก็บแมพในภาพไว้ที่ sourceMap"
   },
   {
     "id": "2025-12-03_unicorn",
@@ -1168,7 +1171,7 @@ const SPOTLIGHT_2025_EVENTS = [
       {
         "sourceMap": "*",
         "sourceName": "Charge Basilisk",
-        "map": "*",
+        "map": "lasa_dun03",
         "name": "Charge Basilisk",
         "level": 148,
         "normalExp": 12815,
@@ -1497,7 +1500,7 @@ const SPOTLIGHT_2025_EVENTS = [
       }
     ],
     "amountMaps": [],
-    "notes": "ประกาศ Unicorn ระบุชื่อมอนสเตอร์โดยไม่แยกแมพ"
+    "notes": "ประกาศ Unicorn ไม่ระบุแมพ; Charge Basilisk Lv148 / 12,815 จับคู่กับ lasa_dun03"
   }
 ];
 for (const event of SPOTLIGHT_2025_EVENTS) {

@@ -41,12 +41,60 @@ function spotlightName(map, monster) {
 function spotlightRule(map, monster, event) {
   if (!event) return null;
   const name = normalizeMonsterName(spotlightName(map, monster));
-  const candidates = event.rules.filter(r => (r.map === '*' || r.map === map.code) && normalizeMonsterName(r.name) === name);
+  const candidates = event.rules.filter(r => (r.map === '*' || r.map === map.code || r.additionalMaps?.includes(map.code)) && normalizeMonsterName(r.name) === name);
   if (candidates.length === 1) return candidates[0];
   return candidates.find(r => r.normalExp === monster.baseExp) || null;
 }
 function monsterEventExp(map, monster, event) {
   return spotlightRule(map, monster, event)?.eventExp ?? monster.baseExp;
+}
+function applyGgtBasePriority(maps, events) {
+  const changes = [];
+  for (const map of maps) {
+    if (!map.monsters?.length) continue;
+    let changed = false;
+    let ggtBaseCount = 0;
+    for (const monster of map.monsters) {
+      const snapshots = events.map(event => {
+        const rule = spotlightRule(map, monster, event);
+        return rule && Number.isFinite(rule.normalExp)
+          ? {normalExp:rule.normalExp, start:event.start, sourceUrl:event.sourceUrl}
+          : null;
+      }).filter(Boolean);
+      if (!snapshots.length) continue;
+      const values = [...new Set(snapshots.map(snapshot => snapshot.normalExp))];
+      if (values.length === 1) {
+        const ggtBaseExp = values[0];
+        const latest = snapshots.reduce((a, b) => a.start > b.start ? a : b);
+        monster.baseExpSource = 'GGT Spotlight';
+        monster.baseExpSourceUrl = latest.sourceUrl;
+        ggtBaseCount++;
+        if (monster.baseExp !== ggtBaseExp) {
+          monster.fallbackBaseExp = monster.baseExp;
+          monster.baseExp = ggtBaseExp;
+          changes.push({map:map.code, monster:monster.name, from:monster.fallbackBaseExp, to:ggtBaseExp});
+          changed = true;
+        }
+      } else {
+        monster.ggtNormalExpValues = values.sort((a, b) => a - b);
+        if (values.includes(monster.baseExp)) {
+          const matching = snapshots.filter(snapshot => snapshot.normalExp === monster.baseExp);
+          const latest = matching.reduce((a, b) => a.start > b.start ? a : b);
+          monster.baseExpSource = 'GGT Spotlight · conflicting rounds';
+          monster.baseExpSourceUrl = latest.sourceUrl;
+          ggtBaseCount++;
+        }
+      }
+    }
+    map.ggtBaseCount = ggtBaseCount;
+    if (changed) {
+      const total = map.monsters.reduce((sum, monster) => sum + monster.amount, 0);
+      const weighted = map.monsters.reduce((sum, monster) => sum + monster.baseExp * monster.amount, 0) / total;
+      map.fallbackBaseExp = map.baseExp;
+      map.baseExp = Number.isInteger(map.baseExp) ? Math.round(weighted) : weighted;
+    }
+  }
+  return changes;
 }
 function eventAmountFactor(map, event) {
   return event?.amountMaps?.includes(map.code) ? 2 : 1;

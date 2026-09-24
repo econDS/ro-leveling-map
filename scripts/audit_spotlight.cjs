@@ -11,10 +11,10 @@ const report=vm.runInContext(`({
     const spawns=e.spawnCounts||[];
     return {
       id:e.id,sourceUrl:e.sourceUrl,ruleCount:e.rules.length,spawnCount:spawns.length,
-      missingMaps:[...new Set([...e.rules,...spawns].map(r=>r.map))]
+      missingMaps:[...new Set([...e.rules,...spawns].flatMap(r=>[r.map,...(r.additionalMaps||[])]))]
         .filter(code=>code!=='*'&&!MAPS.some(m=>m.code===code)),
-      unmatched:e.rules.filter(r=>!MAPS.some(m=>(r.map==='*'||r.map===m.code)&&
-        m.monsters.some(b=>spotlightRule(m,b,e)===r))).map(r=>({map:r.map,name:r.name})),
+      unmatched:e.rules.flatMap(r=>[r.map,...(r.additionalMaps||[])].filter(code=>!MAPS.some(m=>(code==='*'||code===m.code)&&
+        m.monsters.some(b=>spotlightRule(m,b,e)===r))).map(code=>({map:code,name:r.name}))),
       unmatchedSpawns:spawns.filter(r=>!MAPS.some(m=>r.map===m.code&&
         m.monsters.some(b=>eventSpawnRule(m,b,e)===r))).map(r=>({map:r.map,name:r.name}))
     };

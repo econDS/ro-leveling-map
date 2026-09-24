@@ -9,7 +9,7 @@ const SPOTLIGHT_EVENTS = [
     "image": "assets/spotlight/2025-12-03_unicorn.jpg",
     "rules": [
       {
-        "map": "*",
+        "map": "lasa_dun03",
         "name": "Charge Basilisk",
         "normalExp": 12815,
         "eventExp": 51260
@@ -274,7 +274,7 @@ const SPOTLIGHT_EVENTS = [
       }
     ],
     "amountMaps": [],
-    "notes": "ประกาศ Unicorn ระบุชื่อมอนสเตอร์โดยไม่แยกแมพ"
+    "notes": "ประกาศ Unicorn ไม่ระบุแมพ; Charge Basilisk Lv148 / 12,815 จับคู่กับ lasa_dun03"
   },
   {
     "id": "2026-01-14_flame",
@@ -357,7 +357,7 @@ const SPOTLIGHT_EVENTS = [
         "eventExp": 882504
       },
       {
-        "map": "amicitia1",
+        "map": "amicitia2",
         "name": "Lavaeter",
         "normalExp": 317899,
         "eventExp": 953697
@@ -568,7 +568,7 @@ const SPOTLIGHT_EVENTS = [
       }
     ],
     "amountMaps": [],
-    "notes": "ยึดแมพในภาพ Flame: Junior Rgan ที่ jor_dun01 และ Lavaeter ที่ amicitia1"
+    "notes": "ยึดแมพในภาพ Flame: Junior Rgan ที่ jor_dun01 และ Lavaeter ที่ amicitia2"
   },
   {
     "id": "2026-02-25_new_specimen",
