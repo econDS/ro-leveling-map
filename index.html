@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RO General Map EXP Tool</title>
+  <title>RO หาแมพเก็บเลเวล | คำนวณ EXP</title>
   <style>
     :root{--bg:#f5f6f8;--panel:#fff;--text:#1f252d;--muted:#647082;--line:#d8dee8;--head:#182331;--accent:#0b7a75;--good:#168044;--warn:#915b00;--bad:#ad3030;--soft:#eef5f4;font-family:"Segoe UI",Tahoma,sans-serif}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);line-height:1.45}header{background:var(--head);color:#fff;padding:20px 24px 14px}h1{font-size:24px;margin:0 0 6px;letter-spacing:0}header p{margin:0;color:#cad5e3;font-size:14px}
     main{max-width:1540px;margin:0 auto;padding:18px 24px 28px}.layout{display:grid;grid-template-columns:minmax(280px,360px) 1fr;gap:16px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(24,35,49,.08)}.controls{padding:16px;position:sticky;top:12px}.section-title{font-size:15px;font-weight:800;margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid.one{grid-template-columns:1fr}
-    label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:5px;line-height:1.25}.label-with-icon{display:flex;align-items:center;gap:6px}.label-icon{width:22px;height:22px;border:1px solid #c7d0dc;border-radius:5px;background:#f8fafc;padding:2px;image-rendering:pixelated}input,select{width:100%;min-height:38px;border:1px solid #c7d0dc;border-radius:6px;background:#fff;color:var(--text);font-size:14px;padding:7px 9px}input[type=checkbox]{width:18px;height:18px;min-height:18px}.check-row{display:flex;gap:8px;align-items:center;margin:10px 0;font-size:14px}.spacer{height:14px}.hint{margin-top:10px;padding:10px;border-radius:6px;background:var(--soft);font-size:12px;color:#34515a}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}.metric{padding:12px;min-height:76px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(24,35,49,.08)}.metric .label{font-size:12px;color:var(--muted);font-weight:800}.metric .value{margin-top:4px;font-size:22px;font-weight:900;color:var(--accent);overflow-wrap:anywhere}.metric .sub{font-size:12px;color:var(--muted);margin-top:3px}
-    .table-wrap{overflow:auto;max-height:76vh;border-radius:8px}table{width:100%;min-width:1560px;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #e5e9f0;padding:9px 10px;text-align:right;white-space:nowrap}th{position:sticky;top:0;background:#edf2f6;color:#293541;font-size:12px;cursor:pointer;user-select:none;z-index:2}td:first-child,th:first-child,td:nth-child(2),th:nth-child(2),td:nth-child(3),th:nth-child(3){text-align:left}tr:hover td{background:#f9fbfc}.map-row{cursor:pointer}.final-col{background:#e9f8ef;color:var(--good);font-weight:900}.calc-col{background:#fff8e6}.density-col{background:#edf7ff;color:#155e75;font-weight:850}.rank{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:#e9f5f2;color:var(--accent);font-weight:900}.map-btn{border:0;background:transparent;color:var(--accent);font:inherit;font-weight:900;padding:0;cursor:pointer;text-align:left}.map-btn:hover{text-decoration:underline}.tag{display:inline-block;border-radius:999px;background:#eef2f7;color:#415064;font-size:11px;padding:2px 6px}.tag.good{background:#e9f7ef;color:var(--good)}.tag.warn{background:#fff3d9;color:var(--warn)}.tag.bad{background:#fdecec;color:var(--bad)}.modal{position:fixed;inset:0;display:none;z-index:50}.modal.open{display:block}.modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.58)}.modal-dialog{position:relative;width:min(1360px,calc(100vw - 20px));max-height:calc(100vh - 20px);margin:10px auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 24px 60px rgba(15,23,42,.36);overflow:hidden}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--line);background:#f8fafc}.detail-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0}.detail-title h2{margin:0;font-size:18px}.icon-btn{width:34px;height:34px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#334155;font-size:22px;line-height:1;cursor:pointer}.icon-btn:hover{background:#f1f5f9}.modal-body{padding:12px 14px;overflow:auto;max-height:calc(100vh - 84px)}.detail{display:grid;grid-template-columns:minmax(224px,336px) minmax(0,1fr);gap:14px;align-items:start}.map-preview{width:100%;background:#111923;border:1px solid var(--line);border-radius:8px;padding:10px}.map-preview img{display:block;width:100%;height:auto;image-rendering:pixelated}.mob-thumb{position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px}.mob-img{width:38px;height:38px;object-fit:contain;image-rendering:pixelated;background:#f8fafc;border:1px solid #dbe3ee;border-radius:6px;padding:2px}.mob-zoom{position:absolute;left:46px;top:50%;transform:translateY(-50%) scale(.92);width:128px;height:128px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 16px 38px rgba(15,23,42,.24);opacity:0;pointer-events:none;transition:opacity .12s ease,transform .12s ease;z-index:20}.mob-zoom img{max-width:116px;max-height:116px;object-fit:contain;image-rendering:pixelated}.mob-thumb:hover .mob-zoom,.mob-thumb:focus-within .mob-zoom{opacity:1;transform:translateY(-50%) scale(1)}.mob-missing{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px dashed #cbd5e1;border-radius:6px;color:#94a3b8;font-size:11px}.detail-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}.mini{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:8px}.mini .k{font-size:11px;color:var(--muted);font-weight:800}.mini .v{font-size:15px;font-weight:900;color:var(--text);margin-top:2px}.monster-table{min-width:740px}.monster-table th:first-child,.monster-table td:first-child{text-align:center;width:56px}.monster-table th:nth-child(2),.monster-table td:nth-child(2){white-space:normal;min-width:150px;max-width:280px;line-height:1.25}.monster-table th,.monster-table td{padding:8px 9px}details{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}summary{cursor:pointer;font-weight:800}.formula{font-family:Consolas,"Courier New",monospace;font-size:12px;background:#f4f6f8;padding:10px;border-radius:6px;overflow:auto}@media(max-width:900px){.detail{grid-template-columns:1fr}.detail-meta{grid-template-columns:1fr 1fr}.modal-dialog{width:calc(100vw - 12px);margin:6px auto;max-height:calc(100vh - 12px)}.modal-body{max-height:calc(100vh - 82px)}.mob-zoom{left:42px;width:104px;height:104px}.mob-zoom img{max-width:94px;max-height:94px}}
+    label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:5px;line-height:1.25}.label-with-icon{display:flex;align-items:center;gap:6px}.label-icon{width:22px;height:22px;border:1px solid #c7d0dc;border-radius:5px;background:#f8fafc;padding:2px;image-rendering:pixelated}input,select{width:100%;min-height:38px;border:1px solid #c7d0dc;border-radius:6px;background:#fff;color:var(--text);font-size:14px;padding:7px 9px}input[type=checkbox]{width:18px;height:18px;min-height:18px}.check-row{display:flex;gap:8px;align-items:center;margin:10px 0;font-size:14px}.spacer{height:14px}.hint{margin-top:10px;padding:10px;border-radius:6px;background:var(--soft);font-size:12px;color:#34515a}.exp-reminder{border-left:4px solid var(--accent);background:#e8f5f0;color:#145f4f;font-size:13px}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}.metric{padding:12px;min-height:76px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(24,35,49,.08)}.metric .label{font-size:12px;color:var(--muted);font-weight:800}.metric .value{margin-top:4px;font-size:22px;font-weight:900;color:var(--accent);overflow-wrap:anywhere}.metric .sub{font-size:12px;color:var(--muted);margin-top:3px}
+    .table-wrap{overflow:auto;max-height:76vh;border-radius:8px}table{width:100%;min-width:1560px;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #e5e9f0;padding:9px 10px;text-align:right;white-space:nowrap}th{position:sticky;top:0;background:#edf2f6;color:#293541;font-size:12px;cursor:pointer;user-select:none;z-index:2}td:first-child,th:first-child,td:nth-child(2),th:nth-child(2),td:nth-child(3),th:nth-child(3){text-align:left}tr:hover td{background:#f9fbfc}.map-row{cursor:pointer}.final-col{background:#e9f8ef;color:var(--good);font-weight:900}.calc-col{background:#fff8e6}.density-col{background:#edf7ff;color:#155e75;font-weight:850}.rank{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:#e9f5f2;color:var(--accent);font-weight:900}.map-btn{border:0;background:transparent;color:var(--accent);font:inherit;font-weight:900;padding:0;cursor:pointer;text-align:left}.map-btn:hover{text-decoration:underline}.tag{display:inline-block;border-radius:999px;background:#eef2f7;color:#415064;font-size:11px;padding:2px 6px}.tag.good{background:#e9f7ef;color:var(--good)}.tag.warn{background:#fff3d9;color:var(--warn)}.tag.bad{background:#fdecec;color:var(--bad)}.modal{position:fixed;inset:0;display:none;z-index:50}.modal.open{display:block}.modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.58)}.modal-dialog{position:relative;width:min(1360px,calc(100vw - 20px));max-height:calc(100vh - 20px);margin:10px auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 24px 60px rgba(15,23,42,.36);overflow:hidden}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--line);background:#f8fafc}.detail-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0}.detail-title h2{margin:0;font-size:18px}.icon-btn{width:34px;height:34px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#334155;font-size:22px;line-height:1;cursor:pointer}.icon-btn:hover{background:#f1f5f9}.modal-body{padding:12px 14px;overflow:auto;max-height:calc(100vh - 84px)}.detail{display:grid;grid-template-columns:minmax(224px,336px) minmax(0,1fr);gap:14px;align-items:start}.map-preview{width:100%;background:#111923;border:1px solid var(--line);border-radius:8px;padding:10px}.map-preview img{display:block;width:100%;height:auto;image-rendering:pixelated}.mob-thumb{position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px}.mob-img{width:38px;height:38px;object-fit:contain;image-rendering:pixelated;background:#f8fafc;border:1px solid #dbe3ee;border-radius:6px;padding:2px}.mob-zoom{position:absolute;left:46px;top:50%;transform:translateY(-50%) scale(.92);width:128px;height:128px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 16px 38px rgba(15,23,42,.24);opacity:0;pointer-events:none;transition:opacity .12s ease,transform .12s ease;z-index:20}.mob-zoom img{max-width:116px;max-height:116px;object-fit:contain;image-rendering:pixelated}.mob-thumb:hover .mob-zoom,.mob-thumb:focus-within .mob-zoom{opacity:1;transform:translateY(-50%) scale(1)}.mob-missing{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px dashed #cbd5e1;border-radius:6px;color:#94a3b8;font-size:11px}.detail-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}.mini{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:8px}.mini .k{font-size:11px;color:var(--muted);font-weight:800}.mini .v{font-size:15px;font-weight:900;color:var(--text);margin-top:2px}.monster-table{min-width:740px}.monster-table th:first-child,.monster-table td:first-child{text-align:center;width:56px}.monster-table th:nth-child(2),.monster-table td:nth-child(2){white-space:normal;min-width:150px;max-width:280px;line-height:1.25}.monster-table th,.monster-table td{padding:8px 9px}details{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}summary{cursor:pointer;font-weight:800}.formula{font-family:Consolas,"Courier New",monospace;font-size:12px;background:#f4f6f8;padding:10px;border-radius:6px;overflow:auto;white-space:pre-wrap}@media(max-width:900px){.detail{grid-template-columns:1fr}.detail-meta{grid-template-columns:1fr 1fr}.modal-dialog{width:calc(100vw - 12px);margin:6px auto;max-height:calc(100vh - 12px)}.modal-body{max-height:calc(100vh - 82px)}.mob-zoom{left:42px;width:104px;height:104px}.mob-zoom img{max-width:94px;max-height:94px}}
     .event-col{background:#edf7f5;color:#08645e;font-weight:800}.hint a{color:var(--accent)}.tag+.tag{margin-left:4px}.monster-table{min-width:1000px}
     @media(max-width:980px){main{padding:12px}.layout{grid-template-columns:1fr}.controls{position:static}.summary{grid-template-columns:1fr 1fr}}@media(max-width:560px){.grid,.summary{grid-template-columns:1fr}h1{font-size:20px}}
 
@@ -43,29 +43,30 @@
 </head>
 <body>
   <header>
-    <h1>General Map EXP Tool</h1>
-    <p>เลือกแมพเก็บเลเวลจาก EXP ต่อมอน ความคุ้มต่อ HP และความหนาแน่น ปรับตามเลเวล ปาร์ตี้ และบัฟของคุณ</p>
+    <h1>RO หาแมพเก็บเลเวล</h1>
+    <p>เทียบแมพเก็บเวลจาก EXP ที่ได้ เลือดมอน และจำนวนมอน ปรับตามเลเวล ปาร์ตี้ และบัฟที่ใช้อยู่</p>
   </header>
   <main>
     <div class="layout">
       <aside class="panel controls">
         <div class="settings-head"><h2 class="section-title">ตั้งค่าการคำนวณ</h2><button type="button" id="resetSettings" class="text-btn">คืนค่าเริ่มต้น</button></div><p id="storageStatus" class="save-status" role="status">บันทึกอัตโนมัติในเบราว์เซอร์นี้</p>
         <div class="grid">
-          <div><label for="playerLevel">Player Level</label><input id="playerLevel" type="number" min="1" max="260" value="100"></div>
-          <div><label for="partySize">Party Size</label><input id="partySize" type="number" min="1" max="12" value="1"></div>
+          <div><label for="playerLevel">เลเวลปัจจุบัน</label><input id="playerLevel" type="number" min="1" max="260" value="100"></div>
+          <div><label for="partySize">จำนวนคนในปาร์ตี้</label><input id="partySize" type="number" min="1" max="12" value="1"></div>
         </div>
+        <p class="hint exp-reminder"><strong>ก่อนเทียบแมพ:</strong> ใส่ Server EXP, โบนัส EXP จากของสวมใส่ และบัฟ EXP ที่กดอยู่ให้ครบ ถ้าไม่ได้ใช้ให้คง 0%</p>
         <div class="spacer"></div>
         <div class="grid one">
-          <div><label for="searchBox">Search map/name/code</label><input id="searchBox" type="search" placeholder="เช่น magma, jor, แมพน้ำแข็ง"></div>
+          <div><label for="searchBox">ค้นหาชื่อแมพหรือรหัสแมพ</label><input id="searchBox" type="search" placeholder="เช่น magma, jor, แมพน้ำแข็ง"></div>
         </div>
         <label class="check-row"><input id="enforceLevelLock" type="checkbox" checked> ซ่อนแมพที่เลเวลต่ำกว่าเกณฑ์วิธีเข้าที่บันทึก</label>
         <button type="button" id="shareSettings" class="text-btn">คัดลอกลิงก์การตั้งค่า</button><span id="shareStatus" class="save-status" role="status"></span>
         <input id="shareLink" type="text" readonly hidden aria-label="ลิงก์การตั้งค่าสำหรับคัดลอก">
         <details id="advancedSettings" class="setting-group" open><summary>กิจกรรมและบัฟ <span id="advancedStatus" class="cell-note"></span></summary>
         <div class="spacer"></div>
-        <h2 class="section-title">Event</h2>
+        <h2 class="section-title">เลือกกิจกรรม EXP</h2>
         <label for="spotlightEvent">กิจกรรม EXP / Spotlight</label>
-        <select id="spotlightEvent"><option value="auto" selected>Auto · ตามช่วงกิจกรรม</option><option value="none">No event</option></select>
+        <select id="spotlightEvent"><option value="auto" selected>อัตโนมัติ · ตามช่วงกิจกรรม</option><option value="none">ไม่มีกิจกรรม</option></select>
         <div class="hint" id="eventInfo" aria-live="polite"></div>
         <details class="setting-group" open>
           <summary>Daily Dungeon ย้อนหลัง</summary>
@@ -79,9 +80,9 @@
           <div id="archiveInfo" class="field-help" aria-live="polite"></div>
         </details>
         <div class="spacer"></div>
-        <details class="setting-group" open><summary>บัฟและอุปกรณ์ <span id="buffCount" class="tag">ไม่ใช้บัฟ</span></summary><p class="field-help">กรอกเฉพาะโบนัสที่ใช้งานอยู่ · ค่าเริ่มต้นทั้งหมด 0%</p>
+        <details class="setting-group" open><summary>บัฟ EXP และของสวมใส่ <span id="buffCount" class="tag">ไม่ใช้บัฟ</span></summary><p class="field-help">ใส่เฉพาะโบนัสที่เปิดใช้อยู่จริง · ถ้าไม่ได้ใช้ให้คง 0%</p>
         <div class="grid one">
-          <div><label for="serverBonus">Server EXP Up % (แยกจากกิจกรรม)</label><input id="serverBonus" type="number" min="0" step="1" value="0"></div>
+          <div><label for="serverBonus">Server EXP เพิ่ม (%) · แยกจากกิจกรรม</label><input id="serverBonus" type="number" min="0" step="1" value="0"></div>
           <div><label for="manualBonus" class="label-with-icon"><img class="label-icon" src="assets/items/101079_battle_manual_200.png" alt="">Battle Manual</label><select id="manualBonus">
             <option value="0">ไม่ใช้ Battle Manual</option>
             <option value="50">Battle Manual +50%</option>
@@ -105,15 +106,15 @@
             <option value="0">ไม่กดบัฟ Staff</option>
             <option value="30">EXP Staff +30%</option>
           </select></div>
-          <div><label for="gearBonus" class="label-with-icon"><img class="label-icon" src="assets/items/450517_kafra_uniform_lt_gear.png" alt="">Gear EXP %</label><input id="gearBonus" type="number" min="0" step="1" value="0"></div>
+          <div><label for="gearBonus" class="label-with-icon"><img class="label-icon" src="assets/items/450517_kafra_uniform_lt_gear.png" alt="">EXP จากของสวมใส่ (%)</label><input id="gearBonus" type="number" min="0" step="1" value="0"></div>
           <div><label for="richManBonus" class="label-with-icon"><img class="label-icon" src="assets/items/skill_307_rich_man_mr_kim.png" alt="">Rich Man Mr.Kim / ถุงทอง</label><select id="richManBonus">
             <option value="0">ไม่ใช้ถุงทอง</option>
             <option value="60">ใช้ถุงทอง +60%</option>
           </select></div>
-          <div><label for="customBonus">Custom external EXP %</label><input id="customBonus" type="number" min="0" step="1" value="0"></div>
+          <div><label for="customBonus">EXP เพิ่มอื่น ๆ (%)</label><input id="customBonus" type="number" min="0" step="1" value="0"></div>
         </div>
-        </details><details class="setting-group" open><summary>EXP ตามเผ่า <span id="raceCount" class="tag">0 / 10</span></summary><p class="field-help">โบนัสเพิ่มเติมจาก Gear EXP เฉพาะเผ่านั้น เช่น Gear 164% + Plant 9% ให้แยกกรอกสองช่อง</p><div id="raceInputs" class="grid race-grid"></div></details><div class="hint">คำนวณ Event EXP และ level penalty รายมอนสเตอร์ก่อนถ่วงน้ำหนักตามจำนวนเกิดของกิจกรรมนั้น</div>
-        <div class="hint">Density ใช้จำนวนช่องเดินจาก GAT · คลิกชื่อแมพเพื่อดูภาพพื้นที่ที่นับ<br>อ้างอิงแผนที่ Divine Pride; ยังไม่ยืนยันพื้นที่เกิดมอนหรือสิ่งกีดขวางในเซิร์ฟเวอร์ไทย แมพที่ไม่มี GAT จะขึ้น − และไม่เข้าอันดับ Best area</div>
+        </details><details class="setting-group" open><summary>โบนัส EXP ตามเผ่า <span id="raceCount" class="tag">0 / 10</span></summary><p class="field-help">โบนัส EXP เฉพาะเผ่า เช่น ของสวมใส่ +164% และ Plant +9% ให้แยกกรอกสองช่อง</p><div id="raceInputs" class="grid race-grid"></div></details><div class="hint">คำนวณ EXP กิจกรรมและปรับ EXP ตามเลเวลของมอนแต่ละชนิด ก่อนเฉลี่ยตามจำนวนมอนในแมพ</div>
+        <div class="hint">ความหนาแน่นมอนใช้จำนวนช่องเดินจาก GAT · คลิกชื่อแมพเพื่อดูพื้นที่ที่นับ<br>อ้างอิงแผนที่ Divine Pride; ยังไม่ยืนยันพื้นที่เกิดมอนหรือสิ่งกีดขวางในเซิร์ฟเวอร์ไทย แมพที่ไม่มี GAT จะขึ้น − และไม่เข้าอันดับคะแนนพื้นที่</div>
         </details>
       </aside>
       <section>
@@ -125,21 +126,19 @@
             <tbody></tbody>
           </table>
         </div>
-        <p class="field-help planning-help">Final EXP / ตัวและค่าเฉลี่ยแสดงทศนิยม 1 ตำแหน่ง รวมเลเวล ปาร์ตี้ และบัฟแล้ว · ปัดเศษเฉพาะการแสดงผล<br>EXP / 1M HP ใช้เทียบความคุ้มต่อเลือดที่ต้องตี · คะแนนพื้นที่รวม EXP กับความหนาแน่นมอน ไม่ใช่ EXP ต่อชั่วโมง · K = พัน, M = ล้าน, B = พันล้าน · ตารางแมพเป็นค่าเฉลี่ย ให้เทียบในเกมจากแถวของมอนชนิดนั้น</p>
+        <p class="field-help planning-help">EXP ที่ได้ / ตัวและค่าเฉลี่ยแสดงทศนิยม 1 ตำแหน่ง รวมเลเวล ปาร์ตี้ และบัฟแล้ว · ปัดเศษเฉพาะการแสดงผล<br>EXP ต่อ HP 1 ล้าน ใช้เทียบความคุ้มต่อเลือดที่ต้องตี · คะแนนพื้นที่รวม EXP กับความหนาแน่นมอน ไม่ใช่ EXP ต่อชั่วโมง · K = พัน, M = ล้าน, B = พันล้าน · ตารางแมพเป็นค่าเฉลี่ย ให้เทียบในเกมจากแถวของมอนชนิดนั้น</p>
         <details>
-          <summary>สูตร</summary>
-          <div class="formula">Level yield = iRO level difference table; ถ้าแมพมี monster detail จะคำนวณรายมอนก่อนถ่วงน้ำหนัก, ถ้าไม่มีจะ fallback ไป Weighted Lv ของแมพ
-Party share = (0.8 + 0.2 x partySize) / partySize
-Base after party = Base after penalty x PartyShare
-Event EXP = EXP ของมอน/แมพที่ประกาศ; จำนวนเกิดใช้ค่าช่วงกิจกรรมเมื่อมีข้อมูล; No event ใช้ Normal EXP
-Base after penalty = ผลรวม (จำนวนมอน / จำนวนรวม x Event EXP x level yield รายมอน)
-H = 1 + Server + Kafra + Malangdo + Premium + Staff + Custom
-I(monster) = 1 + (GearEXP% + RichMan% + RaceEXP% ของเผ่านั้น) / 100
-Final / monster = Event EXP x level yield x PartyShare x ((H x I(monster)) + BattleManual)
-Final EXP / kill = ผลรวม (จำนวนมอน / จำนวนรวม x Final / monster)
-Monster density = จำนวนมอนที่ใช้ (รายมอนตามประกาศถ้ามี) / walkable GAT cells x 10,000
-Base area score = Base after penalty x Monster density
-Final area score = Final EXP / kill x Monster density</div>
+          <summary>สูตรคำนวณ EXP</summary>
+          <div class="formula">ค่าปรับตามเลเวล = ตาราง iRO ตามส่วนต่างเลเวลผู้เล่นกับมอน; ถ้ามีข้อมูลรายมอนจะคิดทีละชนิดก่อนเฉลี่ยทั้งแมพ
+ส่วนแบ่งปาร์ตี้ = (0.8 + 0.2 × จำนวนคนในปาร์ตี้) ÷ จำนวนคนในปาร์ตี้
+EXP ที่ใช้ = EXP กิจกรรมตามประกาศ; ถ้าไม่มีกิจกรรมใช้ EXP ปกติ
+EXP หลังปรับเลเวล = ผลรวม (สัดส่วนจำนวนมอน × EXP ที่ใช้ × ค่าปรับตามเลเวลของมอน)
+H = 1 + (Server EXP + Kafra + Malangdo + Premium + Staff + EXP เพิ่มอื่น ๆ) ÷ 100
+I(มอน) = 1 + (EXP จากของสวมใส่ + ถุงทอง + EXP ตามเผ่าของมอน) ÷ 100
+EXP ที่ได้ต่อมอน = EXP ที่ใช้ × ค่าปรับตามเลเวล × ส่วนแบ่งปาร์ตี้ × ((H × I(มอน)) + Battle Manual)
+EXP ที่ได้ / ตัว (เฉลี่ยต่อแผนที่) = ผลรวม (สัดส่วนจำนวนมอน × EXP ที่ได้ต่อมอน)
+ความหนาแน่นมอน = จำนวนมอนช่วงที่เลือก ÷ จำนวนช่องเดินจาก GAT × 10,000
+คะแนนพื้นที่ = EXP ที่ได้ / ตัว (เฉลี่ยต่อแผนที่) × ความหนาแน่นมอน</div>
         </details>
       </section>
     </div>
@@ -148,7 +147,7 @@ Final area score = Final EXP / kill x Monster density</div>
       <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle">
         <div class="modal-head">
           <div class="detail-title" id="mapModalTitle"></div>
-          <button class="icon-btn" type="button" id="closeMapModal" aria-label="Close map detail">&times;</button>
+          <button class="icon-btn" type="button" id="closeMapModal" aria-label="ปิดรายละเอียดแมพ">&times;</button>
         </div>
         <div class="modal-body" id="mapModalBody"></div>
       </section>
