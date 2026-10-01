@@ -13,8 +13,19 @@
   `node tests/capture-leveling-baseline.cjs`
 - `source-baseline.json`: SHA-256 of the original production files, captured
   before production edits; this is not a reconstructed after-change baseline
-- Browser baseline is captured by a separate QA-only commit and CI run before
-  integrating the component; its report/commit will be recorded here
+- `baseline.json.gz` is a lossless gzip of the genuine successful browser capture from the QA-only
+  commit `9b451b153cf67c501a2473b879647810711a844c`, while every production
+  source was still byte-identical to the original main
+- [Baseline run](https://github.com/econDS/ro-leveling-map/actions/runs/36808124541):
+  Chromium 140.0.7339.186, 28 browser checks passed, all eight viewport/theme
+  combinations had zero horizontal overflow; warm-cache offline passed
+- That run's overall workflow status was failure because its separate Python
+  step used Pillow 11.3.0, which lacks `Image.get_flattened_data` required by the
+  existing tests. The workflow now pins Pillow 12.3.0, matching the environment
+  where the original four Python tests already passed. No Python test changed
+- The earlier run `36807641987` is retained as a superseded capture: its UI
+  driver entered an unintended damage value, detected through screenshot
+  inspection. It is not the accepted custom-input baseline
 
 Local Chromium launch failed with `socket() failed: Operation not permitted`.
 Browser verification therefore runs only in the explicitly authorized PR-only
@@ -23,6 +34,21 @@ outside the production checkout, and uses its matching Chromium build.
 The job has `contents: read`, checkout credentials are not persisted, and it
 has no deploy, push or Pages-setting steps. Logs and screenshots upload even
 when tests fail.
+
+## Production change
+
+The only edited pre-existing production file is `index.html`: the shared
+component and local module are immediately before the unchanged header. There
+was no skip link. A single `ro-suite-nav > nav > a` CSS rule makes the fallback
+at least 44×44 CSS pixels and uses the app's existing text color in both themes.
+No global CSS, sticky/modal adjustment, theme code or new storage key was needed.
+There is no `theme` attribute because the real app follows OS color scheme, and
+there is no `catalog-url`; executable navigation comes only from this repo.
+
+The three immutable release files are under `assets/ro-suite/1.2.0/`. All original
+assets, formulas, settings, event data, serializer, UI, service worker and
+manifest remain byte-for-byte unchanged. A test also removes only the exact
+approved insertion from `index.html` and verifies its original SHA-256.
 
 ## Existing application contracts
 
@@ -76,3 +102,15 @@ NODE_PATH=/path/to/qa/node_modules node tests/ro-suite-nav.browser.cjs
 Physical devices, WebKit/Safari, Firefox, and the public GitHub Pages build after
 merge are not tested. No merge or deployment is authorized. Browser claims
 must reference an actual run on the stated commit, not this checklist.
+
+The browser contexts contain isolated custom QA settings, not a read of the
+user's real browser profile. Tests access only the Leveling settings key.
+The custom damage input is seeded with the native input setter followed by the
+real input/change handlers; it is not a claim about simulated typing behavior.
+Copied share URLs and reopening, clipboard, buttons and keyboard navigation
+are exercised in Chromium. Canonical self/Portal links are intercepted locally
+to avoid visiting live calculators; the real Portal URL separately returned
+HTTP 200. Service-worker error exclusions are confined to deliberate offline
+steps, and nav failure exclusions to the exact intentionally blocked module.
+
+The browser baseline is stored compressed to keep evidence transfer small; the tests decode it with Node built-in zlib. Decoded SHA-256: `3b4c9399ab8c64017eb37a601d9b6ba15b83c8045b20cffd477324e9f4d908ea`. Its data has not been regenerated after integration.

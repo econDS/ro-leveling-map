@@ -37,7 +37,7 @@ jobs:
         run: |
           node --test tests/*.test.cjs 2>&1 | tee artifacts/ro-suite-nav/node-tests.log
           python -m venv "$RUNNER_TEMP/leveling-python-qa"
-          "$RUNNER_TEMP/leveling-python-qa/bin/pip" install Pillow==11.3.0
+          "$RUNNER_TEMP/leveling-python-qa/bin/pip" install Pillow==12.3.0
           "$RUNNER_TEMP/leveling-python-qa/bin/python" -m unittest discover -s tests -p 'test_*.py' 2>&1 | tee artifacts/ro-suite-nav/python-tests.log
       - name: Install pinned QA-only Chromium tooling
         id: browser-tools

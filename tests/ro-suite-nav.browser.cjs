@@ -9,7 +9,7 @@ let chromium, playwrightVersion;
 const ROOT = path.resolve(__dirname, '..');
 const OUTPUT = path.resolve(process.env.RO_QA_OUTPUT || '/tmp/ro-leveling-nav-browser-qa');
 const BASE = process.env.RO_QA_URL || 'http://127.0.0.1:4173/ro-leveling-map/';
-const BASELINE_FILE = path.join(ROOT, 'docs/qa/ro-suite-nav/baseline.json');
+const BASELINE_FILE = path.join(ROOT, 'docs/qa/ro-suite-nav/baseline.json.gz');
 const FIXED_DATE = '2026-11-01T00:00:00Z';
 const STORAGE_KEY = 'ro-general-map-exp-tool-settings-v1';
 const SELF_URL = 'https://econds.github.io/ro-leveling-map/';
@@ -312,7 +312,7 @@ async function fixtures() {
     const present = await page.locator('ro-suite-nav').count(); mode = report.mode = present ? 'final' : 'baseline';
     if (mode === 'final') {
       assert(fs.existsSync(BASELINE_FILE), 'Final mode requires the frozen preintegration docs/qa/ro-suite-nav/baseline.json');
-      baseline = JSON.parse(fs.readFileSync(BASELINE_FILE, 'utf8'));
+      baseline = JSON.parse(require('node:zlib').gunzipSync(fs.readFileSync(BASELINE_FILE)).toString('utf8'));
       assert.equal(baseline.completedWithoutFailures, true, 'Do not bless a partial or failing baseline');
       assert.equal(baseline.fixedDate, FIXED_DATE); assert.equal(baseline.playwrightVersion, playwrightVersion);
       navScriptUrl = await page.evaluate(() => [...document.scripts].map(s => s.src).find(src => /\/nav\.js(?:[?#]|$)/.test(src)));
