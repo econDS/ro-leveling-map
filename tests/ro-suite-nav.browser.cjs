@@ -31,12 +31,13 @@ const CASES = [
 const report = {
   schemaVersion: 1, commit: process.env.RO_QA_COMMIT || null,
   fixedDate: FIXED_DATE, baseUrl: BASE, playwrightVersion,
-  mode: null, checks: [], failures: [], screenshots: [], fixtures: {}, matrix: {},
+  mode: null, checks: [], failures: [], screenshots: [], fixtures: {}, legacyShares: {}, matrix: {},
   network: { requests: [], failed: [], badResponses: [], consoleErrors: [], pageErrors: [] },
   limitations: [
     'The clock is fixed to 2026-11-01 for reproducibility; this is not a statement about the currently active event.',
     'Canonical Leveling and Portal navigation requests are intercepted locally, so production applications and their storage are not exercised.',
     'Clipboard checks use a real browser clipboard with clipboard-read/write permissions granted only to these fresh test contexts.',
+    'playerDamage is deliberately seeded with the native input value setter plus input/change events because its live comma formatter interferes with Playwright fill; this is fixture seeding, not a keystroke-editor test. Every requested fixture setting is asserted before capture.',
     'Service-worker checks, if successful, prove a freshly warmed local cache, not upgrades from every historically installed cache.'
   ]
 };
@@ -106,7 +107,15 @@ async function applyCase(page, fixture) {
   for (const [id, value] of Object.entries(fixture.settings)) {
     const input = page.locator('#' + id);
     const kind = await input.evaluate(el => el.type);
-    if (kind === 'checkbox') await input.setChecked(value);
+    if (id === 'playerDamage') {
+      // Deterministic fixture seeding through the real input/change handlers.
+      // Do not describe this as successful simulated typing into the live formatter.
+      await input.evaluate((el, requested) => {
+        Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(el, String(requested));
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      }, value);
+    } else if (kind === 'checkbox') await input.setChecked(value);
     else if (kind === 'select-one' && ['manualBonus', 'kafraBonus', 'malangdoBonus', 'premiumBonus', 'staffBonus', 'richManBonus'].includes(id)) {
       await page.locator(`.buff-chip[data-buff="${id}"][data-value="${value}"]`).click();
     } else if (kind === 'select-one') await input.selectOption(String(value));
@@ -116,6 +125,12 @@ async function applyCase(page, fixture) {
   await page.locator('#searchBox').focus();
   await page.locator('#searchBox').blur();
   await page.waitForFunction(() => document.querySelectorAll('#mapTable tbody .map-row').length > 0);
+  const actual = await page.evaluate(() => readInputs());
+  for (const [id, requested] of Object.entries(fixture.settings)) {
+    assert.equal(actual[id], requested, `Fixture ${fixture.id} must actually contain requested ${id}`);
+  }
+  assert.deepEqual(JSON.parse(await page.evaluate(key => localStorage.getItem(key), STORAGE_KEY)), actual, 'Requested fixture and saved settings agree');
+  if ('playerDamage' in fixture.settings) assert.equal(await page.locator('#playerDamage').inputValue(), fixture.settings.playerDamage.toLocaleString('en-US'));
 }
 async function snapshot(page) {
   return page.evaluate(key => {
@@ -307,6 +322,16 @@ async function fixtures() {
     assert.equal(await page.locator('#spotlightEvent').inputValue(), 'auto');
     assert.equal(await page.evaluate(() => config().event), null, 'Fixed test date is outside the archived catalog schedule');
     for (const fixture of CASES) await check('fixture-' + fixture.id, async () => {
+      if (mode === 'final') {
+        const oldShareUrl = baseline.fixtures[fixture.id + '-shareUrl'];
+        assert.equal(typeof oldShareUrl, 'string', 'Frozen baseline contains a genuinely copied pre-edit URL');
+        const legacy = await openPage(context, 'legacy-share-' + fixture.id, oldShareUrl);
+        try {
+          assert.equal(await legacy.locator('#shareStatus').textContent(), 'โหลดค่าจากลิงก์แล้ว');
+          await assertSame(legacy, baseline.fixtures[fixture.id], 'Stored pre-edit share URL restores exact original settings and outputs');
+          report.legacyShares[fixture.id] = { url: oldShareUrl, exactOriginalState: true };
+        } finally { await legacy.close(); }
+      }
       await applyCase(page, fixture);
       const state = await snapshot(page); report.fixtures[fixture.id] = state;
       assert.equal(state.rows.length, state.displayRows.length);
@@ -315,6 +340,10 @@ async function fixtures() {
       if (mode === 'final') assert.deepEqual(state, baseline.fixtures[fixture.id], 'Every calculated row/input/storage value matches the frozen genuine browser baseline');
       const shareUrl = await shareAndReload(page, context, state, fixture.id);
       report.fixtures[fixture.id + '-shareUrl'] = shareUrl;
+      if (mode === 'final') {
+        assert.equal(new URL(shareUrl).hash, new URL(baseline.fixtures[fixture.id + '-shareUrl']).hash, 'New copy preserves the exact pre-edit settings hash contract');
+        report.legacyShares[fixture.id].newHashIdentical = true;
+      }
       await top(page); await screenshot(page, fixture.id);
     }, page);
     await page.close();
