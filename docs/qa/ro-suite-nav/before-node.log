@@ -1,0 +1,38 @@
+✔ Confirmed outdoor warp access changes filtering without changing EXP or other dungeons (12.007696ms)
+✔ Search finds English names and aliases while preserving Thai names and map codes (0.495035ms)
+✔ Public map and monster names contain no Korean locale text (0.79151ms)
+✔ Catalog expiry follows the Thai maintenance boundary without treating an earlier gap as expired (0.370197ms)
+✔ Shared links validate version, clamp values and preserve event/archive/race choices (2.357184ms)
+✔ Archived Daily Dungeon is opt-in, preserves the old edition and stays separate from Spotlight (347.264376ms)
+✔ No event preserves the original per-monster calculation at multiple levels (13.705419ms)
+✔ Mixed map boosts only listed normal Orcs; plants, Orc Baby and Furious Orc stay unchanged in June (0.427022ms)
+✔ Event snapshots use exact published EXP and switching back does not mutate normal data (0.209555ms)
+✔ Spotlight aliases resolve Varmundt, Chaos and Charge Basilisk without boosting unrelated variants (1.068777ms)
+✔ June doubles Varmundt density and area score, not EXP per kill (0.680222ms)
+✔ EP20 has nine complete maps with normal official counts, weighted stats and local images (0.671109ms)
+✔ August applies EP20 rules by map, leaving identical monsters in other maps at normal EXP (0.288394ms)
+✔ Unknown walkable area remains unavailable instead of creating a misleading density (0.243877ms)
+✔ All event/level combinations produce finite values and retain source data (428.587137ms)
+✔ September 2026 event uses published EXP rows and exact per-monster spawn totals (11.398119ms)
+✔ A changed spawn mix reweights map EXP, HP and monster share without mutating normal data (0.426211ms)
+✔ Public entry point contains no encryption or login form and all scripts exist (0.454674ms)
+✔ Every map monster has a supported race, including EP20 and daily variants (0.726833ms)
+✔ Race EXP weights each monster after its own Spotlight and level penalty (0.434253ms)
+✔ Auto uses Thai schedule boundaries, newest active event and gaps (0.183095ms)
+✔ Defaults have no buffs, settings survive JSON and malformed values are rejected (0.956609ms)
+✔ Complete 2025 editions are registered once, sorted by start date, and retain all EXP columns (0.915957ms)
+✔ GGT Normal EXP takes priority when every official snapshot agrees (35.534343ms)
+✔ Return and Halloween apply exact historic EXP only to listed monsters and maps (0.688485ms)
+✔ GAT geometry replaces brightness for all normal maps including EP20 (9.824113ms)
+✔ Planning efficiency uses final EXP including party, level and race bonuses (3.450128ms)
+✔ Every explicit Spotlight map exists; unmatched rows are limited to documented source conflicts (319.497058ms)
+✔ Imported maps preserve complete normal populations, provenance, races, assets and weighted stats (5.18717ms)
+✔ Luanda shows every normal monster without a phase selector and applies Spotlight by name (1.105373ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1371.016893
