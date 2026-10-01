@@ -54,7 +54,10 @@ test('Embedded catalog keeps Leveling identity and Grade & Refine planned withou
   assert.equal(planned.canonicalUrl, null);
 });
 test('Browser evidence is a successful genuine preintegration capture', () => {
-  const baseline = JSON.parse(require('node:zlib').gunzipSync(read('docs/qa/ro-suite-nav/baseline.json.gz')));
+  const bytes = require('node:zlib').gunzipSync(read('docs/qa/ro-suite-nav/baseline.json.gz'));
+  assert.equal(hash(bytes), '3b4c9399ab8c64017eb37a601d9b6ba15b83c8045b20cffd477324e9f4d908ea');
+  const baseline = JSON.parse(bytes);
+  assert.equal(baseline.sourceCommit, '9b451b153cf67c501a2473b879647810711a844c');
   assert.equal(baseline.completedWithoutFailures, true);
   assert.equal(baseline.playwrightVersion, '1.55.1');
   assert.equal(Object.keys(baseline.matrix).length, 8);
