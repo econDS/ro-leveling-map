@@ -1,0 +1,288 @@
+{
+  "evidenceCommit": "8df59c0ca4d813217b4c86d6d8cd936e98fb8bd8",
+  "ciRun": "https://github.com/econDS/ro-leveling-map/actions/runs/36823790740",
+  "browserVersion": "140.0.7339.186",
+  "playwrightVersion": "1.55.1",
+  "fixedClock": "2026-11-01T00:00:00Z",
+  "status": "passed",
+  "browserChecks": 42,
+  "nodeTests": 35,
+  "pythonTests": 4,
+  "matrix": {
+    "360-light": {
+      "initialOverflow": {
+        "width": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "excess": 0
+      }
+    },
+    "360-dark": {
+      "initialOverflow": {
+        "width": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "excess": 0
+      }
+    },
+    "390-light": {
+      "initialOverflow": {
+        "width": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "excess": 0
+      }
+    },
+    "390-dark": {
+      "initialOverflow": {
+        "width": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "excess": 0
+      }
+    },
+    "768-light": {
+      "initialOverflow": {
+        "width": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "excess": 0
+      }
+    },
+    "768-dark": {
+      "initialOverflow": {
+        "width": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "excess": 0
+      }
+    },
+    "1440-light": {
+      "initialOverflow": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "excess": 0
+      }
+    },
+    "1440-dark": {
+      "initialOverflow": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "excess": 0
+      },
+      "openOverflow": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "excess": 0
+      },
+      "settledOverflow": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "excess": 0
+      }
+    }
+  },
+  "legacyShares": {
+    "none-defaults": {
+      "url": "http://127.0.0.1:4173/ro-leveling-map/#settings=%7B%22version%22%3A1%2C%22settings%22%3A%7B%22playerLevel%22%3A100%2C%22partySize%22%3A1%2C%22playerDamage%22%3A1000000%2C%22searchBox%22%3A%22%22%2C%22enforceLevelLock%22%3Atrue%2C%22filterEvent%22%3Afalse%2C%22filterSpawn%22%3Afalse%2C%22filterEp20%22%3Afalse%2C%22filterHits%22%3Afalse%2C%22spotlightEvent%22%3A%22none%22%2C%22dailyDungeonMode%22%3A%22hide%22%2C%22serverBonus%22%3A0%2C%22manualBonus%22%3A0%2C%22kafraBonus%22%3A0%2C%22malangdoBonus%22%3A0%2C%22premiumBonus%22%3A0%2C%22staffBonus%22%3A0%2C%22gearBonus%22%3A0%2C%22richManBonus%22%3A0%2C%22customBonus%22%3A0%2C%22raceFormless%22%3A0%2C%22raceUndead%22%3A0%2C%22raceBrute%22%3A0%2C%22racePlant%22%3A0%2C%22raceInsect%22%3A0%2C%22raceFish%22%3A0%2C%22raceDemon%22%3A0%2C%22raceDemi-Human%22%3A0%2C%22raceAngel%22%3A0%2C%22raceDragon%22%3A0%7D%7D",
+      "exactOriginalState": true,
+      "newHashIdentical": true
+    },
+    "none-customized": {
+      "url": "http://127.0.0.1:4173/ro-leveling-map/#settings=%7B%22version%22%3A1%2C%22settings%22%3A%7B%22playerLevel%22%3A215%2C%22partySize%22%3A4%2C%22playerDamage%22%3A234567%2C%22searchBox%22%3A%22%22%2C%22enforceLevelLock%22%3Afalse%2C%22filterEvent%22%3Afalse%2C%22filterSpawn%22%3Afalse%2C%22filterEp20%22%3Afalse%2C%22filterHits%22%3Afalse%2C%22spotlightEvent%22%3A%22none%22%2C%22dailyDungeonMode%22%3A%22compare%22%2C%22serverBonus%22%3A100%2C%22manualBonus%22%3A200%2C%22kafraBonus%22%3A50%2C%22malangdoBonus%22%3A20%2C%22premiumBonus%22%3A20%2C%22staffBonus%22%3A30%2C%22gearBonus%22%3A164%2C%22richManBonus%22%3A60%2C%22customBonus%22%3A37%2C%22raceFormless%22%3A0%2C%22raceUndead%22%3A0%2C%22raceBrute%22%3A0%2C%22racePlant%22%3A9%2C%22raceInsect%22%3A0%2C%22raceFish%22%3A0%2C%22raceDemon%22%3A0%2C%22raceDemi-Human%22%3A0%2C%22raceAngel%22%3A0%2C%22raceDragon%22%3A0%7D%7D",
+      "exactOriginalState": true,
+      "newHashIdentical": true
+    },
+    "historical-unicorn": {
+      "url": "http://127.0.0.1:4173/ro-leveling-map/#settings=%7B%22version%22%3A1%2C%22settings%22%3A%7B%22playerLevel%22%3A215%2C%22partySize%22%3A4%2C%22playerDamage%22%3A234567%2C%22searchBox%22%3A%22%22%2C%22enforceLevelLock%22%3Afalse%2C%22filterEvent%22%3Afalse%2C%22filterSpawn%22%3Afalse%2C%22filterEp20%22%3Afalse%2C%22filterHits%22%3Afalse%2C%22spotlightEvent%22%3A%222025-12-03_unicorn%22%2C%22dailyDungeonMode%22%3A%22compare%22%2C%22serverBonus%22%3A100%2C%22manualBonus%22%3A200%2C%22kafraBonus%22%3A50%2C%22malangdoBonus%22%3A20%2C%22premiumBonus%22%3A20%2C%22staffBonus%22%3A30%2C%22gearBonus%22%3A164%2C%22richManBonus%22%3A60%2C%22customBonus%22%3A37%2C%22raceFormless%22%3A0%2C%22raceUndead%22%3A0%2C%22raceBrute%22%3A0%2C%22racePlant%22%3A9%2C%22raceInsect%22%3A0%2C%22raceFish%22%3A0%2C%22raceDemon%22%3A0%2C%22raceDemi-Human%22%3A0%2C%22raceAngel%22%3A0%2C%22raceDragon%22%3A0%7D%7D",
+      "exactOriginalState": true,
+      "newHashIdentical": true
+    }
+  },
+  "fallback": {
+    "light": {
+      "blockedUrl": "http://127.0.0.1:4173/ro-leveling-map/assets/ro-suite/1.2.0/nav.js",
+      "scenarios": {
+        "none-defaults": {
+          "rows": 88,
+          "identicalToBaseline": true
+        },
+        "none-customized": {
+          "rows": 136,
+          "identicalToBaseline": true
+        },
+        "historical-unicorn": {
+          "rows": 136,
+          "identicalToBaseline": true
+        }
+      },
+      "link": {
+        "href": "https://econds.github.io/ro_tools_portal/",
+        "width": 149,
+        "height": 44,
+        "top": 0,
+        "visible": true
+      },
+      "keyboardDestinationInterceptedLocally": true
+    },
+    "dark": {
+      "blockedUrl": "http://127.0.0.1:4173/ro-leveling-map/assets/ro-suite/1.2.0/nav.js",
+      "scenarios": {
+        "none-defaults": {
+          "rows": 88,
+          "identicalToBaseline": true
+        },
+        "none-customized": {
+          "rows": 136,
+          "identicalToBaseline": true
+        },
+        "historical-unicorn": {
+          "rows": 136,
+          "identicalToBaseline": true
+        }
+      },
+      "link": {
+        "href": "https://econds.github.io/ro_tools_portal/",
+        "width": 149,
+        "height": 44,
+        "top": 0,
+        "visible": true
+      },
+      "keyboardDestinationInterceptedLocally": true
+    }
+  },
+  "networkComparison": {
+    "added": [
+      "http://127.0.0.1:4173/ro-leveling-map/assets/ro-suite/1.2.0/nav.js",
+      "https://econds.github.io/ro-leveling-map/"
+    ],
+    "removed": [
+      "http://127.0.0.1:4173/ro-leveling-map/assets/maps/yuno_fild08.png",
+      "http://127.0.0.1:4173/ro-leveling-map/assets/monsters/1030.png",
+      "http://127.0.0.1:4173/ro-leveling-map/assets/monsters/1680.png",
+      "http://127.0.0.1:4173/ro-leveling-map/assets/monsters/1782.png",
+      "http://127.0.0.1:4173/ro-leveling-map/assets/monsters/2663.png"
+    ],
+    "expectedAdded": [
+      "http://127.0.0.1:4173/ro-leveling-map/assets/ro-suite/1.2.0/nav.js",
+      "https://econds.github.io/ro-leveling-map/"
+    ],
+    "note": "Only the exact intentionally blocked nav resource and deliberate offline phase are excluded from error comparisons; all errors remain recorded.",
+    "consoleErrors": {
+      "unexpected": []
+    },
+    "badResponses": {
+      "unexpected": []
+    },
+    "failedRequests": {
+      "unexpected": []
+    }
+  },
+  "serviceWorker": {
+    "status": "passed",
+    "controller": "http://127.0.0.1:4173/ro-leveling-map/service-worker.js",
+    "warmCacheOfflineStateIdentical": true
+  },
+  "screenshots": {
+    "fallback-390-light.png": "50dbbc434c3362924ff7bb2b152586a82a84608e74573d369b3c4a5c3fd3cd98",
+    "1440-light-nav-open.png": "754c27f90512f68d3aaf582bd7a9d23ce37b4a29af44d8ac18453793bef66f6e",
+    "fallback-390-dark.png": "f6044b8532ef4bb1d4ff426b35282f6cc36383a83abfd0626b930767e47fb1ee",
+    "1440-dark-nav-open.png": "769e7c4a826ef6a3fc018ff1691921150c2130dcdbe2a8f037ff9133044b4dea",
+    "390-light-nav-open.png": "0947a0f3df3b56ca615d5ad3c7bed87adc169a3a1611f5f93c8faf9def4a47c4",
+    "390-dark-nav-open.png": "f837c1ebf4bb94a85cdf7a131f6672990cbcaa56bc5ce05f8487eeb32c5a0a63"
+  },
+  "limits": [
+    "Physical devices, WebKit, Firefox and Pages after merge not tested",
+    "No comparison of console.warn messages",
+    "Canonical navigation destinations intercepted locally; real Portal separately returned HTTP 200",
+    "Settings are isolated QA custom fixtures, not a read of the user browser profile"
+  ]
+}

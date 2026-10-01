@@ -1,0 +1,72 @@
+name: RO Suite navigation QA
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ro-suite-nav-qa-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  navigation-qa:
+    if: github.head_ref == 'feat/ro-suite-nav' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare failure-safe report directory
+        run: |
+          mkdir -p artifacts/ro-suite-nav
+          printf '%s\n' '{"status":"not-run","reason":"Read the workflow logs for browser setup failures"}' > artifacts/ro-suite-nav/report.json
+          git rev-parse HEAD > artifacts/ro-suite-nav/commit.txt
+      - name: Existing Node and Python tests
+        run: |
+          node --test tests/*.test.cjs 2>&1 | tee artifacts/ro-suite-nav/node-tests.log
+          python -m venv "$RUNNER_TEMP/leveling-python-qa"
+          "$RUNNER_TEMP/leveling-python-qa/bin/pip" install Pillow==12.3.0
+          "$RUNNER_TEMP/leveling-python-qa/bin/python" -m unittest discover -s tests -p 'test_*.py' 2>&1 | tee artifacts/ro-suite-nav/python-tests.log
+      - name: Install pinned QA-only Chromium tooling
+        id: browser-tools
+        if: always()
+        run: |
+          npm install --prefix "$RUNNER_TEMP/leveling-nav-qa" --no-save --package-lock=false --ignore-scripts playwright@1.55.1
+          node "$RUNNER_TEMP/leveling-nav-qa/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Subpath browser regression and evidence
+        if: always() && steps.browser-tools.outcome == 'success'
+        env:
+          NODE_PATH: ${{ runner.temp }}/leveling-nav-qa/node_modules
+          RO_QA_OUTPUT: ${{ github.workspace }}/artifacts/ro-suite-nav
+          RO_QA_COMMIT: ${{ github.event.pull_request.head.sha }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/leveling-web"
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/leveling-web/ro-leveling-map"
+          python -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/leveling-web" > artifacts/ro-suite-nav/server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 50); do
+            if curl --fail --silent http://127.0.0.1:4173/ro-leveling-map/ > /dev/null; then break; fi
+            sleep 0.2
+          done
+          node tests/ro-suite-nav.browser.cjs 2>&1 | tee artifacts/ro-suite-nav/browser-tests.log
+      - name: Upload logs, report and screenshots even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ro-suite-nav-qa-${{ github.event.pull_request.head.sha }}
+          path: artifacts/ro-suite-nav/
+          if-no-files-found: warn
+          retention-days: 90

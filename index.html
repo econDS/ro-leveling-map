@@ -86,6 +86,7 @@
     }
     .offline-notice{display:inline-block;margin:12px 0 0;padding:7px 11px;border-radius:6px;background:#f4bf54;color:#182331;font-size:12px;font-weight:800}
     .offline-notice[hidden]{display:none}
+    ro-suite-nav > nav > a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding:8px 12px;color:var(--text)}
   </style>
   <link rel="stylesheet" href="assets/formulas.css?v=20260925-ux">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +99,12 @@
     <div id="stickySummary" class="sticky-summary"></div>
     <button type="button" id="stickyEdit" class="sticky-edit" tabindex="-1">แก้ค่า ✎</button>
   </div>
+  <ro-suite-nav tool-id="leveling-map" portal-url="https://econds.github.io/ro_tools_portal/">
+    <nav aria-label="เครื่องมือ RO">
+      <a href="https://econds.github.io/ro_tools_portal/">กลับ RO Tools Portal</a>
+    </nav>
+  </ro-suite-nav>
+  <script type="module" src="./assets/ro-suite/1.2.0/nav.js"></script>
   <header>
     <div class="brand">
       <div class="brand-emblem" aria-hidden="true"><img src="assets/monsters/1002.png" alt=""></div>
