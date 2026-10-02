@@ -1,9 +1,9 @@
-# RO Suite nav 1.4 integration QA
+# RO Suite nav 1.4.1 integration QA
 
 - Repository: `econDS/ro-leveling-map`
 - Immutable latest-main baseline: `87b50f729270cc134c7094e169e34d02f2d2ae27`
-- Immutable Portal source: `24ca1068c8f6868b38d6224e661f818fec9897f9`
-- Bundle, catalog and lock copied byte-for-byte into `assets/ro-suite/1.4.0/`; SHA-256 values in `release-hashes.json`
+- Immutable Portal source: `ac62659a26539d802111d255edb92b09ec68382b`
+- Bundle, catalog and lock copied byte-for-byte into `assets/ro-suite/1.4.1/`; SHA-256 values in `release-hashes.json`
 - Existing 1.2.0/1.3.0 files and all existing production files remain protected by `production-baseline.json`
 
 ## Integration scope
@@ -25,3 +25,7 @@ Local source checks: 44 Node tests and 4 Python tests passed. Exact latest-main 
 The dedicated read-only `nav-1.4.0-qa.yml` workflow runs every original source test, original browser regression, original first-run before/after test, and an additional latest-main before/after first-run/output comparison. It uses pinned actions, Node 22.14.0 and Playwright 1.55.1, has only contents:read, and never deploys. Browser results are reported by CI for the exact PR head; local Chromium is unavailable in this environment because socket creation is blocked.
 
 Draft only. No merge or deployment.
+
+## Additive accessibility patch
+
+Final executable bundle is 1.4.1. Its only runtime delta from 1.4.0 keeps the empty optional-catalog live region in the accessibility tree by removing its margin rather than setting display:none. The complete 1.4.0 release remains unchanged and is separately hash-checked by frozen-1.4.0-hashes.json. QA paths and the draft branch retain the original rollout name; the release lock, assertions and executed module target 1.4.1. The same full final-head CI must pass again.
