@@ -1,7 +1,7 @@
 {
   "baseCommit": "4bebd0ee9c93f3bb1179d526d3957de15d57c935",
   "headCommit": "local-candidate",
-  "indexSHA256": "cff8fdfcb3662b50fa99dd026ba0b31c756e2c547b4586e86470b758233e7445",
+  "indexSHA256": "938a9f3e295c7044e4f8c8d18f0662de027f4c5907873803f1e68e790a8a6607",
   "repo": "ro-leveling-map",
   "checks": [
     {
@@ -70,8 +70,8 @@
       },
       "cue": null,
       "overflow": 0,
-      "visibleInputs": 113,
-      "openDetails": 3
+      "visibleInputs": 98,
+      "openDetails": 0
     },
     {
       "kind": "before",
@@ -89,8 +89,8 @@
       },
       "cue": null,
       "overflow": 0,
-      "visibleInputs": 113,
-      "openDetails": 3
+      "visibleInputs": 98,
+      "openDetails": 0
     },
     {
       "kind": "before",
@@ -108,8 +108,8 @@
       },
       "cue": null,
       "overflow": 0,
-      "visibleInputs": 113,
-      "openDetails": 3
+      "visibleInputs": 98,
+      "openDetails": 0
     },
     {
       "kind": "before",
@@ -127,8 +127,8 @@
       },
       "cue": null,
       "overflow": 0,
-      "visibleInputs": 113,
-      "openDetails": 3
+      "visibleInputs": 98,
+      "openDetails": 0
     },
     {
       "kind": "before",
@@ -146,8 +146,8 @@
       },
       "cue": null,
       "overflow": 0,
-      "visibleInputs": 112,
-      "openDetails": 3
+      "visibleInputs": 97,
+      "openDetails": 0
     },
     {
       "kind": "before",
@@ -165,8 +165,8 @@
       },
       "cue": null,
       "overflow": 0,
-      "visibleInputs": 112,
-      "openDetails": 3
+      "visibleInputs": 97,
+      "openDetails": 0
     },
     {
       "kind": "before",
@@ -211,22 +211,22 @@
       "width": 360,
       "colorScheme": "light",
       "firstInput": {
-        "y": 417.625,
+        "y": 366.84375,
         "height": 38,
         "width": 298
       },
       "result": {
-        "y": 1012.125,
+        "y": 961.34375,
         "height": 22725.1875,
         "width": 336
       },
       "cue": {
         "y": 321.453125,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 298
       },
       "overflow": 0,
-      "visibleInputs": 113,
+      "visibleInputs": 98,
       "openDetails": 0
     },
     {
@@ -234,22 +234,22 @@
       "width": 360,
       "colorScheme": "dark",
       "firstInput": {
-        "y": 417.625,
+        "y": 366.84375,
         "height": 38,
         "width": 298
       },
       "result": {
-        "y": 1012.125,
+        "y": 961.34375,
         "height": 22725.1875,
         "width": 336
       },
       "cue": {
         "y": 321.453125,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 298
       },
       "overflow": 0,
-      "visibleInputs": 113,
+      "visibleInputs": 98,
       "openDetails": 0
     },
     {
@@ -257,22 +257,22 @@
       "width": 390,
       "colorScheme": "light",
       "firstInput": {
-        "y": 398.0625,
+        "y": 347.28125,
         "height": 38,
         "width": 328
       },
       "result": {
-        "y": 992.5625,
+        "y": 941.78125,
         "height": 21967.21875,
         "width": 366
       },
       "cue": {
         "y": 301.890625,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 328
       },
       "overflow": 0,
-      "visibleInputs": 113,
+      "visibleInputs": 98,
       "openDetails": 0
     },
     {
@@ -280,22 +280,22 @@
       "width": 390,
       "colorScheme": "dark",
       "firstInput": {
-        "y": 398.0625,
+        "y": 347.28125,
         "height": 38,
         "width": 328
       },
       "result": {
-        "y": 992.5625,
+        "y": 941.78125,
         "height": 21967.21875,
         "width": 366
       },
       "cue": {
         "y": 301.890625,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 328
       },
       "overflow": 0,
-      "visibleInputs": 113,
+      "visibleInputs": 98,
       "openDetails": 0
     },
     {
@@ -303,22 +303,22 @@
       "width": 768,
       "colorScheme": "light",
       "firstInput": {
-        "y": 361.75,
+        "y": 310.96875,
         "height": 38,
         "width": 348
       },
       "result": {
-        "y": 852.015625,
+        "y": 801.234375,
         "height": 1420.5,
         "width": 744
       },
       "cue": {
         "y": 265.578125,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 706
       },
       "overflow": 0,
-      "visibleInputs": 112,
+      "visibleInputs": 97,
       "openDetails": 0
     },
     {
@@ -326,22 +326,22 @@
       "width": 768,
       "colorScheme": "dark",
       "firstInput": {
-        "y": 361.75,
+        "y": 310.96875,
         "height": 38,
         "width": 348
       },
       "result": {
-        "y": 852.015625,
+        "y": 801.234375,
         "height": 1420.5,
         "width": 744
       },
       "cue": {
         "y": 265.578125,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 706
       },
       "overflow": 0,
-      "visibleInputs": 112,
+      "visibleInputs": 97,
       "openDetails": 0
     },
     {
@@ -349,7 +349,7 @@
       "width": 1440,
       "colorScheme": "light",
       "firstInput": {
-        "y": 367.75,
+        "y": 316.96875,
         "height": 38,
         "width": 121
       },
@@ -360,11 +360,11 @@
       },
       "cue": {
         "y": 271.578125,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 252
       },
       "overflow": 0,
-      "visibleInputs": 112,
+      "visibleInputs": 97,
       "openDetails": 0
     },
     {
@@ -372,7 +372,7 @@
       "width": 1440,
       "colorScheme": "dark",
       "firstInput": {
-        "y": 367.75,
+        "y": 316.96875,
         "height": 38,
         "width": 121
       },
@@ -383,11 +383,11 @@
       },
       "cue": {
         "y": 271.578125,
-        "height": 34.78125,
+        "height": 17.390625,
         "width": 252
       },
       "overflow": 0,
-      "visibleInputs": 112,
+      "visibleInputs": 97,
       "openDetails": 0
     }
   ],

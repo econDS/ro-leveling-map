@@ -42,5 +42,9 @@
   [
     "<summary>Daily Dungeon ย้อนหลัง (เพิ่มเติม)</summary>",
     "<summary>Daily Dungeon ย้อนหลัง</summary>"
+  ],
+  [
+    "<p class=\"field-help first-run-cue\"><strong>เริ่มจากเลเวล · ดาเมจ · ปาร์ตี้</strong><br>ดูอันดับก่อน แล้วค่อยเพิ่มบัฟ</p>\n        <div class=\"setting-label\">ตัวละคร</div>",
+    "<div class=\"setting-label first-run-cue\">เริ่มจากเลเวล · ดาเมจ · ปาร์ตี้</div>"
   ]
 ]
