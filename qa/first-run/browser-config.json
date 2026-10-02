@@ -1,0 +1,38 @@
+{
+  "first": "#playerLevel",
+  "result": "#results",
+  "cue": ".first-run-cue",
+  "ready": "#mapTable tbody tr",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "cases": [
+    {
+      "name": "level100-no-event",
+      "fields": {
+        "spotlightEvent": "none",
+        "playerLevel": 100,
+        "playerDamage": 1000000,
+        "partySize": 1
+      }
+    },
+    {
+      "name": "level200-party12",
+      "fields": {
+        "playerLevel": 200,
+        "playerDamage": 20000000,
+        "partySize": 12
+      }
+    },
+    {
+      "name": "level210-solo",
+      "fields": {
+        "playerLevel": 210,
+        "playerDamage": 20000000,
+        "partySize": 1
+      }
+    }
+  ],
+  "repo": "ro-leveling-map"
+}

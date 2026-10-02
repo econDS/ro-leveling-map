@@ -1,0 +1,534 @@
+{
+  "baseCommit": "4bebd0ee9c93f3bb1179d526d3957de15d57c935",
+  "headCommit": "local-candidate",
+  "indexSHA256": "cff8fdfcb3662b50fa99dd026ba0b31c756e2c547b4586e86470b758233e7445",
+  "repo": "ro-leveling-map",
+  "checks": [
+    {
+      "width": 360,
+      "colorScheme": "light",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 360,
+      "colorScheme": "dark",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 390,
+      "colorScheme": "light",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 390,
+      "colorScheme": "dark",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 768,
+      "colorScheme": "light",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 768,
+      "colorScheme": "dark",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 1440,
+      "colorScheme": "light",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    },
+    {
+      "width": 1440,
+      "colorScheme": "dark",
+      "status": "PASS",
+      "checks": "first cue, original or lower overflow, unique IDs, native labels, minimum path, view-only state/output invariants"
+    }
+  ],
+  "geometry": [
+    {
+      "kind": "before",
+      "width": 360,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 366.84375,
+        "height": 38,
+        "width": 298
+      },
+      "result": {
+        "y": 961.34375,
+        "height": 22532.671875,
+        "width": 336
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 3
+    },
+    {
+      "kind": "before",
+      "width": 360,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 366.84375,
+        "height": 38,
+        "width": 298
+      },
+      "result": {
+        "y": 961.34375,
+        "height": 22532.671875,
+        "width": 336
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 3
+    },
+    {
+      "kind": "before",
+      "width": 390,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 347.28125,
+        "height": 38,
+        "width": 328
+      },
+      "result": {
+        "y": 941.78125,
+        "height": 21792.09375,
+        "width": 366
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 3
+    },
+    {
+      "kind": "before",
+      "width": 390,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 347.28125,
+        "height": 38,
+        "width": 328
+      },
+      "result": {
+        "y": 941.78125,
+        "height": 21792.09375,
+        "width": 366
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 3
+    },
+    {
+      "kind": "before",
+      "width": 768,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 310.96875,
+        "height": 38,
+        "width": 348
+      },
+      "result": {
+        "y": 801.234375,
+        "height": 1280.15625,
+        "width": 744
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 3
+    },
+    {
+      "kind": "before",
+      "width": 768,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 310.96875,
+        "height": 38,
+        "width": 348
+      },
+      "result": {
+        "y": 801.234375,
+        "height": 1280.15625,
+        "width": 744
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 3
+    },
+    {
+      "kind": "before",
+      "width": 1440,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 316.96875,
+        "height": 38,
+        "width": 121
+      },
+      "result": {
+        "y": 187.25,
+        "height": 1043.203125,
+        "width": 1086
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 4
+    },
+    {
+      "kind": "before",
+      "width": 1440,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 316.96875,
+        "height": 38,
+        "width": 121
+      },
+      "result": {
+        "y": 187.25,
+        "height": 1043.203125,
+        "width": 1086
+      },
+      "cue": null,
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 4
+    },
+    {
+      "kind": "after",
+      "width": 360,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 417.625,
+        "height": 38,
+        "width": 298
+      },
+      "result": {
+        "y": 1012.125,
+        "height": 22725.1875,
+        "width": 336
+      },
+      "cue": {
+        "y": 321.453125,
+        "height": 34.78125,
+        "width": 298
+      },
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 360,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 417.625,
+        "height": 38,
+        "width": 298
+      },
+      "result": {
+        "y": 1012.125,
+        "height": 22725.1875,
+        "width": 336
+      },
+      "cue": {
+        "y": 321.453125,
+        "height": 34.78125,
+        "width": 298
+      },
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 390,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 398.0625,
+        "height": 38,
+        "width": 328
+      },
+      "result": {
+        "y": 992.5625,
+        "height": 21967.21875,
+        "width": 366
+      },
+      "cue": {
+        "y": 301.890625,
+        "height": 34.78125,
+        "width": 328
+      },
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 390,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 398.0625,
+        "height": 38,
+        "width": 328
+      },
+      "result": {
+        "y": 992.5625,
+        "height": 21967.21875,
+        "width": 366
+      },
+      "cue": {
+        "y": 301.890625,
+        "height": 34.78125,
+        "width": 328
+      },
+      "overflow": 0,
+      "visibleInputs": 113,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 768,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 361.75,
+        "height": 38,
+        "width": 348
+      },
+      "result": {
+        "y": 852.015625,
+        "height": 1420.5,
+        "width": 744
+      },
+      "cue": {
+        "y": 265.578125,
+        "height": 34.78125,
+        "width": 706
+      },
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 768,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 361.75,
+        "height": 38,
+        "width": 348
+      },
+      "result": {
+        "y": 852.015625,
+        "height": 1420.5,
+        "width": 744
+      },
+      "cue": {
+        "y": 265.578125,
+        "height": 34.78125,
+        "width": 706
+      },
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 1440,
+      "colorScheme": "light",
+      "firstInput": {
+        "y": 367.75,
+        "height": 38,
+        "width": 121
+      },
+      "result": {
+        "y": 187.25,
+        "height": 1183.546875,
+        "width": 1086
+      },
+      "cue": {
+        "y": 271.578125,
+        "height": 34.78125,
+        "width": 252
+      },
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 0
+    },
+    {
+      "kind": "after",
+      "width": 1440,
+      "colorScheme": "dark",
+      "firstInput": {
+        "y": 367.75,
+        "height": 38,
+        "width": 121
+      },
+      "result": {
+        "y": 187.25,
+        "height": 1183.546875,
+        "width": 1086
+      },
+      "cue": {
+        "y": 271.578125,
+        "height": 34.78125,
+        "width": 252
+      },
+      "overflow": 0,
+      "visibleInputs": 112,
+      "openDetails": 0
+    }
+  ],
+  "cases": {
+    "before": [
+      {
+        "name": "level100-no-event",
+        "input": {
+          "spotlightEvent": "none",
+          "playerLevel": 100,
+          "playerDamage": 1000000,
+          "partySize": 1
+        },
+        "output": {
+          "summary": "★ แมพ EXP / ตัว สูงสุดWarmth of the Snake God 2F136,001.2EXP / ตัวคะแนนพื้นที่สูงสุดWarmth of the Snake God 2F13.9M คะแนนEXP รวมจากบัฟ×1.00ยังไม่ใส่บัฟแมพที่แสดง88จาก 130 แมพ",
+          "rows": [
+            "1เทียบWarmth of the Snake God 2Fjor_dun02 · เงื่อนไขเข้า: ยังไม่ตรวจ · มอนเฉลี่ย Lv 213.0⚠ ตีเกิน 5 ครั้ง 100% ของมอน 136,001.2ตัวคูณเลเวล 40% 13.0Mตี ~13.6 ครั้ง/ตัว 10.5K 200102.2 / 10k ช่อง 13.9M",
+            "2เทียบหนอน 19Warmth of the Snake God 1Fjor_dun01 · มอนเฉลี่ย Lv 211.0วาร์ป + ทางเชื่อม⚠ ตีเกิน 5 ครั้ง 100% ของมอน 130,390.9ตัวคูณเลเวล 40% 11.9Mตี ~12.7 ครั้ง/ตัว 10.9K 20092.3 / 10k ช่อง 12.0M",
+            "3เทียบแมพโปเกมอนFrozen Scale Glacierjor_back3 · มอนเฉลี่ย Lv 210.6Warp Portal⚠ ตีเกิน 5 ครั้ง 100% ของมอน+1 117,920.0ตัวคูณเลเวล 40% 9.2Mตี ~10.0 ครั้ง/ตัว 12.8K 20543.5 / 10k ช่อง 5.1M",
+            "4เทียบแมพน้ำแข็งFrozen Scale Plainsjor_back2 · มอนเฉลี่ย Lv 211.7Warp Portal⚠ ตีเกิน 5 ครั้ง 100% ของมอน 117,686.0ตัวคูณเลเวล 40% 8.7Mตี ~9.4 ครั้ง/ตัว 13.5K 20037.6 / 10k ช่อง 4.4M",
+            "5เทียบFrozen Scales Hilljor_back1 · มอนเฉลี่ย Lv 209.8Warp Portal⚠ ตีเกิน 5 ครั้ง 100% ของมอน 113,230.2ตัวคูณเลเวล 40% 7.6Mตี ~8.0 ครั้ง/ตัว 15.0K 20039.1 / 10k ช่อง 4.4M"
+          ]
+        }
+      },
+      {
+        "name": "level200-party12",
+        "input": {
+          "playerLevel": 200,
+          "playerDamage": 20000000,
+          "partySize": 12
+        },
+        "output": {
+          "summary": "★ แมพ EXP / ตัว สูงสุดหนอน 19117,182.7EXP / ตัวคะแนนพื้นที่สูงสุดWarmth of the Snake God 2F11.6M คะแนนEXP รวมจากบัฟ×1.00ยังไม่ใส่บัฟแมพที่แสดง117จาก 130 แมพ",
+          "rows": [
+            "1เทียบหนอน 19Warmth of the Snake God 1Fjor_dun01 · มอนเฉลี่ย Lv 211.0วาร์ป + ทางเชื่อม 117,182.7ตัวคูณเลเวล 134.8% 11.9Mตี ~1.0 ครั้ง/ตัว 9,817.9 20092.3 / 10k ช่อง 10.8M",
+            "2เทียบWarmth of the Snake God 2Fjor_dun02 · เงื่อนไขเข้า: ยังไม่ตรวจ · มอนเฉลี่ย Lv 213.0 113,183.0ตัวคูณเลเวล 124.8% 13.0Mตี ~1.0 ครั้ง/ตัว 8,728.6 200102.2 / 10k ช่อง 11.6M",
+            "3เทียบรูดัส 4sp_rudus4 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 213.8+1 112,885.0ตัวคูณเลเวล 120.9% 12.3Mตี ~1.0 ครั้ง/ตัว 9,165.1 30056.1 / 10k ช่อง 6.3M",
+            "4เทียบแมพโปเกมอนFrozen Scale Glacierjor_back3 · มอนเฉลี่ย Lv 210.6Warp Portal+1 103,321.1ตัวคูณเลเวล 131.4% 9.2Mตี ~1.0 ครั้ง/ตัว 11.2K 20543.5 / 10k ช่อง 4.5M",
+            "5เทียบFrozen Scales Hilljor_back1 · มอนเฉลี่ย Lv 209.8Warp Portal 101,958.0ตัวคูณเลเวล 135.1% 7.6Mตี ~1.0 ครั้ง/ตัว 13.5K 20039.1 / 10k ช่อง 4.0M"
+          ]
+        }
+      },
+      {
+        "name": "level210-solo",
+        "input": {
+          "playerLevel": 210,
+          "playerDamage": 20000000,
+          "partySize": 1
+        },
+        "output": {
+          "summary": "★ แมพ EXP / ตัว สูงสุดSmall Branch Nest539,172.4EXP / ตัวคะแนนพื้นที่สูงสุดSerpent’s Labyrinth58.3M คะแนนEXP รวมจากบัฟ×1.00ยังไม่ใส่บัฟแมพที่แสดง117จาก 130 แมพ",
+          "rows": [
+            "1เทียบSmall Branch Nestjor_twig · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 222.0 539,172.4ตัวคูณเลเวล 130% 18.4Mตี ~1.0 ครั้ง/ตัว 29.3K 4038.8 / 10k ช่อง 20.9M",
+            "2เทียบSerpent’s Labyrinthjor_maze · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 222.9 528,955.4ตัวคูณเลเวล 125.3% 19.0Mตี ~1.3 ครั้ง/ตัว 27.8K 100110.3 / 10k ช่อง 58.3M",
+            "3เทียบSnake God’s Root 1Fjor_root1 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 223.1+1 524,173.6ตัวคูณเลเวล 124.7% 20.1Mตี ~1.8 ครั้ง/ตัว 26.1K 20058.2 / 10k ช่อง 30.5M",
+            "4เทียบFrozen Scale Coastjor_back4 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 221.0+3 489,892.8ตัวคูณเลเวล 126.3% 16.8Mตี ~1.0 ครั้ง/ตัว 29.2K 20038.0 / 10k ช่อง 18.6M",
+            "5เทียบAncient Ice Canyon Eastjor_back5 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 219.8+3 489,840.0ตัวคูณเลเวล 135.7% 15.6Mตี ~1.0 ครั้ง/ตัว 31.4K 20039.0 / 10k ช่อง 19.1M"
+          ]
+        }
+      }
+    ],
+    "after": [
+      {
+        "name": "level100-no-event",
+        "input": {
+          "spotlightEvent": "none",
+          "playerLevel": 100,
+          "playerDamage": 1000000,
+          "partySize": 1
+        },
+        "output": {
+          "summary": "★ แมพ EXP / ตัว สูงสุดWarmth of the Snake God 2F136,001.2EXP / ตัวคะแนนพื้นที่สูงสุดWarmth of the Snake God 2F13.9M คะแนนEXP รวมจากบัฟ×1.00ยังไม่ใส่บัฟแมพที่แสดง88จาก 130 แมพ",
+          "rows": [
+            "1เทียบWarmth of the Snake God 2Fjor_dun02 · เงื่อนไขเข้า: ยังไม่ตรวจ · มอนเฉลี่ย Lv 213.0⚠ ตีเกิน 5 ครั้ง 100% ของมอน 136,001.2ตัวคูณเลเวล 40% 13.0Mตี ~13.6 ครั้ง/ตัว 10.5K 200102.2 / 10k ช่อง 13.9M",
+            "2เทียบหนอน 19Warmth of the Snake God 1Fjor_dun01 · มอนเฉลี่ย Lv 211.0วาร์ป + ทางเชื่อม⚠ ตีเกิน 5 ครั้ง 100% ของมอน 130,390.9ตัวคูณเลเวล 40% 11.9Mตี ~12.7 ครั้ง/ตัว 10.9K 20092.3 / 10k ช่อง 12.0M",
+            "3เทียบแมพโปเกมอนFrozen Scale Glacierjor_back3 · มอนเฉลี่ย Lv 210.6Warp Portal⚠ ตีเกิน 5 ครั้ง 100% ของมอน+1 117,920.0ตัวคูณเลเวล 40% 9.2Mตี ~10.0 ครั้ง/ตัว 12.8K 20543.5 / 10k ช่อง 5.1M",
+            "4เทียบแมพน้ำแข็งFrozen Scale Plainsjor_back2 · มอนเฉลี่ย Lv 211.7Warp Portal⚠ ตีเกิน 5 ครั้ง 100% ของมอน 117,686.0ตัวคูณเลเวล 40% 8.7Mตี ~9.4 ครั้ง/ตัว 13.5K 20037.6 / 10k ช่อง 4.4M",
+            "5เทียบFrozen Scales Hilljor_back1 · มอนเฉลี่ย Lv 209.8Warp Portal⚠ ตีเกิน 5 ครั้ง 100% ของมอน 113,230.2ตัวคูณเลเวล 40% 7.6Mตี ~8.0 ครั้ง/ตัว 15.0K 20039.1 / 10k ช่อง 4.4M"
+          ]
+        }
+      },
+      {
+        "name": "level200-party12",
+        "input": {
+          "playerLevel": 200,
+          "playerDamage": 20000000,
+          "partySize": 12
+        },
+        "output": {
+          "summary": "★ แมพ EXP / ตัว สูงสุดหนอน 19117,182.7EXP / ตัวคะแนนพื้นที่สูงสุดWarmth of the Snake God 2F11.6M คะแนนEXP รวมจากบัฟ×1.00ยังไม่ใส่บัฟแมพที่แสดง117จาก 130 แมพ",
+          "rows": [
+            "1เทียบหนอน 19Warmth of the Snake God 1Fjor_dun01 · มอนเฉลี่ย Lv 211.0วาร์ป + ทางเชื่อม 117,182.7ตัวคูณเลเวล 134.8% 11.9Mตี ~1.0 ครั้ง/ตัว 9,817.9 20092.3 / 10k ช่อง 10.8M",
+            "2เทียบWarmth of the Snake God 2Fjor_dun02 · เงื่อนไขเข้า: ยังไม่ตรวจ · มอนเฉลี่ย Lv 213.0 113,183.0ตัวคูณเลเวล 124.8% 13.0Mตี ~1.0 ครั้ง/ตัว 8,728.6 200102.2 / 10k ช่อง 11.6M",
+            "3เทียบรูดัส 4sp_rudus4 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 213.8+1 112,885.0ตัวคูณเลเวล 120.9% 12.3Mตี ~1.0 ครั้ง/ตัว 9,165.1 30056.1 / 10k ช่อง 6.3M",
+            "4เทียบแมพโปเกมอนFrozen Scale Glacierjor_back3 · มอนเฉลี่ย Lv 210.6Warp Portal+1 103,321.1ตัวคูณเลเวล 131.4% 9.2Mตี ~1.0 ครั้ง/ตัว 11.2K 20543.5 / 10k ช่อง 4.5M",
+            "5เทียบFrozen Scales Hilljor_back1 · มอนเฉลี่ย Lv 209.8Warp Portal 101,958.0ตัวคูณเลเวล 135.1% 7.6Mตี ~1.0 ครั้ง/ตัว 13.5K 20039.1 / 10k ช่อง 4.0M"
+          ]
+        }
+      },
+      {
+        "name": "level210-solo",
+        "input": {
+          "playerLevel": 210,
+          "playerDamage": 20000000,
+          "partySize": 1
+        },
+        "output": {
+          "summary": "★ แมพ EXP / ตัว สูงสุดSmall Branch Nest539,172.4EXP / ตัวคะแนนพื้นที่สูงสุดSerpent’s Labyrinth58.3M คะแนนEXP รวมจากบัฟ×1.00ยังไม่ใส่บัฟแมพที่แสดง117จาก 130 แมพ",
+          "rows": [
+            "1เทียบSmall Branch Nestjor_twig · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 222.0 539,172.4ตัวคูณเลเวล 130% 18.4Mตี ~1.0 ครั้ง/ตัว 29.3K 4038.8 / 10k ช่อง 20.9M",
+            "2เทียบSerpent’s Labyrinthjor_maze · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 222.9 528,955.4ตัวคูณเลเวล 125.3% 19.0Mตี ~1.3 ครั้ง/ตัว 27.8K 100110.3 / 10k ช่อง 58.3M",
+            "3เทียบSnake God’s Root 1Fjor_root1 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 223.1+1 524,173.6ตัวคูณเลเวล 124.7% 20.1Mตี ~1.8 ครั้ง/ตัว 26.1K 20058.2 / 10k ช่อง 30.5M",
+            "4เทียบFrozen Scale Coastjor_back4 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 221.0+3 489,892.8ตัวคูณเลเวล 126.3% 16.8Mตี ~1.0 ครั้ง/ตัว 29.2K 20038.0 / 10k ช่อง 18.6M",
+            "5เทียบAncient Ice Canyon Eastjor_back5 · เข้าได้ Lv 200+ · มอนเฉลี่ย Lv 219.8+3 489,840.0ตัวคูณเลเวล 135.7% 15.6Mตี ~1.0 ครั้ง/ตัว 31.4K 20039.0 / 10k ช่อง 19.1M"
+          ]
+        }
+      }
+    ]
+  },
+  "screenshots": [
+    "before-360-light.png",
+    "before-360-dark.png",
+    "before-390-light.png",
+    "before-390-dark.png",
+    "before-768-light.png",
+    "before-768-dark.png",
+    "before-1440-light.png",
+    "before-1440-dark.png",
+    "after-360-light.png",
+    "after-360-dark.png",
+    "after-390-light.png",
+    "after-390-dark.png",
+    "after-768-light.png",
+    "after-768-dark.png",
+    "after-1440-light.png",
+    "after-1440-dark.png"
+  ],
+  "limitations": [
+    "Chromium emulation, not physical devices or WebKit/Firefox",
+    "No user study or usability score",
+    "View changes do not claim game-data verification"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,15 @@
+{
+  "baseCommit": "4bebd0ee9c93f3bb1179d526d3957de15d57c935",
+  "indexSha256": "8605470b9b9e1640581669f7ec0c220ea6dabfa379da02a42fc58fc9ad21340d",
+  "minimumInputs": 3,
+  "before": {
+    "advancedDesktopOpen": 4,
+    "advancedMobileParentClosed": true,
+    "eventDetailsInsideCollapsedParent": true
+  },
+  "after": {
+    "advancedDesktopOpen": 0,
+    "eventDetailsByResults": true
+  },
+  "navVersion": "1.3.0"
+}

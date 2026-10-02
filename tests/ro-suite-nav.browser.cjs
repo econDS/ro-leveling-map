@@ -103,7 +103,7 @@ async function top(page) {
 }
 async function applyCase(page, fixture) {
   await page.locator('#resetSettings').click();
-  await page.locator('#advancedSettings').evaluate(el => { el.open = true; });
+  while (await page.locator('.controls details:not([open]) > summary').count()) await page.locator('.controls details:not([open]) > summary').first().click();
   for (const [id, value] of Object.entries(fixture.settings)) {
     const input = page.locator('#' + id);
     const kind = await input.evaluate(el => el.type);
