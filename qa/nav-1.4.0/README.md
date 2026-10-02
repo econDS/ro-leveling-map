@@ -10,9 +10,9 @@
 
 Main content box: max-width 1540px, 24px desktop gutters, 12px at <=980px. The legacy header uses a different perimeter and is deliberately unchanged.
 
-Only the local module URL and scoped host/fallback CSS change existing production HTML. The fallback nav wrapper uses the same max-width/gutter variables and a minimum 52px row; the original >=44px fallback anchor remains intact. No first-run UI, inputs, defaults, app logic, data, storage, sharing, import/export, destination, theme, or service-worker changes.
+Only the local module URL and scoped host/fallback CSS change existing production HTML. The fallback nav wrapper uses the same max-width/gutter variables and a minimum 52px row; the >=44px fallback anchor uses zero inline padding so its text aligns with the same content edge. No first-run UI, inputs, defaults, app logic, data, storage, sharing, import/export, destination, theme, or service-worker changes.
 
-`normalize.cjs` reverses only the two exact deltas recorded in `changes.json`, asserting exactly one occurrence. Historical tests still verify their original hashes after this reversal; no broad selector removal or replacement checksum is used.
+`normalize.cjs` reverses only the three exact deltas recorded in `changes.json`, asserting exactly one occurrence. Historical tests still verify their original hashes after this reversal; no broad selector removal or replacement checksum is used.
 
 ## Evidence
 
