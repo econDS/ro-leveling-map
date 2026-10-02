@@ -7,23 +7,23 @@ const {execFileSync} = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file));
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
-const release = 'assets/ro-suite/1.2.0/';
+const release = 'assets/ro-suite/1.3.0/';
 const expected = {
-  'nav.js': 'd75be916445feb4febeaada437841a1b3be68db16a00673198c78fd6f6c8dc5f',
-  'catalog.snapshot.json': '800bb9c9d2b52a7fbae58e436b05529e69820fee3627d199da545a6f5e28f7dd',
-  'nav.lock.json': '3b0350135ba5f455b38799c7940492938a209e8e0a6570a5126cb40c36127358'
+  'nav.js': 'e0a75bce3f8ba21d73aff8aa28af1c624d977f1e8e3de483c6dd40785b3b84d2',
+  'catalog.snapshot.json': 'a198338ddcb7857094ef950fb1315c532840cf53ac8e7a69b331d8cb4a87dd5d',
+  'nav.lock.json': '7ac31d27c493071ad164326022854a637c5015ae7989ff8c2a4c129b021c59c3'
 };
 const markup = `  <ro-suite-nav tool-id="leveling-map" portal-url="https://econds.github.io/ro_tools_portal/">
     <nav aria-label="เครื่องมือ RO">
       <a href="https://econds.github.io/ro_tools_portal/">กลับ RO Tools Portal</a>
     </nav>
   </ro-suite-nav>
-  <script type="module" src="./assets/ro-suite/1.2.0/nav.js"></script>
+  <script type="module" src="./assets/ro-suite/1.3.0/nav.js"></script>
 `;
 const css = '    ro-suite-nav > nav > a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding:8px 12px;color:var(--text)}\n';
 test('Release artifacts match user SHA-256 and immutable lock', () => {
   const lock = JSON.parse(read(release + 'nav.lock.json'));
-  assert.equal(lock.bundleVersion, '1.2.0');
+  assert.equal(lock.bundleVersion, '1.3.0');
   for (const [file, sha] of Object.entries(expected)) assert.equal(hash(read(release + file)), sha, file);
   for (const file of ['nav.js', 'catalog.snapshot.json']) assert.equal(lock.files[file].sha256, expected[file]);
 });
@@ -64,4 +64,14 @@ test('Browser evidence is a successful genuine preintegration capture', () => {
   assert.equal(baseline.playwrightVersion, '1.55.1');
   assert.equal(Object.keys(baseline.matrix).length, 8);
   assert(baseline.sourceCommit && /^[0-9a-f]{40}$/.test(baseline.sourceCommit));
+});
+
+test('Rollout preserves all latest-main production bytes except versioned script URL', () => {
+  const baseline = JSON.parse(read('docs/qa/ro-suite-nav-1.3.0/source-baseline.json'));
+  for (const [file, sha] of Object.entries(baseline.files)) {
+    const bytes = file === 'index.html' ? read(file).toString().replace('./assets/ro-suite/1.3.0/nav.js', './assets/ro-suite/1.2.0/nav.js') : read(file);
+    assert.equal(hash(bytes), sha, file);
+  }
+  const catalog = JSON.parse(read(release + 'catalog.snapshot.json'));
+  assert.equal(catalog.tools.find(t => t.id === 'best-status').canonicalUrl, 'https://econds.github.io/ro-best-status/');
 });
