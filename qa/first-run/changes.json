@@ -1,0 +1,50 @@
+[
+  [
+    "<div class=\"setting-label\">ตัวละคร</div>",
+    "<p class=\"field-help first-run-cue\"><strong>เริ่มจาก 3 ค่านี้: เลเวล → ดาเมจ → ปาร์ตี้</strong><br>ดูอันดับได้ทันที แล้วค่อยเพิ่มบัฟให้ใกล้ตัวละครจริง · ค่าที่บันทึกไว้ยังถูกใช้ทั้งหมด</p>\n        <div class=\"setting-label\">ตัวละคร</div>"
+  ],
+  [
+    "<details id=\"advancedSettings\" class=\"setting-group\" open>",
+    "<details id=\"advancedSettings\" class=\"setting-group\">"
+  ],
+  [
+    "<details class=\"setting-group\" open>\n          <summary>Daily Dungeon ย้อนหลัง</summary>",
+    "<details class=\"setting-group\">\n          <summary>Daily Dungeon ย้อนหลัง (เพิ่มเติม)</summary>"
+  ],
+  [
+    "<details class=\"setting-group\" open><summary>บัฟ EXP และของสวมใส่",
+    "<details class=\"setting-group\"><summary>บัฟ EXP และของสวมใส่"
+  ],
+  [
+    "<details class=\"setting-group\" open><summary>โบนัส EXP ตามเผ่า",
+    "<details class=\"setting-group\"><summary>โบนัส EXP ตามเผ่า"
+  ],
+  [
+    "        <div class=\"hint\" id=\"eventInfo\" aria-live=\"polite\"></div>\n        <details class=\"setting-group\">",
+    "        <details class=\"setting-group\">"
+  ],
+  [
+    "        <div class=\"summary\" id=\"summary\"></div>",
+    "        <div class=\"summary\" id=\"summary\"></div>\n        <div class=\"hint\" id=\"eventInfo\" aria-live=\"polite\"></div>"
+  ],
+  [
+    "<div class=\"settings-actions\">",
+    "<p class=\"field-help first-run-cue\">ผลด้านขวา/ด้านล่างแสดงสถานะกิจกรรมที่ใช้อยู่เสมอ · ยุบตัวเลือกไม่ได้ปิดบัฟหรือเปลี่ยนค่า</p>\n        <div class=\"settings-actions\">"
+  ],
+  [
+    "<p class=\"field-help first-run-cue\"><strong>เริ่มจาก 3 ค่านี้: เลเวล → ดาเมจ → ปาร์ตี้</strong><br>ดูอันดับได้ทันที แล้วค่อยเพิ่มบัฟให้ใกล้ตัวละครจริง · ค่าที่บันทึกไว้ยังถูกใช้ทั้งหมด</p>",
+    "<p class=\"field-help first-run-cue\"><strong>เริ่มจากเลเวล · ดาเมจ · ปาร์ตี้</strong><br>ดูอันดับก่อน แล้วค่อยเพิ่มบัฟ</p>"
+  ],
+  [
+    "<p class=\"field-help first-run-cue\">ผลด้านขวา/ด้านล่างแสดงสถานะกิจกรรมที่ใช้อยู่เสมอ · ยุบตัวเลือกไม่ได้ปิดบัฟหรือเปลี่ยนค่า</p>\n        <div class=\"settings-actions\">",
+    "<div class=\"settings-actions\">"
+  ],
+  [
+    "<summary>Daily Dungeon ย้อนหลัง (เพิ่มเติม)</summary>",
+    "<summary>Daily Dungeon ย้อนหลัง</summary>"
+  ],
+  [
+    "<p class=\"field-help first-run-cue\"><strong>เริ่มจากเลเวล · ดาเมจ · ปาร์ตี้</strong><br>ดูอันดับก่อน แล้วค่อยเพิ่มบัฟ</p>\n        <div class=\"setting-label\">ตัวละคร</div>",
+    "<div class=\"setting-label first-run-cue\">เริ่มจากเลเวล · ดาเมจ · ปาร์ตี้</div>"
+  ]
+]

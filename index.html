@@ -120,7 +120,7 @@
     <div class="layout">
       <aside class="panel controls">
         <div class="settings-head"><h2 class="section-title">ตั้งค่าการคำนวณ</h2><button type="button" id="resetSettings" class="text-btn">คืนค่าเริ่มต้น</button></div><p id="storageStatus" class="save-status" role="status">บันทึกอัตโนมัติในเบราว์เซอร์นี้</p>
-        <div class="setting-label">ตัวละคร</div>
+        <div class="setting-label first-run-cue">เริ่มจากเลเวล · ดาเมจ · ปาร์ตี้</div>
         <div class="grid">
           <div><label for="playerLevel">เลเวลปัจจุบัน</label><input id="playerLevel" type="number" min="1" max="260" value="100"></div>
           <div><label for="partySize">จำนวนคนในปาร์ตี้</label><input id="partySize" type="number" min="1" max="12" value="1"></div>
@@ -134,12 +134,11 @@
         <label class="check-row"><input id="enforceLevelLock" type="checkbox" checked> ซ่อนแมพที่เลเวลยังไม่ถึงเกณฑ์เข้า</label>
         <div class="settings-actions"><button type="button" id="shareSettings" class="text-btn">คัดลอกลิงก์การตั้งค่า</button><span id="shareStatus" class="save-status" role="status"></span><a href="#results" class="jump-results">ดูผลลัพธ์ ↓</a></div>
         <input id="shareLink" type="text" readonly hidden aria-label="ลิงก์การตั้งค่าสำหรับคัดลอก">
-        <details id="advancedSettings" class="setting-group" open><summary>กิจกรรมและบัฟ <span id="advancedStatus" class="cell-note"></span></summary>
+        <details id="advancedSettings" class="setting-group"><summary>กิจกรรมและบัฟ <span id="advancedStatus" class="cell-note"></span></summary>
         <div class="spacer"></div>
         <label for="spotlightEvent">กิจกรรม EXP / Spotlight</label>
         <select id="spotlightEvent"><option value="auto" selected>อัตโนมัติ · ตามช่วงกิจกรรม</option><option value="none">ไม่มีกิจกรรม</option></select>
-        <div class="hint" id="eventInfo" aria-live="polite"></div>
-        <details class="setting-group" open>
+        <details class="setting-group">
           <summary>Daily Dungeon ย้อนหลัง</summary>
           <p class="field-help">กิจกรรม 6th Anniversary 2026 จบแล้ว เก็บข้อมูลไว้เทียบ และใช้วางแผนเก็บเลเวลถ้ากิจกรรมกลับมา</p>
           <label for="dailyDungeonMode">แสดงข้อมูล Daily Dungeon เก่า</label>
@@ -151,7 +150,7 @@
           <div id="archiveInfo" class="field-help" aria-live="polite"></div>
         </details>
         <div class="spacer"></div>
-        <details class="setting-group" open><summary>บัฟ EXP และของสวมใส่ <span id="buffCount" class="tag">ยังไม่ใส่</span></summary><p class="field-help">ใส่เฉพาะบัฟที่เปิดอยู่จริง · ไม่ได้ใช้ให้เว้นเป็น 0</p>
+        <details class="setting-group"><summary>บัฟ EXP และของสวมใส่ <span id="buffCount" class="tag">ยังไม่ใส่</span></summary><p class="field-help">ใส่เฉพาะบัฟที่เปิดอยู่จริง · ไม่ได้ใช้ให้เว้นเป็น 0</p>
         <div class="grid one">
           <div><label for="serverBonus">โบนัส Server EXP ที่เพิ่มจากพื้นฐาน (%)</label><input id="serverBonus" type="number" min="0" step="1" value="0" aria-describedby="serverExpHelp serverExpTotal">
             <p id="serverExpHelp" class="field-help">กรอกเฉพาะส่วนที่เพิ่มจาก Basic 100% เช่น ในเกมขึ้น EXP 200% (Basic 100% + Chaos 100%) ให้กรอก <strong>100</strong></p>
@@ -187,11 +186,12 @@
           </select></div>
           <div><label for="customBonus">EXP เพิ่มอื่น ๆ (%)</label><input id="customBonus" type="number" min="0" step="1" value="0"></div>
         </div>
-        </details><details class="setting-group" open><summary>โบนัส EXP ตามเผ่า <span id="raceCount" class="tag">ยังไม่ใส่</span></summary><p class="field-help">กรอกเฉพาะโบนัสของเผ่านั้น ๆ · ถ้าของสวมใส่ให้ EXP ทุกเผ่า +164% และ Plant +9% ให้กรอก 164 ในช่อง "EXP จากของสวมใส่" และ 9 ในช่อง Plant</p><div id="raceInputs" class="grid race-grid"></div></details>
+        </details><details class="setting-group"><summary>โบนัส EXP ตามเผ่า <span id="raceCount" class="tag">ยังไม่ใส่</span></summary><p class="field-help">กรอกเฉพาะโบนัสของเผ่านั้น ๆ · ถ้าของสวมใส่ให้ EXP ทุกเผ่า +164% และ Plant +9% ให้กรอก 164 ในช่อง "EXP จากของสวมใส่" และ 9 ในช่อง Plant</p><div id="raceInputs" class="grid race-grid"></div></details>
         </details>
       </aside>
       <section id="results" tabindex="-1">
         <div class="summary" id="summary"></div>
+        <div class="hint" id="eventInfo" aria-live="polite"></div>
         <p id="eventCoverage" class="field-help" aria-live="polite"></p>
         <div class="table-caption"><strong>อันดับแมพ</strong><span>ค่าเฉลี่ยทั้งแมพ ถ่วงตามจำนวนมอน · ⚠ แดง = มอนเกินครึ่งต้องตีเกิน 5 ครั้ง · กดชื่อแมพเพื่อดูรายมอน</span></div><div class="filter-chips" role="group" aria-label="ตัวกรองด่วน">
           <label class="chip"><input type="checkbox" id="filterEvent"><span>★ มี EXP กิจกรรม <small id="filterEventCount"></small></span></label>

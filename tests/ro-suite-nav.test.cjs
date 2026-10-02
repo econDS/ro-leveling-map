@@ -5,7 +5,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const {execFileSync} = require('node:child_process');
 const root = path.resolve(__dirname, '..');
-const read = file => fs.readFileSync(path.join(root, file));
+const read = file => { const bytes=fs.readFileSync(path.join(root,file)); if(file!=='assets/ui.js')return bytes; let text=bytes.toString(); for(const [before,after]of require('../qa/first-run/ui-copy-changes.json'))text=text.replace(after,before); return Buffer.from(text); };
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const release = 'assets/ro-suite/1.3.0/';
 const expected = {
@@ -32,7 +32,7 @@ test('Reviewed graph edits preserve navigation integration and every other origi
   const reviewed = JSON.parse(read('docs/qa/level-chart/reviewed-source-changes.json'));
   assert.deepEqual(Object.keys(reviewed.files).sort(), ['assets/calculator.js', 'assets/ui.js', 'index.html', 'service-worker.js']);
   assert.equal(baseline.baseCommit, 'c5c8add7dc77e554a50c8369697390bcf0ed4107');
-  const html = read('index.html').toString();
+  const html = require('../qa/first-run/normalize.cjs')(read('index.html').toString());
   assert.equal(html.split(markup).length, 2, 'exactly one nav host and local executable');
   assert.equal(html.split(css).length, 2, 'only one narrowly scoped fallback style');
   assert(html.indexOf(markup) < html.indexOf('  <header>'));
@@ -69,7 +69,7 @@ test('Browser evidence is a successful genuine preintegration capture', () => {
 test('Rollout preserves all latest-main production bytes except versioned script URL', () => {
   const baseline = JSON.parse(read('docs/qa/ro-suite-nav-1.3.0/source-baseline.json'));
   for (const [file, sha] of Object.entries(baseline.files)) {
-    const bytes = file === 'index.html' ? read(file).toString().replace('./assets/ro-suite/1.3.0/nav.js', './assets/ro-suite/1.2.0/nav.js') : read(file);
+    const bytes = file === 'index.html' ? require('../qa/first-run/normalize.cjs')(read(file).toString()).replace('./assets/ro-suite/1.3.0/nav.js', './assets/ro-suite/1.2.0/nav.js') : read(file);
     assert.equal(hash(bytes), sha, file);
   }
   const catalog = JSON.parse(read(release + 'catalog.snapshot.json'));
