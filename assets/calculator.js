@@ -166,3 +166,15 @@ function row(map, c) {
     baseAreaScore:baseAfterPenalty * monsterDensity, finalAreaScore:finalPerKill * monsterDensity,
     walkablePct:hasWalk ? walkableCells / geometry.totalCells * 100 : 0};
 }
+
+// Reuse the table's calculations at every integer level; never alter source data.
+function mapLevelCurve(map, c, start=1, end=260) {
+  const clamp = value => Math.max(1, Math.min(260, Math.floor(Number(value) || 1)));
+  const first = Math.min(clamp(start), clamp(end)), last = Math.max(clamp(start), clamp(end));
+  return Array.from({length:last-first+1}, (_, index) => {
+    const level = first + index, result = row(map, {...c, level});
+    return {level, locked:result.locked, finalPerKill:result.locked ? null : result.finalPerKill,
+      expPerMillionHp:result.locked ? null : result.expPerMillionHp,
+      yieldPct:result.yieldPct, hitsPerKill:result.hitsPerKill, min:result.min};
+  });
+}

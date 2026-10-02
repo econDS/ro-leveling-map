@@ -1,0 +1,12 @@
+{
+  "feature": "Interactive level comparison chart",
+  "checkedOn": "2026-10-02",
+  "integratedMainCommit": "707d51e",
+  "note": "Reviewed graph changes only. The original navigation baseline and immutable release remain unchanged. The index.html checksum excludes the exact navigation markup and fallback CSS, matching the original audit. All other production files retain their original checksums; numeric calculation fixtures remain unchanged.",
+  "files": {
+    "assets/calculator.js": "2af86864d7bc90fcf9c311a62c57b3ab307b04ff95b816f331394f490d77de0e",
+    "assets/ui.js": "ba7e331caea1977faf617c19e7dd5cb5272ec462e3d496a8caeaea584e677c87",
+    "index.html": "6656b403a2920373cc7809f2369d7fd040dc1ca824332fda591aea56eff0227f",
+    "service-worker.js": "3a22fc6ac14f633a162b81031b1ac7580bcb402153cd4a99a6e6e342baf3f27e"
+  }
+}

@@ -157,6 +157,7 @@ function updateSortLabels(table,key,direction,attribute) {
   });
 }
 function closeModal() {
+  disposeLevelChart();
   document.getElementById('mapModal').classList.remove('open');
   document.getElementById('mapModal').setAttribute('aria-hidden','true');
   document.body.style.overflow='';
@@ -168,6 +169,7 @@ function openModal() {
   document.getElementById('mapModal').setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
   document.getElementById('closeMapModal').focus();
+  levelChartController?.redraw();
 }
 function geometryPreview(selected) {
   const g=selected.geometry, original=`assets/maps/${escapeHtml(selected.mapImage||selected.code)}.png`;
@@ -234,6 +236,7 @@ function stepMap(delta) {
   renderDetail(currentRows,currentConfig);
 }
 function renderDetail(rows,c) {
+  disposeLevelChart();
   const modal=document.getElementById('mapModal');
   const selected=rows.find(r=>r.code===selectedCode)||row(MAPS.find(m=>m.code===selectedCode)||rows[0]||MAPS[0],c);
   selectedCode=selected.code;
@@ -301,6 +304,7 @@ function updateCompareUI() {
   });
 }
 function renderCompare(c) {
+  disposeLevelChart();
   const modal=document.getElementById('mapModal'), body=document.getElementById('mapModalBody');
   const maps=[...compareSet].map(code=>MAPS.find(m=>m.code===code)).filter(Boolean).map(m=>row(m,c));
   if(maps.length<2){closeModal();return;}
@@ -330,7 +334,8 @@ function renderCompare(c) {
     ['วิธีเข้า',r=>planningContext(r).access?.label||(r.entryRequirementVerified===false?'ยังไม่ตรวจ':'−')],
     ['มอนในแมพ',r=>null]
   ].map(([label,value])=>`<tr><th scope="row">${label}</th>${maps.map(r=>`<td>${label==='มอนในแมพ'?spriteStrip(r,6):escapeHtml(value(r))}</td>`).join('')}</tr>`).join('');
-  body.innerHTML=`<p class="field-help">★ = ดีที่สุดในกลุ่ม · ค่าเฉลี่ยทั้งแมพ ใช้เลเวล ปาร์ตี้ ดาเมจ บัฟ และกิจกรรมที่ตั้งอยู่</p><div class="table-wrap compare-wrap"><table class="compare-table"><thead><tr><th scope="col"><span class="visually-hidden">ค่า</span></th>${maps.map(r=>`<th scope="col"><div class="compare-head">${mapThumb(r,'compare-thumb')}<button type="button" class="map-btn" data-open-map="${r.code}">${escapeHtml(r.name)}</button><span class="cell-note">${escapeHtml(r.code)}</span><button type="button" class="text-btn" data-remove-compare="${r.code}">นำออก</button></div></th>`).join('')}</tr></thead><tbody>${metricRows}${textRows}</tbody></table></div>`;
+  body.innerHTML=levelChartMarkup()+`<h3 class="compare-current-title">เทียบตัวเลขที่เลเวลปัจจุบัน · Lv ${c.level}</h3><p class="field-help">★ = ดีที่สุดในกลุ่ม · ค่าเฉลี่ยทั้งแมพ ใช้เลเวล ปาร์ตี้ ดาเมจ บัฟ และกิจกรรมที่ตั้งอยู่</p><div class="table-wrap compare-wrap"><table class="compare-table"><thead><tr><th scope="col"><span class="visually-hidden">ค่า</span></th>${maps.map(r=>`<th scope="col"><div class="compare-head">${mapThumb(r,'compare-thumb')}<button type="button" class="map-btn" data-open-map="${r.code}">${escapeHtml(r.name)}</button><span class="cell-note">${escapeHtml(r.code)}</span><button type="button" class="text-btn" data-remove-compare="${r.code}">นำออก</button></div></th>`).join('')}</tr></thead><tbody>${metricRows}${textRows}</tbody></table></div>`;
+  levelChartController=mountLevelChart(body.querySelector('.level-chart'),maps,c);
   body.querySelectorAll('[data-open-map]').forEach(button=>button.addEventListener('click',()=>{selectedCode=button.dataset.openMap;renderDetail(currentRows,c);}));
   body.querySelectorAll('[data-remove-compare]').forEach(button=>button.addEventListener('click',()=>{compareSet.delete(button.dataset.removeCompare);updateCompareUI();renderCompare(c);}));
   body.scrollTop=0;
@@ -533,7 +538,7 @@ function init() {
     if(e.key==='Escape')closeModal();
     if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!(e.target instanceof Element&&e.target.closest('input,select,textarea,[role="tab"]'))){e.preventDefault();stepMap(e.key==='ArrowRight'?1:-1);}
     if(e.key==='Tab'){
-      const nodes=[...document.querySelectorAll('#mapModal button:not(:disabled), #mapModal select, #mapModal a, #mapModal summary, #mapModal [tabindex="0"]')].filter(el=>el.getClientRects().length);
+      const nodes=[...document.querySelectorAll('#mapModal button:not(:disabled), #mapModal input:not(:disabled), #mapModal select, #mapModal a, #mapModal summary, #mapModal [tabindex="0"]')].filter(el=>el.getClientRects().length);
       const first=nodes[0],last=nodes[nodes.length-1];
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
       else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}

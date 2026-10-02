@@ -18,6 +18,42 @@ const config = (e=null,level=240)=>({event:e,level,lock:false,partyShare:1/3,ext
 const approx=(a,b)=>assert.ok(Math.abs(a-b)<=Math.max(1,Math.abs(b))*1e-10,`${a} != ${b}`);
 const includesArchivedMap=vm.runInContext('includesArchivedMap',context);
 const {matchesMapSearch,spotlightCoverage,sharedSettings}=vm.runInContext('({matchesMapSearch,spotlightCoverage,sharedSettings})',context);
+const mapLevelCurve=vm.runInContext('mapLevelCurve',context);
+
+test('Level curves recalculate level thresholds with event spawn weights, racial buffs and party sharing',()=>{
+  const fixture={code:'chart_fixture',name:'Chart fixture',min:170,amount:20,monsters:[
+    {name:'Plant A',race:'Plant',level:180,hp:1000000,baseExp:100,amount:5},
+    {name:'Demon B',race:'Demon',level:186,hp:2000000,baseExp:200,amount:15}
+  ]};
+  const selectedEvent={rules:[{map:fixture.code,name:'Plant A',normalExp:100,eventExp:1000},{map:fixture.code,name:'Demon B',normalExp:200,eventExp:2000}],
+    spawnCounts:[{map:fixture.code,name:'Plant A',amount:10},{map:fixture.code,name:'Demon B',amount:30}]};
+  const c={level:170,event:selectedEvent,lock:true,partyShare:.6,h:2,external:2.6,damage:750000,raceBonuses:{Plant:50}};
+  const before=JSON.stringify({fixture,c}),points=mapLevelCurve(fixture,c,170,171);
+  assert.equal(points.length,2);
+  approx(points[0].finalPerKill,1692);
+  approx(points[1].finalPerKill,3420);
+  approx(points[0].expPerMillionHp,1692/1.75);
+  approx(points[1].expPerMillionHp,3420/1.75);
+  approx(points[0].hitsPerKill,2.75);
+  assert.equal(JSON.stringify({fixture,c}),before);
+});
+
+test('Level curves leave inaccessible levels missing instead of plotting zero and respect unlocked entry filters',()=>{
+  const m=map('jor_ab01'),c={...config(null,200),lock:true,damage:1000000};
+  const points=mapLevelCurve(m,c,199,200);
+  assert.equal(points[0].locked,true);assert.equal(points[0].finalPerKill,null);assert.equal(points[0].expPerMillionHp,null);
+  assert.equal(points[1].locked,false);assert.ok(points[1].finalPerKill>0);
+  const unlocked=mapLevelCurve(m,{...c,lock:false},199,200);
+  assert.ok(unlocked[0].finalPerKill>0);
+  approx(unlocked[1].finalPerKill,points[1].finalPerKill);
+});
+
+test('Level curve ranges include both endpoints, normalize reversed ranges and clamp to Lv 1–260',()=>{
+  const c={...config(),damage:1000000},m=map('oz_dun01');
+  const single=mapLevelCurve(m,c,240,240);assert.equal(single.length,1);assert.equal(single[0].level,240);
+  const reversed=mapLevelCurve(m,c,261,-10);assert.equal(reversed.length,260);assert.equal(reversed[0].level,1);assert.equal(reversed.at(-1).level,260);
+  approx(single[0].finalPerKill,row(m,c).finalPerKill);
+});
 
 test('Confirmed outdoor warp access changes filtering without changing EXP or other dungeons',()=>{
   const before=JSON.stringify(MAPS);

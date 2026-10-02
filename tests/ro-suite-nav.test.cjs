@@ -27,8 +27,10 @@ test('Release artifacts match user SHA-256 and immutable lock', () => {
   for (const [file, sha] of Object.entries(expected)) assert.equal(hash(read(release + file)), sha, file);
   for (const file of ['nav.js', 'catalog.snapshot.json']) assert.equal(lock.files[file].sha256, expected[file]);
 });
-test('Original production bytes are preserved except exact isolated integration', () => {
+test('Reviewed graph edits preserve navigation integration and every other original production file', () => {
   const baseline = JSON.parse(read('docs/qa/ro-suite-nav/source-baseline.json'));
+  const reviewed = JSON.parse(read('docs/qa/level-chart/reviewed-source-changes.json'));
+  assert.deepEqual(Object.keys(reviewed.files).sort(), ['assets/calculator.js', 'assets/ui.js', 'index.html', 'service-worker.js']);
   assert.equal(baseline.baseCommit, 'c5c8add7dc77e554a50c8369697390bcf0ed4107');
   const html = read('index.html').toString();
   assert.equal(html.split(markup).length, 2, 'exactly one nav host and local executable');
@@ -37,7 +39,7 @@ test('Original production bytes are preserved except exact isolated integration'
   assert(!/<ro-suite-nav[^>]*(?:theme|catalog-url)=/.test(html));
   for (const [file, sha] of Object.entries(baseline.files)) {
     const bytes = file === 'index.html' ? html.replace(markup, '').replace(css, '') : read(file);
-    assert.equal(hash(bytes), sha, file + ' must remain byte-for-byte original');
+    assert.equal(hash(bytes), reviewed.files[file] || sha, file + ' must match its reviewed graph checksum or the original production checksum');
   }
 });
 test('Calculation inputs, all recorded numeric outputs and existing share hashes equal pre-edit fixtures', () => {

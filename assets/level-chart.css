@@ -1,0 +1,46 @@
+#mapModal[data-mode="compare"] .modal-dialog{max-width:1120px}
+#mapModal[data-mode="compare"] .modal-head{padding:16px 24px}
+#mapModal[data-mode="compare"] .modal-body{padding:22px 24px}
+.level-chart{--chart-a:var(--accent);--chart-b:#5276ce;--chart-c:#ba791c;--chart-surface:#f5f7fa;--chart-selected:#edf7f4;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.level-chart-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.level-chart-eyebrow{display:block;font-size:11px;font-weight:600;letter-spacing:.8px;color:var(--accent);margin-bottom:5px}
+.level-chart-heading h3{margin:0;font-size:23px;font-weight:600;letter-spacing:-.3px}
+.level-chart-context{font-size:11px;color:var(--muted);white-space:nowrap}
+.level-chart-intro{font-size:13px;color:var(--muted);margin:8px 0 20px}
+.level-chart-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 20px;padding:13px 16px;background:var(--chart-surface);border-radius:12px}
+.level-chart-metric-field{display:flex;align-items:center;gap:10px;min-width:0}
+.level-chart-controls label,.level-chart-field-label{font-size:11px;font-weight:500;color:var(--muted);margin:0}
+.level-chart-metric-field select{width:218px;min-height:36px;font-size:12px;background:var(--panel);border-color:var(--line)}
+.level-chart-range-field{display:flex;align-items:center;gap:10px;min-width:0}
+.level-chart-range-inputs{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.level-chart-range-inputs input{width:72px;min-height:36px;font-size:12px;font-variant-numeric:tabular-nums;text-align:center;background:var(--panel);border-color:var(--line)}
+.level-chart-legend{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.level-chart-key{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);font:inherit;font-size:12px;cursor:pointer;text-align:left;transition:background .15s,opacity .15s}
+.level-chart-key:hover{background:var(--chart-surface)}.level-chart-key span{overflow-wrap:anywhere}.level-chart-key small{color:var(--muted);font-size:10px;margin-left:3px}.level-chart-key[aria-pressed=false]{opacity:.4;background:var(--chart-surface)}
+.level-chart-key svg{flex-shrink:0}.level-chart-key:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.level-chart-plot{width:100%;min-height:320px}.level-chart-plot>svg{display:block;width:100%;height:320px}
+.level-chart-plot text{fill:var(--muted);font:12px var(--font-body)}.level-chart-plot .level-chart-axis-title{fill:var(--muted);font-size:11px;font-weight:500}
+.level-chart-frame{stroke:none}.level-chart-grid{stroke:var(--line);stroke-width:1;opacity:.65}
+.level-chart-line{fill:none;stroke-width:2.5;stroke-linejoin:round}.level-chart-line.series-0{stroke:var(--chart-a)}.level-chart-line.series-1{stroke:var(--chart-b)}.level-chart-line.series-2{stroke:var(--chart-c)}
+.level-chart-marker{stroke:var(--panel);stroke-width:2}.level-chart-marker.series-0,.level-chart-dot.series-0{fill:var(--chart-a);background:var(--chart-a)}.level-chart-marker.series-1,.level-chart-dot.series-1{fill:var(--chart-b);background:var(--chart-b)}.level-chart-marker.series-2,.level-chart-dot.series-2{fill:var(--chart-c);background:var(--chart-c)}
+.level-chart-guide{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 5;opacity:.55}.level-chart-hit{cursor:crosshair;touch-action:pan-y}
+.level-chart-guide-badge{fill:var(--chart-surface)}.level-chart-plot .level-chart-guide-label{fill:var(--text);font-size:11px;font-weight:600}
+.level-chart-slider{margin:4px 0 18px;padding:12px 16px 9px;background:var(--chart-surface);border-radius:10px}
+.level-chart-slider label{color:var(--text);display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:500;margin-bottom:5px}.level-chart-slider label small{color:var(--muted);font-size:11px;font-weight:400;margin-left:8px}.level-chart-slider output{color:var(--accent);font-family:var(--font-display);font-weight:600;font-variant-numeric:tabular-nums;font-size:16px}
+.level-chart-slider input{margin:0;padding:0;height:25px;min-height:25px;accent-color:var(--accent);border:0;box-shadow:none;background:transparent;cursor:pointer}
+.level-chart-readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.level-chart-value{min-width:0;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:background .15s,border-color .15s}
+.level-chart-value.is-best{background:var(--chart-selected);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.level-chart-value-head{display:flex;align-items:center;gap:9px;min-width:0}.level-chart-map-thumb{width:36px;height:36px;object-fit:cover;image-rendering:pixelated;flex-shrink:0;border-radius:8px;background:var(--head)}
+.level-chart-map-name{min-width:0;flex:1}.level-chart-map-name>span{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;overflow-wrap:anywhere}.level-chart-map-name small{display:block;color:var(--muted);font-size:10px;margin-top:1px;overflow-wrap:anywhere}
+.level-chart-dot{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.level-chart-best{font-size:10px;color:var(--accent);white-space:nowrap;align-self:flex-start;margin-top:1px;font-weight:600}
+.level-chart-number{margin:12px 0 10px}.level-chart-number strong{display:block;font-size:24px;font-weight:600;font-family:var(--font-display);font-variant-numeric:tabular-nums;letter-spacing:-.5px;color:var(--text);overflow-wrap:anywhere}.level-chart-number>span{color:var(--muted);font-size:11px}
+.level-chart-value-foot{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:10px;color:var(--muted);border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent);padding-top:8px}.level-chart-value-foot b{font-weight:500;color:var(--text)}
+.level-chart-value.is-locked .level-chart-number strong{font-size:19px;color:var(--muted)}
+.level-chart .level-chart-notes{border:0;border-radius:0;background:transparent;padding:0;margin-top:16px}.level-chart-notes summary{font-size:11px;font-weight:500;color:var(--muted)}.level-chart-notes p{line-height:1.7;margin-bottom:4px}.level-chart-note{margin-bottom:0}
+.compare-current-title{font-size:14px;font-weight:600;margin:16px 0 8px}
+@media(max-width:800px){.level-chart-context{display:none}.level-chart-controls{gap:12px}.level-chart-metric-field,.level-chart-range-field{justify-content:space-between;flex:1 1 100%}.level-chart-metric-field select{width:min(218px,70%)}.level-chart-readout{grid-template-columns:1fr}.level-chart-value{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;padding:12px 14px}.level-chart-number{margin:0;text-align:right;align-self:center}.level-chart-number strong{font-size:21px}.level-chart-value-head{position:relative}.level-chart-best{position:absolute;bottom:-2px;left:45px;margin:0;background:var(--chart-selected);font-size:9px}.level-chart-value.is-best .level-chart-map-name small{visibility:hidden}.level-chart-value-foot{grid-column:1/-1;padding-top:6px}.level-chart-heading h3{font-size:21px}}
+@media(max-width:600px){#mapModal[data-mode="compare"] .modal-head{padding:12px 16px}#mapModal[data-mode="compare"] .modal-body{padding:18px 14px}.level-chart-controls{padding:12px}.level-chart-heading h3{font-size:20px}.level-chart-intro{font-size:12px;margin-bottom:16px}.level-chart-key{min-height:40px;padding:7px 9px}.level-chart-key small{display:none}.level-chart-slider{padding:10px 12px}.level-chart-slider label small{display:none}.level-chart-range-inputs{gap:6px}.level-chart-range-inputs input{width:65px}.level-chart-number strong{font-size:20px}.level-chart-value{padding:11px 12px}.level-chart-map-thumb{width:32px;height:32px}.level-chart-best{left:41px}.level-chart-readout{gap:8px}}
+@media(prefers-color-scheme:dark){.level-chart{--chart-b:#8babff;--chart-c:#e5ac60;--chart-surface:#1d2733;--chart-selected:#17332f}.level-chart-key{background:#1a232e}.level-chart-value-foot{border-color:#314039}}
+@media(prefers-reduced-motion:reduce){.level-chart-key,.level-chart-value{transition:none}}
