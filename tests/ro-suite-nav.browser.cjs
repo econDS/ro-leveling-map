@@ -276,6 +276,9 @@ async function navigation(page, context, label, capture) {
   assert.equal(await button.getAttribute('aria-expanded'), 'true'); assert(await menu.isVisible());
   const current = menu.locator('a[aria-current="page"]');
   assert.equal(await current.count(), 1); assert.equal(await current.getAttribute('href'), SELF_URL);
+  assert.equal(await menu.getByRole('link', { name: 'Best Status', exact: false }).getAttribute('href'), 'https://econds.github.io/ro-best-status/');
+  const expectedCatalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/ro-suite/1.3.0/catalog.snapshot.json'), 'utf8'));
+  for (const tool of expectedCatalog.tools.filter(t => t.canonicalUrl)) assert.equal(await host.locator(`a[href="${tool.canonicalUrl}"]`).count() > 0, true, tool.id);
   const planned = menu.locator('li').filter({ hasText: 'Grade & Refine Workshop' });
   assert((await planned.innerText()).includes('อยู่ในแผน')); assert.equal(await planned.locator('a').count(), 0);
   await top(page);
@@ -415,6 +418,30 @@ async function fallback() {
     finally { await context.close(); }
   }
 }
+async function optionalCatalogFallback() {
+  const context = await contextFor(390, 'light', 'block');
+  const url = 'https://econds.github.io/ro_tools_portal/catalog/v1/tools.json';
+  let requests = 0;
+  await context.route(url, async route => { requests++; await route.abort('failed'); });
+  const page = await openPage(context, 'optional-catalog');
+  try {
+    await check('optional-catalog-failure-snapshot-and-state', async () => {
+      await applyCase(page, CASES[1]);
+      const state = await snapshot(page), beforeUrl = page.url();
+      await page.locator('ro-suite-nav').evaluate(el => el.setAttribute('catalog-url', 'https://econds.github.io/ro_tools_portal/catalog/v1/tools.json'));
+      await page.locator('ro-suite-nav .bar button').click();
+      await page.waitForTimeout(1800);
+      assert.equal(requests, 1, 'Optional catalog request really failed');
+      const host = page.locator('ro-suite-nav');
+      assert.equal(await host.locator('a[href="https://econds.github.io/ro-best-status/"]').count(), 1);
+      assert.equal(await host.locator('a[aria-current="page"]').getAttribute('href'), SELF_URL);
+      assert.equal(await host.locator('li').filter({hasText:'Grade & Refine Workshop'}).locator('a').count(), 0);
+      await assertSame(page, state, 'Failed optional catalog preserves settings and calculations');
+      assert.equal(page.url(), beforeUrl);
+      report.optionalCatalog = {requests, url, snapshotPreserved:true, productionCatalogUrl:null};
+    }, page);
+  } finally { await context.close(); }
+}
 async function serviceWorker() {
   const context = await contextFor(390, 'light', 'allow');
   let page;
@@ -477,6 +504,7 @@ function networkComparison() {
     report.browserVersion = browser.version();
     await fixtures(); await matrix(); await fallback(); await serviceWorker();
     await check('network-baseline-comparison', async () => networkComparison());
+    await optionalCatalogFallback();
 
   } catch (error) { failure('runner', error); }
   finally {

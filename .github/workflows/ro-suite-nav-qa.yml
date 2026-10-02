@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   navigation-qa:
-    if: github.head_ref == 'feat/ro-suite-nav' && github.event.pull_request.head.repo.full_name == github.repository
+    if: (github.head_ref == 'feat/ro-suite-nav' || github.head_ref == 'chore/ro-suite-nav-1.3.0') && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     defaults:
@@ -24,6 +24,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 9954b741012eb6f1d39210e68993908ded6bd0f1
+          path: .qa-original
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -53,7 +58,7 @@ jobs:
           RO_QA_COMMIT: ${{ github.event.pull_request.head.sha }}
         run: |
           mkdir -p "$RUNNER_TEMP/leveling-web"
-          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/leveling-web/ro-leveling-map"
+          ln -s "$GITHUB_WORKSPACE/.qa-original" "$RUNNER_TEMP/leveling-web/ro-leveling-map"
           python -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/leveling-web" > artifacts/ro-suite-nav/server.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
@@ -61,6 +66,10 @@ jobs:
             if curl --fail --silent http://127.0.0.1:4173/ro-leveling-map/ > /dev/null; then break; fi
             sleep 0.2
           done
+          mkdir -p "$GITHUB_WORKSPACE/artifacts/ro-suite-nav/before"
+          (cd .qa-original && RO_QA_OUTPUT="$GITHUB_WORKSPACE/artifacts/ro-suite-nav/before" RO_QA_COMMIT=9954b741012eb6f1d39210e68993908ded6bd0f1 node tests/ro-suite-nav.browser.cjs) 2>&1 | tee artifacts/ro-suite-nav/before/browser-tests.log
+          unlink "$RUNNER_TEMP/leveling-web/ro-leveling-map"
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/leveling-web/ro-leveling-map"
           node tests/ro-suite-nav.browser.cjs 2>&1 | tee artifacts/ro-suite-nav/browser-tests.log
       - name: Upload logs, report and screenshots even on failure
         if: always()
