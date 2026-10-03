@@ -1,0 +1,24 @@
+/* Host palette only: keep shared navigation geometry and behavior unchanged. */
+ro-suite-nav {
+  --ro-suite-surface: var(--panel);
+  --ro-suite-surface-hover: var(--soft);
+  --ro-suite-text: var(--text);
+  --ro-suite-muted: var(--muted);
+  --ro-suite-border: var(--line);
+  --ro-suite-accent: var(--accent);
+  --ro-suite-focus: var(--accent);
+  --ro-suite-font-family: var(--font-body);
+}
+
+/* The no-JavaScript link uses the same semantic theme and existing hit target. */
+ro-suite-nav > nav {
+  background: var(--ro-suite-surface);
+  color: var(--ro-suite-text);
+  font-family: var(--ro-suite-font-family);
+}
+ro-suite-nav > nav > a { color: var(--ro-suite-accent); }
+ro-suite-nav > nav > a:hover { background: var(--ro-suite-surface-hover); }
+ro-suite-nav > nav > a:focus-visible {
+  outline: 2px solid var(--ro-suite-focus);
+  outline-offset: 2px;
+}
