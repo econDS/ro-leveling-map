@@ -266,9 +266,12 @@ async function navigation(page, context, label, capture) {
   assert.equal(await host.getAttribute('tool-id'), 'leveling-map');
   const navIdentity = await host.evaluate(el => {
     const root = el.shadowRoot, nav = root.querySelector('nav');
-    return { accent: getComputedStyle(root.querySelector('.current .chip')).backgroundColor, mapPaths: [...root.querySelectorAll('.current .chip svg path')].map(el => el.getAttribute('d')) };
+    const probe = document.createElement('span'); probe.style.color = 'var(--accent)'; document.body.append(probe);
+    const hostAccent = getComputedStyle(probe).color; probe.remove();
+    return { hostAccent, background: getComputedStyle(root.querySelector('.current .chip')).backgroundColor, accent: getComputedStyle(root.querySelector('.current .chip')).color, mapPaths: [...root.querySelectorAll('.current .chip svg path')].map(el => el.getAttribute('d')) };
   });
-  assert.equal(navIdentity.accent, 'rgb(47, 122, 79)');
+  assert.equal(navIdentity.accent, navIdentity.hostAccent, 'Current icon follows the actual host accent');
+  assert.equal(navIdentity.background, 'rgba(0, 0, 0, 0)', 'Current icon keeps the accessible neutral background');
   assert.deepEqual(navIdentity.mapPaths, ['M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z', 'M9 4v14M15 6v14']);
   const before = await snapshot(page), url = page.url();
   await top(page); const closedGeometry = await geometry(page), closedOverflow = await overflow(page);
