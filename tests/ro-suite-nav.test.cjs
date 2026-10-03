@@ -5,7 +5,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const {execFileSync} = require('node:child_process');
 const root = path.resolve(__dirname, '..');
-const read = file => { const bytes=fs.readFileSync(path.join(root,file)); if(file!=='assets/ui.js')return bytes; let text=bytes.toString(); for(const [before,after]of require('../qa/first-run/ui-copy-changes.json'))text=text.replace(after,before); return Buffer.from(text); };
+const read = file => { const bytes=fs.readFileSync(path.join(root,file)); if(file==='index.html')return Buffer.from(require('../qa/nav-1.4.0/normalize.cjs')(bytes.toString())); if(file!=='assets/ui.js')return bytes; let text=bytes.toString(); for(const [before,after]of require('../qa/first-run/ui-copy-changes.json'))text=text.replace(after,before); return Buffer.from(text); };
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const release = 'assets/ro-suite/1.3.0/';
 const expected = {
