@@ -1,0 +1,10 @@
+{
+  "surface": "var(--panel)",
+  "surface-hover": "var(--soft)",
+  "text": "var(--text)",
+  "muted": "var(--muted)",
+  "border": "var(--line)",
+  "accent": "var(--accent)",
+  "focus": "var(--accent)",
+  "font-family": "var(--font-body)"
+}
