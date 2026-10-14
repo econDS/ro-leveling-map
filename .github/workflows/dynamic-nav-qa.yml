@@ -1,0 +1,46 @@
+name: Dynamic RO navigation QA
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+jobs:
+  dynamic-navigation:
+    if: github.head_ref == 'feat/dynamic-ro-suite-nav' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/*.test.cjs
+      - run: |
+          python -m venv "$RUNNER_TEMP/python"
+          "$RUNNER_TEMP/python/bin/pip" install Pillow==12.3.0
+          "$RUNNER_TEMP/python/bin/python" -m unittest discover -s tests -p 'test_*.py'
+      - run: |
+          npm install --prefix "$RUNNER_TEMP/browser" --no-save --package-lock=false --ignore-scripts playwright@1.55.1
+          node "$RUNNER_TEMP/browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Navigation and unchanged application regressions
+        env:
+          NODE_PATH: ${{ runner.temp }}/browser/node_modules
+          RO_QA_OUTPUT: ${{ github.workspace }}/qa-artifacts
+        run: |
+          mkdir -p "$RUNNER_TEMP/web"
+          ln -s "$GITHUB_WORKSPACE" "$RUNNER_TEMP/web/ro-leveling-map"
+          python -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/web" &
+          trap 'kill $!' EXIT
+          for attempt in $(seq 1 50); do if curl -fs http://127.0.0.1:4173/ro-leveling-map/ >/dev/null; then break; fi; sleep .2; done
+          node tests/ro-suite-nav.browser.cjs
+          node tests/dynamic-nav.browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dynamic-nav-${{ github.event.pull_request.head.sha }}
+          path: qa-artifacts/

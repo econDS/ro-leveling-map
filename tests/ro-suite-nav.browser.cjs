@@ -14,6 +14,7 @@ const FIXED_DATE = '2026-11-01T00:00:00Z';
 const STORAGE_KEY = 'ro-general-map-exp-tool-settings-v1';
 const SELF_URL = 'https://econds.github.io/ro-leveling-map/';
 const PORTAL_URL = 'https://econds.github.io/ro_tools_portal/';
+const CATALOG_URL = PORTAL_URL + 'catalog/v1/tools.json';
 const WIDTHS = [360, 390, 768, 1440];
 const THEMES = ['light', 'dark'];
 const CUSTOM = {
@@ -87,6 +88,7 @@ async function contextFor(width = 1440, theme = 'light', serviceWorkers = 'block
     }
     window.Date = FixedDate;
   }, { date: FIXED_DATE });
+  await context.route(CATALOG_URL, route => route.fulfill({json: JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/ro-suite/2.0.0/catalog.snapshot.json'), 'utf8'))}));
   return context;
 }
 async function openPage(context, label, url = BASE) {
@@ -431,7 +433,7 @@ async function optionalCatalogFallback() {
     await check('optional-catalog-failure-snapshot-and-state', async () => {
       await applyCase(page, CASES[1]);
       const state = await snapshot(page), beforeUrl = page.url();
-      await page.locator('ro-suite-nav').evaluate(el => el.setAttribute('catalog-url', 'https://econds.github.io/ro_tools_portal/catalog/v1/tools.json'));
+      assert.equal(requests, 1, 'Central catalog fetched on connection before menu opens');
       await page.locator('ro-suite-nav .bar button').click();
       await page.waitForTimeout(1800);
       assert.equal(requests, 1, 'Optional catalog request really failed');
@@ -470,12 +472,13 @@ async function serviceWorker() {
 }
 function networkSignatures() {
   const deliberateOffline = item => item.label === 'service-worker-offline';
+  const expectedCatalogFailure = item => item.label === 'optional-catalog' && (item.url === CATALOG_URL || item.location?.url === CATALOG_URL);
   const blockedNav = item => item.label.startsWith('fallback') && (item.url === navScriptUrl || item.location?.url === navScriptUrl);
   const unique = values => [...new Set(values)].sort();
   return {
-    consoleErrors: unique(report.network.consoleErrors.filter(item => !deliberateOffline(item) && !blockedNav(item)).map(item => item.text)),
-    badResponses: unique(report.network.badResponses.filter(item => !deliberateOffline(item) && !blockedNav(item)).map(item => `${item.status} ${item.url}`)),
-    failedRequests: unique(report.network.failed.filter(item => !deliberateOffline(item) && !blockedNav(item)).map(item => `${item.error} ${item.url}`))
+    consoleErrors: unique(report.network.consoleErrors.filter(item => !deliberateOffline(item) && !blockedNav(item) && !expectedCatalogFailure(item)).map(item => item.text)),
+    badResponses: unique(report.network.badResponses.filter(item => !deliberateOffline(item) && !blockedNav(item) && !expectedCatalogFailure(item)).map(item => `${item.status} ${item.url}`)),
+    failedRequests: unique(report.network.failed.filter(item => !deliberateOffline(item) && !blockedNav(item) && !expectedCatalogFailure(item)).map(item => `${item.error} ${item.url}`))
   };
 }
 function networkComparison() {
@@ -487,7 +490,7 @@ function networkComparison() {
   const added = current.filter(url => !old.has(url));
   const removed = baseline.networkRequestUrls.filter(url => !current.includes(url));
   report.network.comparison = { added, removed, expectedAdded: [navScriptUrl, SELF_URL], note: 'Only the exact intentionally blocked nav resource and deliberate offline phase are excluded from error comparisons; all errors remain recorded.' };
-  const unexpectedExternal = added.filter(url => new URL(url).origin !== new URL(BASE).origin && url !== SELF_URL);
+  const unexpectedExternal = added.filter(url => new URL(url).origin !== new URL(BASE).origin && url !== SELF_URL && url !== CATALOG_URL);
   assert.deepEqual(unexpectedExternal, [], 'No unexpected external requests beyond baseline and intercepted self link');
   for (const category of ['consoleErrors', 'badResponses', 'failedRequests']) {
     const previous = new Set(baseline.networkSignatures[category]);
