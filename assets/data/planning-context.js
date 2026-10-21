@@ -14,6 +14,13 @@ const PLANNING_CONTEXT = {
     jor_ab02: {englishName:'Abandoned Pit 2F',access:{method:'quest',label:'เควส EP19',note:'ต้องผ่านเควส Episode ที่เกี่ยวข้องและ EP19 side quest ตามบันทึกทีม ถึงเลเวลแล้วไม่ได้แปลว่าปลดล็อกเควสครบ'}},
     mag_dun02: {englishName:'Magma Dungeon 2F',aliases:['Magma','Nogg Road','แมกม่า']},
     mag_dun03: {englishName:'Magma Dungeon 3F',aliases:['Magma','Nogg Road','แมกม่า']},
+    bl_lava: {englishName:'Varmundt Fire',aliases:['ไฟ','Fire']},
+    bl_ice: {englishName:'Varmundt Ice',aliases:['น้ำ','น้ำแข็ง','Ice']},
+    bl_death: {englishName:'Varmundt Death',aliases:['เดธ','Death']},
+    bl_grass: {englishName:'Varmundt Grass',aliases:['ดิน','หญ้า','Grass']},
+    bl_temple: {englishName:'Varmundt Temple',aliases:['แสง','Temple']},
+    bl_soul: {englishName:'Varmundt Soul',aliases:['วิญญาณ','Soul']},
+    bl_venom: {englishName:'Varmundt Venom',aliases:['พิษ','Venom']},
     clock_01: {englishName:'Clock Tower Unknown Basement',aliases:['นากา','นาฬิกา']}
   }
 };

@@ -1,8 +1,9 @@
 'use strict';
 // Spotlight and map data refreshes rewrite generated data and their check dates.
 // Navigation byte-freeze guards skip those data files (and the README that documents each event)
-// and compare code with the dates normalized.
-const DATA_FILE = /^(?:assets\/data\/(?:spotlight-[\w-]+|map-geometry)\.(?:js|json)|README\.md)$/;
+// and compare code with the dates normalized. Map names, nicknames and search aliases live in
+// maps.js and planning-context.js, so those two data files are skipped as well.
+const DATA_FILE = /^(?:assets\/data\/(?:spotlight-[\w-]+|map-geometry|maps|planning-context)\.(?:js|json)|README\.md)$/;
 const CHECK_DATES = {
   'assets/ui.js': /(?<=ข้อมูลกิจกรรมตรวจล่าสุด \$\{thaiDate\(')\d{4}-\d{2}-\d{2}(?='\))/,
   'scripts/audit_spotlight.cjs': /(?<=report\.checkedOn=')\d{4}-\d{2}-\d{2}(?=')/
