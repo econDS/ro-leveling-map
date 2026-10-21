@@ -8,21 +8,21 @@
     "aliases": "Luanda ลูอันดา"
   },
   "ein_dun03": {
-    "name": "Einbech Mine 3F",
+    "name": "เหมือง 3",
     "min": 180,
     "entryRequirementVerified": true,
     "accessNote": "Lv 180+ ทางเข้า ein_dun02 16/250",
     "accessSourceUrl": "https://ro.gnjoy.in.th/einbech-mine-dungeon-3f/"
   },
   "odin_past": {
-    "name": "Ancient Odin’s Temple",
+    "name": "โอดิน",
     "min": 180,
     "entryRequirementVerified": true,
     "accessNote": "Lv 180+ ทางเข้า odin_tem03 276/236",
     "accessSourceUrl": "https://ro.gnjoy.in.th/ancient-odins-temple-4f/"
   },
   "ice_d03_i": {
-    "name": "Illusion of Frozen",
+    "name": "น้ำแข็ง อิลลุสชัน",
     "min": 120,
     "entryRequirementVerified": true,
     "accessNote": "Lv 120+ ตามประกาศแก้เงื่อนไขเข้าดัน 23 พ.ค. 2024",
@@ -33,5 +33,104 @@
   },
   "gef_dun02": {
     "dataNote": "Halloween 2025 ระบุ Jakk แต่รายชื่อมอนจากฐานอ้างอิงแมพนี้ไม่พบ Jakk; คิด Spotlight เฉพาะมอนที่จับคู่ได้"
+  },
+  "lhz_dun03": {
+    "name": "แล็บ 3"
+  },
+  "lhz_dun02": {
+    "name": "แล็บ 2"
+  },
+  "tha_t09": {
+    "name": "ทานา 9"
+  },
+  "ba_lost": {
+    "name": "กิ้งก่า 17.2"
+  },
+  "abyss_02": {
+    "name": "มังกร 2"
+  },
+  "iz_d05_i": {
+    "name": "ดันใต้น้ำ 2"
+  },
+  "gef_fild04": {
+    "name": "บนกิฟ"
+  },
+  "prt_fild05": {
+    "name": "ทาก"
+  },
+  "pay_dun00": {
+    "name": "ดันย่อน 1"
+  },
+  "prt_sewb2": {
+    "name": "แมงสาบ"
+  },
+  "moc_fild02": {
+    "name": "ปีโก้ / ปีโกปีโก้"
+  },
+  "pay_fild04": {
+    "name": "ป่าโพริ่ง"
+  },
+  "anthell01": {
+    "name": "ถ้ำมด1"
+  },
+  "prt_fild10": {
+    "name": "ไม้แดงพรอน"
+  },
+  "pay_dun01": {
+    "name": "ดันย่อน 2"
+  },
+  "beach_dun3": {
+    "name": "กบแดง"
+  },
+  "mjo_dun03": {
+    "name": "คนเหมือง"
+  },
+  "gef_fild11": {
+    "name": "กอบลิ้น"
+  },
+  "cmd_fild04": {
+    "name": "แมวน้ำ"
+  },
+  "moc_pryd03": {
+    "name": "ปีรามิด3"
+  },
+  "mjolnir_12": {
+    "name": "ล่างนากา"
+  },
+  "ayo_dun02": {
+    "name": "ยักษ์อโยธยา"
+  },
+  "bra_fild01": {
+    "name": "ม้าหัวขาด"
+  },
+  "mjolnir_05": {
+    "name": "หนอนแดง"
+  },
+  "gef_fild08": {
+    "name": "มังกรม่วง"
+  },
+  "gl_church": {
+    "name": "อีวิวดรูด"
+  },
+  "ra_fild12": {
+    "name": "หมาราเชล"
+  },
+  "gl_prison": {
+    "name": "คนคุก"
+  },
+  "ra_fild05": {
+    "name": "โคโบล"
+  },
+  "ice_dun03": {
+    "name": "น้ำแข็ง3"
+  },
+  "spl_fild03": {
+    "name": "ผึ้ง"
+  },
+  "ma_fild02": {
+    "name": "เอนกาโต้"
+  },
+  "ecl_fild01": {
+    "name": "เมนบลัท"
   }
 }

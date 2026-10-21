@@ -2,7 +2,7 @@
 const EP20_MAPS = [
   {
     "code": "jor_back4",
-    "name": "Frozen Scale Coast",
+    "name": "จอร์แบค 4",
     "group": "ep20",
     "min": 200,
     "amount": 200,
@@ -102,7 +102,7 @@ const EP20_MAPS = [
   },
   {
     "code": "jor_back5",
-    "name": "Ancient Ice Canyon East",
+    "name": "จอร์แบค 5",
     "group": "ep20",
     "min": 200,
     "amount": 200,
@@ -200,7 +200,7 @@ const EP20_MAPS = [
   },
   {
     "code": "jor_back6",
-    "name": "Ancient Ice Canyon West",
+    "name": "จอร์แบค 6",
     "group": "ep20",
     "min": 200,
     "amount": 260,
@@ -276,7 +276,7 @@ const EP20_MAPS = [
   },
   {
     "code": "jor_root1",
-    "name": "Snake God’s Root 1F",
+    "name": "จอร์รูท 1",
     "group": "ep20",
     "min": 200,
     "amount": 200,
@@ -352,7 +352,7 @@ const EP20_MAPS = [
   },
   {
     "code": "jor_root2",
-    "name": "Snake God’s Root 2F",
+    "name": "จอร์รูท 2",
     "group": "ep20",
     "min": 200,
     "amount": 150,
@@ -428,7 +428,7 @@ const EP20_MAPS = [
   },
   {
     "code": "jor_root3",
-    "name": "Deep Root Cavern",
+    "name": "จอร์รูท 3",
     "group": "ep20",
     "min": 200,
     "amount": 270,

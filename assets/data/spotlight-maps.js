@@ -86,7 +86,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "abyss_02",
-    "name": "Underground Cave 2nd Floor",
+    "name": "มังกร 2",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -339,7 +339,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "anthell01",
-    "name": "Ant Hell Floor 1",
+    "name": "ถ้ำมด1",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -559,7 +559,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ayo_dun02",
-    "name": "Inside Ancient Shrine",
+    "name": "ยักษ์อโยธยา",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -634,7 +634,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ba_lost",
-    "name": "Lost Farm Valley",
+    "name": "กิ้งก่า 17.2",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -727,7 +727,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "beach_dun3",
-    "name": "Eastern Cave Mao",
+    "name": "กบแดง",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -811,7 +811,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "bra_fild01",
-    "name": "Brasilis Field",
+    "name": "ม้าหัวขาด",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -1031,7 +1031,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "cmd_fild04",
-    "name": "Kokomo Beach",
+    "name": "แมวน้ำ",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -1233,7 +1233,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ecl_fild01",
-    "name": "Blooming Flower Land",
+    "name": "เมนบลัท",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -1291,7 +1291,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ein_dun03",
-    "name": "Einbech Mine 3F",
+    "name": "เหมือง 3",
     "group": "spotlight",
     "min": 180,
     "source": "Divine Pride thRO · No event",
@@ -1726,7 +1726,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "gef_fild04",
-    "name": "Geffen Field",
+    "name": "บนกิฟ",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -1823,7 +1823,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "gef_fild08",
-    "name": "Geffen Field",
+    "name": "มังกรม่วง",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -1907,7 +1907,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "gef_fild11",
-    "name": "Geffen Field",
+    "name": "กอบลิ้น",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -2004,7 +2004,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "gl_church",
-    "name": "Monastery",
+    "name": "อีวิวดรูด",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -2269,7 +2269,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "gl_prison",
-    "name": "Underprison Floor 1",
+    "name": "คนคุก",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -2674,7 +2674,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ice_d03_i",
-    "name": "Illusion of Frozen",
+    "name": "น้ำแข็ง อิลลุสชัน",
     "group": "spotlight",
     "min": 120,
     "source": "Divine Pride thRO · No event",
@@ -2746,7 +2746,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ice_dun03",
-    "name": "Ice Cave",
+    "name": "น้ำแข็ง3",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -2830,7 +2830,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "iz_d05_i",
-    "name": "Illusion of Underwater, 2nd Floor",
+    "name": "ดันใต้น้ำ 2",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -3145,7 +3145,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "lhz_dun02",
-    "name": "Somatology Laboratory",
+    "name": "แล็บ 2",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -3298,7 +3298,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "lhz_dun03",
-    "name": "Somatology Laboratory",
+    "name": "แล็บ 3",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -3842,7 +3842,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ma_fild02",
-    "name": "Forest",
+    "name": "เอนกาโต้",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -3939,7 +3939,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "mjo_dun03",
-    "name": "Dead Pit Floor 3",
+    "name": "คนเหมือง",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -4111,7 +4111,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "mjolnir_05",
-    "name": "Mt. Mjolnir 5",
+    "name": "หนอนแดง",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -4182,7 +4182,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "mjolnir_12",
-    "name": "Mt.Mjolnir",
+    "name": "ล่างนากา",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -4253,7 +4253,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "moc_fild02",
-    "name": "Sograt Desert",
+    "name": "ปีโก้ / ปีโกปีโก้",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -4505,7 +4505,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "moc_pryd03",
-    "name": "Pyramid Floor 3",
+    "name": "ปีรามิด3",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -4783,7 +4783,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "odin_past",
-    "name": "Ancient Odin’s Temple",
+    "name": "โอดิน",
     "group": "spotlight",
     "min": 180,
     "source": "Divine Pride thRO · No event",
@@ -5049,7 +5049,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "pay_dun00",
-    "name": "Payon Cave",
+    "name": "ดันย่อน 1",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -5159,7 +5159,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "pay_dun01",
-    "name": "Payon Cave",
+    "name": "ดันย่อน 2",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -5269,7 +5269,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "pay_fild04",
-    "name": "Sograt Desert",
+    "name": "ป่าโพริ่ง",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -5528,7 +5528,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "prt_fild05",
-    "name": "Prontera Field",
+    "name": "ทาก",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -5696,7 +5696,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "prt_fild10",
-    "name": "Prontera Field",
+    "name": "ไม้แดงพรอน",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -5806,7 +5806,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "prt_sewb2",
-    "name": "Culvert Floor 2",
+    "name": "แมงสาบ",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -6017,7 +6017,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ra_fild05",
-    "name": "Audumbla Grassland",
+    "name": "โคโบล",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -6104,7 +6104,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "ra_fild12",
-    "name": "Plain of Ida",
+    "name": "หมาราเชล",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -6577,7 +6577,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "spl_fild03",
-    "name": "Splendide Field",
+    "name": "ผึ้ง",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
@@ -6661,7 +6661,7 @@ const SPOTLIGHT_MAPS = [
   },
   {
     "code": "tha_t09",
-    "name": "Room of Anguish",
+    "name": "ทานา 9",
     "group": "spotlight",
     "min": 1,
     "source": "Divine Pride thRO · No event",
