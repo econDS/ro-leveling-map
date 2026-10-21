@@ -52,7 +52,7 @@ Daily Dungeon 6th Anniversary 2026 เก็บไว้เป็นข้อม
 
 มีข้อมูล EP20 จำนวน 9 แมพจากประกาศ [RO Thailand: Episode 20 Map & Monster](https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/) และกิจกรรม EXP ปี 2025–2026 จากประกาศที่เกี่ยวข้อง ข้อมูลกิจกรรมที่หมดอายุยังเลือกดูได้ แต่ไม่ถูกใช้โดยอัตโนมัติ
 
-กิจกรรม [Triple EXP & Double Monster (23 ก.ย.–21 ต.ค. 2026)](https://ro.gnjoy.in.th/triple-exp-double-monster-event-23-sep-2026/) ถูกเลือกโดยอัตโนมัติระหว่างช่วงกิจกรรม: EXP ใช้ตัวเลขรายมอนจาก [ภาพตารางประกาศที่เก็บไว้](assets/spotlight/2026-09-23_triple_exp.jpg) ซึ่งมีทั้ง ×3 และ ×2; จำนวนเกิดใช้ค่ารายมอนใน 5 แมพจากประกาศ ไม่คูณสองทั้งเว็บ
+กิจกรรม [Triple EXP & Double Monster (21 ต.ค.–18 พ.ย. 2026)](https://ro.gnjoy.in.th/triple-exp-double-monster-21102026/) ถูกเลือกโดยอัตโนมัติระหว่างช่วงกิจกรรม: EXP ใช้ตัวเลขรายมอนจาก [ภาพตารางประกาศที่เก็บไว้](assets/spotlight/2026-10-21_triple_exp.jpg) ซึ่งมอน Lv17–189 ได้ ×3 และ Lv202–265 ได้ ×2; จำนวนเกิดใช้ค่ารายมอนใน 5 แมพจากประกาศ ไม่คูณสองทั้งเว็บ ภาพประกาศสลับชื่อ Flame Ghost / Ice Ghost ใน `gl_cas01_` เว็บจึงใช้ตาม EXP และเก็บชื่อที่พิมพ์ไว้ใน `sourceName`; Event EXP ของ `ra_pol01` (×4 จากฐาน No event) ตรวจกับการล่าในเกมแล้ว รอบก่อนหน้า [23 ก.ย.–21 ต.ค. 2026](https://ro.gnjoy.in.th/triple-exp-double-monster-event-23-sep-2026/) ยังเลือกดูได้
 
 วิธีเข้าแมพในรายละเอียดเป็นข้อมูลช่วยวางแผน เช่น Warp Portal, World Moving Ticket หรือเควส ควรตรวจเงื่อนไขจริงในเกมก่อนเดินทาง โดยเฉพาะแมพ EP19/EP20
 
@@ -60,7 +60,7 @@ Daily Dungeon 6th Anniversary 2026 เก็บไว้เป็นข้อม
 
 ## แผนที่กิจกรรม
 
-เพิ่มแมพที่ระบุในกิจกรรมปี 2025–2026 ที่มีในคลัง รวม 66 แมพใหม่ พร้อม EXP ปกติช่วงไม่มีกิจกรรม, มอนปกติทั้งแมพ และรูป เช่น Illusion of Luanda, Einbech Mine 3F, Ancient Odin’s Temple และ Geffen Dungeon Floor 2 รวมเว็บมี 136 แมพ (Daily Dungeon ย้อนหลัง 6 แมพซ่อนเป็นค่าเริ่มต้น)
+เพิ่มแมพที่ระบุในกิจกรรมปี 2025–2026 ที่มีในคลัง รวม 72 แมพใหม่ พร้อม EXP ปกติช่วงไม่มีกิจกรรม, มอนปกติทั้งแมพ และรูป เช่น Illusion of Luanda, Einbech Mine 3F, Ancient Odin’s Temple และ Geffen Dungeon Floor 2 รวมเว็บมี 142 แมพ (Daily Dungeon ย้อนหลัง 6 แมพซ่อนเป็นค่าเริ่มต้น)
 
 Illusion of Luanda แสดงมอนสเตอร์ปกติทั้งแผนที่ 6 ชนิดในตารางเดียวเพื่อเทียบข้อมูลได้ครบ; Spotlight ที่ประกาศจะเพิ่มเฉพาะมอนสเตอร์ที่อยู่ในรายการกิจกรรม และ MVP จะแสดงเป็นข้อมูลประกอบแต่ไม่รวมค่าเฉลี่ย EXP
 
@@ -68,4 +68,4 @@ Illusion of Luanda แสดงมอนสเตอร์ปกติทั้�
 
 ภาพประกาศ GGT ระบุ Peco Peco ที่ `lasa_dun01` และ Jakk ที่ `gef_dun02`; เว็บเก็บค่าแมพต้นฉบับไว้ใน `sourceMap` และจับคู่ EXP กิจกรรมกับจุดเกิดที่ตรวจแล้ว: Peco Peco ที่ `moc_fild01` / `moc_fild02`, Jakk ที่ `gef_dun01`
 
-ฐาน EXP ปกติให้ GGT ก่อน; กรณี EXP ปกติในประกาศต่างรอบ 10 ตัวและกฎ Unicorn ของ Charge Basilisk ที่แยกตามแมพ บันทึกตัวเลข แหล่งอ้างอิง และเหตุผลการเลือกค่าไว้ใน [Spotlight Base EXP audit](docs/Spotlight_Base_Audit_2026-09-24.md)
+ฐาน EXP ปกติให้ GGT ก่อน; กรณี EXP ปกติในประกาศต่างรอบ 10 ตัวและกฎ Unicorn ของ Charge Basilisk ที่แยกตามแมพ บันทึกตัวเลข แหล่งอ้างอิง และเหตุผลการเลือกค่าไว้ใน [Spotlight Base EXP audit](docs/Spotlight_Base_Audit_2026-09-24.md) และผลตรวจกิจกรรม 21 ต.ค. 2026 ใน [Spotlight audit 2026-10-22](docs/Spotlight_Base_Audit_2026-10-22.md)

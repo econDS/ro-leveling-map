@@ -26,7 +26,7 @@ const actual=new Set(report.events.flatMap(e=>e.unmatched.map(r=>e.id+':'+r.map+
 if(report.events.some(e=>e.missingMaps.length||e.unmatchedSpawns.length)||
   actual.size!==keys.size||[...actual].some(k=>!keys.has(k)))
   throw new Error('Unexpected event coverage gap: '+JSON.stringify(report));
-report.checkedOn='2026-09-24';report.exceptions=exceptions;
+report.checkedOn='2026-10-22';report.exceptions=exceptions;
 fs.writeFileSync(path.join(root,'assets/data/spotlight-coverage.json'),JSON.stringify(report,null,2)+'\n');
 fs.writeFileSync(path.join(root,'assets/data/spotlight-coverage.js'),
   '// Known conflicts between official event rows and reference map populations.\nconst SPOTLIGHT_COVERAGE_EXCEPTIONS = '+JSON.stringify(exceptions,null,2)+';\n');

@@ -2952,5 +2952,1059 @@ const SPOTLIGHT_EVENTS = [
       }
     ],
     "label": "EXP Event"
+  },
+  {
+    "id": "2026-10-21_triple_exp_double_monster",
+    "name": "Triple EXP & Double Monster · Oct 2026",
+    "start": "2026-10-21",
+    "end": "2026-11-18",
+    "sourceUrl": "https://ro.gnjoy.in.th/triple-exp-double-monster-21102026/",
+    "sourceImageUrl": "https://img.gnjoy.in.th/2026/10/744a41d7c1.jpg",
+    "image": "assets/spotlight/2026-10-21_triple_exp.jpg",
+    "notes": "EXP ตามตารางภาพประกาศ: มอน Lv17–189 ได้ 3x และ Lv202–265 ได้ 2x; ภาพสลับชื่อ Flame Ghost/Ice Ghost จึงใช้ตาม EXP; จำนวนเกิดช่วงกิจกรรมใช้ค่ารายมอนใน 5 แมพจากตาราง HTML ไม่ใช่ x2 ทั้งแมพ",
+    "rules": [
+      {
+        "sourceMap": "pay_dun00",
+        "sourceName": "Zombie",
+        "map": "pay_dun00",
+        "name": "Zombie",
+        "level": 17,
+        "normalExp": 189,
+        "normalJobExp": 112,
+        "eventExp": 567,
+        "eventJobExp": 336
+      },
+      {
+        "sourceMap": "pay_dun00",
+        "sourceName": "Skeleton",
+        "map": "pay_dun00",
+        "name": "Skeleton",
+        "level": 27,
+        "normalExp": 235,
+        "normalJobExp": 156,
+        "eventExp": 705,
+        "eventJobExp": 468
+      },
+      {
+        "sourceMap": "anthell01",
+        "sourceName": "Ant Egg",
+        "map": "anthell01",
+        "name": "Ant Egg",
+        "level": 28,
+        "normalExp": 219,
+        "normalJobExp": 171,
+        "eventExp": 657,
+        "eventJobExp": 513
+      },
+      {
+        "sourceMap": "anthell01",
+        "sourceName": "Deniro",
+        "map": "anthell01",
+        "name": "Deniro",
+        "level": 31,
+        "normalExp": 253,
+        "normalJobExp": 192,
+        "eventExp": 759,
+        "eventJobExp": 576
+      },
+      {
+        "sourceMap": "anthell01",
+        "sourceName": "Piere",
+        "map": "anthell01",
+        "name": "Piere",
+        "level": 32,
+        "normalExp": 259,
+        "normalJobExp": 198,
+        "eventExp": 777,
+        "eventJobExp": 594
+      },
+      {
+        "sourceMap": "beach_dun3",
+        "sourceName": "Hydra",
+        "map": "beach_dun3",
+        "name": "Hydra",
+        "level": 34,
+        "normalExp": 259,
+        "normalJobExp": 210,
+        "eventExp": 777,
+        "eventJobExp": 630
+      },
+      {
+        "sourceMap": "beach_dun3",
+        "sourceName": "Thara Frog",
+        "map": "beach_dun3",
+        "name": "Thara Frog",
+        "level": 40,
+        "normalExp": 300,
+        "normalJobExp": 251,
+        "eventExp": 900,
+        "eventJobExp": 753
+      },
+      {
+        "sourceMap": "beach_dun3",
+        "sourceName": "Megalodon",
+        "map": "beach_dun3",
+        "name": "Megalodon",
+        "level": 46,
+        "normalExp": 397,
+        "normalJobExp": 292,
+        "eventExp": 1191,
+        "eventJobExp": 876
+      },
+      {
+        "sourceMap": "moc_fild17",
+        "sourceName": "Frilldora",
+        "map": "moc_fild17",
+        "name": "Frilldora",
+        "level": 57,
+        "normalExp": 488,
+        "normalJobExp": 435,
+        "eventExp": 1464,
+        "eventJobExp": 1305
+      },
+      {
+        "sourceMap": "moc_fild17",
+        "sourceName": "Sandman",
+        "map": "moc_fild17",
+        "name": "Sandman",
+        "level": 61,
+        "normalExp": 592,
+        "normalJobExp": 508,
+        "eventExp": 1776,
+        "eventJobExp": 1524
+      },
+      {
+        "sourceMap": "moc_fild17",
+        "sourceName": "Hode",
+        "map": "moc_fild17",
+        "name": "Hode",
+        "level": 63,
+        "normalExp": 617,
+        "normalJobExp": 532,
+        "eventExp": 1851,
+        "eventJobExp": 1596
+      },
+      {
+        "sourceMap": "um_fild03",
+        "sourceName": "Wootan Fighter",
+        "map": "um_fild03",
+        "name": "Wootan Fighter",
+        "level": 67,
+        "normalExp": 638,
+        "normalJobExp": 582,
+        "eventExp": 1914,
+        "eventJobExp": 1746
+      },
+      {
+        "sourceMap": "um_fild03",
+        "sourceName": "Wootan Shooter",
+        "map": "um_fild03",
+        "name": "Wootan Shooter",
+        "level": 67,
+        "normalExp": 669,
+        "normalJobExp": 582,
+        "eventExp": 2007,
+        "eventJobExp": 1746
+      },
+      {
+        "sourceMap": "um_fild03",
+        "sourceName": "Parasite",
+        "map": "um_fild03",
+        "name": "Parasite",
+        "level": 76,
+        "normalExp": 809,
+        "normalJobExp": 749,
+        "eventExp": 2427,
+        "eventJobExp": 2247
+      },
+      {
+        "sourceMap": "gef_fild08",
+        "sourceName": "Sky Petite",
+        "map": "gef_fild08",
+        "name": "Petite",
+        "level": 79,
+        "normalExp": 854,
+        "normalJobExp": 794,
+        "eventExp": 2562,
+        "eventJobExp": 2382
+      },
+      {
+        "sourceMap": "gef_fild06",
+        "sourceName": "Earth Petite",
+        "map": "gef_fild06",
+        "name": "Petite",
+        "level": 86,
+        "normalExp": 1086,
+        "normalJobExp": 970,
+        "eventExp": 3258,
+        "eventJobExp": 2910
+      },
+      {
+        "sourceMap": "ama_dun03",
+        "sourceName": "Firelock Soldier",
+        "map": "ama_dun03",
+        "name": "Firelock Soldier",
+        "level": 88,
+        "normalExp": 1175,
+        "normalJobExp": 951,
+        "eventExp": 3525,
+        "eventJobExp": 2853
+      },
+      {
+        "sourceMap": "ama_dun03",
+        "sourceName": "Shinobi",
+        "map": "ama_dun03",
+        "name": "Shinobi",
+        "level": 95,
+        "normalExp": 1292,
+        "normalJobExp": 1221,
+        "eventExp": 3876,
+        "eventJobExp": 3663
+      },
+      {
+        "sourceMap": "ama_dun03",
+        "sourceName": "Tengu",
+        "map": "ama_dun03",
+        "name": "Tengu",
+        "level": 98,
+        "normalExp": 1416,
+        "normalJobExp": 1278,
+        "eventExp": 4248,
+        "eventJobExp": 3834
+      },
+      {
+        "sourceMap": "juperos_01",
+        "sourceName": "Venatu",
+        "map": "juperos_01",
+        "name": "Venatu",
+        "level": 113,
+        "normalExp": 2202,
+        "normalJobExp": 2106,
+        "eventExp": 6606,
+        "eventJobExp": 6318,
+        "sourceRowCount": 3
+      },
+      {
+        "sourceMap": "juperos_01",
+        "sourceName": "Venatu",
+        "map": "juperos_01",
+        "name": "Venatu",
+        "level": 113,
+        "normalExp": 2312,
+        "normalJobExp": 2106,
+        "eventExp": 6936,
+        "eventJobExp": 6318
+      },
+      {
+        "sourceMap": "jupe_core",
+        "sourceName": "Dimik",
+        "map": "jupe_core",
+        "name": "Dimik",
+        "level": 116,
+        "normalExp": 2560,
+        "normalJobExp": 2452,
+        "eventExp": 7680,
+        "eventJobExp": 7356,
+        "sourceRowCount": 3
+      },
+      {
+        "sourceMap": "jupe_core",
+        "sourceName": "Dimik",
+        "map": "jupe_core",
+        "name": "Dimik",
+        "level": 116,
+        "normalExp": 2688,
+        "normalJobExp": 2452,
+        "eventExp": 8064,
+        "eventJobExp": 7356
+      },
+      {
+        "sourceMap": "jupe_core",
+        "sourceName": "Archdam",
+        "map": "jupe_core",
+        "name": "Archdam",
+        "level": 119,
+        "normalExp": 2629,
+        "normalJobExp": 2521,
+        "eventExp": 7887,
+        "eventJobExp": 7563
+      },
+      {
+        "sourceMap": "ice_d03_i",
+        "sourceName": "Angry Gazeti",
+        "map": "ice_d03_i",
+        "name": "Angry Gazeti",
+        "level": 126,
+        "normalExp": 6755,
+        "normalJobExp": 6454,
+        "eventExp": 20265,
+        "eventJobExp": 19362
+      },
+      {
+        "sourceMap": "ice_d03_i",
+        "sourceName": "Angry Snowier",
+        "map": "ice_d03_i",
+        "name": "Angry Snowier",
+        "level": 129,
+        "normalExp": 7106,
+        "normalJobExp": 6711,
+        "eventExp": 21318,
+        "eventJobExp": 20133
+      },
+      {
+        "sourceMap": "ice_d03_i",
+        "sourceName": "Angry Ice Titan",
+        "map": "ice_d03_i",
+        "name": "Angry Ice Titan",
+        "level": 133,
+        "normalExp": 7519,
+        "normalJobExp": 7132,
+        "eventExp": 22557,
+        "eventJobExp": 21396
+      },
+      {
+        "sourceMap": "lhz_dun03",
+        "sourceName": "Eremes Guile",
+        "map": "lhz_dun03",
+        "name": "Eremes Guile",
+        "level": 140,
+        "normalExp": 16714,
+        "normalJobExp": 17717,
+        "eventExp": 50142,
+        "eventJobExp": 53151
+      },
+      {
+        "sourceMap": "lhz_dun03",
+        "sourceName": "Margaretha Sorin",
+        "map": "lhz_dun03",
+        "name": "Margaretha Sorin",
+        "level": 140,
+        "normalExp": 15432,
+        "normalJobExp": 15457,
+        "eventExp": 46296,
+        "eventJobExp": 46371
+      },
+      {
+        "sourceMap": "lhz_dun03",
+        "sourceName": "Cecil Damon",
+        "map": "lhz_dun03",
+        "name": "Cecil Damon",
+        "level": 141,
+        "normalExp": 16567,
+        "normalJobExp": 18199,
+        "eventExp": 49701,
+        "eventJobExp": 54597
+      },
+      {
+        "sourceMap": "lhz_dun03",
+        "sourceName": "Kathryne Keyron",
+        "map": "lhz_dun03",
+        "name": "Kathryne Keyron",
+        "level": 141,
+        "normalExp": 13484,
+        "normalJobExp": 17756,
+        "eventExp": 40452,
+        "eventJobExp": 53268
+      },
+      {
+        "sourceMap": "lhz_dun03",
+        "sourceName": "Howard Alt-Eisen",
+        "map": "lhz_dun03",
+        "name": "Howard Alt-Eisen",
+        "level": 142,
+        "normalExp": 17055,
+        "normalJobExp": 17978,
+        "eventExp": 51165,
+        "eventJobExp": 53934
+      },
+      {
+        "sourceMap": "lhz_dun03",
+        "sourceName": "Seyren Windsor",
+        "map": "lhz_dun03",
+        "name": "Seyren Windsor",
+        "level": 142,
+        "normalExp": 17751,
+        "normalJobExp": 19661,
+        "eventExp": 53253,
+        "eventJobExp": 58983
+      },
+      {
+        "sourceMap": "ein_d02_i",
+        "sourceName": "Blue Teddy Bear",
+        "map": "ein_d02_i",
+        "name": "Blue Teddy Bear",
+        "level": 157,
+        "normalExp": 18300,
+        "normalJobExp": 21235,
+        "eventExp": 54900,
+        "eventJobExp": 63705
+      },
+      {
+        "sourceMap": "ein_d02_i",
+        "sourceName": "Red Teddy Bear",
+        "map": "ein_d02_i",
+        "name": "Red Teddy Bear",
+        "level": 160,
+        "normalExp": 19972,
+        "normalJobExp": 22503,
+        "eventExp": 59916,
+        "eventJobExp": 67509
+      },
+      {
+        "sourceMap": "ein_d02_i",
+        "sourceName": "White Teddy Bear",
+        "map": "ein_d02_i",
+        "name": "White Teddy Bear",
+        "level": 160,
+        "normalExp": 20334,
+        "normalJobExp": 23595,
+        "eventExp": 61002,
+        "eventJobExp": 70785
+      },
+      {
+        "sourceMap": "ein_d02_i",
+        "sourceName": "Yellow Teddy Bear",
+        "map": "ein_d02_i",
+        "name": "Yellow Teddy Bear",
+        "level": 160,
+        "normalExp": 19384,
+        "normalJobExp": 23165,
+        "eventExp": 58152,
+        "eventJobExp": 69495
+      },
+      {
+        "sourceMap": "ein_d02_i",
+        "sourceName": "Green Teddy Bear",
+        "map": "ein_d02_i",
+        "name": "Green Teddy Bear",
+        "level": 161,
+        "normalExp": 21646,
+        "normalJobExp": 25117,
+        "eventExp": 64938,
+        "eventJobExp": 75351
+      },
+      {
+        "sourceMap": "sp_rudus3",
+        "sourceName": "Dolor",
+        "map": "sp_rudus3",
+        "name": "Mutant Dolor",
+        "level": 173,
+        "normalExp": 67500,
+        "normalJobExp": 47250,
+        "eventExp": 202500,
+        "eventJobExp": 141750
+      },
+      {
+        "sourceMap": "sp_rudus3",
+        "sourceName": "Twin Caput",
+        "map": "sp_rudus3",
+        "name": "Twin Caput",
+        "level": 175,
+        "normalExp": 68227,
+        "normalJobExp": 47759,
+        "eventExp": 204681,
+        "eventJobExp": 143277
+      },
+      {
+        "sourceMap": "sp_rudus3",
+        "sourceName": "Venenum",
+        "map": "sp_rudus3",
+        "name": "Venenum",
+        "level": 176,
+        "normalExp": 68697,
+        "normalJobExp": 48088,
+        "eventExp": 206091,
+        "eventJobExp": 144264
+      },
+      {
+        "sourceMap": "sp_rudus3",
+        "sourceName": "Plaga",
+        "map": "sp_rudus3",
+        "name": "Plaga",
+        "level": 178,
+        "normalExp": 69141,
+        "normalJobExp": 48399,
+        "eventExp": 207423,
+        "eventJobExp": 145197
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Warped Sting",
+        "map": "gl_cas01_",
+        "name": "Contaminated Sting",
+        "level": 180,
+        "normalExp": 164136,
+        "normalJobExp": 114895,
+        "eventExp": 492408,
+        "eventJobExp": 344685
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Contaminated Raydric Archer",
+        "map": "gl_cas01_",
+        "name": "Contaminated Raydric Archer",
+        "level": 184,
+        "normalExp": 168266,
+        "normalJobExp": 117786,
+        "eventExp": 504798,
+        "eventJobExp": 353358
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Contaminated Raydric",
+        "map": "gl_cas01_",
+        "name": "Contaminated Raydric",
+        "level": 185,
+        "normalExp": 169477,
+        "normalJobExp": 118634,
+        "eventExp": 508431,
+        "eventJobExp": 355902
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Frozen Gargoyle",
+        "map": "gl_cas01_",
+        "name": "Frozen Gargoyle",
+        "level": 186,
+        "normalExp": 169796,
+        "normalJobExp": 118857,
+        "eventExp": 509388,
+        "eventJobExp": 356571
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Prison Breaker",
+        "map": "gl_cas01_",
+        "name": "Prison Breaker",
+        "level": 186,
+        "normalExp": 169663,
+        "normalJobExp": 118764,
+        "eventExp": 508989,
+        "eventJobExp": 356292
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Corrupted Wanderer",
+        "map": "gl_cas01_",
+        "name": "Corrupted Wanderer",
+        "level": 187,
+        "normalExp": 170542,
+        "normalJobExp": 119379,
+        "eventExp": 511626,
+        "eventJobExp": 358137
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Flame Ghost",
+        "map": "gl_cas01_",
+        "name": "Ice Ghost",
+        "level": 189,
+        "normalExp": 172737,
+        "normalJobExp": 120916,
+        "eventExp": 518211,
+        "eventJobExp": 362748,
+        "note": "ภาพ GGT พิมพ์ชื่อ Flame Ghost/Ice Ghost สลับกับ EXP; ใช้ตาม EXP ที่ตรงกับ GGT Unicorn 2025 และ Divine Pride thRO/iRO"
+      },
+      {
+        "sourceMap": "gl_cas01_",
+        "sourceName": "Ice Ghost",
+        "map": "gl_cas01_",
+        "name": "Flame Ghost",
+        "level": 189,
+        "normalExp": 172163,
+        "normalJobExp": 120514,
+        "eventExp": 516489,
+        "eventJobExp": 361542,
+        "note": "ภาพ GGT พิมพ์ชื่อ Flame Ghost/Ice Ghost สลับกับ EXP; ใช้ตาม EXP ที่ตรงกับ GGT Unicorn 2025 และ Divine Pride thRO/iRO"
+      },
+      {
+        "sourceMap": "abyss_04",
+        "sourceName": "Purple Ferus",
+        "map": "abyss_04",
+        "name": "Purple Ferus",
+        "level": 202,
+        "normalExp": 243162,
+        "normalJobExp": 170213,
+        "eventExp": 486324,
+        "eventJobExp": 340426
+      },
+      {
+        "sourceMap": "abyss_04",
+        "sourceName": "Treasure Mimic",
+        "map": "abyss_04",
+        "name": "Treasure Mimic",
+        "level": 204,
+        "normalExp": 245472,
+        "normalJobExp": 171830,
+        "eventExp": 490944,
+        "eventJobExp": 343660
+      },
+      {
+        "sourceMap": "abyss_04",
+        "sourceName": "Black Acidus",
+        "map": "abyss_04",
+        "name": "Black Acidus",
+        "level": 205,
+        "normalExp": 246822,
+        "normalJobExp": 172775,
+        "eventExp": 493644,
+        "eventJobExp": 345550
+      },
+      {
+        "sourceMap": "abyss_04",
+        "sourceName": "Silver Acidus",
+        "map": "abyss_04",
+        "name": "Silver Acidus",
+        "level": 205,
+        "normalExp": 246822,
+        "normalJobExp": 172775,
+        "eventExp": 493644,
+        "eventJobExp": 345550
+      },
+      {
+        "sourceMap": "abyss_04",
+        "sourceName": "Bone Ferus",
+        "map": "abyss_04",
+        "name": "Bone Ferus",
+        "level": 206,
+        "normalExp": 248173,
+        "normalJobExp": 173721,
+        "eventExp": 496346,
+        "eventJobExp": 347442
+      },
+      {
+        "sourceMap": "abyss_04",
+        "sourceName": "Bone Acidus",
+        "map": "abyss_04",
+        "name": "Bone Acidus",
+        "level": 207,
+        "normalExp": 249407,
+        "normalJobExp": 174585,
+        "eventExp": 498814,
+        "eventJobExp": 349170
+      },
+      {
+        "sourceMap": "jor_back3",
+        "sourceName": "Calmaring",
+        "map": "jor_back3",
+        "name": "Calmaring",
+        "level": 209,
+        "normalExp": 275888,
+        "normalJobExp": 197122,
+        "eventExp": 551776,
+        "eventJobExp": 394244
+      },
+      {
+        "sourceMap": "jor_back2",
+        "sourceName": "Unfrost Flower",
+        "map": "jor_back2",
+        "name": "Unfrost Flower",
+        "level": 212,
+        "normalExp": 295309,
+        "normalJobExp": 200657,
+        "eventExp": 590618,
+        "eventJobExp": 401314
+      },
+      {
+        "sourceMap": "jor_back3",
+        "sourceName": "Limacina",
+        "map": "jor_back3",
+        "name": "Limacina",
+        "level": 213,
+        "normalExp": 302265,
+        "normalJobExp": 208385,
+        "eventExp": 604530,
+        "eventJobExp": 416770
+      },
+      {
+        "sourceMap": "jor_dun01",
+        "sourceName": "Primitive Rgan",
+        "map": "jor_dun01",
+        "name": "Primitive Rgan",
+        "level": 210,
+        "normalExp": 318751,
+        "normalJobExp": 223126,
+        "eventExp": 637502,
+        "eventJobExp": 446252
+      },
+      {
+        "sourceMap": "jor_dun01",
+        "sourceName": "Lowest Rgan",
+        "map": "jor_dun01",
+        "name": "Lowest Rgan",
+        "level": 212,
+        "normalExp": 333500,
+        "normalJobExp": 232056,
+        "eventExp": 667000,
+        "eventJobExp": 464112
+      },
+      {
+        "sourceMap": "jor_dun02",
+        "sourceName": "Junior Rgan",
+        "map": "jor_dun02",
+        "name": "Junior Rgan",
+        "level": 214,
+        "normalExp": 346392,
+        "normalJobExp": 241262,
+        "eventExp": 692784,
+        "eventJobExp": 482524
+      },
+      {
+        "sourceMap": "jor_dun02",
+        "sourceName": "Intermediate Rgan",
+        "map": "jor_dun02",
+        "name": "Intermediate Rgan",
+        "level": 215,
+        "normalExp": 353963,
+        "normalJobExp": 246535,
+        "eventExp": 707926,
+        "eventJobExp": 493070
+      },
+      {
+        "sourceMap": "amicitia1",
+        "sourceName": "Amitera",
+        "map": "amicitia1",
+        "name": "Amitera",
+        "level": 227,
+        "normalExp": 297411,
+        "normalJobExp": 208188,
+        "eventExp": 594822,
+        "eventJobExp": 416376
+      },
+      {
+        "sourceMap": "amicitia1",
+        "sourceName": "Litus",
+        "map": "amicitia1",
+        "name": "Litus",
+        "level": 228,
+        "normalExp": 294168,
+        "normalJobExp": 205918,
+        "eventExp": 588336,
+        "eventJobExp": 411836
+      },
+      {
+        "sourceMap": "amicitia1",
+        "sourceName": "Fillia",
+        "map": "amicitia1",
+        "name": "Fillia",
+        "level": 229,
+        "normalExp": 293478,
+        "normalJobExp": 205435,
+        "eventExp": 586956,
+        "eventJobExp": 410870
+      },
+      {
+        "sourceMap": "amicitia1",
+        "sourceName": "Vanilaqus",
+        "map": "amicitia1",
+        "name": "Vanilaqus",
+        "level": 230,
+        "normalExp": 296635,
+        "normalJobExp": 207645,
+        "eventExp": 593270,
+        "eventJobExp": 415290
+      },
+      {
+        "sourceMap": "amicitia2",
+        "sourceName": "Lavaeter",
+        "map": "amicitia2",
+        "name": "Lavaeter",
+        "level": 243,
+        "normalExp": 317899,
+        "normalJobExp": 222529,
+        "eventExp": 635798,
+        "eventJobExp": 445058
+      },
+      {
+        "sourceMap": "amicitia2",
+        "sourceName": "Fulgor",
+        "map": "amicitia2",
+        "name": "Fulgor",
+        "level": 244,
+        "normalExp": 314774,
+        "normalJobExp": 220342,
+        "eventExp": 629548,
+        "eventJobExp": 440684
+      },
+      {
+        "sourceMap": "amicitia2",
+        "sourceName": "Galensis",
+        "map": "amicitia2",
+        "name": "Galensis",
+        "level": 244,
+        "normalExp": 316687,
+        "normalJobExp": 221681,
+        "eventExp": 633374,
+        "eventJobExp": 443362
+      },
+      {
+        "sourceMap": "amicitia2",
+        "sourceName": "Napeo",
+        "map": "amicitia2",
+        "name": "Napeo",
+        "level": 244,
+        "normalExp": 315666,
+        "normalJobExp": 220966,
+        "eventExp": 631332,
+        "eventJobExp": 441932
+      },
+      {
+        "sourceMap": "clock_01",
+        "sourceName": "Sieglouse",
+        "map": "clock_01",
+        "name": "Sieglouse",
+        "level": 253,
+        "normalExp": 742800,
+        "normalJobExp": 518662,
+        "eventExp": 1485600,
+        "eventJobExp": 1037324
+      },
+      {
+        "sourceMap": "clock_01",
+        "sourceName": "Erzsebet",
+        "map": "clock_01",
+        "name": "Erzsebet",
+        "level": 254,
+        "normalExp": 748788,
+        "normalJobExp": 523891,
+        "eventExp": 1497576,
+        "eventJobExp": 1047782
+      },
+      {
+        "sourceMap": "clock_01",
+        "sourceName": "Extra Joker",
+        "map": "clock_01",
+        "name": "Extra Joker",
+        "level": 255,
+        "normalExp": 755552,
+        "normalJobExp": 527566,
+        "eventExp": 1511104,
+        "eventJobExp": 1055132
+      },
+      {
+        "sourceMap": "clock_01",
+        "sourceName": "General Orc",
+        "map": "clock_01",
+        "name": "General Orc",
+        "level": 255,
+        "normalExp": 767150,
+        "normalJobExp": 533799,
+        "eventExp": 1534300,
+        "eventJobExp": 1067598
+      },
+      {
+        "sourceMap": "clock_01",
+        "sourceName": "Jennifer",
+        "map": "clock_01",
+        "name": "Jennifer",
+        "level": 255,
+        "normalExp": 755552,
+        "normalJobExp": 527566,
+        "eventExp": 1511104,
+        "eventJobExp": 1055132
+      },
+      {
+        "sourceMap": "ra_pol01",
+        "sourceName": "Deadsera",
+        "map": "ra_pol01",
+        "name": "Deadsera",
+        "level": 262,
+        "normalExp": 1991786,
+        "normalJobExp": 1673100,
+        "eventExp": 3983572,
+        "eventJobExp": 3346200,
+        "note": "Normal EXP ในภาพเป็น 2 เท่าของฐาน GGT มิ.ย./ก.ค. และ Divine Pride; Event EXP ยืนยันในเกม 22 ต.ค. 2026 (Deadsera)"
+      },
+      {
+        "sourceMap": "ra_pol01",
+        "sourceName": "Hardrock Titan",
+        "map": "ra_pol01",
+        "name": "Hardrock Titan",
+        "level": 263,
+        "normalExp": 2047686,
+        "normalJobExp": 1711456,
+        "eventExp": 4095372,
+        "eventJobExp": 3422912,
+        "note": "Normal EXP ในภาพเป็น 2 เท่าของฐาน GGT มิ.ย./ก.ค. และ Divine Pride; Event EXP ยืนยันในเกม 22 ต.ค. 2026 (Deadsera)"
+      },
+      {
+        "sourceMap": "ra_pol01",
+        "sourceName": "Deadween",
+        "map": "ra_pol01",
+        "name": "Deadween",
+        "level": 264,
+        "normalExp": 2108388,
+        "normalJobExp": 1771046,
+        "eventExp": 4216776,
+        "eventJobExp": 3542092,
+        "note": "Normal EXP ในภาพเป็น 2 เท่าของฐาน GGT มิ.ย./ก.ค. และ Divine Pride; Event EXP ยืนยันในเกม 22 ต.ค. 2026 (Deadsera)"
+      },
+      {
+        "sourceMap": "ra_pol01",
+        "sourceName": "Burning Night",
+        "map": "ra_pol01",
+        "name": "Burning Night",
+        "level": 265,
+        "normalExp": 2130856,
+        "normalJobExp": 1780970,
+        "eventExp": 4261712,
+        "eventJobExp": 3561940,
+        "note": "Normal EXP ในภาพเป็น 2 เท่าของฐาน GGT มิ.ย./ก.ค. และ Divine Pride; Event EXP ยืนยันในเกม 22 ต.ค. 2026 (Deadsera)"
+      }
+    ],
+    "amountMaps": [],
+    "spawnCounts": [
+      {
+        "map": "tha_t09",
+        "name": "Void Mimic",
+        "amount": 10
+      },
+      {
+        "map": "tha_t09",
+        "name": "Book of Death",
+        "amount": 10
+      },
+      {
+        "map": "tha_t09",
+        "name": "Eldest",
+        "amount": 10
+      },
+      {
+        "map": "tha_t09",
+        "name": "Crow Duke",
+        "amount": 26
+      },
+      {
+        "map": "tha_t09",
+        "name": "Crow Baron",
+        "amount": 40
+      },
+      {
+        "map": "nif_dun02",
+        "name": "Disguiser",
+        "amount": 120
+      },
+      {
+        "map": "nif_dun02",
+        "name": "Grote",
+        "amount": 120
+      },
+      {
+        "map": "nif_dun02",
+        "name": "Pierrotzoist",
+        "amount": 120
+      },
+      {
+        "map": "nif_dun02",
+        "name": "Blue Moon Loli Ruri",
+        "amount": 120
+      },
+      {
+        "map": "bl_grass",
+        "name": "Cornus of Prairie",
+        "amount": 80
+      },
+      {
+        "map": "bl_grass",
+        "name": "Pinguicula of Prairie",
+        "amount": 90
+      },
+      {
+        "map": "bl_grass",
+        "name": "Hunter Fly of Prairie",
+        "amount": 50
+      },
+      {
+        "map": "bl_grass",
+        "name": "Rocker of Prairie",
+        "amount": 80
+      },
+      {
+        "map": "bl_grass",
+        "name": "Savage of Prairie",
+        "amount": 80
+      },
+      {
+        "map": "bl_grass",
+        "name": "Flora of Prairie",
+        "amount": 50
+      },
+      {
+        "map": "bl_grass",
+        "name": "Hill Wind of Prairie",
+        "amount": 90
+      },
+      {
+        "map": "bl_ice",
+        "name": "Ice Titan of Iceberg",
+        "amount": 70
+      },
+      {
+        "map": "bl_ice",
+        "name": "Siroma of Iceberg",
+        "amount": 70
+      },
+      {
+        "map": "bl_ice",
+        "name": "Snowier of Iceberg",
+        "amount": 70
+      },
+      {
+        "map": "bl_ice",
+        "name": "Centipede of Iceberg",
+        "amount": 70
+      },
+      {
+        "map": "bl_ice",
+        "name": "Aqua Elemental of Iceberg",
+        "amount": 90
+      },
+      {
+        "map": "bl_ice",
+        "name": "Angelgolt of Iceberg",
+        "amount": 50
+      },
+      {
+        "map": "bl_ice",
+        "name": "Rhyncho of Prairie",
+        "amount": 30
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul Nightmare",
+        "amount": 70
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul Whisper",
+        "amount": 70
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul Marionette",
+        "amount": 70
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul Noxious",
+        "amount": 20
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul The Paper",
+        "amount": 50
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul Gajomart",
+        "amount": 70
+      },
+      {
+        "map": "bl_soul",
+        "name": "Soul Odium of Thanatos",
+        "amount": 70
+      }
+    ],
+    "label": "EXP Event"
   }
 ];

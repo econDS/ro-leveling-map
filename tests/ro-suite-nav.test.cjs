@@ -5,7 +5,8 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const {execFileSync} = require('node:child_process');
 const root = path.resolve(__dirname, '..');
-const read = file => { const bytes=fs.readFileSync(path.join(root,file)); if(file==='index.html')return Buffer.from(require('../qa/nav-1.4.0/normalize.cjs')(bytes.toString())); if(file!=='assets/ui.js')return bytes; let text=bytes.toString(); for(const [before,after]of require('../qa/first-run/ui-copy-changes.json'))text=text.replace(after,before); return Buffer.from(text); };
+const {isDataFile, normalizeCheckDate} = require('./data-refresh.cjs');
+const read = file => { const bytes=normalizeCheckDate(file,fs.readFileSync(path.join(root,file))); if(file==='index.html')return Buffer.from(require('../qa/nav-1.4.0/normalize.cjs')(bytes.toString())); if(file!=='assets/ui.js')return bytes; let text=bytes.toString(); for(const [before,after]of require('../qa/first-run/ui-copy-changes.json'))text=text.replace(after,before); return Buffer.from(text); };
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const release = 'assets/ro-suite/1.3.0/';
 const expected = {
@@ -38,6 +39,7 @@ test('Reviewed graph edits preserve navigation integration and every other origi
   assert(html.indexOf(markup) < html.indexOf('  <header>'));
   assert(!/<ro-suite-nav[^>]*(?:theme|catalog-url)=/.test(html));
   for (const [file, sha] of Object.entries(baseline.files)) {
+    if (isDataFile(file)) continue;
     const bytes = file === 'index.html' ? html.replace(markup, '').replace(css, '') : read(file);
     assert.equal(hash(bytes), reviewed.files[file] || sha, file + ' must match its reviewed graph checksum or the original production checksum');
   }
@@ -69,6 +71,7 @@ test('Browser evidence is a successful genuine preintegration capture', () => {
 test('Rollout preserves all latest-main production bytes except versioned script URL', () => {
   const baseline = JSON.parse(read('docs/qa/ro-suite-nav-1.3.0/source-baseline.json'));
   for (const [file, sha] of Object.entries(baseline.files)) {
+    if (isDataFile(file)) continue;
     const bytes = file === 'index.html' ? require('../qa/first-run/normalize.cjs')(read(file).toString()).replace('./assets/ro-suite/1.3.0/nav.js', './assets/ro-suite/1.2.0/nav.js') : read(file);
     assert.equal(hash(bytes), sha, file);
   }

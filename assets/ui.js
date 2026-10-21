@@ -400,7 +400,7 @@ function render() {
   const auto=document.getElementById('spotlightEvent').value==='auto';
   const coverage=spotlightCoverage(SPOTLIGHT_EVENTS);
   document.getElementById('eventInfo').insertAdjacentHTML('afterbegin',`<span class="event-status">${auto?'อัตโนมัติ · '+(c.event?'อยู่ในช่วงกิจกรรม':'ไม่พบกิจกรรมในข้อมูลที่บันทึก'):'เลือกกิจกรรมเอง'}</span>`);
-  document.getElementById('eventCoverage').innerHTML=`ข้อมูลกิจกรรมตรวจล่าสุด ${thaiDate('2026-09-24')} · รอบล่าสุดถึง ${thaiDate(coverage.lastEnd)}${coverage.expired?'<br><strong>กิจกรรมล่าสุดในคลังจบแล้ว ยังไม่ยืนยันรอบใหม่ — ใช้ EXP ปกติคำนวณ</strong>':''}`;
+  document.getElementById('eventCoverage').innerHTML=`ข้อมูลกิจกรรมตรวจล่าสุด ${thaiDate('2026-10-22')} · รอบล่าสุดถึง ${thaiDate(coverage.lastEnd)}${coverage.expired?'<br><strong>กิจกรรมล่าสุดในคลังจบแล้ว ยังไม่ยืนยันรอบใหม่ — ใช้ EXP ปกติคำนวณ</strong>':''}`;
   if(auto)document.getElementById('eventInfo').insertAdjacentHTML('beforeend','<br><small>เวลาไทย: เริ่มนับวันแรก 12:00 ถึงวันสุดท้าย 06:00 · ถ้าเซิร์ฟเปิดเวลาอื่น ให้เลือกกิจกรรมเอง</small>');
   const buffs=IDS.filter(id=>id.endsWith('Bonus') && get(id)>0).length;
   const racialCount=RACES.filter(r=>get('race'+r)>0).length;

@@ -173,7 +173,7 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
 });
 test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
   assert.equal(EP20_MAPS.length,9);
-  assert.equal(MAPS.length,136);
+  assert.equal(MAPS.length,142);
   assert.equal(new Set(MAPS.map(m=>m.code)).size,MAPS.length);
   for(const m of EP20_MAPS){
     assert.equal(m.amount,m.monsters.reduce((s,x)=>s+x.amount,0));
@@ -212,7 +212,7 @@ test('All event/level combinations produce finite values and retain source data'
     for(const key of ['eventBaseExp','baseAfterPenalty','finalPerKill','yieldPct','finalAreaScore'])assert.ok(Number.isFinite(result[key]),`${e?.name}/${m.code}/${key}`);
   }
   assert.equal(JSON.stringify(MAPS),before);
-  assert.equal(SPOTLIGHT_EVENTS.length,11);
+  assert.equal(SPOTLIGHT_EVENTS.length,12);
   for(const e of SPOTLIGHT_EVENTS)assert.ok(fs.existsSync(path.join(root,e.image)));
 });
 test('September 2026 event uses published EXP rows and exact per-monster spawn totals',()=>{
@@ -323,9 +323,9 @@ test('Defaults have no buffs, settings survive JSON and malformed values are rej
 test('Complete 2025 editions are registered once, sorted by start date, and retain all EXP columns',()=>{
   const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-2025.json'),'utf8'));
   assert.deepEqual(data.events.map(e=>e.rules.length),[36,53,44]);
-  assert.equal(new Set(SPOTLIGHT_EVENTS.map(e=>e.id)).size,11);
+  assert.equal(new Set(SPOTLIGHT_EVENTS.map(e=>e.id)).size,12);
   assert.equal(SPOTLIGHT_EVENTS.filter(e=>e.id==='2025-12-03_unicorn').length,1);
-  assert.equal(sortedEvents(SPOTLIGHT_EVENTS)[0].id,'2026-09-23_triple_exp_double_monster');
+  assert.equal(sortedEvents(SPOTLIGHT_EVENTS)[0].id,'2026-10-21_triple_exp_double_monster');
   assert.equal(sortedEvents(SPOTLIGHT_EVENTS).at(-1).id,'2025-08-27_return');
   for(const e of data.events){
     assert.ok(fs.existsSync(path.join(root,e.image)));
@@ -434,8 +434,8 @@ test('Every explicit Spotlight map exists; unmatched rows are limited to documen
 });
 test('Imported maps preserve complete normal populations, provenance, races, assets and weighted stats',()=>{
   const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-maps.json'),'utf8'));
-  assert.equal(data.maps.length,66);
-  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),405);
+  assert.equal(data.maps.length,72);
+  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),448);
   for(const m of data.maps){
     assert.equal(MAPS.filter(x=>x.code===m.code).length,1);
     assert.equal(m.amount,m.monsters.reduce((s,b)=>s+b.amount,0));

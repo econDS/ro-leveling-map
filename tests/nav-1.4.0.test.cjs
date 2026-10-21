@@ -10,6 +10,7 @@ const baseline = require('../qa/nav-1.4.0/production-baseline.json');
 const release = path.join(root, 'assets/ro-suite/1.4.1');
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const read = file => fs.readFileSync(path.join(root, file));
+const {isDataFile, normalizeCheckDate} = require('./data-refresh.cjs');
 test('nav 1.4.1 files are identical to the immutable Portal release', () => {
   const expected = require('../qa/nav-1.4.0/release-hashes.json');
   for (const [file, digest] of Object.entries(expected)) assert.equal(hash(fs.readFileSync(path.join(release, file))), digest, file);
@@ -22,7 +23,8 @@ test('nav 1.4.1 files are identical to the immutable Portal release', () => {
 });
 test('every existing production file including first-run UI and old releases is byte-preserved after exact nav delta reversal', () => {
   for (const [file, digest] of Object.entries(baseline.files)) {
-    const bytes = file === 'index.html' ? require('../qa/nav-1.4.0/normalize.cjs')(read(file).toString()) : read(file);
+    if (isDataFile(file)) continue;
+    const bytes = file === 'index.html' ? require('../qa/nav-1.4.0/normalize.cjs')(read(file).toString()) : normalizeCheckDate(file, read(file));
     assert.equal(hash(bytes), digest, file);
   }
   const html = require('../qa/nav-theme/normalize.cjs')(read('index.html').toString());

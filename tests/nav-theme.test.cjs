@@ -7,9 +7,11 @@ const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file));
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const {isDataFile, normalizeCheckDate} = require('./data-refresh.cjs');
 test('theme rollout preserves all existing production bytes after two exact integration reversals', () => {
   for (const [file, digest] of Object.entries(require('../qa/nav-theme/production-baseline.json').files)) {
-    const bytes = file === 'index.html' ? require('../qa/nav-theme/normalize.cjs')(read(file).toString()) : read(file);
+    if (isDataFile(file)) continue;
+    const bytes = file === 'index.html' ? require('../qa/nav-theme/normalize.cjs')(read(file).toString()) : normalizeCheckDate(file, read(file));
     assert.equal(hash(bytes), digest, file);
   }
 });
