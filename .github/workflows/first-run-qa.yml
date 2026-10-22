@@ -36,7 +36,7 @@ jobs:
         run: |
           node --test tests/*.test.* 2>&1 | tee qa-artifacts/source-tests.log
           python -m venv "$RUNNER_TEMP/first-run-python"
-          "$RUNNER_TEMP/first-run-python/bin/pip" install Pillow==12.3.0
+          "$RUNNER_TEMP/first-run-python/bin/pip" install Pillow==13.0.0
           "$RUNNER_TEMP/first-run-python/bin/python" -m unittest discover -s tests -p 'test_*.py' 2>&1 | tee qa-artifacts/python-tests.log
       - name: Install pinned QA-only Chromium
         id: browser

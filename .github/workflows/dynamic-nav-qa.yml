@@ -22,7 +22,7 @@ jobs:
       - run: node --test tests/*.test.cjs
       - run: |
           python -m venv "$RUNNER_TEMP/python"
-          "$RUNNER_TEMP/python/bin/pip" install Pillow==12.3.0
+          "$RUNNER_TEMP/python/bin/pip" install Pillow==13.0.0
           "$RUNNER_TEMP/python/bin/python" -m unittest discover -s tests -p 'test_*.py'
       - run: |
           npm install --prefix "$RUNNER_TEMP/browser" --no-save --package-lock=false --ignore-scripts playwright@1.55.1
