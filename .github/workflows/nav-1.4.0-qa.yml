@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: '22.14.0'
+          node-version: '22.23.4'
       - name: Pin before sources and prepare failure-safe evidence
         run: |
           mkdir -p qa-artifacts "$RUNNER_TEMP/first-run-base" "$RUNNER_TEMP/nav140-base"
@@ -37,7 +37,7 @@ jobs:
         run: |
           node --test tests/*.test.cjs 2>&1 | tee qa-artifacts/node-tests.log
           python -m venv "$RUNNER_TEMP/nav140-python"
-          "$RUNNER_TEMP/nav140-python/bin/pip" install Pillow==12.3.0
+          "$RUNNER_TEMP/nav140-python/bin/pip" install Pillow==13.0.0
           "$RUNNER_TEMP/nav140-python/bin/python" -m unittest discover -s tests -p 'test_*.py' 2>&1 | tee qa-artifacts/python-tests.log
       - name: Install pinned QA-only browser outside the project
         id: browser
