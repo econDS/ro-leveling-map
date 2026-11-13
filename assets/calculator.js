@@ -115,6 +115,10 @@ function levelYield(player, monster) {
   if(d===4)return 1.1;if(d===3)return 1.05;if(d>=-5)return 1;if(d>=-10)return .95;
   if(d>=-15)return .9;if(d>=-20)return .85;if(d>=-25)return .6;if(d>=-30)return .35;return .1;
 }
+// Maps flagged noLevelModifier ignore the level-difference table (no penalty, no bonus).
+function mapLevelYield(map, player, monster) {
+  return map.noLevelModifier ? 1 : levelYield(player, monster);
+}
 function monsterRace(map, monster) {
   return monster.race || MONSTER_RACES[map.code+':'+monster.name] || null;
 }
@@ -137,10 +141,10 @@ function row(map, c) {
   const eventBaseExp = total ? weighted(m => monsterEventExp(map, m, c.event)) : map.baseExp;
   const affectedMonsters = monsters.filter(m => spotlightRule(map, m, c.event)).length;
   const spawnChangedMonsters = amounts.filter((amount, index) => amount !== monsters[index].amount).length;
-  const baseAfterPenalty = total ? weighted(m => monsterEventExp(map, m, c.event) * levelYield(c.level, m.level)) : eventBaseExp * levelYield(c.level, map.level);
+  const baseAfterPenalty = total ? weighted(m => monsterEventExp(map, m, c.event) * mapLevelYield(map, c.level, m.level)) : eventBaseExp * mapLevelYield(map, c.level, map.level);
   const baseAfterParty = baseAfterPenalty * c.partyShare;
   const finalPerKill = total ? weighted(m => monsterEventExp(map, m, c.event) *
-    levelYield(c.level, m.level) * c.partyShare * monsterFactor(map, m, c)) : baseAfterParty * c.external;
+    mapLevelYield(map, c.level, m.level) * c.partyShare * monsterFactor(map, m, c)) : baseAfterParty * c.external;
   const shownAmount = monsters.length ? total : map.amount * eventAmountFactor(map, c.event);
   const amountFactor = map.amount ? shownAmount / map.amount : 1;
   const level = total ? weighted(m => m.level) : map.level;

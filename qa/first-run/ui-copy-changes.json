@@ -1,1 +1,1 @@
-[["Server EXP และบัฟด้านล่างตั้งแยกจากกิจกรรม", "Server EXP และบัฟในตัวเลือกขั้นสูงตั้งแยกจากกิจกรรม"]]
+[["Server EXP และบัฟด้านล่างตั้งแยกจากกิจกรรม","Server EXP และบัฟในตัวเลือกขั้นสูงตั้งแยกจากกิจกรรม"],["const y=levelYield(c.level,m.level),","const y=mapLevelYield(map,c.level,m.level),"]]

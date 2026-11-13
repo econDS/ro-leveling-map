@@ -127,7 +127,7 @@ function monsterRows(map,c) {
   if (!monsters.length) return '<tr><td colspan="6">ไม่มีรายละเอียดมอนในแมพนี้</td></tr>';
   const rows=monsters.map((m,index)=>{
     const rule=spotlightRule(map,m,c.event), eventExp=monsterEventExp(map,m,c.event);
-    const y=levelYield(c.level,m.level), afterPenalty=eventExp*y, afterParty=afterPenalty*c.partyShare;
+    const y=mapLevelYield(map,c.level,m.level), afterPenalty=eventExp*y, afterParty=afterPenalty*c.partyShare;
     const finalPerKill=afterParty*monsterFactor(map,m,c), shownAmount=monsterEventAmount(map,m,c.event);
     const hitsPerKill=hitsToKill(m.hp,c.damage);
     return {...m,index,rule,eventExp,afterPenalty,afterParty,finalPerKill,shownAmount,hitsPerKill,damageWarning:hitsPerKill>HIT_WARNING_THRESHOLD,yieldPct:y*100,

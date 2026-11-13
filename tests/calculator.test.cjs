@@ -123,7 +123,7 @@ test('Archived Daily Dungeon is opt-in, preserves the old edition and stays sepa
 test('No event preserves the original per-monster calculation at multiple levels',()=>{
   for(const m of MAPS)for(const level of [1,100,200,260]){
     const c=config(null,level), total=m.monsters.reduce((s,x)=>s+x.amount,0);
-    const expected=m.monsters.reduce((s,x)=>s+x.amount/total*x.baseExp*levelYield(level,x.level),0);
+    const expected=m.monsters.reduce((s,x)=>s+x.amount/total*x.baseExp*(m.noLevelModifier?1:levelYield(level,x.level)),0);
     const result=row(m,c);
     approx(result.finalPerKill,expected*c.partyShare*c.external);
     assert.equal(result.shownAmount,m.amount);
@@ -173,7 +173,20 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
 });
 test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
   assert.equal(EP20_MAPS.length,9);
-  assert.equal(MAPS.length,142);
+  assert.equal(MAPS.length,143);
+  const depth=map('bl_depth1');
+  assert.equal(depth.min,250);assert.equal(depth.monsters.length,16);
+  assert.equal(depth.amount,depth.monsters.reduce((s,x)=>s+x.amount,0));
+  approx(depth.baseExp,Math.round(depth.monsters.reduce((s,x)=>s+x.baseExp*x.amount,0)/depth.amount));
+  assert.ok(depth.monsters.every(x=>RACES.includes(monsterRace(depth,x))&&fs.existsSync(path.join(root,x.image))));
+  assert.equal(MAPS.filter(m=>m.noLevelModifier).map(m=>m.code).join(),'bl_depth1');
+  for(const level of [240,250,256,260])approx(row(depth,config(null,level)).yieldPct,100);
+  assert.ok(depth.monsters.every(x=>x.baseExp===Math.round(x.dpBaseExp*0.6)));
+  // In-game check 2026-11-14: Lv 256, h 2.5 (server 100 + premium 20 + staff 30), i 2.12 (gear 112), solo.
+  const pom=depth.monsters.find(x=>x.name==='Deep Pom Spider');
+  const pomExp=row({...depth,monsters:[pom]},{event:null,level:256,lock:true,partyShare:1,h:2.5,i:2.12,external:2.5*2.12}).finalPerKill;
+  assert.ok(Math.abs(pomExp-17852436)<2,String(pomExp));
+  assert.ok(SPOTLIGHT_EVENTS.every(e=>!row(depth,config(e,260)).affectedMonsters&&row(depth,config(e,260)).shownAmount===400));
   assert.equal(new Set(MAPS.map(m=>m.code)).size,MAPS.length);
   for(const m of EP20_MAPS){
     assert.equal(m.amount,m.monsters.reduce((s,x)=>s+x.amount,0));
@@ -418,7 +431,7 @@ test('Planning efficiency uses final EXP including party, level and race bonuses
     const r=row(source,c);
     if(!r.hasWalk)continue;
     const contributions=r.monsters.reduce((sum,mob)=>sum+
-      monsterEventExp(source,mob,c.event)*levelYield(c.level,mob.level)*c.partyShare*monsterFactor(source,mob,c)*mob.amount*r.amountFactor/r.walkableCells*10000,0);
+      monsterEventExp(source,mob,c.event)*(source.noLevelModifier?1:levelYield(c.level,mob.level))*c.partyShare*monsterFactor(source,mob,c)*mob.amount*r.amountFactor/r.walkableCells*10000,0);
     approx(contributions,r.finalAreaScore);
   }
 });

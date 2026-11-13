@@ -21,6 +21,7 @@ const PLANNING_CONTEXT = {
     bl_temple: {englishName:'Varmundt Temple',aliases:['แสง','Temple']},
     bl_soul: {englishName:'Varmundt Soul',aliases:['วิญญาณ','Soul']},
     bl_venom: {englishName:'Varmundt Venom',aliases:['พิษ','Venom']},
+    bl_depth1: {englishName:'Varmundt Biosphere Deep Level 1',access:{method:'walk',label:'พอร์ทัลใน Biosphere',note:'Base Lv 250+ · คุย Depth Researcher ที่ Varmundt Mansion (/navi ba_in01 292/104) เพื่อปลดล็อก แล้วเข้าทางพอร์ทัลใน Biosphere แต่ละแมพ เช่น bl_venom 182/250, bl_lava 151/263 — ตามคู่มือ GGT'},aliases:['Deep 1','Depth 1','ชั้นลึก','เชิงลึก','Biosphere Depth']},
     lhz_dun03: {englishName:'Somatology Laboratory',aliases:['แลป 3']},
     lhz_dun02: {englishName:'Somatology Laboratory',aliases:['แลป 2']},
     ein_dun03: {englishName:'Einbech Mine 3F'},

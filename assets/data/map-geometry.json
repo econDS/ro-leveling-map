@@ -1643,6 +1643,37 @@
       "rawSha256": "5f38292e17f7d2437f983a07d8fc462b3b8e331068ab1c2c4678327b9375cf54",
       "maskSha256": "6cb4b29352237971db61c9873c580ef897f3a1467729def85bbf69e5cde4fb37"
     },
+    "bl_depth1": {
+      "status": "verified-gat",
+      "sourceUrl": "https://www.divine-pride.net/database/map/bl_depth1",
+      "gatUrl": "https://www.divine-pride.net/Tools/MapViewerAsset?mapname=bl_depth1&ext=gat",
+      "rawUrl": "https://www.divine-pride.net/img/map/raw/bl_depth1",
+      "checkedOn": "2026-11-14",
+      "method": "gat-cell-types",
+      "version": "1.3",
+      "width": 360,
+      "height": 360,
+      "totalCells": 129600,
+      "walkableCells": 45222,
+      "walkableRatio": 0.3489351851851852,
+      "cellTypes": {
+        "0": 45222,
+        "1": 83179,
+        "5": 1199
+      },
+      "excludedBoundaryCells": 0,
+      "components": 1,
+      "largestComponentCells": 45222,
+      "smallComponentCells": 0,
+      "borderWalkableCells": 0,
+      "maskImage": "assets/maps/geometry/bl_depth1-mask.png",
+      "rawImage": "assets/maps/geometry/bl_depth1-raw.png",
+      "overlayImage": "assets/maps/geometry/bl_depth1-overlay.png",
+      "sourceSha256": "04a2c8eba8ebfb6503dd274b1ace0783d8636429cb698f03c06c6eddd55cccf1",
+      "gatSha256": "f57ddfd0be3f0f3429eda1c0921087a5a85e38d49ea5ebc33146219f12e2d64e",
+      "rawSha256": "167fe0d6a689a931430a80bf7fbd70855785059fdce0bf291690ffef553b92b3",
+      "maskSha256": "c2f714da8fc4e1fe6b42be36d2f8a372c5bb6b3cdf7acab83f61a7ec3a5c87d4"
+    },
     "mjo_wst01": {
       "status": "verified-gat",
       "sourceUrl": "https://www.divine-pride.net/database/map/mjo_wst01",
