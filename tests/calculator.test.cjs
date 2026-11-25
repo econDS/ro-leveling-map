@@ -173,7 +173,7 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
 });
 test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
   assert.equal(EP20_MAPS.length,9);
-  assert.equal(MAPS.length,143);
+  assert.equal(MAPS.length,149);
   const depth=map('bl_depth1');
   assert.equal(depth.min,250);assert.equal(depth.monsters.length,16);
   assert.equal(depth.amount,depth.monsters.reduce((s,x)=>s+x.amount,0));
@@ -225,8 +225,22 @@ test('All event/level combinations produce finite values and retain source data'
     for(const key of ['eventBaseExp','baseAfterPenalty','finalPerKill','yieldPct','finalAreaScore'])assert.ok(Number.isFinite(result[key]),`${e?.name}/${m.code}/${key}`);
   }
   assert.equal(JSON.stringify(MAPS),before);
-  assert.equal(SPOTLIGHT_EVENTS.length,12);
+  assert.equal(SPOTLIGHT_EVENTS.length,13);
   for(const e of SPOTLIGHT_EVENTS)assert.ok(fs.existsSync(path.join(root,e.image)));
+});
+test('November 2026 event uses published EXP, map-wide doubles and keeps unconfirmed bases',()=>{
+  const e=SPOTLIGHT_EVENTS.find(x=>x.id==='2026-11-25_triple_exp_double_monster');
+  assert.equal(e.rules.length,53);
+  assert.equal(e.rules.filter(r=>r.eventExp===r.normalExp*3).length,39);
+  assert.equal(e.rules.filter(r=>r.eventExp===r.normalExp*2).length,14);
+  for(const r of e.rules)assert.ok(map(r.map).monsters.some(b=>spotlightRule(map(r.map),b,e)===r),r.map+'/'+r.name);
+  for(const [code,name,base,event] of [['jor_tail','Shining Seaweed',282625,879855],['ra_pol01','Deadsera',995893,3983572]]){
+    const b=map(code).monsters.find(x=>x.name===name);
+    assert.equal(b.baseExp,base);
+    assert.equal(monsterEventExp(map(code),b,e),event);
+  }
+  for(const code of ['jor_ab01','jor_ab02','clock_01','jor_back3'])assert.equal(row(map(code),config(e)).shownAmount,map(code).amount*2,code);
+  assert.equal(row(map('jor_back2'),config(e)).shownAmount,map('jor_back2').amount);
 });
 test('September 2026 event uses published EXP rows and exact per-monster spawn totals',()=>{
   const e=SPOTLIGHT_EVENTS.find(x=>x.id==='2026-09-23_triple_exp_double_monster');
@@ -336,9 +350,9 @@ test('Defaults have no buffs, settings survive JSON and malformed values are rej
 test('Complete 2025 editions are registered once, sorted by start date, and retain all EXP columns',()=>{
   const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-2025.json'),'utf8'));
   assert.deepEqual(data.events.map(e=>e.rules.length),[36,53,44]);
-  assert.equal(new Set(SPOTLIGHT_EVENTS.map(e=>e.id)).size,12);
+  assert.equal(new Set(SPOTLIGHT_EVENTS.map(e=>e.id)).size,13);
   assert.equal(SPOTLIGHT_EVENTS.filter(e=>e.id==='2025-12-03_unicorn').length,1);
-  assert.equal(sortedEvents(SPOTLIGHT_EVENTS)[0].id,'2026-10-21_triple_exp_double_monster');
+  assert.equal(sortedEvents(SPOTLIGHT_EVENTS)[0].id,'2026-11-25_triple_exp_double_monster');
   assert.equal(sortedEvents(SPOTLIGHT_EVENTS).at(-1).id,'2025-08-27_return');
   for(const e of data.events){
     assert.ok(fs.existsSync(path.join(root,e.image)));
@@ -362,7 +376,7 @@ test('GGT Normal EXP takes priority when every official snapshot agrees',()=>{
   for(const source of MAPS){
     for(const monster of source.monsters||[]){
       if(monster.fallbackBaseExp!==undefined)changed++;
-      const normals=[...new Set(SPOTLIGHT_EVENTS.map(e=>spotlightRule(source,monster,e)?.normalExp).filter(Number.isFinite))];
+      const normals=[...new Set(SPOTLIGHT_EVENTS.map(e=>spotlightRule(source,monster,e)).filter(r=>r&&!r.keepBase).map(r=>r.normalExp).filter(Number.isFinite))];
       if(normals.length===1)assert.equal(monster.baseExp,normals[0],source.code+'/'+monster.name);
       if(normals.length>1)assert.ok(normals.includes(monster.baseExp),source.code+'/'+monster.name);
     }
@@ -447,8 +461,8 @@ test('Every explicit Spotlight map exists; unmatched rows are limited to documen
 });
 test('Imported maps preserve complete normal populations, provenance, races, assets and weighted stats',()=>{
   const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/spotlight-maps.json'),'utf8'));
-  assert.equal(data.maps.length,72);
-  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),448);
+  assert.equal(data.maps.length,78);
+  assert.equal(data.maps.reduce((s,m)=>s+m.monsters.length,0),479);
   for(const m of data.maps){
     assert.equal(MAPS.filter(x=>x.code===m.code).length,1);
     assert.equal(m.amount,m.monsters.reduce((s,b)=>s+b.amount,0));

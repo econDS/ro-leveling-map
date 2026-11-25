@@ -17,6 +17,11 @@ DP = 'https://www.divine-pride.net'
 MAP_NAME_OVERRIDES = {
     'ba_lost': 'Lost Farm Valley',
     'jor_dun02': 'Warmth of the Snake God 2F',
+    # Divine Pride thRO shows both bifrost fields as "Bifrost Bridge"; iRO separates them.
+    'bif_fild01': 'South of Bifrost',
+    'bif_fild02': 'North of Bifrost',
+    'ba_lib': 'Hall of Memories',
+    'jor_tail': 'Frozen Tail',
 }
 
 def fetch(url, path):

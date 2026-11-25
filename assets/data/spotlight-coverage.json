@@ -1,6 +1,6 @@
 {
-  "mapCount": 143,
-  "addedMapCount": 72,
+  "mapCount": 149,
+  "addedMapCount": 78,
   "events": [
     {
       "id": "2025-12-03_unicorn",
@@ -93,6 +93,15 @@
       "unmatchedSpawns": []
     },
     {
+      "id": "2026-11-25_triple_exp_double_monster",
+      "sourceUrl": "https://ro.gnjoy.in.th/triple-exp-double-monster-event-25-november-2026/",
+      "ruleCount": 53,
+      "spawnCount": 0,
+      "missingMaps": [],
+      "unmatched": [],
+      "unmatchedSpawns": []
+    },
+    {
       "id": "2025-08-27_return",
       "sourceUrl": "https://ro.gnjoy.in.th/monster-spotlight-return-2025/",
       "ruleCount": 36,
@@ -111,6 +120,6 @@
       "unmatchedSpawns": []
     }
   ],
-  "checkedOn": "2026-10-22",
+  "checkedOn": "2026-11-25",
   "exceptions": []
 }

@@ -57,7 +57,7 @@ function applyGgtBasePriority(maps, events) {
     for (const monster of map.monsters) {
       const snapshots = events.map(event => {
         const rule = spotlightRule(map, monster, event);
-        return rule && Number.isFinite(rule.normalExp)
+        return rule && !rule.keepBase && Number.isFinite(rule.normalExp)
           ? {normalExp:rule.normalExp, start:event.start, sourceUrl:event.sourceUrl}
           : null;
       }).filter(Boolean);
