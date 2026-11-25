@@ -50,7 +50,11 @@
     "name": "มังกร 2"
   },
   "iz_d05_i": {
-    "name": "ดันใต้น้ำ 2"
+    "name": "ดันใต้น้ำ 2",
+    "min": 185,
+    "entryRequirementVerified": true,
+    "accessNote": "Lv 185+ ตามคู่มือ GGT; เข้าจากชั้น 1 ที่ NPC Gatekeeper iz_d04_i 129/231 (ชั้น 1 ต้อง Lv 140+)",
+    "accessSourceUrl": "https://ro.gnjoy.in.th/illusion-under-water-guide/"
   },
   "gef_fild04": {
     "name": "บนกิฟ"

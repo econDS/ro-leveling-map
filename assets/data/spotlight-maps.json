@@ -3236,11 +3236,11 @@
       "code": "iz_d05_i",
       "name": "ดันใต้น้ำ 2",
       "group": "spotlight",
-      "min": 1,
+      "min": 185,
       "source": "Divine Pride thRO · No event",
       "sourceUrl": "https://www.divine-pride.net/database/map/iz_d05_i",
-      "accessNote": "ยังไม่ยืนยันเลเวลและเงื่อนไขเข้าแมพนี้; ไม่ใช้เลเวลมอนเป็นเกณฑ์เข้า กรุณาตรวจเควสและเส้นทางในเกม",
-      "entryRequirementVerified": false,
+      "accessNote": "Lv 185+ ตามคู่มือ GGT; เข้าจากชั้น 1 ที่ NPC Gatekeeper iz_d04_i 129/231 (ชั้น 1 ต้อง Lv 140+)",
+      "entryRequirementVerified": true,
       "monsters": [
         {
           "id": 20809,
@@ -3314,7 +3314,8 @@
       "amount": 225,
       "level": 200.6,
       "hp": 2970565.8,
-      "baseExp": 198037.6
+      "baseExp": 198037.6,
+      "accessSourceUrl": "https://ro.gnjoy.in.th/illusion-under-water-guide/"
     },
     {
       "code": "iz_dun03",
