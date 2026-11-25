@@ -28,7 +28,7 @@ input:hover,select:hover{border-color:#9fb0c2}
 input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(11,122,117,.18)}
 #playerDamage{font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:.3px}
 .setting-group{border-radius:10px;background:transparent}
-.setting-group>summary{list-style:none;display:flex;align-items:center;gap:8px}
+.setting-group>summary{list-style:none;display:flex;align-items:center;gap:8px;margin:-12px;padding:12px}
 .setting-group>summary::-webkit-details-marker{display:none}
 .setting-group>summary::before{content:"";width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .15s;flex-shrink:0}
 .setting-group[open]>summary::before{transform:rotate(45deg)}
@@ -276,3 +276,10 @@ body.has-compare main{padding-bottom:90px}
 .buff-chip{padding:3px 10px;font-size:11.5px;font-weight:500;color:var(--muted)}
 .buff-chip[aria-pressed="true"]{font-weight:700}
 .buff-chips-head{flex-wrap:wrap;row-gap:0}.buff-chips-head>span:last-child{white-space:nowrap;margin-left:auto}
+
+/* Event dropdown: auto and the round in progress */
+#spotlightEvent.event-live{border-color:var(--accent);font-weight:700;box-shadow:inset 4px 0 0 var(--accent)}
+#spotlightEvent.event-live:focus{box-shadow:inset 4px 0 0 var(--accent),0 0 0 3px rgba(11,122,117,.18)}
+#spotlightEvent option{background:var(--panel);color:var(--text);font-weight:400}
+#spotlightEvent option.current-event{background:#d9f2ee;color:#0b4f4b;font-weight:700}
+@media(prefers-color-scheme:dark){#spotlightEvent option.current-event{background:#123f3b;color:#a5ece2}}

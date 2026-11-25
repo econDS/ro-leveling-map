@@ -408,7 +408,16 @@ function render() {
   document.getElementById('raceCount').textContent=racialCount?`${racialCount} เผ่า`:'ยังไม่ใส่';
   document.getElementById('buffReminder').hidden=buffs+racialCount>0;
   const autoOption=document.querySelector('#spotlightEvent option[value="auto"]');
-  autoOption.textContent='อัตโนมัติ · '+(activeSpotlight(SPOTLIGHT_EVENTS)?.name||(coverage.expired?'ไม่มีกิจกรรม (รอข้อมูลใหม่)':'ไม่มีกิจกรรม'));
+  const currentEvent=activeSpotlight(SPOTLIGHT_EVENTS);
+  autoOption.textContent='★ อัตโนมัติ · '+(currentEvent?.name||(coverage.expired?'ไม่มีกิจกรรม (รอข้อมูลใหม่)':'ไม่มีกิจกรรม'));
+  // Native pickers on phones ignore option colors, so the current round also gets a text marker.
+  const eventSelect=document.getElementById('spotlightEvent');
+  for(const option of eventSelect.options){
+    const current=option.value===currentEvent?.id, label=option.dataset.label||=option.textContent;
+    option.classList.toggle('current-event',current||option===autoOption);
+    if(option!==autoOption)option.textContent=current?'● กำลังจัด · '+label:label;
+  }
+  eventSelect.classList.toggle('event-live',Boolean(c.event)&&c.event.id===currentEvent?.id);
   document.getElementById('advancedStatus').textContent=(c.event?.name||'ไม่มีกิจกรรม')+' · '+(buffs?`บัฟ ${buffs} รายการ`:'ยังไม่ใส่บัฟ')+(racialCount?` · เผ่า ${racialCount}`:'');
   const scale=listScale(rows);
   document.querySelector('#mapTable tbody').innerHTML=rows.length ? rows.map((r,i)=>{
