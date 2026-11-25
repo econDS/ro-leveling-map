@@ -38,7 +38,7 @@ const PLANNING_CONTEXT = {
     jor_back6: {englishName:'Ancient Ice Canyon West'},
     jor_root1: {englishName:'Snake God’s Root 1F'},
     jor_root2: {englishName:'Snake God’s Root 2F'},
-    jor_root3: {englishName:'Deep Root Cavern'},
+    jor_root3: {englishName:'Deep Root Cavern',access:{method:'warp',label:'Warp Portal',min:1,note:'ไม่จำกัดเลเวล เข้าด้วย Warp Portal — ผู้เล่นยืนยัน 25 พ.ย. 2026'}},
     gef_fild04: {englishName:'Geffen Field'},
     prt_fild05: {englishName:'Prontera Field'},
     pay_dun00: {englishName:'Payon Cave'},
