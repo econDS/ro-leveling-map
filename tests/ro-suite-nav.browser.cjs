@@ -153,6 +153,16 @@ async function snapshot(page) {
 async function assertSame(page, expected, message) {
   assert.deepEqual(await snapshot(page), expected, message);
 }
+// A stored event choice is not restored; visits start on auto. Re-select it to compare everything else exactly.
+async function assertRestored(page, expected, message) {
+  const event = page.locator('#spotlightEvent');
+  assert.equal(await event.inputValue(), 'auto', message + ' (event returns to auto)');
+  if (expected.inputs.spotlightEvent !== 'auto') await event.evaluate((el, value) => {
+    el.value = value;
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  }, expected.inputs.spotlightEvent);
+  await assertSame(page, expected, message);
+}
 async function shareAndReload(page, context, expected, label) {
   await page.locator('#shareSettings').click();
   await page.waitForFunction(() => document.getElementById('shareStatus').textContent === 'คัดลอกแล้ว');
@@ -169,9 +179,9 @@ async function shareAndReload(page, context, expected, label) {
   await shared.close();
   // A clean URL reload independently checks local persistence, without the hash override.
   await page.goto(BASE, { waitUntil: 'networkidle' });
-  await assertSame(page, expected, 'Stored settings restore at a clean URL');
+  await assertRestored(page, expected, 'Stored settings restore at a clean URL');
   await page.reload({ waitUntil: 'networkidle' });
-  await assertSame(page, expected, 'Stored settings persist through reload');
+  await assertRestored(page, expected, 'Stored settings persist through reload');
   return copied;
 }
 async function overflow(page) {
@@ -309,7 +319,7 @@ async function navigation(page, context, label, capture) {
   await Promise.all([page.waitForURL(BASE), current.click()]);
   await page.locator('#mapTable tbody .map-row').first().waitFor();
   assert(selfRequested, 'The real self link requested its exact canonical URL');
-  assert.equal(page.url(), BASE); await assertSame(page, before, 'Self navigation restores stored settings');
+  assert.equal(page.url(), BASE); await assertRestored(page, before, 'Self navigation restores stored settings');
   await context.unroute(SELF_URL);
   return { ...navIdentity, closedGeometry, closedOverflow, openGeometry, openOverflow, selfDestination: SELF_URL, selfDestinationInterceptedLocally: true };
 }
@@ -459,7 +469,7 @@ async function serviceWorker() {
     page.__qaLabel = 'service-worker-offline';
     await context.setOffline(true); await page.reload({ waitUntil: 'domcontentloaded' });
     await page.locator('#mapTable tbody .map-row').first().waitFor();
-    await assertSame(page, before, 'Warm-cache offline calculations/settings match online state');
+    await assertRestored(page, before, 'Warm-cache offline calculations/settings match online state');
     assert.equal(await page.locator('#offlineNotice').isVisible(), true);
     if (mode === 'final') await page.locator('ro-suite-nav .bar button').waitFor();
     await top(page); await screenshot(page, 'service-worker-offline');

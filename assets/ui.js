@@ -461,7 +461,8 @@ function saveSettings() {
   catch(_){document.getElementById('storageStatus').textContent='เบราว์เซอร์ไม่อนุญาตให้บันทึก · ใช้ได้ในหน้านี้';}
 }
 function restoreSettings() {
-  try{applySettings(JSON.parse(localStorage.getItem(SETTINGS_KEY)));}
+  // A saved event choice goes stale when a new round starts; every visit begins on auto. Shared links still set it.
+  try{applySettings({...JSON.parse(localStorage.getItem(SETTINGS_KEY)),spotlightEvent:'auto'});}
   catch(_){applySettings(DEFAULT_SETTINGS);document.getElementById('storageStatus').textContent='เริ่มด้วยค่าเริ่มต้น · ไม่สามารถอ่านค่าที่บันทึก';}
 }
 function loadSharedSettings() {
