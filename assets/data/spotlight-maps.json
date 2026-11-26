@@ -3505,8 +3505,8 @@
       "min": 1,
       "source": "Divine Pride thRO · No event",
       "sourceUrl": "https://www.divine-pride.net/database/map/jor_tail",
-      "accessNote": "วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026; ยังไม่ยืนยันเลเวลขั้นต่ำ",
-      "entryRequirementVerified": false,
+      "accessNote": "วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026",
+      "entryRequirementVerified": true,
       "monsters": [
         {
           "id": 21525,

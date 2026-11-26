@@ -58,7 +58,7 @@ test('Level curve ranges include both endpoints, normalize reversed ranges and c
 test('Confirmed outdoor warp access changes filtering without changing EXP or other dungeons',()=>{
   const before=JSON.stringify(MAPS);
   const c={...config(null,100),lock:true};
-  for(const code of ['jor_back1','jor_back2','jor_back3','jor_root3']){
+  for(const code of ['jor_back1','jor_back2','jor_back3','jor_root3','jor_back4','jor_back5','jor_back6','jor_root1','jor_root2','jor_tail']){
     const result=row(map(code),c);
     assert.equal(result.min,1);assert.equal(result.locked,false);
     approx(result.finalPerKill,row(map(code),{...c,lock:false}).finalPerKill);

@@ -4,7 +4,7 @@ const PLANNING_CONTEXT = {
   ticketNote: '[Not For Sale] World Moving Ticket แจกผ่านกิจกรรมและหน้าเว็บเป็นระยะ ผู้เล่นประจำอาจมีสะสม ผู้เล่นใหม่ซื้อ World Moving Ticket แบบปกติจาก Cash Shop ได้',
   maps: {
     ba_lib: {epQuest:'EP17.2'},
-    jor_tail: {englishName:'Frozen Tail',access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'}},
+    jor_tail: {englishName:'Frozen Tail',access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'}},
     sp_rudus4: {epQuest:'EP Rudus'},
     sp_rudus3: {epQuest:'EP Rudus'},
     jor_twig: {epQuest:'EP19 / EP20'},
@@ -40,11 +40,11 @@ const PLANNING_CONTEXT = {
     abyss_02: {englishName:'Underground Cave 2nd Floor'},
     odin_past: {englishName:'Ancient Odin’s Temple'},
     iz_d05_i: {englishName:'Illusion of Underwater, 2nd Floor'},
-    jor_back4: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Frozen Scale Coast'},
-    jor_back5: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Ancient Ice Canyon East'},
-    jor_back6: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Ancient Ice Canyon West'},
-    jor_root1: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Snake God’s Root 1F'},
-    jor_root2: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Snake God’s Root 2F'},
+    jor_back4: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Frozen Scale Coast'},
+    jor_back5: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Ancient Ice Canyon East'},
+    jor_back6: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Ancient Ice Canyon West'},
+    jor_root1: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Snake God’s Root 1F'},
+    jor_root2: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่จำกัดเลเวล ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Snake God’s Root 2F'},
     jor_root3: {englishName:'Deep Root Cavern',access:{method:'warp',label:'Warp Portal',min:1,note:'ไม่จำกัดเลเวล เข้าด้วย Warp Portal — ผู้เล่นยืนยัน 25 พ.ย. 2026'}},
     gef_fild04: {englishName:'Geffen Field'},
     prt_fild05: {englishName:'Prontera Field'},
@@ -80,7 +80,8 @@ const PLANNING_CONTEXT = {
 function planningContext(map) { return PLANNING_CONTEXT.maps[map.code] || {}; }
 // Maps behind an Episode quest chain that takes hours (route planner filter). Short entry quests such as Illusion dungeons do not count.
 function needsEpQuest(map) { const context=planningContext(map); return Boolean(context.epQuest)||context.access?.method==='quest'; }
-function minimumEntryLevel(map) { return planningContext(map).access?.min ?? map.min; }
+// A map reached through a Warp Portal has no level gate, unless its access sets a minimum.
+function minimumEntryLevel(map) { const access=planningContext(map).access; return access?.min ?? (access?.method==='warp' ? 1 : map.min); }
 function matchesMapSearch(map, query) {
   const context=planningContext(map);
   const text=[map.name,map.code,map.aliases,context.englishName,context.aliases].flat().filter(Boolean).join(' ').normalize('NFKC').toLowerCase();
