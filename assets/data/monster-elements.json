@@ -2,7 +2,8 @@
   "checkedOn": "2026-11-26",
   "sources": {
     "monsters": "https://www.divine-pride.net/database/monster/<id> (dp_region=thROG, element badge)",
-    "table": "https://github.com/rathena/rathena/blob/master/db/re/attr_fix.yml"
+    "table": "https://github.com/rathena/rathena/blob/master/db/re/attr_fix.yml",
+    "daily": "https://ro.gnjoy.in.th/6th-anniversary-dailydungeon/ (Daily Dungeon Bio monsters, ids prefixed ggt-daily:)"
   },
   "monsters": {
     "1001": [
@@ -2504,6 +2505,78 @@
     "23060": [
       "Water",
       1
+    ],
+    "ggt-daily:Bio Duneyrr": [
+      "Fire",
+      3
+    ],
+    "ggt-daily:Bio Salamander": [
+      "Fire",
+      2
+    ],
+    "ggt-daily:Bio Flame Ghost": [
+      "Fire",
+      2
+    ],
+    "ggt-daily:Bio Empathizer": [
+      "Ghost",
+      2
+    ],
+    "ggt-daily:Bio Pray Giver": [
+      "Ghost",
+      3
+    ],
+    "ggt-daily:Bio Holy Skogul": [
+      "Holy",
+      2
+    ],
+    "ggt-daily:Bio Incarnation of Morroc": [
+      "Dark",
+      1
+    ],
+    "ggt-daily:Bio Skeleton Archer": [
+      "Undead",
+      2
+    ],
+    "ggt-daily:Bio Skeleton Soldier": [
+      "Undead",
+      3
+    ],
+    "ggt-daily:Bio Naga": [
+      "Earth",
+      2
+    ],
+    "ggt-daily:Bio Ancient Tree": [
+      "Earth",
+      2
+    ],
+    "ggt-daily:Bio Dollocaris": [
+      "Earth",
+      3
+    ],
+    "ggt-daily:Bio Moskillo": [
+      "Wind",
+      3
+    ],
+    "ggt-daily:Bio Dark Pinguicula": [
+      "Poison",
+      3
+    ],
+    "ggt-daily:Bio Pom Spider": [
+      "Poison",
+      2
+    ],
+    "ggt-daily:Bio Ice Gargoyle": [
+      "Water",
+      3
+    ],
+    "ggt-daily:Bio Kapha": [
+      "Water",
+      3
+    ],
+    "ggt-daily:Bio Anolian": [
+      "Water",
+      3
     ]
   },
   "byMapName": {
@@ -2547,7 +2620,25 @@
     "jor_twice:Angel Iceslug": "21983",
     "jor_twice:Jormungandr Church Warlock": "21987",
     "jor_twig:Jormungandr Guardian-P": "21997",
-    "jor_twig:Jormungandr Guardian-Y": "21998"
+    "jor_twig:Jormungandr Guardian-Y": "21998",
+    "daily_mon_fire:240 Bio Duneyrr": "ggt-daily:Bio Duneyrr",
+    "daily_mon_fire:240 Bio Salamander": "ggt-daily:Bio Salamander",
+    "daily_mon_fire:240 Bio Flame Ghost": "ggt-daily:Bio Flame Ghost",
+    "daily_tue_water:240 Bio Empathizer": "ggt-daily:Bio Empathizer",
+    "daily_tue_water:240 Bio Pray Giver": "ggt-daily:Bio Pray Giver",
+    "daily_tue_water:240 Bio Holy Skogul": "ggt-daily:Bio Holy Skogul",
+    "daily_wed_death:240 Bio Incarnation of Morroc": "ggt-daily:Bio Incarnation of Morroc",
+    "daily_wed_death:240 Bio Skeleton Archer": "ggt-daily:Bio Skeleton Archer",
+    "daily_wed_death:240 Bio Skeleton Soldier": "ggt-daily:Bio Skeleton Soldier",
+    "daily_thu_forest:240 Bio Naga": "ggt-daily:Bio Naga",
+    "daily_thu_forest:240 Bio Ancient Tree": "ggt-daily:Bio Ancient Tree",
+    "daily_thu_forest:240 Bio Dollocaris": "ggt-daily:Bio Dollocaris",
+    "daily_fri_poison:240 Bio Moskillo": "ggt-daily:Bio Moskillo",
+    "daily_fri_poison:240 Bio Dark Pinguicula": "ggt-daily:Bio Dark Pinguicula",
+    "daily_fri_poison:240 Bio Pom Spider": "ggt-daily:Bio Pom Spider",
+    "daily_sat_ice:240 Bio Ice Gargoyle": "ggt-daily:Bio Ice Gargoyle",
+    "daily_sat_ice:240 Bio Kapha": "ggt-daily:Bio Kapha",
+    "daily_sat_ice:240 Bio Anolian": "ggt-daily:Bio Anolian"
   },
   "table": {
     "1": {
