@@ -1171,12 +1171,12 @@
     "assets/spotlight/2026-08-26_spotlight.jpg": "d84d616a0a158df3f075ea390c261367ed3b4ac06aaa334bc377fbae3c6d3caa",
     "assets/spotlight/2026-09-23_triple_exp.jpg": "b37c8387b05f5acd0522577d9bb2d69c3386e73ded8cf2b04a019df37b81a70b",
     "assets/theme.css": "3f9e4ec2d4ae13462e3a225834eab557f98cf42cb75f0408dd769888264677ed",
-    "assets/ui.js": "073c54eb14d9400e218cbaaf94fae56af35408bc123316d3b17d0ada23bce0fb",
+    "assets/ui.js": "aa22de81b692e836966962ece7379cb3666d95849cc4b1e7d01fd7ec191a5301",
     "icons/ro-exp-180.png": "c21abd8a99829c2185d5f6879e70b98192b0195f5c85dfd591b59b674352770d",
     "icons/ro-exp-192.png": "c0e001dc3466e870dc09b775e61dfc7868a24c9d0f29c0601fe27e1d8dab0c5d",
     "icons/ro-exp-512.png": "6243c599c695bc97730a7c0cb4457f6997dd5fa30b2b710aea16d6378ecbf6f0",
     "index.html": "938a9f3e295c7044e4f8c8d18f0662de027f4c5907873803f1e68e790a8a6607",
     "manifest.webmanifest": "1442f98f8f16a0faeee2b63483242b7cf8e618794f29f86c97b3e40f4f156c05",
-    "service-worker.js": "3a22fc6ac14f633a162b81031b1ac7580bcb402153cd4a99a6e6e342baf3f27e"
+    "service-worker.js": "e7d0c5d9e3a4d9172666f92017353062bb26cb6994d3547394778c4f82545b94"
   }
 }

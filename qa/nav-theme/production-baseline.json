@@ -1174,7 +1174,7 @@
     "assets/spotlight/2026-08-26_spotlight.jpg": "d84d616a0a158df3f075ea390c261367ed3b4ac06aaa334bc377fbae3c6d3caa",
     "assets/spotlight/2026-09-23_triple_exp.jpg": "b37c8387b05f5acd0522577d9bb2d69c3386e73ded8cf2b04a019df37b81a70b",
     "assets/theme.css": "3f9e4ec2d4ae13462e3a225834eab557f98cf42cb75f0408dd769888264677ed",
-    "assets/ui.js": "073c54eb14d9400e218cbaaf94fae56af35408bc123316d3b17d0ada23bce0fb",
+    "assets/ui.js": "aa22de81b692e836966962ece7379cb3666d95849cc4b1e7d01fd7ec191a5301",
     "icons/ro-exp-180.png": "c21abd8a99829c2185d5f6879e70b98192b0195f5c85dfd591b59b674352770d",
     "icons/ro-exp-192.png": "c0e001dc3466e870dc09b775e61dfc7868a24c9d0f29c0601fe27e1d8dab0c5d",
     "icons/ro-exp-512.png": "6243c599c695bc97730a7c0cb4457f6997dd5fa30b2b710aea16d6378ecbf6f0",
@@ -1186,6 +1186,6 @@
     "scripts/import_ep20.py": "a0f3ddb0f16393553ee42dd2d3b87a3ade40ba4db5e6fc806bab51bb573ad9f4",
     "scripts/import_races.py": "95ca096f3b42af9025f5c41256e548d925157a2f6e4398d9e23fc9b18a45a6b2",
     "scripts/import_spotlight_maps.py": "969cfe92c2000cb0f8d68d2ef079d0377218e86de7dc946d8c27a8992ad93338",
-    "service-worker.js": "3a22fc6ac14f633a162b81031b1ac7580bcb402153cd4a99a6e6e342baf3f27e"
+    "service-worker.js": "e7d0c5d9e3a4d9172666f92017353062bb26cb6994d3547394778c4f82545b94"
   }
 }

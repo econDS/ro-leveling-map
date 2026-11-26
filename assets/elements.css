@@ -1,0 +1,9 @@
+/* Monster element chips and endow advice. */
+.element-chip{display:inline-block;margin-left:4px;padding:0 6px;border-radius:999px;font-size:11px;font-weight:600;line-height:1.6;color:#fff;background:#6b7785;vertical-align:baseline}
+.element-water{background:#2f78c4}.element-earth{background:#8a6a32}.element-fire{background:#c8452b}.element-wind{background:#2f9a6a}
+.element-poison{background:#7d4aa8}.element-holy{background:#b48a12}.element-dark{background:#3b3550}.element-ghost{background:#6a6fa8}
+.element-undead{background:#5b6b4f}.element-neutral{background:#6b7785}
+.endow-advice{margin-top:14px;padding:12px 14px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;background:var(--panel)}
+.endow-advice h3{margin:0 0 6px;font-size:14px}
+.endow-advice p{margin:4px 0}
+.endow-advice .field-help{margin:4px 0}
