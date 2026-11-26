@@ -3,7 +3,10 @@
 const ROUTE_KEY = 'ro-general-map-exp-tool-route-v1';
 const ROUTE_MAX_HITS = 3;
 const ROUTE_DEFAULT = [[1,1e6],[100,10e6],[170,20e6],[200,100e6],[240,300e6],[250,500e6]];
-let routeBands = loadRouteBands(), routeTimer = 0;
+let routeBands = loadRouteBands(), routeTimer = 0, routeSkipQuest = loadRouteSkipQuest();
+function loadRouteSkipQuest() {
+  try { return localStorage.getItem(ROUTE_KEY + '-skip-quest') === '1'; } catch (_) { return false; }
+}
 
 function loadRouteBands() {
   try {
@@ -33,7 +36,7 @@ function routeDamageText(n) {
 // The same weighted sums as row(), with everything that does not depend on level precomputed:
 // a full row() per map and level is too slow to rerun on every settings change.
 function routeMaps(c) {
-  return MAPS.filter(m => includesArchivedMap(m, c.dailyDungeonMode) && m.monsters?.length).map(map => {
+  return MAPS.filter(m => includesArchivedMap(m, c.dailyDungeonMode) && m.monsters?.length && !(routeSkipQuest && typeof needsEpQuest === 'function' && needsEpQuest(m))).map(map => {
     const amounts = map.monsters.map(m => monsterEventAmount(map, m, c.event)), total = amounts.reduce((s, a) => s + a, 0);
     return {code:map.code, name:map.name, map, min:typeof minimumEntryLevel === 'function' ? minimumEntryLevel(map) : map.min,
       mobs:map.monsters.map((m, i) => ({share:amounts[i] / total, level:m.level, hp:m.hp,
@@ -109,11 +112,17 @@ function initRoute() {
   box.id = 'levelRoute'; box.className = 'level-route panel'; box.open = true;
   box.innerHTML = `<summary>เส้นทางเก็บเลเวล 1–260</summary>
     <p class="field-help">แต่ละช่วงเลเวลใส่ดาเมจต่อการตีได้ · แนะนำแมพ EXP / ตัว สูงสุดที่ตีไม่เกิน ${ROUTE_MAX_HITS} ครั้ง (เฉลี่ยถ่วงตามจำนวนมอน) และทางเลือกที่ตีครั้งเดียวตาย · <span class="route-context"></span></p>
+    <label class="route-option"><input type="checkbox" data-route-skip-quest${routeSkipQuest ? ' checked' : ''}> ไม่เลือกแมพที่ต้องทำเควส EP ก่อน <span class="cell-note">(เควสยาวหลายชั่วโมง เช่น กิ้งก่า 17.2, จอร์ 1–2, แมพ EP20 · ไม่นับเควสสั้นอย่าง Illusion)</span></label>
     <div class="route-bands"></div>
     <div class="route-actions"><button type="button" class="text-btn" data-route-add>+ เพิ่มช่วง</button><button type="button" class="text-btn" data-route-reset>คืนค่าช่วงเริ่มต้น</button></div>`;
   const anchor = results.querySelector('.planning-help');
   (anchor || results.lastElementChild).after(box);
   box.addEventListener('change', e => {
+    if (e.target.matches('[data-route-skip-quest]')) {
+      routeSkipQuest = e.target.checked;
+      try { localStorage.setItem(ROUTE_KEY + '-skip-quest', routeSkipQuest ? '1' : '0'); } catch (_) {}
+      renderRoute(); return;
+    }
     const from = e.target.dataset.routeFrom, damage = e.target.dataset.routeDamage;
     if (from !== undefined) routeBands[from][0] = Number(e.target.value) || routeBands[from][0];
     if (damage !== undefined) { const n = parseDamage(e.target.value); if (Number.isFinite(n) && n > 0) routeBands[damage][1] = n; }

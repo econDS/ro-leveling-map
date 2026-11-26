@@ -12,7 +12,7 @@ const EP20_MAPS = [
     "source": "RO Thailand EP20 · No event",
     "sourceUrl": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/",
     "aliases": "EP20 Episode 20 The Immortal Issgard อิสการ์ด jor_back4",
-    "accessNote": "Lv 200+ ตามหน้า Map & Monster; ต้องผ่านเควส EP19 / EP20 ของพื้นที่ (เควสหลัก EP20 เริ่ม Lv 215)",
+    "accessNote": "Lv 200+ ตามหน้า Map & Monster ของ GGT; ผู้เล่นยืนยันว่าวาร์ปเข้าได้โดยไม่ต้องทำเควส EP ก่อน (26 พ.ย. 2026)",
     "monsters": [
       {
         "name": "Calmaring",
@@ -112,7 +112,7 @@ const EP20_MAPS = [
     "source": "RO Thailand EP20 · No event",
     "sourceUrl": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/",
     "aliases": "EP20 Episode 20 The Immortal Issgard อิสการ์ด jor_back5",
-    "accessNote": "Lv 200+ ตามหน้า Map & Monster; ต้องผ่านเควส EP19 / EP20 ของพื้นที่ (เควสหลัก EP20 เริ่ม Lv 215)",
+    "accessNote": "Lv 200+ ตามหน้า Map & Monster ของ GGT; ผู้เล่นยืนยันว่าวาร์ปเข้าได้โดยไม่ต้องทำเควส EP ก่อน (26 พ.ย. 2026)",
     "monsters": [
       {
         "name": "Shining Seaweed",
@@ -210,7 +210,7 @@ const EP20_MAPS = [
     "source": "RO Thailand EP20 · No event",
     "sourceUrl": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/",
     "aliases": "EP20 Episode 20 The Immortal Issgard อิสการ์ด jor_back6",
-    "accessNote": "Lv 200+ ตามหน้า Map & Monster; ต้องผ่านเควส EP19 / EP20 ของพื้นที่ (เควสหลัก EP20 เริ่ม Lv 215)",
+    "accessNote": "Lv 200+ ตามหน้า Map & Monster ของ GGT; ผู้เล่นยืนยันว่าวาร์ปเข้าได้โดยไม่ต้องทำเควส EP ก่อน (26 พ.ย. 2026)",
     "monsters": [
       {
         "name": "Shining Seaweed",
@@ -286,7 +286,7 @@ const EP20_MAPS = [
     "source": "RO Thailand EP20 · No event",
     "sourceUrl": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/",
     "aliases": "EP20 Episode 20 The Immortal Issgard อิสการ์ด jor_root1",
-    "accessNote": "Lv 200+ ตามหน้า Map & Monster; ต้องผ่านเควส EP19 / EP20 ของพื้นที่ (เควสหลัก EP20 เริ่ม Lv 215)",
+    "accessNote": "Lv 200+ ตามหน้า Map & Monster ของ GGT; ผู้เล่นยืนยันว่าวาร์ปเข้าได้โดยไม่ต้องทำเควส EP ก่อน (26 พ.ย. 2026)",
     "monsters": [
       {
         "name": "Jormungandr Guardian-P",
@@ -362,7 +362,7 @@ const EP20_MAPS = [
     "source": "RO Thailand EP20 · No event",
     "sourceUrl": "https://ro.gnjoy.in.th/episode-20-the-immortal-map-monster/",
     "aliases": "EP20 Episode 20 The Immortal Issgard อิสการ์ด jor_root2",
-    "accessNote": "Lv 200+ ตามหน้า Map & Monster; ต้องผ่านเควส EP19 / EP20 ของพื้นที่ (เควสหลัก EP20 เริ่ม Lv 215)",
+    "accessNote": "Lv 200+ ตามหน้า Map & Monster ของ GGT; ผู้เล่นยืนยันว่าวาร์ปเข้าได้โดยไม่ต้องทำเควส EP ก่อน (26 พ.ย. 2026)",
     "monsters": [
       {
         "name": "Jormungandr Guardian-P",

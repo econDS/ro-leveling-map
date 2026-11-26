@@ -3,6 +3,11 @@ const PLANNING_CONTEXT = {
   checkedOn: '2026-09-12',
   ticketNote: '[Not For Sale] World Moving Ticket แจกผ่านกิจกรรมและหน้าเว็บเป็นระยะ ผู้เล่นประจำอาจมีสะสม ผู้เล่นใหม่ซื้อ World Moving Ticket แบบปกติจาก Cash Shop ได้',
   maps: {
+    sp_rudus4: {epQuest:'EP Rudus'},
+    sp_rudus3: {epQuest:'EP Rudus'},
+    jor_twig: {epQuest:'EP19 / EP20'},
+    jor_twice: {epQuest:'EP19 / EP20'},
+    jor_maze: {epQuest:'EP19 / EP20'},
     oz_dun01: {englishName:'Oz Labyrinth 1F',access:{method:'ticket',label:'World Moving Ticket',note:'ใช้ตั๋วเดินทางเข้าแมพ ตามเส้นทางที่ผู้เล่นใช้'}},
     oz_dun02: {englishName:'Oz Labyrinth 2F',access:{method:'ticket-walk',label:'ตั๋ว / ทางเชื่อม',note:'เข้าโซน Oz ด้วยตั๋ว แล้วใช้ทางเชื่อมจาก oz_dun01 ไป oz_dun02; ปลายทางตรงให้ตรวจในเมนูตั๋ว'}},
     jor_back1: {englishName:'Frozen Scales Hill',access:{method:'warp',label:'Warp Portal',min:1,note:'พื้นที่ภายนอกโซน EP19 memo ได้ ต้องมีผู้เปิด Warp Portal ที่บันทึกจุดไว้ — ผู้เล่นยืนยัน 12 ก.ย. 2026'}},
@@ -10,8 +15,8 @@ const PLANNING_CONTEXT = {
     jor_back3: {englishName:'Frozen Scale Glacier',access:{method:'warp',label:'Warp Portal',min:1,note:'พื้นที่ภายนอกโซน EP19 memo ได้ ต้องมีผู้เปิด Warp Portal ที่บันทึกจุดไว้ — ผู้เล่นยืนยัน 12 ก.ย. 2026'},aliases:['จอร์แบค 3']},
     jor_dun01: {englishName:'Warmth of the Snake God 1F',access:{method:'warp-walk',label:'วาร์ป + ทางเชื่อม',note:'Warp Portal ไป jor_back3 แล้วเข้าวาร์ปด้านบนเพื่อไป jor_dun01 ตามบันทึกซ้อม; เตรียมบัฟป้องกันก่อนเข้า'}},
     ba_pw03: {englishName:'Magic Power Plant 2',access:{method:'warp-walk',label:'วาร์ป + เดิน',note:'ใช้เส้นทางลัดจากแมพข้างเคียงแล้วเดินเข้า ต้องเตรียมการป้องกันระหว่างเดินทาง; ไม่ใช่การยืนยันว่า memo ภายในดันได้'}},
-    jor_ab01: {englishName:'Abandoned Pit 1F',access:{method:'quest',label:'เควส EP19',note:'ต้องผ่านเควส Episode ที่เกี่ยวข้องและ EP19 side quest ตามบันทึกทีม ถึงเลเวลแล้วไม่ได้แปลว่าปลดล็อกเควสครบ'}},
-    jor_ab02: {englishName:'Abandoned Pit 2F',access:{method:'quest',label:'เควส EP19',note:'ต้องผ่านเควส Episode ที่เกี่ยวข้องและ EP19 side quest ตามบันทึกทีม ถึงเลเวลแล้วไม่ได้แปลว่าปลดล็อกเควสครบ'}},
+    jor_ab01: {epQuest:'EP19',englishName:'Abandoned Pit 1F',access:{method:'quest',label:'เควส EP19',note:'ต้องผ่านเควส Episode ที่เกี่ยวข้องและ EP19 side quest ตามบันทึกทีม ถึงเลเวลแล้วไม่ได้แปลว่าปลดล็อกเควสครบ'}},
+    jor_ab02: {epQuest:'EP19',englishName:'Abandoned Pit 2F',access:{method:'quest',label:'เควส EP19',note:'ต้องผ่านเควส Episode ที่เกี่ยวข้องและ EP19 side quest ตามบันทึกทีม ถึงเลเวลแล้วไม่ได้แปลว่าปลดล็อกเควสครบ'}},
     mag_dun02: {englishName:'Magma Dungeon 2F',aliases:['Magma','Nogg Road','แมกม่า']},
     mag_dun03: {englishName:'Magma Dungeon 3F',aliases:['Magma','Nogg Road','แมกม่า']},
     bl_lava: {englishName:'Varmundt Fire',aliases:['ไฟ','Fire']},
@@ -29,15 +34,15 @@ const PLANNING_CONTEXT = {
     ra_pol01: {englishName:'Power Twisted Plains'},
     mjo_wst01: {englishName:'Mjolnir Underground Caverns'},
     ice_d03_i: {englishName:'Illusion of Frozen'},
-    ba_lost: {englishName:'Lost Farm Valley'},
+    ba_lost: {epQuest:'EP17.2',englishName:'Lost Farm Valley'},
     abyss_02: {englishName:'Underground Cave 2nd Floor'},
     odin_past: {englishName:'Ancient Odin’s Temple'},
     iz_d05_i: {englishName:'Illusion of Underwater, 2nd Floor'},
-    jor_back4: {englishName:'Frozen Scale Coast'},
-    jor_back5: {englishName:'Ancient Ice Canyon East'},
-    jor_back6: {englishName:'Ancient Ice Canyon West'},
-    jor_root1: {englishName:'Snake God’s Root 1F'},
-    jor_root2: {englishName:'Snake God’s Root 2F'},
+    jor_back4: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Frozen Scale Coast'},
+    jor_back5: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Ancient Ice Canyon East'},
+    jor_back6: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Ancient Ice Canyon West'},
+    jor_root1: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Snake God’s Root 1F'},
+    jor_root2: {access:{method:'warp',label:'Warp Portal',note:'วาร์ปเข้าได้ ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'},englishName:'Snake God’s Root 2F'},
     jor_root3: {englishName:'Deep Root Cavern',access:{method:'warp',label:'Warp Portal',min:1,note:'ไม่จำกัดเลเวล เข้าด้วย Warp Portal — ผู้เล่นยืนยัน 25 พ.ย. 2026'}},
     gef_fild04: {englishName:'Geffen Field'},
     prt_fild05: {englishName:'Prontera Field'},
@@ -71,6 +76,8 @@ const PLANNING_CONTEXT = {
   }
 };
 function planningContext(map) { return PLANNING_CONTEXT.maps[map.code] || {}; }
+// Maps behind an Episode quest chain that takes hours (route planner filter). Short entry quests such as Illusion dungeons do not count.
+function needsEpQuest(map) { const context=planningContext(map); return Boolean(context.epQuest)||context.access?.method==='quest'; }
 function minimumEntryLevel(map) { return planningContext(map).access?.min ?? map.min; }
 function matchesMapSearch(map, query) {
   const context=planningContext(map);
