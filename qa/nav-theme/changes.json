@@ -18,5 +18,13 @@
   [
     "  <script src=\"assets/formulas.js?v=20260925-named\"></script>\n",
     "  <script src=\"assets/elements.js?v=20261126-el1\"></script>\n  <script src=\"assets/formulas.js?v=20260925-named\"></script>\n"
+  ],
+  [
+    "  <link rel=\"stylesheet\" href=\"assets/elements.css?v=20261126-el1\">\n",
+    "  <link rel=\"stylesheet\" href=\"assets/elements.css?v=20261126-el1\">\n  <link rel=\"stylesheet\" href=\"assets/route.css?v=20261126-rt1\">\n"
+  ],
+  [
+    "  <script src=\"assets/ui.js?v=20261002-level1\"></script>\n",
+    "  <script src=\"assets/ui.js?v=20261002-level1\"></script>\n  <script src=\"assets/route.js?v=20261126-rt1\"></script>\n"
   ]
 ]

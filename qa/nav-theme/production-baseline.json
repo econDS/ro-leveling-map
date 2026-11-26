@@ -1186,6 +1186,6 @@
     "scripts/import_ep20.py": "a0f3ddb0f16393553ee42dd2d3b87a3ade40ba4db5e6fc806bab51bb573ad9f4",
     "scripts/import_races.py": "95ca096f3b42af9025f5c41256e548d925157a2f6e4398d9e23fc9b18a45a6b2",
     "scripts/import_spotlight_maps.py": "969cfe92c2000cb0f8d68d2ef079d0377218e86de7dc946d8c27a8992ad93338",
-    "service-worker.js": "e7d0c5d9e3a4d9172666f92017353062bb26cb6994d3547394778c4f82545b94"
+    "service-worker.js": "e70f3b0a781da6ba5f3737ca68bac9546e5f07de7303488d9437c022a10c693a"
   }
 }

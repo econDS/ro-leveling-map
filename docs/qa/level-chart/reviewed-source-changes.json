@@ -7,6 +7,6 @@
     "assets/calculator.js": "c9214dbc8e737d24d43f156bbb318d1f6da4768c076024f848485b5088b8508f",
     "assets/ui.js": "ba7e331caea1977faf617c19e7dd5cb5272ec462e3d496a8caeaea584e677c87",
     "index.html": "6656b403a2920373cc7809f2369d7fd040dc1ca824332fda591aea56eff0227f",
-    "service-worker.js": "e7d0c5d9e3a4d9172666f92017353062bb26cb6994d3547394778c4f82545b94"
+    "service-worker.js": "e70f3b0a781da6ba5f3737ca68bac9546e5f07de7303488d9437c022a10c693a"
   }
 }

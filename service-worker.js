@@ -1,6 +1,6 @@
 // All URLs are relative to this file so the worker works at /ro-leveling-map/ on GitHub Pages.
 const CACHE_PREFIX = 'ro-leveling-map-';
-const CACHE_NAME = `${CACHE_PREFIX}pwa-3`;
+const CACHE_NAME = `${CACHE_PREFIX}pwa-4`;
 const APP_ROOT = new URL('./', self.location.href);
 const APP_SHELL = [
   './',
@@ -21,6 +21,8 @@ const APP_SHELL = [
   './assets/data/monster-elements.js',
   './assets/elements.js',
   './assets/elements.css',
+  './assets/route.js',
+  './assets/route.css',
   './assets/settings.js',
   './assets/data/map-geometry.js',
   './assets/data/planning-context.js',
