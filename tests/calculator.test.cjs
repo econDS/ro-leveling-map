@@ -171,9 +171,28 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
     assert.equal(june.shownAmount,normal.shownAmount*2);
   }
 });
+test('Dimensional Rift gef_fild14 combines the mjo_wst01 and ra_pol01 monsters at Lv 1 entry',()=>{
+  const rift=map('gef_fild14'),sources=[map('mjo_wst01'),map('ra_pol01')];
+  assert.equal(rift.monsters.map(x=>x.name).join(),sources.flatMap(s=>s.monsters.map(x=>x.name)).join());
+  for(const s of sources)for(const x of s.monsters){
+    const copy=rift.monsters.find(y=>y.name===x.name);
+    assert.equal(copy.baseExp,x.baseExp);assert.equal(copy.amount,x.amount);assert.equal(copy.riftSourceMap,s.code);
+    assert.equal(monsterRace(rift,copy),monsterRace(s,x));
+  }
+  assert.equal(rift.amount,835);
+  const r=row(rift,config(null,100));assert.equal(r.min,1);assert.equal(r.locked,false);assert.ok(r.hasWalk);
+  // Spotlight boosts the monster, so each copy follows its source map in every event.
+  for(const e of SPOTLIGHT_EVENTS)for(const s of sources)for(const x of s.monsters){
+    const copy=rift.monsters.find(y=>y.name===x.name);
+    assert.equal(monsterEventExp(rift,copy,e),monsterEventExp(s,x,e),e.id+' '+x.name);
+  }
+  const nov=SPOTLIGHT_EVENTS.find(e=>e.id==='2026-11-25_triple_exp_double_monster');
+  assert.equal(row(rift,config(nov,260)).affectedMonsters,sources.reduce((n,s)=>n+row(s,config(nov,260)).affectedMonsters,0));
+  assert.ok(row(rift,config(nov,260)).affectedMonsters>0);
+});
 test('EP20 has nine complete maps with normal official counts, weighted stats and local images',()=>{
   assert.equal(EP20_MAPS.length,9);
-  assert.equal(MAPS.length,149);
+  assert.equal(MAPS.length,150);
   const depth=map('bl_depth1');
   assert.equal(depth.min,250);assert.equal(depth.monsters.length,16);
   assert.equal(depth.amount,depth.monsters.reduce((s,x)=>s+x.amount,0));

@@ -36,12 +36,14 @@ function spotlightName(map, monster) {
     if (monster.name === 'Acidus' && monster.hp === 39089) return 'Blue Acidus';
     if (monster.name === 'Ferus' && monster.baseExp === 3820) return 'Green Ferus';
   }
-  return SPOTLIGHT_ALIASES[map.code]?.[monster.name] || monster.name;
+  return SPOTLIGHT_ALIASES[monster.riftSourceMap || map.code]?.[monster.name] || monster.name;
 }
 function spotlightRule(map, monster, event) {
   if (!event) return null;
   const name = normalizeMonsterName(spotlightName(map, monster));
-  const candidates = event.rules.filter(r => (r.map === '*' || r.map === map.code || r.additionalMaps?.includes(map.code)) && normalizeMonsterName(r.name) === name);
+  // Spotlight boosts the monster, so a Dimensional Rift copy follows the rules of its source map.
+  const codes = [map.code, monster.riftSourceMap].filter(Boolean);
+  const candidates = event.rules.filter(r => (r.map === '*' || codes.some(code => r.map === code || r.additionalMaps?.includes(code))) && normalizeMonsterName(r.name) === name);
   if (candidates.length === 1) return candidates[0];
   return candidates.find(r => r.normalExp === monster.baseExp) || null;
 }

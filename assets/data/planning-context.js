@@ -34,6 +34,7 @@ const PLANNING_CONTEXT = {
     ein_dun03: {englishName:'Einbech Mine 3F'},
     tha_t09: {englishName:'Room of Anguish'},
     ra_pol01: {englishName:'Power Twisted Plains',access:{method:'npc',label:'คุย NPC',note:'คุย NPC แล้วเข้าได้เลย ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'}},
+    gef_fild14: {englishName:'Dimensional Rift Geffen Dungeon (West Orc Village)',access:{method:'npc',label:'NPC + 2,000,000 Zeny',min:1,note:'คุย Rift World Joker (/navi geffen 128/61) จ่าย 2,000,000 Zeny ต่อการเข้า ไม่จำกัดเลเวล · ในแมพใช้ Warp Portal ไม่ได้ ออกเกมแล้วกลับจุดเซฟ เป็น PvP · เดิมเป็นกิจกรรม 14–28 ต.ค. 2026 ตอนนี้เปิดถาวร — ผู้เล่นยืนยัน 28 พ.ย. 2026'},aliases:['Dimensional Rift','Rift','ริฟ','ออคตะวันตก']},
     mjo_wst01: {englishName:'Mjolnir Underground Caverns',access:{method:'npc',label:'คุย NPC',note:'คุย NPC แล้วเข้าได้เลย ไม่ต้องทำเควส EP ก่อน — ผู้เล่นยืนยัน 26 พ.ย. 2026'}},
     ice_d03_i: {englishName:'Illusion of Frozen'},
     ba_lost: {epQuest:'EP17.2',englishName:'Lost Farm Valley'},
