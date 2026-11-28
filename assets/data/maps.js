@@ -75,7 +75,7 @@ for (const code of ['daily_mon_fire','daily_tue_water','daily_wed_death','daily_
   map.sourceUrl = 'https://ro.gnjoy.in.th/6th-anniversary-dailydungeon/';
 }
 // Dimensional Rift Geffen Dungeon: first a two-week event (14-28 Oct 2026), now permanent.
-// West Orc Village (gef_fild14) holds the monsters of mjo_wst01 and ra_pol01. They are
+// Kordt Forest (gef_fild12) holds the monsters of mjo_wst01 and ra_pol01. They are
 // copied after GGT base priority, so their EXP always matches the source maps. Spotlight
 // rules of the source map apply through riftSourceMap, because Spotlight boosts the monster;
 // map-wide spawn changes (Double Monster) do not. Spawn counts are not published; the sum of
@@ -87,9 +87,9 @@ for (const code of ['daily_mon_fire','daily_tue_water','daily_wed_death','daily_
     riftSourceMap: source.code})));
   const amount = monsters.reduce((sum, m) => sum + m.amount, 0);
   const weighted = key => Math.round(monsters.reduce((sum, m) => sum + m[key] * m.amount, 0) / amount * 10) / 10;
-  MAPS.push({code:'gef_fild14', name:'Dimensional Rift ออคตะวันตก (หนอนเขียว + ม้าม่วง)', group:'ep20', min:1, amount,
+  MAPS.push({code:'gef_fild12', name:'Dimensional Rift ป่าคอร์ด (หนอนเขียว + ม้าม่วง)', group:'ep20', min:1, amount,
     level:weighted('level'), hp:Math.round(weighted('hp')), baseExp:Math.round(weighted('baseExp')),
     source:'GGT Dimensional Rift', sourceUrl:'https://ro.gnjoy.in.th/dimensional-rift-geffen-dungeon-14-october-2026/',
-    aliases:'dimensional rift geffen dungeon west orc village gef_fild14 rift ริฟ หนอนเขียว ม้าม่วง mjo_wst01 ra_pol01',
+    aliases:'dimensional rift geffen dungeon kordt forest gef_fild12 rift ริฟ หนอนเขียว ม้าม่วง mjo_wst01 ra_pol01',
     spawnAmountVerified:false, monsters});
 }

@@ -4437,36 +4437,36 @@
       "rawSha256": "4e5e24eb5a2a379e4104654878b70d90837f8fddf30eec415ce159581f6526a9",
       "maskSha256": "5f701abc338d7f04654cdf3b64a03c7c259b50b7c0495c8b2032deba82e4fa2f"
     },
-    "gef_fild14": {
+    "gef_fild12": {
       "status": "verified-gat",
-      "sourceUrl": "https://www.divine-pride.net/database/map/gef_fild14",
-      "gatUrl": "https://www.divine-pride.net/Tools/MapViewerAsset?mapname=gef_fild14&ext=gat",
-      "rawUrl": "https://www.divine-pride.net/img/map/raw/gef_fild14",
+      "sourceUrl": "https://www.divine-pride.net/database/map/gef_fild12",
+      "gatUrl": "https://www.divine-pride.net/Tools/MapViewerAsset?mapname=gef_fild12&ext=gat",
+      "rawUrl": "https://www.divine-pride.net/img/map/raw/gef_fild12",
       "checkedOn": "2026-11-28",
       "method": "gat-cell-types",
       "version": "1.2",
       "width": 400,
       "height": 400,
       "totalCells": 160000,
-      "walkableCells": 69882,
-      "walkableRatio": 0.4367625,
+      "walkableCells": 57172,
+      "walkableRatio": 0.357325,
       "cellTypes": {
-        "0": 70681,
-        "1": 89242,
-        "5": 77
+        "0": 57971,
+        "1": 97904,
+        "5": 4125
       },
       "excludedBoundaryCells": 799,
       "components": 1,
-      "largestComponentCells": 69882,
+      "largestComponentCells": 57172,
       "smallComponentCells": 0,
       "borderWalkableCells": 0,
-      "maskImage": "assets/maps/geometry/gef_fild14-mask.png",
-      "rawImage": "assets/maps/geometry/gef_fild14-raw.png",
-      "overlayImage": "assets/maps/geometry/gef_fild14-overlay.png",
-      "sourceSha256": "17cc595101cf046cb32079a2bd389b46d5a7bcd9447150ebcfa1d7599e2bd102",
-      "gatSha256": "5c07bb4f7630e617f275beac911831db2a1d796e2e05f54e839182fdf359898f",
-      "rawSha256": "366b5514da0d6c77920d42e92efdcb5b6259a57418ff23ccd7efdcd0f614d9eb",
-      "maskSha256": "c1efe8fc3a86337038475749de02f6fba03e25262fbda486551703e6397e4820"
+      "maskImage": "assets/maps/geometry/gef_fild12-mask.png",
+      "rawImage": "assets/maps/geometry/gef_fild12-raw.png",
+      "overlayImage": "assets/maps/geometry/gef_fild12-overlay.png",
+      "sourceSha256": "aa197e7228657a0dcfec2575edd01b3d6dbd4fcf770ac8bed49b7db190818ded",
+      "gatSha256": "71f0fdc67085c285d5ef9e8dfa43f02023727267c798a12cc004c565c3e04420",
+      "rawSha256": "39bcaeee84d79482987914e9f3818b8ba35616c38ed8c7c089032ec932fe0b5f",
+      "maskSha256": "486d8187a02e5b1b59e12a327fcff598e0ae06ad27f4f2125f5c6f7e1148b1e4"
     }
   }
 }

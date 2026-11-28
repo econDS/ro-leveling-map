@@ -171,8 +171,8 @@ test('June doubles Varmundt density and area score, not EXP per kill',()=>{
     assert.equal(june.shownAmount,normal.shownAmount*2);
   }
 });
-test('Dimensional Rift gef_fild14 combines the mjo_wst01 and ra_pol01 monsters at Lv 1 entry',()=>{
-  const rift=map('gef_fild14'),sources=[map('mjo_wst01'),map('ra_pol01')];
+test('Dimensional Rift gef_fild12 combines the mjo_wst01 and ra_pol01 monsters at Lv 1 entry',()=>{
+  const rift=map('gef_fild12'),sources=[map('mjo_wst01'),map('ra_pol01')];
   assert.equal(rift.monsters.map(x=>x.name).join(),sources.flatMap(s=>s.monsters.map(x=>x.name)).join());
   for(const s of sources)for(const x of s.monsters){
     const copy=rift.monsters.find(y=>y.name===x.name);
